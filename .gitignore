@@ -1,3 +1,6 @@
 #Standard ignores
 .DS_Store
 Thumbs.db
+
+# Ignore micro.blog migration content
+microblog/
