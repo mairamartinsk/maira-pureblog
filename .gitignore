@@ -3,5 +3,6 @@
 Thumbs.db
 
 # Ignore content
-microblog/
-content/
+/microblog/
+/content/*
+!/content/includes/

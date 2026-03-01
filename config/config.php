@@ -16,6 +16,8 @@ return array (
   'hide_homepage_title' => true,
   'hide_blog_page_title' => true,
   'base_url' => 'https://mairamartins.com',
+  'timezone' => 'Europe/Madrid',
+  'date_format' => 'j M Y',
   'admin_username' => 'espresso9070',
   'admin_password_hash' => '$2y$10$ra9DLKuGFqfnBvL36Rr1dOmVOD9fvweMCK4hbBC6NjXjdRNwxnMBW',
   'theme' => 
@@ -40,5 +42,6 @@ return array (
   array (
     'favicon' => '/assets/images/favicon.png',
     'og_image' => '/assets/images/og-image.png',
+    'og_image_preferred' => 'banner',
   ),
 );
