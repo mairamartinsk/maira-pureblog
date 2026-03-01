@@ -4,8 +4,11 @@ return array (
   'site_tagline' => '',
   'site_description' => '',
   'site_email' => 'blog@mairamartins.com',
-  'custom_nav' => '',
-  'custom_routes' => '',
+  'custom_nav' => 'Archive | /archive
+Tags | /tags
+Search | /search',
+  'custom_routes' => '/archive | /content/includes/archive.php
+/tags | /content/includes/tags.php',
   'head_inject_page' => '',
   'head_inject_post' => '',
   'footer_inject_page' => '',
