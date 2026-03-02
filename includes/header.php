@@ -46,6 +46,10 @@ $isSquareOgImage = $ogImagePreferred === 'square';
         <?php endif; ?>
     <?php endif; ?>
     <link rel="alternate" type="application/rss+xml" title="<?= e($config['site_title']) ?> RSS" href="/feed.php">
+    <link rel="me" href="https://mindly.social/@mairamartins" />
+    <link rel="me" href="https://pixelfed.social/mairamartins" />
+    <link rel="me" href="https://instagram.com/mairamartinsk" />
+    <link rel="me" href="https://flickr.com/mairapontes" />
     <style>
         body { background: <?= e($config['theme']['background_color']) ?>; }
     </style>
