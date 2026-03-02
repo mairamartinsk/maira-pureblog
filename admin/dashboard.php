@@ -153,9 +153,13 @@ require __DIR__ . '/../includes/admin-head.php';
                             <?= e($post['title']) ?>
                         </a>
                         <div class="admin-list-meta">
-                            <span><svg class="icon" aria-hidden="true"><use href="/admin/icons/sprite.svg#icon-calendar"></use></svg> <?= e(format_datetime_for_display((string) ($post['date'] ?? ''), $config, 'Y-m-d @ H:i')) ?></span>
+                            <span><svg class="icon" aria-hidden="true"><use href="/admin/icons/sprite.svg#icon-calendar"></use></svg> <?= e(format_datetime_for_display((string) ($post['date'] ?? ''), $config, 'Y-m-d')) ?></span>
                             <span class="status <?= e($post['status']) ?>"><svg class="icon" aria-hidden="true"><use href="/admin/icons/sprite.svg#icon-toggle-right"></use></svg> <?= e($post['status']) ?></span>
+                            <span class="admin-list-tags">
+                            <?= implode(", ", $post['tags']) ?>
+                        </span>
                         </div>
+                        
                     </li>
                 <?php endforeach; ?>
             </ul>
