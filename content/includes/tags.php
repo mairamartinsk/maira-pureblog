@@ -31,7 +31,7 @@ ksort($tags);
         <?php foreach ($tags as $tag => $posts): ?>
           <li>
             <a class="button" href="/tag/<?= urlencode($tag); ?>">
-                <?= htmlspecialchars($tag); ?> <small>(<?= count($posts) ?>)</small>
+                <?= htmlspecialchars($posts['name']); ?> <small>(<?= count($posts['posts']) ?>)</small>
             </a>
         </li>
         <?php endforeach; ?>
