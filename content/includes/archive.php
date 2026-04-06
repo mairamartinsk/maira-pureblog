@@ -32,7 +32,7 @@ krsort($postsByYear);
 
 <main>
     <h1>Archive</h1>
-		<p><?= count($posts) ?> posts publicados.</p>
+		<p><?= count($posts) ?> published posts.</p>
 
 		<?php foreach ($postsByYear as $year => $yearPosts): ?>
     <div class="archive">

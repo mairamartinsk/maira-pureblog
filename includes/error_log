@@ -1,0 +1,28 @@
+[14-Mar-2026 02:10:06 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function font_stack_css() in /home/mairtumt/public_html/maira-pureblog/includes/admin-head.php:4
+Stack trace:
+#0 {main}
+  thrown in /home/mairtumt/public_html/maira-pureblog/includes/admin-head.php on line 4
+[14-Mar-2026 02:10:20 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function e() in /home/mairtumt/public_html/maira-pureblog/includes/admin-settings-nav.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/mairtumt/public_html/maira-pureblog/includes/admin-settings-nav.php on line 16
+[14-Mar-2026 02:10:26 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function e() in /home/mairtumt/public_html/maira-pureblog/includes/masthead.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/mairtumt/public_html/maira-pureblog/includes/masthead.php on line 2
+[14-Mar-2026 02:10:33 UTC] PHP Warning:  Undefined variable $posts in /home/mairtumt/public_html/maira-pureblog/includes/post-list.php on line 6
+[14-Mar-2026 02:10:39 UTC] PHP Warning:  Undefined array key "slug" in /home/mairtumt/public_html/maira-pureblog/includes/post-meta.php on line 37
+[16-Mar-2026 13:02:50 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function font_stack_css() in /home/mairtumt/public_html/maira-pureblog/includes/admin-head.php:4
+Stack trace:
+#0 {main}
+  thrown in /home/mairtumt/public_html/maira-pureblog/includes/admin-head.php on line 4
+[16-Mar-2026 13:03:03 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function e() in /home/mairtumt/public_html/maira-pureblog/includes/admin-settings-nav.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/mairtumt/public_html/maira-pureblog/includes/admin-settings-nav.php on line 16
+[16-Mar-2026 13:03:10 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function e() in /home/mairtumt/public_html/maira-pureblog/includes/masthead.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/mairtumt/public_html/maira-pureblog/includes/masthead.php on line 2
+[16-Mar-2026 13:03:16 UTC] PHP Warning:  Undefined variable $posts in /home/mairtumt/public_html/maira-pureblog/includes/post-list.php on line 6
+[16-Mar-2026 13:03:22 UTC] PHP Warning:  Undefined array key "slug" in /home/mairtumt/public_html/maira-pureblog/includes/post-meta.php on line 37
