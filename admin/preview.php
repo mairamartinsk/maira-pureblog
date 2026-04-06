@@ -13,17 +13,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $editorType = trim($_POST['editor_type'] ?? 'post');
     $slug = trim($_POST['slug'] ?? '');
     $previewKey = $editorType . ':' . ($slug !== '' ? $slug : 'new');
+    $layoutFields = [];
+    foreach ($_POST as $key => $value) {
+        if (str_starts_with($key, 'layout_field__')) {
+            $fieldName = substr($key, strlen('layout_field__'));
+            $layoutFields[$fieldName] = trim((string) $value);
+        }
+    }
     $_SESSION['preview'][$previewKey] = [
         'markdown' => $_POST['markdown'] ?? '',
         'title' => trim($_POST['title'] ?? ''),
         'date' => trim($_POST['date'] ?? ''),
         'tags' => trim($_POST['tags'] ?? ''),
         'description' => trim($_POST['description'] ?? ''),
+        'layout' => trim($_POST['layout'] ?? ''),
+        'layout_fields' => $layoutFields,
         'editor_type' => $editorType,
         'slug' => $slug,
         'created_at' => time(),
     ];
-    $redirect = '/admin/preview.php?type=' . urlencode($editorType);
+    $redirect = base_path() . '/admin/preview.php?type=' . urlencode($editorType);
     if ($slug !== '') {
         $redirect .= '&slug=' . urlencode($slug);
     }
@@ -65,25 +74,38 @@ if ($slug !== '') {
     }
 }
 
+$layout = '';
+$extraFields = [];
+
 if ($useSnapshot && $preview) {
     $markdown = $preview['markdown'] ?? '';
     $title = trim($preview['title'] ?? '');
     $date = trim($preview['date'] ?? '');
     $tags = trim($preview['tags'] ?? '');
     $description = trim($preview['description'] ?? '');
+    $layout = trim($preview['layout'] ?? '');
+    $extraFields = is_array($preview['layout_fields'] ?? null) ? $preview['layout_fields'] : [];
     $editorType = trim($preview['editor_type'] ?? $editorType);
+} elseif (!$useSnapshot && isset($live)) {
+    $layout = (string) ($live['layout'] ?? '');
+    $knownKeys = ['title', 'slug', 'date', 'status', 'tags', 'description', 'content', 'layout', 'path', 'timestamp', 'categories'];
+    foreach ($live as $k => $v) {
+        if (!in_array($k, $knownKeys, true)) {
+            $extraFields[$k] = (string) $v;
+        }
+    }
 }
 
 $config = load_config();
 $fontStack = font_stack_css($config['theme']['font_stack'] ?? 'sans');
-$pageTitle = $title !== '' ? $title : 'Preview';
+$pageTitle = $title !== '' ? $title : t('admin.editor.preview_title');
 $metaDescription = $description;
 header('Cache-Control: no-store, no-cache, must-revalidate');
 header('Pragma: no-cache');
 
 if ($editorType === 'page') {
     $page = [
-        'title' => $title !== '' ? $title : 'Preview',
+        'title' => $title !== '' ? $title : t('admin.editor.preview_title'),
         'slug' => '',
         'status' => 'draft',
         'description' => $description,
@@ -94,13 +116,14 @@ if ($editorType === 'page') {
     exit;
 }
 
-$post = [
-    'title' => $title !== '' ? $title : 'Preview',
-    'slug' => '',
+$post = array_merge($extraFields, [
+    'title' => $title !== '' ? $title : t('admin.editor.preview_title'),
+    'slug' => $slug,
     'date' => $date,
     'status' => 'draft',
     'tags' => $tags !== '' ? array_map('trim', explode(',', $tags)) : [],
     'description' => $description,
     'content' => $markdown,
-];
+    'layout' => $layout,
+]);
 require __DIR__ . '/../post.php';

@@ -2,6 +2,20 @@
 
 declare(strict_types=1);
 
+// PHP 7.4 polyfills for functions added in PHP 8.0.
+if (!function_exists('str_starts_with')) {
+    function str_starts_with(string $haystack, string $needle): bool
+    {
+        return $needle === '' || strncmp($haystack, $needle, strlen($needle)) === 0;
+    }
+}
+if (!function_exists('str_contains')) {
+    function str_contains(string $haystack, string $needle): bool
+    {
+        return $needle === '' || strpos($haystack, $needle) !== false;
+    }
+}
+
 const PUREBLOG_BASE_PATH = __DIR__;
 const PUREBLOG_VERSION_FILE = PUREBLOG_BASE_PATH . '/VERSION';
 const PUREBLOG_CONFIG_PATH = PUREBLOG_BASE_PATH . '/config/config.php';
@@ -13,6 +27,7 @@ const PUREBLOG_DATA_PATH = PUREBLOG_BASE_PATH . '/data';
 const PUREBLOG_CONTENT_IMAGES_PATH = PUREBLOG_BASE_PATH . '/content/images';
 const PUREBLOG_CONTENT_CSS_PATH = PUREBLOG_BASE_PATH . '/content/css';
 const PUREBLOG_HOOKS_PATH = PUREBLOG_BASE_PATH . '/config/hooks.php';
+const PUREBLOG_CACHE_PATH = PUREBLOG_BASE_PATH . '/cache';
 
 function detect_pureblog_version(): string
 {
@@ -47,15 +62,22 @@ function default_config(): array
         'footer_inject_page' => '',
         'footer_inject_post' => '',
         'posts_per_page' => 20,
+        'search_excerpt_length' => 2500,
         'homepage_slug' => '',
         'blog_page_slug' => '',
-        'hide_homepage_title' => true,
-        'hide_blog_page_title' => true,
+        'search_page_slug' => 'search',
+        'search_page_notified' => false,
+
         'base_url' => '',
+        'language' => 'en',
         'timezone' => date_default_timezone_get(),
         'date_format' => 'F j, Y',
         'admin_username' => '',
         'admin_password_hash' => '',
+        'cache' => [
+            'enabled' => false,
+            'rss_ttl' => 3600,
+        ],
         'theme' => [
             'color_mode' => 'auto',
             'font_stack' => 'sans',
@@ -102,12 +124,178 @@ function load_hooks(): void
     }
 }
 
+// ---------------------------------------------------------------------------
+// Internationalisation helpers
+// ---------------------------------------------------------------------------
+
+/**
+ * Load a lang file for the given language code, with fallbacks:
+ * exact match → base language (e.g. 'en' from 'en-GB') → 'en'.
+ */
+function _lang_load_file(string $language): array
+{
+    $safe = preg_replace('/[^a-zA-Z0-9_-]/', '', $language) ?? 'en';
+    $base = preg_replace('/[^a-zA-Z0-9]/', '', explode('-', $safe)[0]) ?? 'en';
+
+    foreach (array_unique([$safe, strtolower($safe), $base, strtolower($base), 'en']) as $candidate) {
+        if ($candidate === '') {
+            continue;
+        }
+        $path = PUREBLOG_BASE_PATH . '/lang/' . $candidate . '.php';
+        if (is_file($path)) {
+            $data = require $path;
+            if (is_array($data)) {
+                return $data;
+            }
+        }
+    }
+
+    return [];
+}
+
+/**
+ * Override the language used by t() — must be called before the first t() call.
+ * Used by the setup wizard so the page can render in the selected language
+ * before a config file exists.
+ */
+function lang_init(string $language): void
+{
+    global $_pureblog_lang_code;
+    $_pureblog_lang_code = $language;
+}
+
+/**
+ * Return all available languages as [code => nativeName], sorted by name.
+ * Scans lang/*.php and reads the top-level 'name' key from each file.
+ */
+function lang_available(): array
+{
+    $langs = [];
+    $files = glob(PUREBLOG_BASE_PATH . '/lang/*.php') ?: [];
+
+    foreach ($files as $file) {
+        $code = basename($file, '.php');
+        $data = require $file;
+        if (is_array($data) && isset($data['name']) && is_string($data['name'])) {
+            $langs[$code] = $data['name'];
+        }
+    }
+
+    asort($langs);
+    return $langs;
+}
+
+/**
+ * Return the loaded lang strings, lazily initialising from config on first call.
+ * Respects lang_init() override if set (used during setup).
+ * @internal
+ */
+function _lang_strings(): array
+{
+    static $strings = null;
+
+    if ($strings === null) {
+        global $_pureblog_lang_code;
+        if (isset($_pureblog_lang_code) && $_pureblog_lang_code !== '') {
+            $strings = _lang_load_file($_pureblog_lang_code);
+        } else {
+            $config  = load_config();
+            $strings = _lang_load_file((string) ($config['language'] ?? 'en'));
+        }
+    }
+
+    return $strings;
+}
+
+/**
+ * Translate a dot-notation key, with optional {placeholder} replacements.
+ * Returns the key itself if no translation is found, so missing strings
+ * degrade gracefully.
+ *
+ * Example: t('admin.login.heading')
+ * Example: t('admin.dashboard.stat_this_year', ['year' => 2026])
+ */
+function t(string $key, array $replacements = []): string
+{
+    $strings = _lang_strings();
+    $parts   = explode('.', $key);
+    $value   = $strings;
+
+    foreach ($parts as $part) {
+        if (!is_array($value) || !array_key_exists($part, $value)) {
+            return $key;
+        }
+        $value = $value[$part];
+    }
+
+    if (!is_string($value)) {
+        return $key;
+    }
+
+    foreach ($replacements as $placeholder => $replacement) {
+        $value = str_replace('{' . $placeholder . '}', (string) $replacement, $value);
+    }
+
+    return $value;
+}
+
+/**
+ * Substitute translated month/day names into a pre-formatted date string.
+ * Replacement order (full before short) prevents partial matches.
+ * @internal
+ */
+function _lang_translate_date(string $formatted): string
+{
+    $strings     = _lang_strings();
+    $months      = $strings['date']['months']       ?? [];
+    $monthsShort = $strings['date']['months_short'] ?? [];
+    $days        = $strings['date']['days']         ?? [];
+    $daysShort   = $strings['date']['days_short']   ?? [];
+
+    if (!$months && !$days) {
+        return $formatted;
+    }
+
+    $enMonths      = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    $enMonthsShort = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    $enDays        = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    $enDaysShort   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+    // Build a single strtr map so that longer keys (e.g. "Monday") are matched
+    // before shorter ones (e.g. "Mon"), preventing partial-match corruption such
+    // as "Montag" → "Motag" when both full and short day arrays are present.
+    $map = [];
+    if (count($months) === 12) {
+        $map += array_combine($enMonths, $months);
+    }
+    if (count($monthsShort) === 12) {
+        $map += array_combine($enMonthsShort, $monthsShort);
+    }
+    if (count($days) === 7) {
+        $map += array_combine($enDays, $days);
+    }
+    if (count($daysShort) === 7) {
+        $map += array_combine($enDaysShort, $daysShort);
+    }
+
+    return $map ? strtr($formatted, $map) : $formatted;
+}
+
 function call_hook(string $name, array $args = []): void
 {
     load_hooks();
     if (function_exists($name)) {
         $name(...$args);
     }
+}
+
+function apply_filter(string $name, mixed $value): mixed
+{
+    load_hooks();
+    if (function_exists($name)) {
+        return $name($value);
+    }
+    return $value;
 }
 
 /**
@@ -217,7 +405,7 @@ function is_installed(): bool
 function require_setup_redirect(): void
 {
     if (!is_installed()) {
-        header('Location: /setup.php');
+        header('Location: ' . base_path() . '/setup.php');
         exit;
     }
 }
@@ -273,9 +461,41 @@ function is_admin_logged_in(): bool
 function require_admin_login(): void
 {
     if (!is_admin_logged_in()) {
-        header('Location: /admin/index.php');
+        header('Location: ' . base_path() . '/admin/index.php');
         exit;
     }
+}
+
+function base_path(): string
+{
+    static $cached = null;
+    if ($cached !== null) {
+        return $cached;
+    }
+
+    if (PHP_SAPI === 'cli-server') {
+        return $cached = '';
+    }
+
+    $config = load_config();
+    $configuredBase = trim((string) ($config['base_url'] ?? ''));
+    if ($configuredBase !== '') {
+        $parsed = parse_url($configuredBase);
+        if (is_array($parsed)) {
+            return $cached = rtrim((string) ($parsed['path'] ?? ''), '/');
+        }
+    }
+
+    // Derive path prefix from where functions.php lives relative to the document root.
+    $docRoot = realpath($_SERVER['DOCUMENT_ROOT'] ?? '') ?: '';
+    $appRoot = realpath(__DIR__) ?: __DIR__;
+    if ($docRoot !== '' && str_starts_with($appRoot, $docRoot)) {
+        $rel = substr($appRoot, strlen($docRoot));
+        $rel = str_replace('\\', '/', $rel);
+        return $cached = rtrim($rel, '/');
+    }
+
+    return $cached = '';
 }
 
 function get_base_url(): string
@@ -301,9 +521,8 @@ function get_base_url(): string
     if (!preg_match('/^[a-z0-9.-]+(:\d+)?$/', $host)) {
         $host = 'localhost';
     }
-    $path = rtrim(str_replace('/setup.php', '', $_SERVER['SCRIPT_NAME'] ?? ''), '/');
 
-    return $scheme . '://' . $host . $path;
+    return $scheme . '://' . $host . base_path();
 }
 
 function e(string $value): string
@@ -320,6 +539,27 @@ function font_stack_css(string $fontStack): string
     };
 }
 
+/**
+ * Validate that a resolved path is within the allowed base directory.
+ */
+function validate_image_path(string $baseDir, string $targetPath): bool
+{
+    $resolvedBase = realpath($baseDir);
+    $resolvedTarget = realpath($targetPath);
+    if ($resolvedBase === false || $resolvedTarget === false) {
+        return false;
+    }
+    return str_starts_with($resolvedTarget, $resolvedBase . DIRECTORY_SEPARATOR);
+}
+
+/**
+ * Validate that a slug is safe for use as an image folder name.
+ */
+function is_safe_image_slug(string $slug): bool
+{
+    return $slug !== '' && preg_match('/^[\p{L}\p{N}\-_]+$/u', $slug) === 1;
+}
+
 function slugify(string $value): string
 {
     $value = trim($value);
@@ -328,6 +568,17 @@ function slugify(string $value): string
     } else {
         $value = strtolower($value);
     }
+
+    // Transliterate common diacritics to ASCII equivalents
+    $value = strtr($value, [
+        'ä' => 'ae', 'ö' => 'oe', 'ü' => 'ue', 'ß' => 'ss',
+        'à' => 'a', 'á' => 'a', 'â' => 'a', 'ã' => 'a', 'å' => 'a',
+        'æ' => 'ae', 'ç' => 'c', 'è' => 'e', 'é' => 'e', 'ê' => 'e',
+        'ë' => 'e', 'ì' => 'i', 'í' => 'i', 'î' => 'i', 'ï' => 'i',
+        'ñ' => 'n', 'ò' => 'o', 'ó' => 'o', 'ô' => 'o', 'õ' => 'o',
+        'ø' => 'o', 'ù' => 'u', 'ú' => 'u', 'û' => 'u', 'ý' => 'y',
+        'ÿ' => 'y',
+    ]);
 
     $value = preg_replace('/[^\p{L}\p{N}\s-]/u', '', $value) ?? '';
     $value = preg_replace('/[\s-]+/u', '-', $value) ?? '';
@@ -524,7 +775,25 @@ function format_datetime_for_display(?string $value, array $config, ?string $for
     }
 
     $effectiveFormat = $format !== null && trim($format) !== '' ? $format : site_date_format($config);
-    return $dt->format($effectiveFormat);
+    return _lang_translate_date($dt->format($effectiveFormat));
+}
+
+function relative_time(int $timestamp): string
+{
+    $diff = max(0, time() - $timestamp);
+    if ($diff < 60) {
+        return t('admin.dashboard.time_just_now');
+    }
+    if ($diff < 3600) {
+        $n = (int) floor($diff / 60);
+        return t($n === 1 ? 'admin.dashboard.time_minute_ago' : 'admin.dashboard.time_minutes_ago', ['n' => $n]);
+    }
+    if ($diff < 86400) {
+        $n = (int) floor($diff / 3600);
+        return t($n === 1 ? 'admin.dashboard.time_hour_ago' : 'admin.dashboard.time_hours_ago', ['n' => $n]);
+    }
+    $n = (int) floor($diff / 86400);
+    return t($n === 1 ? 'admin.dashboard.time_day_ago' : 'admin.dashboard.time_days_ago', ['n' => $n]);
 }
 
 function format_post_date_for_rss(?string $value, array $config): string
@@ -560,7 +829,10 @@ function get_all_posts(bool $includeDrafts = false, bool $bustCache = false): ar
                 $dt = parse_post_datetime_with_timezone($dateString, $config);
                 $timestamp = $dt ? $dt->getTimestamp() : 0;
 
-                $posts[] = [
+                $knownFrontKeys = ['title', 'slug', 'date', 'status', 'tags', 'description', 'categories'];
+                $extraFront = array_diff_key($front, array_flip($knownFrontKeys));
+
+                $posts[] = array_merge($extraFront, [
                     'title' => $front['title'] ?? 'Untitled',
                     'slug' => $front['slug'] ?? '',
                     'date' => $dateString,
@@ -570,7 +842,7 @@ function get_all_posts(bool $includeDrafts = false, bool $bustCache = false): ar
                     'description' => $front['description'] ?? '',
                     'content' => $parsed['content'],
                     'path' => $file,
-                ];
+                ]);
             }
 
             usort($posts, fn($a, $b) => ($b['timestamp'] <=> $a['timestamp']));
@@ -679,7 +951,7 @@ function save_page(array &$page, ?string $originalSlug = null, ?string $original
     $status = trim($page['status'] ?? 'draft');
     $description = trim($page['description'] ?? '');
     $includeInNav = (bool) ($page['include_in_nav'] ?? true);
-    $content = $page['content'] ?? '';
+    $content = str_replace("\r", '', $page['content'] ?? '');
 
     if ($slug === '') {
         $slug = slugify($title);
@@ -755,6 +1027,8 @@ function save_page(array &$page, ?string $originalSlug = null, ?string $original
         call_hook('on_page_deleted', [$slug]);
     }
 
+    get_all_pages(true, true);
+    cache_clear();
     return true;
 }
 
@@ -783,6 +1057,7 @@ function delete_page_by_slug(string $slug): bool
         }
     }
 
+    cache_clear();
     return true;
 }
 
@@ -827,6 +1102,7 @@ function delete_post_by_slug(string $slug): bool
         }
         build_search_index();
         build_tag_index();
+        cache_clear();
         call_hook('on_post_deleted', [$slug]);
     }
     return $deleted;
@@ -867,7 +1143,7 @@ function save_post(array &$post, ?string $originalSlug = null, ?string $original
     $date = trim($post['date'] ?? '');
     $status = trim($post['status'] ?? 'draft');
     $tags = $post['tags'] ?? [];
-    $content = $post['content'] ?? '';
+    $content = str_replace("\r", '', $post['content'] ?? '');
     $description = trim($post['description'] ?? '');
 
     if ($slug === '') {
@@ -897,6 +1173,9 @@ function save_post(array &$post, ?string $originalSlug = null, ?string $original
     $filename = $datePrefix . '-' . $slug . '.md';
     $path = PUREBLOG_POSTS_PATH . '/' . $filename;
 
+    $layout = trim($post['layout'] ?? '');
+    $layoutFields = is_array($post['layout_fields'] ?? null) ? $post['layout_fields'] : [];
+
     $frontMatter = [
         'title' => $title,
         'slug' => $slug,
@@ -905,6 +1184,17 @@ function save_post(array &$post, ?string $originalSlug = null, ?string $original
         'tags' => $tags,
         'description' => $description,
     ];
+
+    if ($layout !== '') {
+        $frontMatter['layout'] = $layout;
+    }
+
+    foreach ($layoutFields as $fieldName => $fieldValue) {
+        $fieldName = trim((string) $fieldName);
+        if ($fieldName !== '') {
+            $frontMatter[$fieldName] = trim((string) $fieldValue);
+        }
+    }
 
     $frontLines = ["---"];
     foreach ($frontMatter as $key => $value) {
@@ -964,6 +1254,7 @@ function save_post(array &$post, ?string $originalSlug = null, ?string $original
 
     build_search_index();
     build_tag_index();
+    cache_clear();
 
     if ($status === 'published') {
         call_hook('on_post_updated', [$slug]);
@@ -1006,9 +1297,14 @@ function get_markdown_parser(): object
     require_once __DIR__ . '/lib/Parsedown.php';
     if (is_file(__DIR__ . '/lib/ParsedownExtra.php')) {
         require_once __DIR__ . '/lib/ParsedownExtra.php';
+        if (is_file(__DIR__ . '/lib/ParsedownPureblog.php')) {
+            require_once __DIR__ . '/lib/ParsedownPureblog.php';
+        }
     }
 
-    if (class_exists('ParsedownExtra')) {
+    if (class_exists('ParsedownPureblog')) {
+        $parsedown = new ParsedownPureblog();
+    } elseif (class_exists('ParsedownExtra')) {
         $parsedown = new ParsedownExtra();
     } else {
         $parsedown = new Parsedown();
@@ -1029,12 +1325,45 @@ function load_yaml_list(string $path): array
         return [];
     }
 
-    $items = [];
+    $items   = [];
     $current = null;
-    foreach ($lines as $line) {
-        $line = rtrim($line);
+
+    // Block scalar state
+    $blockKey    = null;
+    $blockLines  = [];
+    $blockIndent = null;
+    $blockFold   = false;
+
+    $flushBlock = function () use (&$current, &$blockKey, &$blockLines, &$blockIndent, &$blockFold): void {
+        if ($blockKey === null || $current === null) {
+            return;
+        }
+        // Remove trailing empty lines
+        while (count($blockLines) > 0 && end($blockLines) === '') {
+            array_pop($blockLines);
+        }
+        if ($blockFold) {
+            $result = '';
+            foreach ($blockLines as $bl) {
+                if ($bl === '') {
+                    $result = rtrim($result) . "\n\n";
+                } else {
+                    $result .= $bl . ' ';
+                }
+            }
+            $current[$blockKey] = rtrim($result);
+        } else {
+            $current[$blockKey] = implode("\n", $blockLines);
+        }
+        $blockKey    = null;
+        $blockLines  = [];
+        $blockIndent = null;
+        $blockFold   = false;
+    };
+
+    $parseLine = function (string $line) use (&$items, &$current, &$blockKey, &$blockLines, &$blockIndent, &$blockFold, $flushBlock): void {
         if ($line === '' || str_starts_with(ltrim($line), '#')) {
-            continue;
+            return;
         }
 
         if (preg_match('/^\s*-\s*(.*)$/', $line, $matches)) {
@@ -1042,21 +1371,64 @@ function load_yaml_list(string $path): array
                 $items[] = $current;
             }
             $current = [];
-            $rest = trim($matches[1]);
+            $rest    = trim($matches[1]);
             if ($rest !== '' && strpos($rest, ':') !== false) {
                 [$key, $value] = array_map('trim', explode(':', $rest, 2));
-                $current[$key] = trim($value, "\"'");
+                $value = trim($value, "\"'");
+                if ($value === '|' || $value === '>') {
+                    $blockKey  = $key;
+                    $blockFold = ($value === '>');
+                } else {
+                    $current[$key] = $value;
+                }
             }
-            continue;
+            return;
         }
 
         if ($current === null || strpos(ltrim($line), ':') === false) {
-            continue;
+            return;
         }
 
         [$key, $value] = array_map('trim', explode(':', trim($line), 2));
-        $current[$key] = trim($value, "\"'");
+        $value = trim($value, "\"'");
+        if ($value === '|' || $value === '>') {
+            $blockKey  = $key;
+            $blockFold = ($value === '>');
+        } else {
+            $current[$key] = $value;
+        }
+    };
+
+    foreach ($lines as $line) {
+        $line = rtrim($line);
+
+        if ($blockKey !== null) {
+            // Blank lines are preserved within a block scalar
+            if ($line === '') {
+                $blockLines[] = '';
+                continue;
+            }
+
+            $lineIndent = strlen($line) - strlen(ltrim($line));
+
+            // First non-empty line sets the indentation level
+            if ($blockIndent === null) {
+                $blockIndent = $lineIndent;
+            }
+
+            if ($lineIndent >= $blockIndent) {
+                $blockLines[] = substr($line, $blockIndent);
+                continue;
+            }
+
+            // Less indented — end of block, process the triggering line normally
+            $flushBlock();
+        }
+
+        $parseLine($line);
     }
+
+    $flushBlock();
 
     if ($current !== null) {
         $items[] = $current;
@@ -1242,6 +1614,7 @@ function filter_content(string $markdown, array $context = []): string
 
     $markdown = render_global_shortcodes($markdown, $context);
     $markdown = render_any_data_loops($markdown);
+    $markdown = apply_filter('on_filter_content', $markdown);
 
     $markdown = restore_inline_code_spans($markdown, $inlineCodeSpans);
 
@@ -1256,7 +1629,10 @@ function get_excerpt(string $markdown, int $length = 200): string
     $excerpt = preg_replace('/`[^`]*`/', ' ', $excerpt) ?? $excerpt;
     $excerpt = preg_replace('/!\[[^\]]*\]\([^)]+\)/', ' ', $excerpt) ?? $excerpt;
     $excerpt = preg_replace('/\[([^\]]*)\]\([^)]+\)/', '$1', $excerpt) ?? $excerpt;
-    $excerpt = preg_replace('/[*_~>#-]+/', ' ', $excerpt) ?? $excerpt;
+    $excerpt = preg_replace('/^[ \t]*[-*>]+[ \t]*/m', ' ', $excerpt) ?? $excerpt; // list markers / blockquotes
+    $excerpt = preg_replace('/^[ \t]*#{1,6}[ \t]+/m', ' ', $excerpt) ?? $excerpt;  // ATX headings
+    $excerpt = preg_replace('/^[-*_]{2,}[ \t]*$/m', ' ', $excerpt) ?? $excerpt;    // setext headers / HR
+    $excerpt = preg_replace('/[*_~]+/', '', $excerpt) ?? $excerpt;                  // inline emphasis
     $excerpt = strip_tags($excerpt);
     $excerpt = preg_replace('/\s+/', ' ', $excerpt) ?? $excerpt;
     $excerpt = trim($excerpt);
@@ -1283,7 +1659,7 @@ function render_tag_links(array $tags): string
     $links = [];
     foreach ($tags as $tag) {
         $slug = normalize_tag($tag);
-        $links[] = '<a href="/tag/' . e(rawurlencode($slug)) . '">' . e($tag) . '</a>';
+        $links[] = '<a href="' . base_path() . '/tag/' . e(rawurlencode($slug)) . '">' . e($tag) . '</a>';
     }
 
     return implode(', ', $links);
@@ -1377,7 +1753,12 @@ function render_masthead_layout(array $config, array $context = []): void
     $mastheadPath = resolve_layout_file('masthead') ?? (PUREBLOG_BASE_PATH . '/includes/masthead.php');
 
     $siteTagline = trim((string) ($config['site_tagline'] ?? ''));
-    $currentPath = trim(parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?? '', '/');
+    $uriPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?? '/';
+    $bp = base_path();
+    if ($bp !== '' && str_starts_with($uriPath, $bp)) {
+        $uriPath = substr($uriPath, strlen($bp));
+    }
+    $currentPath = trim($uriPath, '/');
     $navPages = get_all_pages(false);
     $navPages = array_values(array_filter($navPages, fn($page) => ($page['include_in_nav'] ?? true)));
     $customNavItems = array_values(array_filter(parse_custom_nav($config['custom_nav'] ?? ''), function (array $item): bool {
@@ -1440,7 +1821,7 @@ function parse_custom_routes(string $raw): array
         }
 
         if (
-            !preg_match('#^/[a-zA-Z0-9/_-]+$#', $path)
+            ($path !== '/' && !preg_match('#^/[a-zA-Z0-9/_-]+$#', $path))
             || str_contains($path, '//')
             || str_contains($path, '..')
         ) {
@@ -1503,23 +1884,39 @@ function filter_posts_by_query(array $posts, string $query): array
         return $posts;
     }
 
-    $needle = mb_strtolower($query);
-    return array_values(array_filter($posts, function (array $post) use ($needle): bool {
-        $haystack = implode(' ', [
+    // Split into individual words so multi-word queries match posts containing all terms
+    $words = preg_split('/\s+/u', mb_strtolower($query), -1, PREG_SPLIT_NO_EMPTY);
+    if (empty($words)) {
+        return $posts;
+    }
+
+    return array_values(array_filter($posts, function (array $post) use ($words): bool {
+        $raw = implode(' ', [
             (string) ($post['title'] ?? ''),
             (string) ($post['description'] ?? ''),
             (string) ($post['excerpt'] ?? ''),
             implode(' ', $post['tags'] ?? []),
         ]);
-        return mb_stripos($haystack, $needle) !== false;
+        // Strip emoji and other non-letter/digit/punctuation characters so they
+        // don't prevent matches (e.g. a title like "📚 Flybot" still matches "flybot")
+        $haystack = mb_strtolower((string) preg_replace('/[^\p{L}\p{N}\p{P}\s]/u', ' ', $raw));
+        foreach ($words as $word) {
+            if (mb_strpos($haystack, $word) === false) {
+                return false;
+            }
+        }
+        return true;
     }));
 }
 
 function build_search_index(): bool
 {
+    $config = load_config();
+    $excerptLength = (int) ($config['search_excerpt_length'] ?? 2500);
     $posts = get_all_posts(false, true);
-    $index = array_map(function (array $post): array {
-        $excerpt = get_excerpt((string) ($post['content'] ?? ''), 500);
+    $index = array_map(function (array $post) use ($excerptLength): array {
+        $content = (string) ($post['content'] ?? '');
+        $excerpt = $excerptLength === 0 ? $content : get_excerpt($content, $excerptLength);
         return [
             'title' => (string) ($post['title'] ?? ''),
             'slug' => (string) ($post['slug'] ?? ''),
@@ -1548,12 +1945,15 @@ function build_tag_index(): bool
             continue;
         }
         foreach ($post['tags'] ?? [] as $tag) {
-            $tagSlug = normalize_tag((string) $tag);
+            $tag = trim((string) $tag);
+            $tagSlug = normalize_tag($tag);
             if ($tagSlug === '') {
                 continue;
             }
-            $index[$tagSlug] ??= [];
-            $index[$tagSlug][] = $slug;
+            if (!isset($index[$tagSlug])) {
+                $index[$tagSlug] = ['name' => $tag, 'posts' => []];
+            }
+            $index[$tagSlug]['posts'][] = $slug;
         }
     }
 
@@ -1611,3 +2011,168 @@ function paginate_posts(array $posts, int $perPage, int $currentPage): array
         'currentPage' => $currentPage,
     ];
 }
+
+function cache_should_bypass(array $config): bool
+{
+    if (empty($config['cache']['enabled'])) {
+        return true;
+    }
+    if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'GET') {
+        return true;
+    }
+    return isset($_GET['q']);
+}
+
+function get_cache_file_path(string $key, string $ext = 'html'): string
+{
+    return PUREBLOG_CACHE_PATH . '/' . md5($key) . '.' . $ext;
+}
+
+function cache_read(string $key, int $ttl = 0, string $ext = 'html'): ?string
+{
+    $path = get_cache_file_path($key, $ext);
+    if (!is_file($path)) {
+        return null;
+    }
+    if ($ttl > 0 && (time() - filemtime($path)) > $ttl) {
+        @unlink($path);
+        return null;
+    }
+    $content = file_get_contents($path);
+    return $content !== false ? $content : null;
+}
+
+function cache_write(string $key, string $content, string $ext = 'html'): void
+{
+    if (!is_dir(PUREBLOG_CACHE_PATH)) {
+        mkdir(PUREBLOG_CACHE_PATH, 0755, true);
+    }
+    $timestamp = gmdate('Y-m-d H:i:s') . ' UTC';
+    if ($ext === 'xml') {
+        $content = str_replace('</rss>', '<!-- Cached at ' . $timestamp . " -->\n</rss>", $content);
+    } else {
+        $content .= "\n<!-- Cached at " . $timestamp . ' -->';
+    }
+    file_put_contents(get_cache_file_path($key, $ext), $content, LOCK_EX);
+}
+
+function get_layouts(): array
+{
+    $dir = PUREBLOG_BASE_PATH . '/content/layouts';
+    if (!is_dir($dir)) {
+        return [];
+    }
+    $files = glob($dir . '/*.php') ?: [];
+    $layouts = [];
+    foreach ($files as $file) {
+        $name = basename($file, '.php');
+        $jsonFile = $dir . '/' . $name . '.json';
+        $fields = [];
+        $label = $name;
+        if (is_file($jsonFile)) {
+            $json = @file_get_contents($jsonFile);
+            if ($json !== false) {
+                $decoded = json_decode($json, true);
+                if (is_array($decoded)) {
+                    $label = trim((string) ($decoded['label'] ?? $name));
+                    if ($label === '') {
+                        $label = $name;
+                    }
+                    $fields = is_array($decoded['fields'] ?? null) ? $decoded['fields'] : [];
+                }
+            }
+        }
+        $layouts[] = ['name' => $name, 'label' => $label, 'fields' => $fields];
+    }
+    return $layouts;
+}
+
+function layout_context(?array $post = null, ?array $config = null, ?array $adjacentPosts = null): array
+{
+    static $ctx = ['post' => [], 'config' => [], 'adjacentPosts' => []];
+    if ($post !== null) {
+        $ctx = ['post' => $post, 'config' => $config ?? [], 'adjacentPosts' => $adjacentPosts ?? []];
+    }
+    return $ctx;
+}
+
+function render_post_navigation(): string
+{
+    $ctx = layout_context();
+    return render_layout_partial('post-meta', [
+        'post' => $ctx['post'],
+        'config' => $ctx['config'],
+        'previous_post' => $ctx['adjacentPosts']['previous'] ?? null,
+        'next_post' => $ctx['adjacentPosts']['next'] ?? null,
+    ]);
+}
+
+function render_layout_file(string $file, array $post, array $config, array $adjacentPosts): void
+{
+    layout_context($post, $config, $adjacentPosts);
+    include $file;
+}
+
+function cache_clear(): void
+{
+    if (!is_dir(PUREBLOG_CACHE_PATH)) {
+        return;
+    }
+    $files = glob(PUREBLOG_CACHE_PATH . '/*') ?: [];
+    foreach ($files as $file) {
+        if (is_file($file)) {
+            @unlink($file);
+        }
+    }
+}
+
+function detect_current_pureblog_version(): string
+{
+    $versionFile = PUREBLOG_BASE_PATH . '/VERSION';
+    if (is_file($versionFile)) {
+        $raw = @file_get_contents($versionFile);
+        if (is_string($raw)) {
+            $fromFile = trim($raw);
+            if ($fromFile !== '') {
+                return $fromFile;
+            }
+        }
+    }
+
+    if (defined('PUREBLOG_VERSION') && is_string(PUREBLOG_VERSION) && PUREBLOG_VERSION !== '' && strtolower(PUREBLOG_VERSION) !== 'unknown') {
+        return PUREBLOG_VERSION;
+    }
+
+    return 'unknown';
+}
+
+function normalize_version_label(string $version): string
+{
+    $trimmed = trim($version);
+    if ($trimmed === '') {
+        return 'unknown';
+    }
+
+    return ltrim($trimmed, "vV");
+}
+
+function versions_match(string $current, string $latest): bool
+{
+    $a = strtolower(trim($current));
+    $b = strtolower(trim($latest));
+
+    if ($a === '' || $b === '') {
+        return false;
+    }
+
+    $a = ltrim($a, 'v');
+    $b = ltrim($b, 'v');
+
+    return $a === $b;
+}
+
+$_userFunctions = PUREBLOG_BASE_PATH . '/content/functions.php';
+if (is_file($_userFunctions)) {
+    require $_userFunctions;
+}
+unset($_userFunctions);

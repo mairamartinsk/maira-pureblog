@@ -6,3 +6,11 @@ Thumbs.db
 /microblog/
 /content/*
 !/content/includes/
+
+# Upstream ignores
+/backup/
+/cache/
+.claude/
+/vendor/
+.phpunit.result.cache
+.phpunit.cache/

@@ -17,68 +17,80 @@ $message = '';
 $error = '';
 
 if ($slug === '') {
-    $error = 'Save the post first so it has a slug.';
+    $error = t('admin.editor.error_upload_no_slug');
 } elseif (!isset($_FILES['image'])) {
-    $error = 'No image uploaded.';
+    $error = t('admin.editor.error_upload_no_file');
 } elseif ($_FILES['image']['error'] !== UPLOAD_ERR_OK) {
-    $error = 'Upload failed.';
+    $error = t('admin.editor.error_upload_failed');
 } elseif ($_FILES['image']['size'] > (3 * 1024 * 1024)) {
-    $error = 'Image is too large. Max size is 3MB.';
+    $error = t('admin.editor.error_upload_too_large');
 } else {
     $allowedTypes = [
         'image/jpeg' => 'jpg',
         'image/png' => 'png',
         'image/gif' => 'gif',
         'image/webp' => 'webp',
+        'image/avif' => 'avif',
     ];
     $finfo = new finfo(FILEINFO_MIME_TYPE);
     $mimeType = $finfo->file($_FILES['image']['tmp_name']) ?: '';
     if (!isset($allowedTypes[$mimeType])) {
-        $error = 'Unsupported image type. Use JPG, PNG, GIF, or WebP.';
+        $error = t('admin.editor.error_upload_type');
     }
 }
 
 if ($error === '') {
-    if ($editorType === 'page') {
-        $folder = $slug;
-    } else {
-        $folder = $slug;
+    $folder = $slug;
+
+    if (!is_safe_image_slug($folder)) {
+        $error = t('admin.editor.error_upload_invalid_slug');
     }
+}
+
+if ($error === '') {
+    $baseDir = realpath(__DIR__ . '/../content/images');
     $uploadDir = __DIR__ . '/../content/images/' . $folder;
 
-    if (!is_dir($uploadDir) && !mkdir($uploadDir, 0755, true)) {
-        $error = 'Unable to create image folder.';
-    } else {
-        $filename = basename($_FILES['image']['name']);
-        $filename = strtolower($filename);
-        $filename = preg_replace('/[^a-z0-9._-]/', '-', $filename) ?? $filename;
-        $filename = preg_replace('/-+/', '-', $filename) ?? $filename;
-        $filename = trim($filename, '-');
-        $ext = pathinfo($filename, PATHINFO_EXTENSION);
-        if ($ext === '') {
-            $filename .= '.' . $allowedTypes[$mimeType];
-        }
+    if ($baseDir === false) {
+        $error = t('admin.editor.error_image_folder_missing');
+    } elseif (!is_dir($uploadDir) && !mkdir($uploadDir, 0755, true)) {
+        $error = t('admin.editor.error_upload_folder_create');
+    } elseif (!validate_image_path($baseDir, $uploadDir)) {
+        @rmdir($uploadDir);
+        $error = t('admin.editor.error_image_invalid_path');
+    }
+}
 
-        if ($filename === '') {
-            $error = 'Invalid file name.';
-        } elseif (is_file($uploadDir . '/' . $filename)) {
-            $error = 'Duplicate name, please rename the image (sanitized as "' . $filename . '").';
+if ($error === '') {
+    $filename = basename($_FILES['image']['name']);
+    $filename = strtolower($filename);
+    $filename = preg_replace('/[^a-z0-9._-]/', '-', $filename) ?? $filename;
+    $filename = preg_replace('/-+/', '-', $filename) ?? $filename;
+    $filename = trim($filename, '-');
+    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+    if ($ext === '') {
+        $filename .= '.' . $allowedTypes[$mimeType];
+    }
+
+    if ($filename === '') {
+        $error = t('admin.editor.error_upload_invalid_name');
+    } elseif (is_file($uploadDir . '/' . $filename)) {
+        $error = t('admin.editor.error_upload_duplicate', ['filename' => $filename]);
+    } else {
+        $destination = $uploadDir . '/' . $filename;
+        if (!move_uploaded_file($_FILES['image']['tmp_name'], $destination)) {
+            $error = t('admin.editor.error_upload_save');
         } else {
-            $destination = $uploadDir . '/' . $filename;
-            if (!move_uploaded_file($_FILES['image']['tmp_name'], $destination)) {
-                $error = 'Unable to save uploaded file.';
-            } else {
-                $url = '/content/images/' . $folder . '/' . $filename;
-                $altText = pathinfo($filename, PATHINFO_FILENAME) ?: 'image';
-                $message = '![' . $altText . '](' . $url . ')';
-            }
+            $url = base_path() . '/content/images/' . $folder . '/' . $filename;
+            $altText = pathinfo($filename, PATHINFO_FILENAME) ?: 'image';
+            $message = '![' . $altText . '](' . $url . ')';
         }
     }
 }
 
 $redirect = $editorType === 'page'
-    ? '/admin/edit-page.php?slug=' . urlencode($slug)
-    : '/admin/edit-post.php?slug=' . urlencode($slug);
+    ? base_path() . '/admin/edit-page.php?slug=' . urlencode($slug)
+    : base_path() . '/admin/edit-post.php?slug=' . urlencode($slug);
 if ($message !== '') {
     $redirect .= '&uploaded=' . urlencode($message);
 } elseif ($error !== '') {
