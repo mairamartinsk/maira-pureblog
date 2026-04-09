@@ -6,6 +6,7 @@ return array (
   'site_email' => 'blog@mairamartins.com',
   'custom_nav' => 'Archive | /archive
 Tags | /tags
+Search | /search
 RSS | /feed',
   'custom_routes' => '/archive | /content/includes/archive.php
 /tags | /content/includes/tags.php',
