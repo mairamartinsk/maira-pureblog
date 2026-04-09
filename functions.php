@@ -1271,6 +1271,7 @@ function render_markdown(string $markdown, array $context = []): string
     $parsedown = get_markdown_parser();
 
     $html = $parsedown->text($markdown);
+    $html = apply_filter('on_render_markdown', $html);
 
     return restore_private_use_emoji($html);
 }
@@ -1682,6 +1683,11 @@ function render_layout_partial(string $name, array $context = []): string
 }
 
 function resolve_layout_file(string $name): ?string
+{
+    return resolve_template_file($name, PUREBLOG_BASE_PATH . '/content/includes', PUREBLOG_BASE_PATH . '/includes');
+}
+
+function find_include(string $name): ?string
 {
     return resolve_template_file($name, PUREBLOG_BASE_PATH . '/content/includes', PUREBLOG_BASE_PATH . '/includes');
 }

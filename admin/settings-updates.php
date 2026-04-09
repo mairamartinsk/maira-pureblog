@@ -89,6 +89,62 @@ function preserved_top_level_paths(): array
 }
 
 
+/**
+ * Load ignore patterns from config/update-ignore.
+ * Lines starting with '#' and blank lines are skipped.
+ * A leading '/' is stripped so patterns match internal relative paths.
+ *
+ * @return list<string>
+ */
+function load_update_ignore_patterns(): array
+{
+    $path = PUREBLOG_BASE_PATH . '/config/update-ignore';
+    if (!is_file($path)) {
+        return [];
+    }
+    $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    if (!is_array($lines)) {
+        return [];
+    }
+    $patterns = [];
+    foreach ($lines as $line) {
+        $line = trim($line);
+        if ($line === '' || str_starts_with($line, '#')) {
+            continue;
+        }
+        $patterns[] = ltrim($line, '/');
+    }
+    return $patterns;
+}
+
+/**
+ * Return true if $relative matches any of the given ignore patterns.
+ * Patterns support fnmatch() globs (e.g. lang/*).
+ *
+ * @param list<string> $patterns
+ */
+function is_path_ignored(string $relative, array $patterns): bool
+{
+    return matched_ignore_pattern($relative, $patterns) !== null;
+}
+
+/**
+ * Returns the matched pattern (exact) or the pattern with '/*' appended
+ * (directory prefix match). Returns null if no pattern matches.
+ */
+function matched_ignore_pattern(string $relative, array $patterns): ?string
+{
+    foreach ($patterns as $pattern) {
+        if (fnmatch($pattern, $relative)) {
+            return $pattern;
+        }
+        if (str_starts_with($relative, rtrim($pattern, '/') . '/')) {
+            return rtrim($pattern, '/') . '/*';
+        }
+    }
+    return null;
+}
+
 function remove_directory_recursive(string $path): void
 {
     if (!is_dir($path)) {
@@ -316,8 +372,10 @@ function build_package_upgrade_plan(string $zipballUrl): array
         }
 
         $preserveTop = preserved_top_level_paths();
+        $ignorePatterns = load_update_ignore_patterns();
         $willAdd = [];
         $willReplace = [];
+        $willIgnore = [];  // keyed by display label to collapse directory patterns
         $unchanged = [];
         $willSkip = [];
         $sourceCoreSet = [];
@@ -341,6 +399,8 @@ function build_package_upgrade_plan(string $zipballUrl): array
                 $same = @sha1_file($sourcePath) === @sha1_file($targetPath);
                 if ($same) {
                     $unchanged[] = '/' . $relative;
+                } elseif (($matchedPattern = matched_ignore_pattern($relative, $ignorePatterns)) !== null) {
+                    $willIgnore['/' . $matchedPattern] = '/' . $matchedPattern;
                 } else {
                     $willReplace[] = '/' . $relative;
                 }
@@ -367,15 +427,21 @@ function build_package_upgrade_plan(string $zipballUrl): array
             if (in_array($top, $preserveTop, true)) {
                 continue;
             }
-            // Only flag files that live inside a top-level directory the update will
-            // delete and replace. Files in entirely separate directories are untouched.
-            if (!isset($sourceCoreSet[$relative]) && isset($sourceTopItems[$top])) {
-                $localOnly[] = '/' . $relative;
+            // Ignored files always surface in will_ignore regardless of whether
+            // they were actually at risk, so the plan reflects the full ignore list.
+            if (!isset($sourceCoreSet[$relative])) {
+                if (($matchedPattern = matched_ignore_pattern($relative, $ignorePatterns)) !== null) {
+                    $willIgnore['/' . $matchedPattern] = '/' . $matchedPattern;
+                } elseif (isset($sourceTopItems[$top])) {
+                    // Only flag as deleted if inside a directory the update will wipe.
+                    $localOnly[] = '/' . $relative;
+                }
             }
         }
 
         sort($willAdd);
         sort($willReplace);
+        sort($willIgnore);
         sort($unchanged);
         sort($willSkip);
         sort($localOnly);
@@ -385,12 +451,14 @@ function build_package_upgrade_plan(string $zipballUrl): array
             'counts' => [
                 'add' => count($willAdd),
                 'replace' => count($willReplace),
+                'ignore' => count($willIgnore),
                 'unchanged' => count($unchanged),
                 'skip' => count($willSkip),
                 'local_only' => count($localOnly),
             ],
             'will_add' => $willAdd,
             'will_replace' => $willReplace,
+            'will_ignore' => array_values($willIgnore),
             'unchanged' => $unchanged,
             'will_skip' => $willSkip,
             'local_only' => $localOnly,
@@ -673,6 +741,22 @@ function apply_release_update(string $zipballUrl, string $releaseTag = ''): arra
                 !in_array($item, $preserveTop, true)
         ));
 
+        // Save content of files the user has opted to ignore so they can be
+        // restored after the wipe-and-copy. Only files that already exist
+        // locally are saved; new files from the release are always written.
+        $ignorePatterns = load_update_ignore_patterns();
+        $savedIgnoredFiles = [];
+        if ($ignorePatterns) {
+            foreach (collect_relative_files(PUREBLOG_BASE_PATH) as $relative) {
+                if (is_path_ignored($relative, $ignorePatterns)) {
+                    $content = @file_get_contents(PUREBLOG_BASE_PATH . '/' . $relative);
+                    if (is_string($content)) {
+                        $savedIgnoredFiles[$relative] = $content;
+                    }
+                }
+            }
+        }
+
         $preservedHtaccessFiles = collect_existing_htaccess_files();
         backup_core_paths($tmpBackup, $coreItems);
 
@@ -696,11 +780,23 @@ function apply_release_update(string $zipballUrl, string $releaseTag = ''): arra
         restore_htaccess_files($preservedHtaccessFiles);
         remove_non_preserved_htaccess($preservedHtaccessFiles);
 
+        // Restore files the user has opted to ignore.
+        foreach ($savedIgnoredFiles as $relative => $content) {
+            $target = PUREBLOG_BASE_PATH . '/' . $relative;
+            $dir = dirname($target);
+            if (!is_dir($dir)) {
+                @mkdir($dir, 0755, true);
+            }
+            @file_put_contents($target, $content);
+        }
+
         // Flush the opcode cache so the next request immediately picks up
         // the newly written files rather than the pre-update cached bytecode.
         if (function_exists('opcache_reset')) {
             @opcache_reset();
         }
+
+        @unlink(PUREBLOG_BASE_PATH . '/content/.version-cache');
 
         return [
             'ok' => true,
@@ -958,6 +1054,9 @@ require __DIR__ . '/../includes/admin-head.php';
                 <li><strong><?= e(t('admin.settings.updates.action_unchanged')) ?></strong> <?= e((string) ($packagePlan['counts']['unchanged'] ?? 0)) ?></li>
                 <li><strong><?= e(t('admin.settings.updates.action_preserved')) ?></strong> <?= e((string) ($packagePlan['counts']['skip'] ?? 0)) ?></li>
                 <li><strong><?= e(t('admin.settings.updates.action_local_only')) ?></strong> <?= e((string) ($packagePlan['counts']['local_only'] ?? 0)) ?></li>
+                <?php if (($packagePlan['counts']['ignore'] ?? 0) > 0): ?>
+                <li><strong><?= e(t('admin.settings.updates.action_ignore')) ?></strong> <?= e((string) ($packagePlan['counts']['ignore'] ?? 0)) ?></li>
+                <?php endif; ?>
             </ul>
 
             <?php if (!empty($packagePlan['will_add'])): ?>
@@ -973,6 +1072,15 @@ require __DIR__ . '/../includes/admin-head.php';
                 <p><strong><?= e(t('admin.settings.updates.will_replace')) ?></strong></p>
                 <ul>
                     <?php foreach ($packagePlan['will_replace'] as $path): ?>
+                        <li><code><?= e($path) ?></code></li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
+
+            <?php if (!empty($packagePlan['will_ignore'])): ?>
+                <p><strong><?= e(t('admin.settings.updates.will_ignore')) ?></strong></p>
+                <ul>
+                    <?php foreach ($packagePlan['will_ignore'] as $path): ?>
                         <li><code><?= e($path) ?></code></li>
                     <?php endforeach; ?>
                 </ul>
