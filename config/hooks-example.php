@@ -19,7 +19,6 @@ function bunny_purge(): void
         CURLOPT_HTTPHEADER => ["AccessKey: {$accessKey}"],
     ]);
     curl_exec($ch);
-    curl_close($ch);
 }
 
 function on_post_published(string $slug): void

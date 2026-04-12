@@ -37,7 +37,6 @@ function fetch_latest_pureblog_release(): array
         $raw = curl_exec($ch);
         $status = (int) curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
         $curlErr = curl_error($ch);
-        curl_close($ch);
 
         if (!is_string($raw) || $status < 200 || $status >= 300) {
             $message = $curlErr !== '' ? $curlErr : t('admin.settings.updates.error_github_request', ['status' => $status]);
@@ -186,7 +185,6 @@ function download_url_to_file(string $url, string $destination): ?string
         }
         $fp = @fopen($destination, 'wb');
         if ($fp === false) {
-            curl_close($ch);
             return t('admin.settings.updates.error_download_tmp');
         }
         curl_setopt($ch, CURLOPT_FILE, $fp);
@@ -197,7 +195,6 @@ function download_url_to_file(string $url, string $destination): ?string
         $status = (int) curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
         $curlErr = curl_error($ch);
         fclose($fp);
-        curl_close($ch);
 
         if ($ok !== true || $status < 200 || $status >= 300) {
             return $curlErr !== '' ? $curlErr : t('admin.settings.updates.error_download_failed', ['status' => $status]);
@@ -853,7 +850,6 @@ function repair_missing_lang(): array
             curl_setopt($ch, CURLOPT_TIMEOUT, 5);
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             $raw = curl_exec($ch);
-            curl_close($ch);
         }
     } else {
         $ctx = stream_context_create(['http' => ['method' => 'GET', 'timeout' => 5, 'header' => implode("\r\n", $headers)]]);
