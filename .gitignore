@@ -2,10 +2,6 @@
 .DS_Store
 Thumbs.db
 
-# Ignore content
-/content/*
-!/content/includes/
-
 # Upstream ignores
 /backup/
 /cache/
