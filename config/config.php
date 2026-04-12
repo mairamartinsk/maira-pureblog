@@ -5,11 +5,10 @@ return array (
   'site_description' => '',
   'site_email' => 'blog@mairamartins.com',
   'custom_nav' => 'Archive | /archive
-Tags | /tags
 Search | /search
 RSS | /feed',
   'custom_routes' => '/archive | /content/includes/archive.php
-/tags | /content/includes/tags.php',
+/search | /content/includes/search.php',
   'head_inject_page' => '',
   'head_inject_post' => '',
   'footer_inject_page' => '',
@@ -19,7 +18,7 @@ RSS | /feed',
   'homepage_slug' => '',
   'blog_page_slug' => '',
   'search_page_slug' => 'search',
-  'search_page_notified' => false,
+  'search_page_notified' => true,
   'base_url' => 'https://mairamartins.com',
   'language' => 'en',
   'timezone' => 'Europe/Madrid',
