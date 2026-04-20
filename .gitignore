@@ -1,11 +1,9 @@
-#Standard ignores
-.DS_Store
-Thumbs.db
-
-# Upstream ignores
 /backup/
 /cache/
 .claude/
 /vendor/
 .phpunit.result.cache
 .phpunit.cache/
+
+.DS_Store
+.DS_Store

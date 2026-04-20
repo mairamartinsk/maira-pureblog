@@ -1,8 +1,0 @@
-[14-Mar-2026 02:11:24 UTC] PHP Fatal error:  Uncaught Error: Class "Parsedown" not found in /home/mairtumt/public_html/maira-pureblog/lib/ParsedownExtra.php:16
-Stack trace:
-#0 {main}
-  thrown in /home/mairtumt/public_html/maira-pureblog/lib/ParsedownExtra.php on line 16
-[16-Mar-2026 13:04:09 UTC] PHP Fatal error:  Uncaught Error: Class "Parsedown" not found in /home/mairtumt/public_html/maira-pureblog/lib/ParsedownExtra.php:16
-Stack trace:
-#0 {main}
-  thrown in /home/mairtumt/public_html/maira-pureblog/lib/ParsedownExtra.php on line 16
