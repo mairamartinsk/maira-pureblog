@@ -36,7 +36,7 @@ I decided to try [Digikam](https://www.digikam.org/) and we got off on the wrong
 
 I settled on a first pass on PM, then Digikam only for face tagging and keywording, then DxO for editing and exporting, and back to PM. This workflow is not ideal, but it works. I managed to get the selection down to 120 and we had a blast watching it as a quick slideshow on TV!
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/zZhgWgqR5DY?si=ZhTsm9Yo5yZDl-K_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<lite-youtube videoid="zZhgWgqR5DY"></lite-youtube>
 *Andy Hutchinson's Digikam review*
 
 ## Trying ACDSee, Tonfotos, PhotoSupreme
@@ -51,7 +51,7 @@ Then I found [Acdsee](https://www.acdsee.com/en/index/) for Mac. I really wanted
 
 There is no way to actually jump between programs the way I've been doing (eg: I cannot tag some files with a color or with stars, then filter those in DxO). Still, I was willing to make a compromise and commit fully to Acdsee and ditch PM6. So I started importing a larger sample of my images, about 10k to start with. And that's when I realized the Mac version has **no metadata/exif filter**! A deal-breaker. I was willing to accept the proprietary metadata, but I need a way to find photos taken with each of my cameras and lenses. That's where I draw the line in the sand.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/QbFF3-lTDRY?si=IrRVf1HQZU_r-L1L" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<lite-youtube videoid="QbFF3-lTDRY"></lite-youtube>
 *Andy Hutchinson's Acdsee for Mac review*
 
 [iMatch](https://www.photools.com/imatch/) and PhotoSupreme were also mentioned in several photography forums as **The** DAMs to try. As a Mac user, iMatch was no go, but [PhotoSupreme](https://www.idimager.com/) looked very promising indeed. Until I imported the same 10k images and started playing with it. In simple terms: UGLY AF.
@@ -64,7 +64,7 @@ I confess I didn't want to try [Excire](https://excire.com/en/excire-foto/) beca
 
 This is exactly what I was missing in my life. Simple, pretty, uncluttered UI, very easy to use. Minimal learning curve, menus make sense, there are plenty of tutorials, a good Welcome screen, a decent online manual, good keyboard shortcuts. The AI model is entirely local, nothing gets sent to the cloud. I started my test with only 2 small folders, about 200 photos total, just to see how the AI keywords work, the search, how to edit IPTC, geolocation... Face tagging is brilliant. Search is brilliant. I'm in love.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ipsbS7Lp3wk?si=3yFqyILyJs2c7nSI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<lite-youtube videoid="ipsbS7Lp3wk"></lite-youtube>
 *Andy Hutchinson's Excire Foto 2025 review*
 
 I had a folder with phone photos full of duplicates, triplicates even, lol. I used Excire's Find Duplicates thing and it worked. It didn't decide anything for me, didn't delete anything. It just grouped identical photos in rows, for me to decide with pick/reject flags. From there, I used the flagging assistant to reject anything with names matching the duplicate name patterns in my folder (`*A.jpg`, `*B.jpg`, `*-2.jpg`). That took care of about 160 photos at once. I double-checked my results, selected all rejects and hit Remove from disk! PUFF! Gone!

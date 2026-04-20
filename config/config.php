@@ -5,14 +5,15 @@ return array (
   'site_description' => '',
   'site_email' => 'blog@mairamartins.com',
   'custom_nav' => 'Archive | /archive
-Search | /search
+Search | /explore
 RSS | /feed',
   'custom_routes' => '/archive | /content/includes/archive.php
-/search | /content/includes/search.php',
+/explore | /content/includes/search.php',
   'head_inject_page' => '',
-  'head_inject_post' => '',
+  'head_inject_post' => '<link rel="stylesheet" href="/content/css/lite-yt-embed.css" />',
   'footer_inject_page' => '',
-  'footer_inject_post' => '<script src="https://cdn.jsdelivr.net/gh/welpo/iine@main/iine.mini.js"></script>',
+  'footer_inject_post' => '<script src="https://cdn.jsdelivr.net/gh/welpo/iine@main/iine.mini.js"></script>
+<script src="/content/js/lite-yt-embed.js"></script>',
   'posts_per_page' => 20,
   'search_excerpt_length' => 2500,
   'homepage_slug' => '',

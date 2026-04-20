@@ -18,7 +18,7 @@ programmer 🤓 daytrader 💸 photographer 📷 pasta lover 🍝 mother of dogs
 2. 🍿 I watch a lot of movies but I'm not a Godard-or-nothing kind of girl. I like everything from silly comedies and super hero movies to French Nouvelle Vague. I can also rewatch the same thing many times.
 3. 🌎 I've lived in five countries: Brazil, Chile, France, Sweden and Spain. 💬 I speak fluently five languages: Brazilian Portuguese, English, Spanish, Swedish, French. I'm entirely self-taught in English. I'm also learning Esperanto.
 4. 😍 I am a proud atheist and freethinker!
-5. 🎹 I'm self-learning the piano since Jan. 2021 with the help of an [online piano course](https://www.pianocareeracademy.com/). Progress has slowed down immensely, after four years I'm still only around Grade 2. I really should commit to playing a bit each day.
+5. 🎹 I'm self-learning the piano since Jan. 2021 with the help of an [online piano course](https://www.pianocareeracademy.com/). Progress has slowed down immensely, after four years I'm still only around Grade 2. I really should commit to playing a bit each day. I have a [youtube channel](https://www.youtube.com/@mairapianoprogress) where I record some of my finished pieces, for posterity.
 
 ## Slash Pages
 
@@ -26,6 +26,9 @@ programmer 🤓 daytrader 💸 photographer 📷 pasta lover 🍝 mother of dogs
 - [/changelog](/changelog) - A list of changes to my site.
 - [/things](/things) - A list of my favourite things, from computers to cameras to kitchenware.
 - [/archive](/archive) - All my posts in one place, ordered chronologically.
-- [/tags](/tags) - All topics I've written about.
 - [/books](/books) - Currently reading, finished reading.
-- [/search](/search) - A search form. Nice!
+- [/explore](/explore) - A search form and a tag cloud. Nice!
+
+## Disclaimer
+
+*This site is 100% ad-free, AI-free, no affiliated links, no monetisation, no click-baits, no cookies, no shady bullshit. Completely and utterly written by a normal human intelligence. Powered by [PureBlog](https://pureblog.org/). Enjoy :)*

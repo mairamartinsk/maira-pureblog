@@ -33,7 +33,7 @@
 /* Global */
 
 :root {
-  --font-stack: "Source Code Pro", system-ui, monospace;
+  --font-stack: "Source Code Pro", "Cascadia Code", ui-monospace, Menlo, Consolas, "DejaVu Sans Mono", monospace;
 }
 
 body {
@@ -186,7 +186,7 @@ p.post-date>svg {
   color: var(--accent-bg-color);
 }
 
-/* Post images */
+/* Post media */
 
 main article img {
   margin: 0.125rem 0;
@@ -194,16 +194,18 @@ main article img {
 }
 
 main article figcaption,
-main article img+em,
-main article iframe+p:has(em) {
-  margin-top: -0.4rem;
-  padding-bottom: 0.5rem;
+main article img+em {
+  margin-top: 0rem;
   font-style: italic;
 }
 
-main article iframe+p:has(em)>em {
-  display: block;
-  font-size: 1rem;
+main article iframe:has(+p>em),
+main article lite-youtube:has(+p>em) {
+  margin-bottom: -1rem;
+}
+
+lite-youtube + lite-youtube {
+  margin-top: 1rem;
 }
 
 /* Side-by-Side images */
