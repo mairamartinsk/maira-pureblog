@@ -10,7 +10,7 @@ $headInject = get_contextual_inject($config, 'head', [
     'post' => $post ?? null,
     'page' => $page ?? null,
 ]);
-$frontCssVersion = (string) @filemtime(__DIR__ . '/../assets/css/style.css');
+$frontCssVersion = (string) @filemtime(__DIR__ . '/../../assets/css/style.css');
 $ogImagePreferred = $config['assets']['og_image_preferred'] ?? 'banner';
 $ogImage = $config['assets']['og_image'] ?? '';
 $isSquareOgImage = $ogImagePreferred === 'square';
@@ -87,8 +87,8 @@ $isSquareOgImage = $ogImagePreferred === 'square';
             --accent-bg-dark: <?= e($config['theme']['accent_bg_color_dark']) ?>;
             --font-stack: <?= $fontStack ?>;
         }
-    <?php if (is_file(__DIR__ . '/../content/css/custom.css')): ?>
-<?php readfile(__DIR__ . '/../content/css/custom.css'); ?>
+    <?php if (is_file(__DIR__ . '/../css/custom.css')): ?>
+<?php readfile(__DIR__ . '/../css/custom.css'); ?>
 <?php endif; ?>
     </style>
 <?php if (trim($headInject) !== ''): ?>
@@ -96,4 +96,4 @@ $isSquareOgImage = $ogImagePreferred === 'square';
     <?php endif; ?>
 </head>
 <body>
-    <?php readfile(__DIR__ . '/../assets/icons/sprite.svg'); ?>
+    <?php readfile(__DIR__ . '/../../assets/icons/sprite.svg'); ?>

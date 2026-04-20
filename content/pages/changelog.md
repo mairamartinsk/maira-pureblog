@@ -11,6 +11,11 @@ Tracking the changes I make to this website. Loosely following the [Keep a Chang
 ---
 ## 2026
 
+### 2026-04-20
+
+- Updated to PureBlog v2.4.4.
+- Fixed font loading not applying to `/tag/` page.
+
 ### 2026-04-05
 
 - Updated PureBlog version. Refactored some of my custom logic/code.
