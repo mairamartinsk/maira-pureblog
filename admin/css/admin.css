@@ -552,7 +552,6 @@ th, td {
     margin-top: 0.25rem;
     color: color-mix(in srgb, var(--text-color) 70%, transparent);
     font-size: 0.95rem;
-    text-transform: capitalize;
 }
 
 .admin-list-meta span {
@@ -637,7 +636,6 @@ th, td {
     font-size: 1rem;
     font-weight: normal;
     margin-top: 2rem;
-    text-transform: capitalize;
 }
 
 .dashboard-stat-books {
@@ -1046,11 +1044,11 @@ html[data-admin-theme="dark"] .cm-s-default .cm-meta {
 }
 
 #layout-picker {
-    padding: 1.5rem;
-    border: 1px solid var(--border-color);
-    background: var(--bg-color);
-    color: var(--text-color);
-    min-width: 260px;
+  padding: 2.5rem;
+  border: 2px solid var(--border-color);
+  background: var(--accent-bg-color);
+  color: var(--text-color);
+  min-width: 260px;
 }
 
 #layout-picker h2 {
@@ -1061,11 +1059,11 @@ html[data-admin-theme="dark"] .cm-s-default .cm-meta {
 .layout-picker-list {
     list-style: none;
     padding: 0;
-    margin: 0 0 1rem;
+    margin: 0 0 2rem;
 }
 
 .layout-picker-list li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .layout-picker-list a {
@@ -1084,6 +1082,10 @@ html[data-admin-theme="dark"] .cm-s-default .cm-meta {
 .layout-picker-list a:hover {
     background: var(--text-color);
     color: var(--bg-color);
+}
+
+#layout-picker-close {
+  width: 100%;
 }
 
 .tag-input-wrap {
@@ -1285,7 +1287,6 @@ a.dashboard-chart-col:hover .dashboard-chart-bar {
     list-style: none;
     margin: 0.5rem 0 0;
     padding: 0;
-    text-transform: capitalize;
 }
 
 .dashboard-all-tags-list li {

@@ -214,13 +214,23 @@ article {
 }
 
 /** Format archive view **/
-p.post-archive-view {
+.archive-list {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.5rem 2rem;
     font-size: 1.25rem;
-    margin-bottom: -1rem;
 }
 
-p.post-archive-view time {
-    padding-right: 2rem;
+@media (max-width: 600px) {
+    .archive-list {
+        grid-template-columns: 1fr;
+        gap: 0rem;
+    }
+
+    .archive-list a {
+        margin-bottom: 1rem;
+        display: block;
+    }
 }
 
 /** Format excerpt view **/
@@ -305,6 +315,8 @@ textarea {
     max-width: 100%;
 }
 
+/* !pb:9e4f2a817c3d6b05 */
+
 button, a.button {
     cursor: pointer;
     background: var(--accent-color);
@@ -385,6 +397,10 @@ blockquote {
     padding-left: 1rem;
     margin: 2.5rem 0 2.5rem 2.5rem;
     font-style: italic;
+}
+
+blockquote em {
+    font-style: normal;
 }
 
 blockquote p {
