@@ -22,7 +22,9 @@ $paginationQueryParams = (isset($paginationQueryParams) && is_array($paginationQ
                     <?php if (isset($post['layout'])): ?>
                         <?php if ($post['layout'] == 'notes'): ?>
                             <a href="<?= base_path() ?>/<?= e($post['slug']) ?>">
-                                <h2><?= e($post['title']) ?></h2>
+                                <?php if (isset($post['displayTitle']) && $post['displayTitle'] === '1'): ?>
+                                    <h2><?= e($post['title']) ?></h2>
+                                <?php endif; ?>
                             <?php if ($post['date']): ?>
                     <?php endif; ?>
                     
