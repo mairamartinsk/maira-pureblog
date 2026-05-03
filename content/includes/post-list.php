@@ -24,11 +24,13 @@ $paginationQueryParams = (isset($paginationQueryParams) && is_array($paginationQ
                              <h2 class="<?= isset($post['displayTitle']) && $post['displayTitle'] === '1' ? 'visible' : 'hidden' ?>"><a href="<?= base_path() ?>/<?= e($post['slug']) ?>"><?= e($post['title']) ?></a></h2>
                             <?= render_markdown($post['content'], ['post_title' => (string) ($post['title'] ?? '')]) ?>
                         <?php endif; ?>
+                        <?php if ($post['layout'] == 'photos'): ?>
+                            <a href="<?= base_path() ?>/<?= e($post['slug']) ?>"><h2><?= e($post['title']) ?></h2>
+                            <?= render_markdown($post['content'], ['post_title' => (string) ($post['title'] ?? '')]) ?>
+                        </a>
+                        <?php endif; ?>
                     <?php else: ?>
                     <h2><a href="<?= base_path() ?>/<?= e($post['slug']) ?>"><?= e($post['title']) ?></a></h2>
-                    <?php if ($post['date']): ?>
-                        <p><time datetime="<?= e(format_datetime_for_display((string) $post['date'], $config ?? [], 'c')) ?>"><?= e(format_post_date_for_display((string) $post['date'], $config ?? [])) ?></time></p>
-                    <?php endif; ?>
                     <?php
                     $excerptSource = trim((string) ($post['description'] ?? ''));
                     if ($excerptSource === '') {
