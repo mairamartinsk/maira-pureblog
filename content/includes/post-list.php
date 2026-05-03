@@ -1,0 +1,83 @@
+<?php
+// Expects: $posts, $postListLayout, $currentPage, $totalPages, $paginationBase
+// Optional: $paginationQueryParams (associative array of extra query params to preserve)
+$paginationQueryParams = (isset($paginationQueryParams) && is_array($paginationQueryParams)) ? $paginationQueryParams : [];
+?>
+<?php if (!$posts): ?>
+    <p><?= e(t('frontend.no_posts')) ?></p>
+<?php elseif ($postListLayout === 'archive'): ?>
+    <!-- Archive view -->
+    <div class="archive-list">
+        <?php foreach ($posts as $post): ?>
+            <time datetime="<?= e(format_datetime_for_display((string) ($post['date'] ?? ''), $config ?? [], 'c')) ?>"><?= e(format_post_date_for_display((string) ($post['date'] ?? ''), $config ?? [])) ?></time>
+            <a href="<?= base_path() ?>/<?= e($post['slug']) ?>"><?= e($post['title']) ?></a>
+        <?php endforeach; ?>
+    </div>
+<?php else: ?>
+    <?php foreach ($posts as $post): ?>
+        <article class="post-item">
+            <!-- Excerpt view -->
+            <?php if ($postListLayout === 'excerpt'): ?>
+                <div class="excerpt-view <?= isset($post['layout']) ? ($post['layout']) : '' ?>">
+                    <?php if (isset($post['layout'])): ?>
+                        <?php if ($post['layout'] == 'notes'): ?>
+                            <a href="<?= base_path() ?>/<?= e($post['slug']) ?>">
+                                <h2><?= e($post['title']) ?></h2>
+                            <?php if ($post['date']): ?>
+                    <?php endif; ?>
+                    
+                            <?= render_markdown($post['content'], ['post_title' => (string) ($post['title'] ?? '')]) ?></a>
+                        <?php endif; ?>
+                    <?php else: ?>
+                    <h2><a href="<?= base_path() ?>/<?= e($post['slug']) ?>"><?= e($post['title']) ?></a></h2>
+                    <?php if ($post['date']): ?>
+                        <p><time datetime="<?= e(format_datetime_for_display((string) $post['date'], $config ?? [], 'c')) ?>"><?= e(format_post_date_for_display((string) $post['date'], $config ?? [])) ?></time></p>
+                    <?php endif; ?>
+                    <?php
+                    $excerptSource = trim((string) ($post['description'] ?? ''));
+                    if ($excerptSource === '') {
+                        $excerptSource = get_excerpt($post['content']);
+                    }
+                    ?>
+                        <p class="post-excerpt"><?= e($excerptSource) ?></p>
+                    <?php endif; ?>
+                    <?php if (!empty($post['tags'])): ?>
+                        <p class="tag-list"><?= render_tag_links($post['tags']) ?></p>
+                    <?php endif; ?>
+                </div>
+            
+            <!-- Full post view -->
+            <?php elseif ($postListLayout === 'full'): ?>
+                <div class="full-post-view">
+                    <h1><a href="<?= base_path() ?>/<?= e($post['slug']) ?>"><?= e($post['title']) ?></a></h1>
+                    <?php if ($post['date']): ?>
+                        <p class="post-date"><time datetime="<?= e(format_datetime_for_display((string) $post['date'], $config ?? [], 'c')) ?>"><?= e(format_post_date_for_display((string) $post['date'], $config ?? [])) ?></time></p>
+                    <?php endif; ?>
+                    <?= render_markdown($post['content'], ['post_title' => (string) ($post['title'] ?? '')]) ?>
+                    <?php if (!empty($post['tags'])): ?>
+                        <p class="tag-list"><?= render_tag_links($post['tags']) ?></p>
+                    <?php endif; ?>
+                    <hr>
+                </div>
+            <?php endif; ?>
+        </article>
+    <?php endforeach; ?>
+<?php endif; ?>
+<?php if (($posts ?? []) && $totalPages > 1): ?>
+    <nav class="pagination">
+        <?php if ($currentPage > 1): ?>
+            <?php
+            $prevParams = array_merge($paginationQueryParams, ['page' => (string) ($currentPage - 1)]);
+            $prevHref = e($paginationBase) . '?' . e(http_build_query($prevParams));
+            ?>
+            <a href="<?= $prevHref ?>"><?= e(t('frontend.pagination_newer')) ?></a>
+        <?php endif; ?>
+        <?php if ($currentPage < $totalPages): ?>
+            <?php
+            $nextParams = array_merge($paginationQueryParams, ['page' => (string) ($currentPage + 1)]);
+            $nextHref = e($paginationBase) . '?' . e(http_build_query($nextParams));
+            ?>
+            <a href="<?= $nextHref ?>"><?= e(t('frontend.pagination_older')) ?></a>
+        <?php endif; ?>
+    </nav>
+<?php endif; ?>

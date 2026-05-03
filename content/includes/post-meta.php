@@ -14,7 +14,7 @@ $post = $post ?? [];
 </div>
 
 <?php if (!empty($post['tags'])): ?>
-    <p class="tag-list"><svg class="icon" aria-hidden="true"><use href="#icon-tag"></use></svg> <?= render_tag_links($post['tags']) ?></p>
+    <p class="tag-list"><?= render_tag_links($post['tags']) ?></p>
 <?php endif; ?>
 
 <div class="post-nav">
