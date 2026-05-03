@@ -269,12 +269,19 @@ p+.collage {
     padding: 2.5rem;
     margin-left: auto;
     margin-right: auto;
-    max-width: 600px;
     box-shadow: 2px 3px 10px rgba(0,0,0,0.1), 0 0 40px rgba(0,0,0,0.05) inset;
     border: 1px solid #dcdcdc;
     border-radius: 2px 4px 2px 8px;
     transform: rotate(-0.5deg);
     position: relative;
+}
+
+.excerpt-view .notes {
+      max-width: 600px;
+}
+
+.layout .notes .post-date {
+	text-align: right;
 }
 
 .notes h2 {
@@ -286,6 +293,18 @@ p+.collage {
 	font-weight: normal;
   	opacity: 0.9;
 	text-shadow: 0.5px 0.55px 1px rgba(0,0,0,0.1);
+}
+
+.layout .notes h1 {
+	font-size: 1.3rem;
+	text-transform: uppercase;
+	letter-spacing: 0px;
+	display: inline-block;
+	margin-bottom: 1rem;
+	font-weight: normal;
+  	opacity: 0.9;
+	text-shadow: 0.5px 0.55px 1px rgba(0,0,0,0.1);
+  	transform: rotate(0.5deg);
 }
 
 .notes p {
