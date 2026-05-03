@@ -21,14 +21,8 @@ $paginationQueryParams = (isset($paginationQueryParams) && is_array($paginationQ
                 <div class="excerpt-view <?= isset($post['layout']) ? ($post['layout']) : '' ?>">
                     <?php if (isset($post['layout'])): ?>
                         <?php if ($post['layout'] == 'notes'): ?>
-                            <a href="<?= base_path() ?>/<?= e($post['slug']) ?>">
-                                <?php if (isset($post['displayTitle']) && $post['displayTitle'] === '1'): ?>
-                                    <h2><?= e($post['title']) ?></h2>
-                                <?php endif; ?>
-                            <?php if ($post['date']): ?>
-                    <?php endif; ?>
-                    
-                            <?= render_markdown($post['content'], ['post_title' => (string) ($post['title'] ?? '')]) ?></a>
+                             <h2 class="<?= isset($post['displayTitle']) && $post['displayTitle'] === '1' ? 'visible' : 'hidden' ?>"><a href="<?= base_path() ?>/<?= e($post['slug']) ?>"><?= e($post['title']) ?></a></h2>
+                            <?= render_markdown($post['content'], ['post_title' => (string) ($post['title'] ?? '')]) ?>
                         <?php endif; ?>
                     <?php else: ?>
                     <h2><a href="<?= base_path() ?>/<?= e($post['slug']) ?>"><?= e($post['title']) ?></a></h2>

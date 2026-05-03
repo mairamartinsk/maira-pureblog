@@ -6,6 +6,7 @@ status: published
 tags: [books]
 description:
 layout: notes
+displayTitle: 0
 ---
 
 Still stuck on the same book since the beginning of the year. I'm spending too much time on reddit. Huge flashbacks to the year [2019](/books#2019)...

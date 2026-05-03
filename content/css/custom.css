@@ -276,7 +276,7 @@ p+.collage {
     position: relative;
 }
 
-.excerpt-view .notes {
+.excerpt-view.notes {
       max-width: 600px;
 }
 
@@ -314,10 +314,10 @@ p+.collage {
 	font-style: normal !important;
 }
 
-.notes > a {
+.excerpt-view.notes > a{
   text-decoration: none;
   display: block;
-  color: var(--text-light);
+  color: var(--text-light) !important;
 }
 
 .notes .tag-list {
@@ -339,7 +339,6 @@ p+.collage {
   border-radius: 3px;
     transform: rotate(0.5deg);
       box-shadow: 1px 2px 2px rgba(0,0,0,0.25);
-    position: relative;
 }
 
 .notes p:has(img) {
@@ -360,5 +359,56 @@ p+.collage {
     -webkit-filter: drop-shadow(0 1px 1px hsla(0,0%,0%,.2));
     border-left: 1px solid rgba(0,0,0,0.05);
     border-right: 1px solid rgba(0,0,0,0.05);
-    z-index: 10;
+    z-index: 1;
+}
+
+.notes blockquote {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.excerpt-view.notes {
+    position: relative;
+}
+
+.excerpt-view.notes h2 > a::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+}
+
+.excerpt-view.notes h2 > a:hover {
+	color: var(--text-light);
+}
+
+.excerpt-view.notes h2.hidden {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    z-index: 2;
+  color: transparent;
+    font-size: 0;
+}
+
+.excerpt-view.notes h2.hidden > a {
+	display: block;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+}
+
+.excerpt-view.notes p > a {
+    z-index: 3;
+}
+
+.excerpt-view.notes > p:has(img),
+.excerpt-view.notes > p:not(:has(*)) {
+  pointer-events: none;
 }

@@ -6,6 +6,7 @@ status: published
 tags: [trading, quotes]
 description:
 layout: notes
+displayTitle: 0
 ---
 
 > "It’s not whether you’re right or wrong that’s important, it’s how much money you make when you’re right and how much you lose when you’re wrong". — George Soros
