@@ -4,7 +4,8 @@ slug: early-xmas-present-to-self
 date: 2025-11-28 00:00
 status: published
 tags: [coloring book]
-description: 
+description:
+layout: notes
 ---
 
 Already gave myself my own early xmas present: a Disney colour by number book and a box of crayola markers! 🎨🖍

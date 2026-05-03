@@ -1,3 +1,10 @@
 {
-	"label": "Note"
+	"label": "Note",
+	"fields": [
+		{
+			"name": "displayTitle",
+			"label": "Show title?",
+			"type": "checkbox"
+		}
+	]
 }

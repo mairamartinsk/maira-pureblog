@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Source Code Pro';
-  src: url('content/fonts/source-code-pro-v31-latin-regular.woff2') format('woff2');
+  src: url('/content/fonts/source-code-pro-v31-latin-regular.woff2') format('woff2');
   font-display: swap;
   font-style: normal;
   font-weight: normal;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: 'Source Code Pro';
-  src: url('content/fonts/source-code-pro-v31-latin-italic.woff2') format('woff2');
+  src: url('/content/fonts/source-code-pro-v31-latin-italic.woff2') format('woff2');
   font-display: swap;
   font-style: italic;
   font-weight: normal;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: 'Source Code Pro';
-  src: url('content/fonts/source-code-pro-v31-latin-700.woff2') format('woff2');
+  src: url('/content/fonts/source-code-pro-v31-latin-700.woff2') format('woff2');
   font-display: swap;
   font-style: normal;
   font-weight: bold;
@@ -24,7 +24,7 @@
 
 @font-face {
   font-family: 'Source Code Pro';
-  src: url('content/fonts/source-code-pro-v31-latin-700italic.woff2') format('woff2');
+  src: url('/content/fonts/source-code-pro-v31-latin-700italic.woff2') format('woff2');
   font-display: swap;
   font-style: italic;
   font-weight: bold;
@@ -35,7 +35,7 @@
   font-family: 'Special Elite';
   font-style: normal;
   font-weight: 400;
-  src: url('content/fonts/special-elite-v20-latin-regular.woff2') format('woff2');
+  src: url('/content/fonts/special-elite-v20-latin-regular.woff2') format('woff2');
 }
 
 /* Global */
@@ -78,7 +78,7 @@ header h1 {
   font-size: 2.4rem;
   font-weight: normal;
   letter-spacing: 2px;
-  font-family: 'Special Elite', 'Courier New', Courier, monospace;
+  font-family: 'Special Elite', Courier, ui-monospace, Menlo, Consolas, "DejaVu Sans Mono", monospace;
 }
 
 hr {
@@ -263,7 +263,7 @@ p+.collage {
     background-image: 
         linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 95%, #fbf8f3 100%), linear-gradient(#f6f2ea 1px, transparent 1px);
     background-size: 100% 2rem;
-    font-family: 'Special Elite', 'Courier New', Courier, monospace;
+     font-family: 'Special Elite', Courier, ui-monospace, Menlo, Consolas, "DejaVu Sans Mono", monospace;
     color: var(--text-light);
     line-height: 1.6;
     padding: 2.5rem;
