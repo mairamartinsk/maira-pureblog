@@ -8,11 +8,23 @@
   },
   "scripts": {
     "dev": "php -S localhost:8000",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier": "prettier"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mairamartinsk/pureblog.git"
+  },
+  "devDependencies": {
+    "@prettier/plugin-php": "^0.25.0",
+    "prettier": "^3.8.3"
+  },
+  "prettier": {
+    "parser": "php",
+    "plugins": [
+      "@prettier/plugin-php"
+    ],
+    "indent_size": 2
   },
   "keywords": [],
   "author": "",

@@ -5,8 +5,9 @@ date: 2022-12-26 00:00
 status: published
 tags: [photos, travels]
 description: 
+layout: photos
 ---
 
-Gothenburg, Sweden, May 2022. 🗺️
+![Cranes at the harbor in Göteborg](/content/images/2022-12-26/4c4654bd87.jpg)
 
-![Auto-generated description: Cranes and industrial structures stand prominently against a cloudy sky, with a tall building and harbor in the background.](/content/images/2022-12-26/4c4654bd87.jpg)
+Gothenburg, Sweden, May 2022. 🗺️

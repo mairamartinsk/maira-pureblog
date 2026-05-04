@@ -1,12 +1,18 @@
 <article class="layout">
     <div class="photo">
-			<div class="polaroid">
-			<?= render_markdown($post['content']) ?>
-			<h1><?= e($post['title']) ?></h1>
-			</div
-    <?php if ($post['date']): ?>
-                    <p class="post-date"><time datetime="<?= e(format_datetime_for_display((string) $post['date'], $config, 'c')) ?>"><?= e(format_post_date_for_display((string) $post['date'], $config)) ?></time></p>
+            <h1><?= e($post["title"]) ?></h1>
+            <?php if ($post["date"]): ?>
+                <p class="post-date"><time datetime="<?= e(
+                    format_datetime_for_display(
+                        (string) $post["date"],
+                        $config,
+                        "c",
+                    ),
+                ) ?>"><?= e(
+    format_post_date_for_display((string) $post["date"], $config),
+) ?></time></p>
                 <?php endif; ?>
+			<?= render_markdown($post["content"]) ?>
     </div>
     <?= render_post_navigation() ?>
 </article>

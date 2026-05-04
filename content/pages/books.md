@@ -24,15 +24,18 @@ A list of all the books I've read (and had logged to Goodreads). Use the buttons
 <li><a class="button" href="#before-2015">Earlier reads</a></li>
 <li><a class="button" href="#agatha">Agatha Christie</a></li>
 <li><a class="button" href="#cookbooks">Cookbooks</a></li>
+<li><a class="button" href="#trading">Trading</a></li>
 </ul>
 
 ---
 
 ## Read in 2026 {#2026}
 
-Currently reading: **Brave New World** by Aldous Huxley
+Currently reading: **Crooked House** by Agatha Christie
 
 - **YTC Price Action Trader** by Lance Beggs
+- **Brave New World** by Aldous Huxley
+- **Taken at the Flood** by Agatha Christie
 
 <small><a href="#">back to top ↑</a></small>
 
@@ -97,9 +100,9 @@ Currently reading: **Brave New World** by Aldous Huxley
 - **Murder Is Easy** by Agatha Christie
 - **Appointment with Death** by Agatha Christie
 - **Murder in the Mews** by Agatha Christie
-- **Market Wizards #3 Stock Market Wizards** by Jack D. Schwager
-- **Day Trading for a Living** by Andrew Aziz
+- **Stock Market Wizards** by Jack D. Schwager
 - **How to Day Trade for a Living** by Andrew Aziz
+- **Advanced Techniques in Day Trading** by Andrew Aziz
 
 <small><a href="#">back to top ↑</a></small>
 
@@ -216,6 +219,8 @@ Embarrassed to confess I didn't read a single page in 2019.
 - **Eating Animals** by Jonathan Safran Foer
 - **Saga #29** by Brian K. Vaughan
 - **Saga #30** by Brian K. Vaughan
+- **Secrets For Profiting in Bull and Bear Markets** by Stan Weinstein
+- **How to Make Money in Stocks** by William J. O'Neil
 
 <small><a href="#">back to top ↑</a></small>
 
@@ -328,52 +333,53 @@ Embarrassed to confess I didn't read a single page in 2019.
 One day I decided I'd read all Agatha Christie's books in chronological order. Ten years later, I'm *still* slowly working on this project. I get into it, read like 5 to 10 books in a row, and then I get absolutely sick of her formula and need at least a couple years to recover. But here it is, the list:
 
 1. The Mysterious Affair at Styles
-2. The Secret Adversary
-3. The Murder on the Links
-4. Poirot Investigates
-5. The Man in the Brown Suit
-6. The Secret of Chimneys
-7. The Murder of Roger Ackroyd
-8. The Big Four
-9. The Mystery of the Blue Train
-10. Partners in Crime
-11. The Seven Dials Mystery
-12. Murder at the Vicarage
-13. The Mysterious Mr. Quin
-14. The Sittaford Mystery
-15. Peril at End House
-16. The Thirteen Problems
-17. Lord Edgware Dies
-18. The Hound of Death
-19. The Listerdale Mystery
-20. Murder on the Orient Express
-21. Parker Pyne Investigates
-22. Why Didn't They Ask Evans?
-23. Three Act Tragedy
-24. Death in the Clouds
-25. The A.B.C. Murders
-26. Murder in Mesopotamia
-27. Cards on the Table
-28. Dumb Witness
-29. Death on the Nile
-30. Murder in the Mews
-31. Appointment with Death
-32. Hercule Poirot's Christmas
-33. Murder Is Easy
-34. And Then There Were None
-35. The Regatta Mystery
-36. Sad Cypress
-37. One, Two, Buckle My Shoe
-38. N or M?
-39. The Body in the Library
-40. The Moving Finger
-41. Five Little Pigs
-42. Towards Zero
-43. Evil Under the Sun
-44. Death Comes as the End
-45. Sparkling Cyanide
-46. The Hollow
-47. The Labours of Hercules (Poirot)
+1. The Secret Adversary
+1. The Murder on the Links
+1. Poirot Investigates
+1. The Man in the Brown Suit
+1. The Secret of Chimneys
+1. The Murder of Roger Ackroyd
+1. The Big Four
+1. The Mystery of the Blue Train
+1. Partners in Crime
+1. The Seven Dials Mystery
+1. Murder at the Vicarage
+1. The Mysterious Mr. Quin
+1. The Sittaford Mystery
+1. Peril at End House
+1. The Thirteen Problems
+1. Lord Edgware Dies
+1. The Hound of Death
+1. The Listerdale Mystery
+1. Murder on the Orient Express
+1. Parker Pyne Investigates
+1. Why Didn't They Ask Evans?
+1. Three Act Tragedy
+1. Death in the Clouds
+1. The A.B.C. Murders
+1. Murder in Mesopotamia
+1. Cards on the Table
+1. Dumb Witness
+1. Death on the Nile
+1. Murder in the Mews
+1. Appointment with Death
+1. Hercule Poirot's Christmas
+1. Murder Is Easy
+1. And Then There Were None
+1. The Regatta Mystery
+1. Sad Cypress
+1. One, Two, Buckle My Shoe
+1. N or M?
+1. The Body in the Library
+1. The Moving Finger
+1. Five Little Pigs
+1. Towards Zero
+1. Evil Under the Sun
+1. Death Comes as the End
+1. Sparkling Cyanide
+1. The Hollow
+1. The Labours of Hercules (Poirot)
+1. Taken at the Flood
 
 <small><a href="#">back to top ↑</a></small>
 
@@ -401,5 +407,44 @@ One day I decided I'd read all Agatha Christie's books in chronological order. T
 - **The Fast 800** by Michael Mosley
 - **The Healthy Hound Cookbook** by Paris Permenter
 - **Feed Your Best Friend Better** by Rick Woodford
+
+<small><a href="#">back to top ↑</a></small>
+
+---
+
+## Trading books {#trading}
+
+Book I own and have read!
+
+- **How I Made $2,000,000 In The Stock Market** by Nicolas Darvas
+- **How to Make Money in Stocks** by William J. O'Neil
+- **Secrets For Profiting in Bull and Bear Markets** by Stan Weinstein
+- **Think & Trade Like a Champion** by Mark Minervini
+- **Trade Like a Stock Market Wizard** by Mark Minervini
+- **A Complete Guide To Volume Price Analysis** by Anna Coulling
+- **How to Day Trade for a Living** by Andrew Aziz
+- **Advanced Techniques in Day Trading** by Andrew Aziz
+- **Day Trading Secrets** by Harvey Walsh
+- **How To Day Trade Stocks For Profit** by Harvey Walsh
+- **Brain Hacks for Traders** by Harvey Walsh
+- **Stock Market Wizards** by Jack D. Schwager
+- **Mastering Price Action and Trade Setups In Today's Markets** Manual by Mack (PATS) => Disclaimer: this is the strategy I trade. I also joined his forum/website for two years to learn beyond the outdated manual. Once I found PATS, I fully embraced naked charts, price action, the emini futures and scalping.
+- **Trading in the Zone** by Mark Douglas
+- **Best Loser Wins** by Tom Hougaard
+- **Trading Mindfully** by Nick Schmidt
+- **Trade Mindfully** by Gary Dayton
+- **YTC Price Action Trader** by Lance Beggs
+
+Trading Books I own but haven't read yet (sigh! so much to learn, so little time!)
+
+- **Understanding Price Action** by Bob Volman
+- **YTC Scalper** by Lance Beggs
+- **Bitcoin for Traders** by Harvey Walsh
+- **The New Market Wizards** by Jack D. Schwager
+- **Reading Price Action Bar-by-Bar** by Al Brooks
+- **Trading Price Action Trilogy** (trends, ranges, reversals) by Al Brooks => Also worth noting I have paid for the video course because the books were too dense... and the video lessons make me sleepy!
+- **Super Trader** by Van. K. Tharp
+- **Technical Analysis of the Financial Markets** by John J. Murphy
+- **Reminiscences of a Stock Operator** by Edwin Lefèvre
 
 <small><a href="#">back to top ↑</a></small>
