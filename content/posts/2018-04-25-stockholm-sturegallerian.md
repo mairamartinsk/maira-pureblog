@@ -5,6 +5,7 @@ date: 2018-04-25 00:00
 status: published
 tags: [notes]
 description: 
+layout: notes
 ---
 
 Stockholm, 2018. Passed by Sturegallerian, a mall. This caught my eyes.

@@ -5,6 +5,8 @@ date: 2018-04-26 00:00
 status: published
 tags: [photos, shot on film, travels]
 description: 
+layout: notes
+displayTitle: 1
 ---
 
 The most beautiful country I've ever been to.

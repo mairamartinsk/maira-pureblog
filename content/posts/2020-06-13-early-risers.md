@@ -5,6 +5,8 @@ date: 2020-06-13 00:00
 status: published
 tags: [dogs, Luna, Astro, photos]
 description: 
+layout: notes
+displayTitle: 1
 ---
 
 ![Two dogs with sunlight shining through the ears](/content/images/2020-06-13/5747d13b5d.jpg)

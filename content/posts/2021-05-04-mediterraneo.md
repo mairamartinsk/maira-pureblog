@@ -5,6 +5,7 @@ date: 2021-05-04 00:00
 status: published
 tags: [photos]
 description: 
+layout: photos
 ---
 
-![image](/content/images/2021-05-04/16cfa07716.jpg)
+![the mediterranean sea](/content/images/2021-05-04/16cfa07716.jpg)

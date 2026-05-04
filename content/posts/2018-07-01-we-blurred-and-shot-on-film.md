@@ -5,6 +5,7 @@ date: 2018-07-01 00:00
 status: published
 tags: [notes, shot on film, Olympus Trip 35]
 description: 
+layout: notes
 ---
 
 We, blurred and shot on film, enjoying summer somewhere sometime.

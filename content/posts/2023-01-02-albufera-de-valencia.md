@@ -5,6 +5,7 @@ date: 2023-01-02 00:00
 status: published
 tags: [photos, Fuji XE4]
 description: 
+layout: notes
 ---
 
 Albufera de Valencia, fall 2022.

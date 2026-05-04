@@ -5,6 +5,7 @@ date: 2025-09-02 00:00
 status: published
 tags: [photography, dxo photolab]
 description: 
+layout: notes
 ---
 
 DxO Photolab 9 came out today! 📷 I bought it within minutes of the release! I fell in love with v8 during the trial, it is **miles** ahead of LR. I'm so happy to be free from Adobe and supporting an European business!

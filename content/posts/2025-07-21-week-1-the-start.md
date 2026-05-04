@@ -28,4 +28,4 @@ Finally, a simple and elegant solution to my blogging anxieties: weeknotes! Inst
 - Apart from the mundane updates I love, [Hello Curns' Weeknotes](https://www.curnow.org/archive/weeknotes/) feature at least one image each week. As a former pro-photographer (and now a very lazy hobbist), I am excited to use my own weeknotes as an excuse to photograph more.
 - I laughed so hard at this [video of robots playing a football](https://www.bbc.com/news/videos/c5ylkyrkjnzo) tournament! 🤖 The best thing I've seen in ages!
 
-![Auto-generated description: A fresh salad with tomatoes, cucumbers, mint, and grains is served in a white bowl.](/content/images/2025-07-21/media.jpg)
+![A fresh salad with tomatoes, cucumbers, mint, and grains is served in a white bowl.](/content/images/2025-07-21/media.jpg)

@@ -5,6 +5,7 @@ date: 2017-12-19 00:00
 status: published
 tags: [notes, travels]
 description: 
+layout: notes
 ---
 
 Castell de Xàtiva. Memories of a warm day when both my mom and my dog refused to climb all the way to the top of the mountain to get the best view of the castle.

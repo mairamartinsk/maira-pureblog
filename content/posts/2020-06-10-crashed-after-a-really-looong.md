@@ -5,6 +5,7 @@ date: 2020-06-10 00:00
 status: published
 tags: [dogs, Astro, Luna]
 description: 
+layout: photos
 ---
 
 ![image](/content/images/2020-06-10/f318727708.jpg)

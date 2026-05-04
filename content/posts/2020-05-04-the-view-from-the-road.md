@@ -5,6 +5,7 @@ date: 2020-05-04 00:00
 status: published
 tags: [photos, travels]
 description: 
+layout: photos
 ---
 
 The view from the road, arriving in Sa Calobra! Mallorca, 2018.

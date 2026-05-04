@@ -5,6 +5,7 @@ date: 2020-05-23 00:00
 status: published
 tags: [dogs, Astro]
 description: 
+layout: notes
 ---
 
 Emotional blackmail so I stop working and start playing 🐶

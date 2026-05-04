@@ -9,4 +9,5 @@ description:
 
 Sunrise at Mirador El Garbí 📷☀️
 
-![image](/content/images/2025-07-21/f0a886709d.jpg)![image](/content/images/2025-07-21/2e074d819e.jpg)
+![image](/content/images/2025-07-21/f0a886709d.jpg)
+![image](/content/images/2025-07-21/2e074d819e.jpg)

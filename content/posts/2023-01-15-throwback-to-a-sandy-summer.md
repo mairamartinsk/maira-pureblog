@@ -5,6 +5,7 @@ date: 2023-01-15 00:00
 status: published
 tags: [dogs, Luna]
 description:
+layout: notes
 ---
 
 Throwback to a sandy summer day!! 🐶

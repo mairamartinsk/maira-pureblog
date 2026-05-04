@@ -5,6 +5,7 @@ date: 2018-04-24 00:00
 status: published
 tags: [photos, travels]
 description: 
+layout: photos
 ---
 
 We went wild camping in Norway in 2016. Wild summer, we got snow and 5ºC temperatures. This is one trip I'd love to do again!

@@ -5,8 +5,9 @@ date: 2025-09-11 00:00
 status: published
 tags: [garden]
 description: 
+layout: photos
 ---
 
-I've been waiting months for this moment! Harvested carrots from my garden, grown from seeds! 🌱🥕
-
 ![homegrown carrots](/content/images/2025-09-11/e32448fb9f.jpg)
+
+I've been waiting months for this moment! Harvested carrots from my garden, grown from seeds! 🌱🥕

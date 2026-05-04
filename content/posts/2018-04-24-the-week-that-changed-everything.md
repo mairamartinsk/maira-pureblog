@@ -5,6 +5,7 @@ date: 2018-04-24 00:00
 status: published
 tags: [photos, notes, shot on film]
 description: 
+layout: notes
 ---
 
 Barcelona, 2016. The week that changed everything.

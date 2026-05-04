@@ -17,4 +17,4 @@ Here are three things I (re) learned about dogs in those past 2 weeks:
 
 There have been days where I felt overwhelmed, thinking "wtf have I done?!", but most of the days have been really fun! Thank you Luna for bringing all those emotions and memories back into my life.
 
-![image](/content/images/2020-06-18/920f69f8a2.jpg)![image](/content/images/2020-06-18/500b0c9a8b.jpg)![image](/content/images/2020-06-18/84508c541e.jpg)![Auto-generated description: A dog](/content/images/2020-06-18/a04ec49dbd.jpg)
+![image](/content/images/2020-06-18/920f69f8a2.jpg)![image](/content/images/2020-06-18/500b0c9a8b.jpg)![image](/content/images/2020-06-18/84508c541e.jpg)![A dog](/content/images/2020-06-18/a04ec49dbd.jpg)

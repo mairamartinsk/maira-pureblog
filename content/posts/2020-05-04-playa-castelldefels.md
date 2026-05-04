@@ -5,6 +5,8 @@ date: 2020-05-04 00:00
 status: published
 tags: [notes]
 description: 
+layout: notes
+displayTitle: 1
 ---
 
 When we first moved to Spain, we rented an Airbnb for the first month in Castelldefels, a small town 30min by train from Barcelona.
