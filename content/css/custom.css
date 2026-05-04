@@ -74,11 +74,9 @@ header {
 }
 
 header h1 {
-  text-transform: lowercase;
-  font-size: 2.4rem;
-  font-weight: normal;
-  letter-spacing: 2px;
-  font-family: 'Special Elite', Courier, ui-monospace, Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  text-transform: uppercase;
+  font-size: 2.2rem;
+  font-weight: bold;
 }
 
 hr {
