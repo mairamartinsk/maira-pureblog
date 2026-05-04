@@ -52,15 +52,13 @@ $paginationQueryParams =
 
                         <!-- Photos layout -->
                         <?php if ($post["layout"] == "photos"): ?>
-                            <a href="<?= base_path() ?>/<?= e(
+                            <h2><a href="<?= base_path() ?>/<?= e(
     $post["slug"],
-) ?>"><h2><?= e($post["title"]) ?></h2>
+) ?>"><?= e($post["title"]) ?></a></h2>
                             <?= render_markdown($post["content"], [
                                 "post_title" => (string) ($post["title"] ?? ""),
                             ]) ?>
-                        </a>
                         <?php endif; ?>
-
                     <?php else: ?>
                     <!-- Default layout (excerpts) -->
                     <h2><a href="<?= base_path() ?>/<?= e(
