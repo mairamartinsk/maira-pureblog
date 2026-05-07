@@ -479,14 +479,9 @@ $m
                                 ) ?>"><svg class="icon" aria-hidden="true"><use href="#icon-toggle-right"></use></svg> <?= e(
     t("admin.editor.status_" . $post["status"]),
 ) ?></span>
-                                <ul class="tags"><?php foreach (
-                                    $post["tags"]
-                                    as $tag
-                                ): ?>
-                    <li><a href="<?= base_path() ?>/admin/content.php?tab=posts&tag=<?= urlencode(
-    (string) $tag,
-) ?>"><?= e($tagDisplayNames[$tag] ?? (string) $tag) ?></a></li>
-                <?php endforeach; ?></ul>
+                                <?php if (isset($post["layout"])): ?>
+<span class="layout"><?= $post["layout"] ?></span>
+<?php endif; ?>
                             </div>
                         </li>
                     <?php endforeach; ?>
