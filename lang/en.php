@@ -50,6 +50,8 @@ return [
         'page_not_found_detail' => 'The page you requested could not be found.',
         'no_tag_selected'       => 'No tag selected.',
         'no_posts_for_tag'      => 'No posts found for this tag.',
+        'edit_post'             => 'Edit post',
+        'edit_page'             => 'Edit page',
     ],
 
     // -------------------------------------------------------------------------
@@ -136,6 +138,8 @@ return [
             'filter_all_tags'       => 'All tags',
             'filter_status'         => 'Status',
             'filter_all_statuses'   => 'All',
+            'filter_layout'         => 'Layout',
+            'filter_all_layouts'    => 'All layouts',
             'filter_apply'          => 'Apply',
             'filter_active'         => 'Filtered by: {label}.',
             'filter_clear'          => 'Clear',

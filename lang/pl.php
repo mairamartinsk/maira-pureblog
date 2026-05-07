@@ -1,5 +1,8 @@
 <?php
 
+// New additions to this language file may have English placeholder values.
+// These are marked with "ENGLISH PLACEHOLDER" and should be reviewed by a native speaker.
+
 return [
 
     'name' => 'Polski',
@@ -50,6 +53,8 @@ return [
         'page_not_found_detail' => 'Żądana strona nie istnieje.',
         'no_tag_selected'       => 'Nie wybrano tagów.',
         'no_posts_for_tag'      => 'Nie znaleziono postów dla wybranego tagu.',
+        'edit_post'             => 'Edit post', // ENGLISH PLACEHOLDER
+        'edit_page'             => 'Edit page', // ENGLISH PLACEHOLDER
     ],
 
     // -------------------------------------------------------------------------
@@ -136,6 +141,8 @@ return [
             'filter_all_tags'       => 'Wszystkie tagi',
             'filter_status'         => 'Status',
             'filter_all_statuses'   => 'Wszystkie',
+            'filter_layout'         => 'Layout', // ENGLISH PLACEHOLDER
+            'filter_all_layouts'    => 'All layouts', // ENGLISH PLACEHOLDER
             'filter_apply'          => 'Zatwierdź',
             'filter_active'         => 'Filtrowanie po: {label}.',
             'filter_clear'          => 'Wyczyść',

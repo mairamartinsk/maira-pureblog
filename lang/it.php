@@ -1,5 +1,8 @@
 <?php
 
+// New additions to this language file may have English placeholder values.
+// These are marked with "ENGLISH PLACEHOLDER" and should be reviewed by a native speaker.
+
 return [
 
     'name' => 'Italiano',
@@ -30,6 +33,7 @@ return [
     // Frontend (public-facing)
     // -------------------------------------------------------------------------
     'frontend' => [
+        'nav_home'              => 'Home',
         'site_title_fallback'   => 'Pagina',
         'pagination_newer'      => '⬅ Articoli recenti',
         'pagination_older'      => 'Articoli precedenti ➡',
@@ -49,6 +53,8 @@ return [
         'page_not_found_detail' => 'La pagina richiesta non è stata trovata.',
         'no_tag_selected'       => 'Nessun tag selezionato.',
         'no_posts_for_tag'      => 'Nessun articolo trovato per questo tag.',
+        'edit_post'             => 'Edit post', // ENGLISH PLACEHOLDER
+        'edit_page'             => 'Edit page', // ENGLISH PLACEHOLDER
     ],
 
     // -------------------------------------------------------------------------
@@ -58,7 +64,7 @@ return [
 
         'nav' => [
             'dashboard'      => 'Dashboard',
-            'content'        => 'Pagine',
+            'content'        => 'Contenuto',
             'settings'       => 'Impostazioni',
             'view_site'      => 'Visualizza sito',
             'clear_cache'    => 'Svuota cache',
@@ -113,19 +119,19 @@ return [
         ],
 
         'content' => [
-            'page_title'            => 'Content - Pure Blog',
-            'tabs_label'            => 'Content tabs',
-            'tab_posts'             => 'Posts',
-            'tab_pages'             => 'Pages',
-            'new_post'              => 'New post',
-            'choose_layout'         => 'Choose a layout',
-            'default_post'          => 'Default post',
-            'cancel'                => 'Cancel',
-            'search_label'          => 'Search posts',
-            'search_placeholder'    => 'Search for a post...',
-            'no_posts_found'        => 'No posts found for "{search}".',
+            'page_title'            => 'Contenuto - Pure Blog',
+            'tabs_label'            => 'Schede contenuto',
+            'tab_posts'             => 'Articoli',
+            'tab_pages'             => 'Pagine',
+            'new_post'              => 'Nuovo articolo',
+            'choose_layout'         => 'Scegli un layout',
+            'default_post'          => 'Articolo predefinito',
+            'cancel'                => 'Annulla',
+            'search_label'          => 'Cerca articoli',
+            'search_placeholder'    => 'Cerca un articolo...',
+            'no_posts_found'        => 'Nessun articolo trovato per "{search}".',
             'no_posts_filtered'     => 'Nessun articolo trovato per {label}.',
-            'no_posts'              => 'No posts yet, get writing!',
+            'no_posts'              => 'Ancora nessun articolo, inizia a scrivere!',
             'filter_title'          => 'Cerca e filtra',
             'filter_year'           => 'Anno',
             'filter_month'          => 'Mese',
@@ -135,18 +141,20 @@ return [
             'filter_all_tags'       => 'Tutti i tag',
             'filter_status'         => 'Stato',
             'filter_all_statuses'   => 'Tutti',
+            'filter_layout'         => 'Layout', // ENGLISH PLACEHOLDER
+            'filter_all_layouts'    => 'All layouts', // ENGLISH PLACEHOLDER
             'filter_apply'          => 'Applica',
             'filter_active'         => 'Filtrato per: {label}.',
             'filter_clear'          => 'Cancella',
             'filter_recent'         => 'ultimi 12 mesi',
-            'notice_post_saved'     => 'Post saved.',
-            'notice_post_deleted'   => 'Post deleted.',
-            'notice_page_saved'     => 'Page saved.',
-            'notice_page_deleted'   => 'Page deleted.',
-            'pagination_newer'      => '← Newer posts',
-            'pagination_older'      => 'Older posts →',
-            'new_page'              => 'New page',
-            'no_pages'              => 'No pages yet.',
+            'notice_post_saved'     => 'Articolo salvato.',
+            'notice_post_deleted'   => 'Articolo eliminato.',
+            'notice_page_saved'     => 'Pagina salvata.',
+            'notice_page_deleted'   => 'Pagina eliminata.',
+            'pagination_newer'      => '← Articoli recenti',
+            'pagination_older'      => 'Articoli precedenti →',
+            'new_page'              => 'Nuova pagina',
+            'no_pages'              => 'Ancora nessuna pagina.',
         ],
 
         'editor' => [
@@ -174,7 +182,7 @@ return [
             'error_invalid_status'  => 'Lo stato deve essere bozza o pubblicato.',
             'error_save_post'       => 'Impossibile salvare l\'articolo.',
             'error_save_page'       => 'Impossibile salvare la pagina.',
-            'error_empty_slug'      => 'Title must contain at least one letter or number so a slug can be generated.',
+            'error_empty_slug'      => 'Il titolo deve contenere almeno una lettera o un numero per poter generare uno slug.',
             'tip_markdown'          => 'Markdown',
             'preview_title'              => 'Anteprima',
             'error_upload_no_slug'       => 'Salva prima il post affinché abbia uno slug.',
@@ -327,7 +335,7 @@ return [
                 'admin_ui_section'          => 'Interfaccia amministrativa',
                 'admin_homepage'            => 'Homepage amministrativa',
                 'admin_homepage_dashboard'  => 'Dashboard',
-                'admin_homepage_content'    => 'Pagine',
+                'admin_homepage_content'    => 'Contenuto',
                 'admin_hide_dashboard'      => 'Nascondi Dashboard dalla navigazione',
                 'cache_section'       => 'Cache',
                 'cache_enable'        => 'Abilita cache pagine',
