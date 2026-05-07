@@ -1942,7 +1942,7 @@ function get_excerpt(string $markdown, int $length = 200): string
     $parts = explode("<!--more-->", $markdown, 2);
     $excerpt = $parts[0];
     $excerpt = preg_replace("/```.*?```/s", " ", $excerpt) ?? $excerpt;
-    $excerpt = preg_replace("/{{.*?}}/s", " ", $excerpt) ?? $excerpt;
+    $excerpt = preg_replace("/\{\{.*?\}\}/s", " ", $excerpt) ?? $excerpt;
     $excerpt = preg_replace("/`[^`]*`/", " ", $excerpt) ?? $excerpt;
     $excerpt =
         preg_replace("/!\[[^\]]*\]\([^)]+\)/", " ", $excerpt) ?? $excerpt;
