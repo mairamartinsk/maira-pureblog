@@ -6,3 +6,8 @@
 	list-style: none;
 	color: currentColor;
 }
+
+.admin-list-item .tags a {
+	color: currentColor;
+  	text-decoration-color: currentColor;
+}
