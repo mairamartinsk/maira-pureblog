@@ -1,0 +1,8 @@
+.admin-list-item .tags {
+	padding: 0;
+	display: flex;
+	flex-direction: row;
+	gap: 1em;
+	list-style: none;
+	color: currentColor;
+}
