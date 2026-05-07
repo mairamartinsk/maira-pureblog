@@ -1403,6 +1403,7 @@ class Parsedown
                 "attributes" => [
                     "src" => $Link["element"]["attributes"]["href"],
                     "alt" => $Link["element"]["handler"]["argument"],
+                    "loading" => "lazy",
                 ],
                 "autobreak" => true,
             ],
@@ -1916,7 +1917,6 @@ class Parsedown
         static $safeUrlNameToAtt = [
             "a" => "href",
             "img" => "src",
-            "loading" => "lazy",
         ];
 
         if (!isset($Element["name"])) {
