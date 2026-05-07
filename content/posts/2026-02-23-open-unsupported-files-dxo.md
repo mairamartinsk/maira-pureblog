@@ -15,3 +15,5 @@ exiftool -M -exif:Model="X-S10" -m -overwrite_original "$file"
 ```
 
 Done. Files opening without issues, all editing features enabled, can even apply DeepPrime 3 and DeepPrime XD/XD2. All solved by changing one single line of exif.
+
+📷 I wrote a **[step-by-step](/open-raw-files-dxo)** on how to do it. If you need help, let me know! Happy edits! 📷 

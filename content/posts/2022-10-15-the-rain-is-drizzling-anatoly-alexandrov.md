@@ -19,4 +19,4 @@ Learning this piece was not more challenging than any other piece. I'm really gl
 
 Anatoly Alexandrov (1888 — 1982) was a Russian/Soviet pianist and composer. Here's a (short) [biography](https://en.wikipedia.org/wiki/Anatoly_Alexandrov_(composer)). The sheet music for this piece is in the method book [Russian School of Piano Playing book 1 part II](https://www.halleonard.com/product/48010304/the-russian-school-of-piano-playing) (Hal Leonard).
 
-<p class="notice">This content was originally published in October 2022. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.</p>
+This content was originally published in October 2022. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.{.notice}

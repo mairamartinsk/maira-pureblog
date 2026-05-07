@@ -19,4 +19,6 @@ description:
 - Saturday I was super hangover. The solution for a lazy dinner was food that cooks itself: raclette! We sat at the garden, drinking wine and watching the full moon! 🌕
 - Never tired of eating lasagna, on Sunday I made it at home using my [bolognese recipe](/2025/08/20/vegan-bolognese-with-tvp.html), fresh homemade plates, béchamel sauce, and an absurd amount of cheese! Better than what you get at most restaurants, I swear.
 
+{{1
 ![Photo taken on an instax camera, of my mom gifting me an instax printer.](/content/images/2025-09-08/20250915-092710-x.jpg)
+}}

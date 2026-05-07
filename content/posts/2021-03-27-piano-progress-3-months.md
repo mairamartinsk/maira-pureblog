@@ -18,4 +18,4 @@ Here are some of my favorite pieces I worked on this month:
 <lite-youtube videoid="lvGNSleXBss"></lite-youtube>
 *Little Cossack (piece no. 51)*
 
-<p class="notice">This content was originally published in late March 2021. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.</p>
+This content was originally published in late March 2021. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.{.notice}

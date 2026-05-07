@@ -15,4 +15,4 @@ Sheet music for this piece:
 - [Schott](https://www.schott-music.com/en/24-short-and-easy-pieces-noc331916.html) Edition
 - [IMSLP](https://imslp.org/wiki/24_Short_and_Easy_Pieces_for_Keyboard%2C_Op.1_(Reinagle%2C_Alexander)) (free, but without dynamics)
 
-<p class="notice">This content was originally published in August 2021. I'm republishing this in August 2022 and backdating to keep my piano progress posts in chronological order.</p>
+This content was originally published in August 2021. I'm republishing this in August 2022 and backdating to keep my piano progress posts in chronological order.{.notice}

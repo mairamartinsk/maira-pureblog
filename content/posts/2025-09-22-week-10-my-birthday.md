@@ -17,6 +17,3 @@ description:
 
 ![Me and my mom in a street in Valencia](/content/images/2025-09-22/img-20250921-wa0034-2.jpg)
 *After fancy lunch and fancy wine, in Valencia.*
-
-![image](/content/images/2025-09-22/f200757812.jpg)
-*The two mothers.*

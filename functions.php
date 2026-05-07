@@ -3,102 +3,104 @@
 declare(strict_types=1);
 
 // PHP 7.4 polyfills for functions added in PHP 8.0.
-if (!function_exists('str_starts_with')) {
+if (!function_exists("str_starts_with")) {
     function str_starts_with(string $haystack, string $needle): bool
     {
-        return $needle === '' || strncmp($haystack, $needle, strlen($needle)) === 0;
+        return $needle === "" ||
+            strncmp($haystack, $needle, strlen($needle)) === 0;
     }
 }
-if (!function_exists('str_contains')) {
+if (!function_exists("str_contains")) {
     function str_contains(string $haystack, string $needle): bool
     {
-        return $needle === '' || strpos($haystack, $needle) !== false;
+        return $needle === "" || strpos($haystack, $needle) !== false;
     }
 }
 
 const PUREBLOG_BASE_PATH = __DIR__;
-const PUREBLOG_VERSION_FILE = PUREBLOG_BASE_PATH . '/VERSION';
-const PUREBLOG_CONFIG_PATH = PUREBLOG_BASE_PATH . '/config/config.php';
-const PUREBLOG_POSTS_PATH = PUREBLOG_BASE_PATH . '/content/posts';
-const PUREBLOG_PAGES_PATH = PUREBLOG_BASE_PATH . '/content/pages';
-const PUREBLOG_SEARCH_INDEX_PATH = PUREBLOG_BASE_PATH . '/content/search-index.json';
-const PUREBLOG_TAG_INDEX_PATH = PUREBLOG_BASE_PATH . '/content/tag-index.json';
-const PUREBLOG_DATA_PATH = PUREBLOG_BASE_PATH . '/data';
-const PUREBLOG_CONTENT_IMAGES_PATH = PUREBLOG_BASE_PATH . '/content/images';
-const PUREBLOG_CONTENT_CSS_PATH = PUREBLOG_BASE_PATH . '/content/css';
-const PUREBLOG_HOOKS_PATH = PUREBLOG_BASE_PATH . '/config/hooks.php';
-const PUREBLOG_CACHE_PATH = PUREBLOG_BASE_PATH . '/cache';
+const PUREBLOG_VERSION_FILE = PUREBLOG_BASE_PATH . "/VERSION";
+const PUREBLOG_CONFIG_PATH = PUREBLOG_BASE_PATH . "/config/config.php";
+const PUREBLOG_POSTS_PATH = PUREBLOG_BASE_PATH . "/content/posts";
+const PUREBLOG_PAGES_PATH = PUREBLOG_BASE_PATH . "/content/pages";
+const PUREBLOG_SEARCH_INDEX_PATH =
+    PUREBLOG_BASE_PATH . "/content/search-index.json";
+const PUREBLOG_TAG_INDEX_PATH = PUREBLOG_BASE_PATH . "/content/tag-index.json";
+const PUREBLOG_DATA_PATH = PUREBLOG_BASE_PATH . "/data";
+const PUREBLOG_CONTENT_IMAGES_PATH = PUREBLOG_BASE_PATH . "/content/images";
+const PUREBLOG_CONTENT_CSS_PATH = PUREBLOG_BASE_PATH . "/content/css";
+const PUREBLOG_HOOKS_PATH = PUREBLOG_BASE_PATH . "/config/hooks.php";
+const PUREBLOG_CACHE_PATH = PUREBLOG_BASE_PATH . "/cache";
 
 function detect_pureblog_version(): string
 {
     if (!is_file(PUREBLOG_VERSION_FILE)) {
-        return 'unknown';
+        return "unknown";
     }
 
     $raw = @file_get_contents(PUREBLOG_VERSION_FILE);
     if (!is_string($raw)) {
-        return 'unknown';
+        return "unknown";
     }
 
     $version = trim($raw);
-    return $version !== '' ? $version : 'unknown';
+    return $version !== "" ? $version : "unknown";
 }
 
-if (!defined('PUREBLOG_VERSION')) {
-    define('PUREBLOG_VERSION', detect_pureblog_version());
+if (!defined("PUREBLOG_VERSION")) {
+    define("PUREBLOG_VERSION", detect_pureblog_version());
 }
 
 function default_config(): array
 {
     return [
-        'site_title' => 'My Blog',
-        'site_tagline' => '',
-        'site_description' => '',
-        'site_email' => '',
-        'custom_nav' => '',
-        'custom_routes' => '',
-        'head_inject_page' => '',
-        'head_inject_post' => '',
-        'footer_inject_page' => '',
-        'footer_inject_post' => '',
-        'posts_per_page' => 20,
-        'search_excerpt_length' => 2500,
-        'homepage_slug' => '',
-        'blog_page_slug' => '',
-        'search_page_slug' => 'search',
-        'search_page_notified' => false,
+        "site_title" => "My Blog",
+        "site_tagline" => "",
+        "site_description" => "",
+        "site_email" => "",
+        "custom_nav" => "",
+        "custom_routes" => "",
+        "head_inject_page" => "",
+        "head_inject_post" => "",
+        "footer_inject_page" => "",
+        "footer_inject_post" => "",
+        "posts_per_page" => 20,
+        "search_excerpt_length" => 2500,
+        "homepage_slug" => "",
+        "blog_page_slug" => "",
+        "search_page_slug" => "search",
+        "search_page_notified" => false,
 
-        'base_url' => '',
-        'language' => 'en',
-        'timezone' => date_default_timezone_get(),
-        'date_format' => 'F j, Y',
-        'admin_username' => '',
-        'admin_password_hash' => '',
-        'cache' => [
-            'enabled' => false,
-            'rss_ttl' => 3600,
+        "base_url" => "",
+        "language" => "en",
+        "timezone" => date_default_timezone_get(),
+        "date_format" => "F j, Y",
+        "admin_username" => "",
+        "admin_password_hash" => "",
+        "cache" => [
+            "enabled" => false,
+            "rss_ttl" => 3600,
         ],
-        'theme' => [
-            'color_mode' => 'auto',
-            'font_stack' => 'sans',
-            'admin_font_stack' => 'mono',
-            'admin_color_mode' => 'auto',
-            'background_color' => '#FAFAFA',
-            'text_color' => '#212121',
-            'accent_color' => '#0D47A1',
-            'border_color' => '#898EA4',
-            'accent_bg_color' => '#F5F7FF',
-            'background_color_dark' => '#212121',
-            'text_color_dark' => '#DCDCDC',
-            'accent_color_dark' => '#FFB300',
-            'border_color_dark' => '#555',
-            'accent_bg_color_dark' => '#2B2B2B',
-            'post_list_layout' => 'excerpt',
+        "theme" => [
+            "color_mode" => "auto",
+            "font_stack" => "sans",
+            "admin_font_stack" => "mono",
+            "admin_color_mode" => "auto",
+            "background_color" => "#FAFAFA",
+            "text_color" => "#212121",
+            "accent_color" => "#0D47A1",
+            "border_color" => "#898EA4",
+            "accent_bg_color" => "#F5F7FF",
+            "background_color_dark" => "#212121",
+            "text_color_dark" => "#DCDCDC",
+            "accent_color_dark" => "#FFB300",
+            "border_color_dark" => "#555",
+            "accent_bg_color_dark" => "#2B2B2B",
+            "post_list_layout" => "excerpt",
         ],
-        'assets' => [
-            'favicon' => '/assets/images/favicon.png',
-            'og_image' => '/assets/images/og-image.png',
-            'og_image_preferred' => 'banner',
+        "assets" => [
+            "favicon" => "/assets/images/favicon.png",
+            "og_image" => "/assets/images/og-image.png",
+            "og_image_preferred" => "banner",
         ],
     ];
 }
@@ -134,14 +136,17 @@ function load_hooks(): void
  */
 function _lang_load_file(string $language): array
 {
-    $safe = preg_replace('/[^a-zA-Z0-9_-]/', '', $language) ?? 'en';
-    $base = preg_replace('/[^a-zA-Z0-9]/', '', explode('-', $safe)[0]) ?? 'en';
+    $safe = preg_replace("/[^a-zA-Z0-9_-]/", "", $language) ?? "en";
+    $base = preg_replace("/[^a-zA-Z0-9]/", "", explode("-", $safe)[0]) ?? "en";
 
-    foreach (array_unique([$safe, strtolower($safe), $base, strtolower($base), 'en']) as $candidate) {
-        if ($candidate === '') {
+    foreach (
+        array_unique([$safe, strtolower($safe), $base, strtolower($base), "en"])
+        as $candidate
+    ) {
+        if ($candidate === "") {
             continue;
         }
-        $path = PUREBLOG_BASE_PATH . '/lang/' . $candidate . '.php';
+        $path = PUREBLOG_BASE_PATH . "/lang/" . $candidate . ".php";
         if (is_file($path)) {
             $data = require $path;
             if (is_array($data)) {
@@ -171,13 +176,17 @@ function lang_init(string $language): void
 function lang_available(): array
 {
     $langs = [];
-    $files = glob(PUREBLOG_BASE_PATH . '/lang/*.php') ?: [];
+    $files = glob(PUREBLOG_BASE_PATH . "/lang/*.php") ?: [];
 
     foreach ($files as $file) {
-        $code = basename($file, '.php');
+        $code = basename($file, ".php");
         $data = require $file;
-        if (is_array($data) && isset($data['name']) && is_string($data['name'])) {
-            $langs[$code] = $data['name'];
+        if (
+            is_array($data) &&
+            isset($data["name"]) &&
+            is_string($data["name"])
+        ) {
+            $langs[$code] = $data["name"];
         }
     }
 
@@ -196,11 +205,11 @@ function _lang_strings(): array
 
     if ($strings === null) {
         global $_pureblog_lang_code;
-        if (isset($_pureblog_lang_code) && $_pureblog_lang_code !== '') {
+        if (isset($_pureblog_lang_code) && $_pureblog_lang_code !== "") {
             $strings = _lang_load_file($_pureblog_lang_code);
         } else {
-            $config  = load_config();
-            $strings = _lang_load_file((string) ($config['language'] ?? 'en'));
+            $config = load_config();
+            $strings = _lang_load_file((string) ($config["language"] ?? "en"));
         }
     }
 
@@ -218,8 +227,8 @@ function _lang_strings(): array
 function t(string $key, array $replacements = []): string
 {
     $strings = _lang_strings();
-    $parts   = explode('.', $key);
-    $value   = $strings;
+    $parts = explode(".", $key);
+    $value = $strings;
 
     foreach ($parts as $part) {
         if (!is_array($value) || !array_key_exists($part, $value)) {
@@ -233,7 +242,11 @@ function t(string $key, array $replacements = []): string
     }
 
     foreach ($replacements as $placeholder => $replacement) {
-        $value = str_replace('{' . $placeholder . '}', (string) $replacement, $value);
+        $value = str_replace(
+            "{" . $placeholder . "}",
+            (string) $replacement,
+            $value,
+        );
     }
 
     return $value;
@@ -246,20 +259,54 @@ function t(string $key, array $replacements = []): string
  */
 function _lang_translate_date(string $formatted): string
 {
-    $strings     = _lang_strings();
-    $months      = $strings['date']['months']       ?? [];
-    $monthsShort = $strings['date']['months_short'] ?? [];
-    $days        = $strings['date']['days']         ?? [];
-    $daysShort   = $strings['date']['days_short']   ?? [];
+    $strings = _lang_strings();
+    $months = $strings["date"]["months"] ?? [];
+    $monthsShort = $strings["date"]["months_short"] ?? [];
+    $days = $strings["date"]["days"] ?? [];
+    $daysShort = $strings["date"]["days_short"] ?? [];
 
     if (!$months && !$days) {
         return $formatted;
     }
 
-    $enMonths      = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-    $enMonthsShort = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    $enDays        = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-    $enDaysShort   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    $enMonths = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+    ];
+    $enMonthsShort = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+    ];
+    $enDays = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+    ];
+    $enDaysShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
     // Build a single strtr map so that longer keys (e.g. "Monday") are matched
     // before shorter ones (e.g. "Mon"), preventing partial-match corruption such
@@ -304,7 +351,7 @@ function apply_filter(string $name, mixed $value): mixed
 function get_admin_action_buttons(): array
 {
     load_hooks();
-    if (!function_exists('admin_action_buttons')) {
+    if (!function_exists("admin_action_buttons")) {
         return [];
     }
 
@@ -319,22 +366,22 @@ function get_admin_action_buttons(): array
             continue;
         }
 
-        $id = strtolower(trim((string) ($item['id'] ?? '')));
-        $id = preg_replace('/[^a-z0-9_-]/', '', $id) ?? '';
-        $label = trim((string) ($item['label'] ?? ''));
-        if ($id === '' || $label === '') {
+        $id = strtolower(trim((string) ($item["id"] ?? "")));
+        $id = preg_replace("/[^a-z0-9_-]/", "", $id) ?? "";
+        $label = trim((string) ($item["label"] ?? ""));
+        if ($id === "" || $label === "") {
             continue;
         }
 
-        $class = trim((string) ($item['class'] ?? ''));
-        $class = preg_replace('/[^a-zA-Z0-9_ -]/', '', $class) ?? '';
+        $class = trim((string) ($item["class"] ?? ""));
+        $class = preg_replace("/[^a-zA-Z0-9_ -]/", "", $class) ?? "";
 
         $buttons[] = [
-            'id' => $id,
-            'label' => $label,
-            'class' => $class,
-            'confirm' => trim((string) ($item['confirm'] ?? '')),
-            'icon' => trim((string) ($item['icon'] ?? '')),
+            "id" => $id,
+            "label" => $label,
+            "class" => $class,
+            "confirm" => trim((string) ($item["confirm"] ?? "")),
+            "icon" => trim((string) ($item["icon"] ?? "")),
         ];
     }
 
@@ -347,43 +394,49 @@ function get_admin_action_buttons(): array
 function run_admin_action(string $actionId): array
 {
     load_hooks();
-    if (!function_exists('on_admin_action')) {
-        return ['ok' => false, 'message' => 'No admin action handler is configured.'];
+    if (!function_exists("on_admin_action")) {
+        return [
+            "ok" => false,
+            "message" => "No admin action handler is configured.",
+        ];
     }
 
     try {
         $result = on_admin_action($actionId);
     } catch (Throwable $e) {
-        return ['ok' => false, 'message' => 'Action failed: ' . $e->getMessage()];
+        return [
+            "ok" => false,
+            "message" => "Action failed: " . $e->getMessage(),
+        ];
     }
 
     if (is_array($result)) {
-        $ok = (bool) ($result['ok'] ?? false);
-        $message = trim((string) ($result['message'] ?? ''));
-        if ($message === '') {
-            $message = $ok ? 'Action completed.' : 'Action failed.';
+        $ok = (bool) ($result["ok"] ?? false);
+        $message = trim((string) ($result["message"] ?? ""));
+        if ($message === "") {
+            $message = $ok ? "Action completed." : "Action failed.";
         }
-        return ['ok' => $ok, 'message' => $message];
+        return ["ok" => $ok, "message" => $message];
     }
 
     if (is_bool($result)) {
         return [
-            'ok' => $result,
-            'message' => $result ? 'Action completed.' : 'Action failed.',
+            "ok" => $result,
+            "message" => $result ? "Action completed." : "Action failed.",
         ];
     }
 
-    if (is_string($result) && trim($result) !== '') {
-        return ['ok' => true, 'message' => trim($result)];
+    if (is_string($result) && trim($result) !== "") {
+        return ["ok" => true, "message" => trim($result)];
     }
 
-    return ['ok' => true, 'message' => 'Action completed.'];
+    return ["ok" => true, "message" => "Action completed."];
 }
 
 function save_config(array $config): bool
 {
     $data = "<?php\nreturn " . var_export($config, true) . ";\n";
-    $tmpPath = PUREBLOG_CONFIG_PATH . '.tmp';
+    $tmpPath = PUREBLOG_CONFIG_PATH . ".tmp";
 
     if (file_put_contents($tmpPath, $data) === false) {
         return false;
@@ -399,28 +452,30 @@ function is_installed(): bool
     }
 
     $config = load_config();
-    return !empty($config['admin_password_hash']);
+    return !empty($config["admin_password_hash"]);
 }
 
 function require_setup_redirect(): void
 {
     if (!is_installed()) {
-        header('Location: ' . base_path() . '/setup.php');
-        exit;
+        header("Location: " . base_path() . "/setup.php");
+        exit();
     }
 }
 
 function start_admin_session(): void
 {
     if (session_status() !== PHP_SESSION_ACTIVE) {
-        $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
-            || (isset($_SERVER['SERVER_PORT']) && (int) $_SERVER['SERVER_PORT'] === 443);
+        $isHttps =
+            (!empty($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] !== "off") ||
+            (isset($_SERVER["SERVER_PORT"]) &&
+                (int) $_SERVER["SERVER_PORT"] === 443);
         session_set_cookie_params([
-            'lifetime' => 0,
-            'path' => '/',
-            'secure' => $isHttps,
-            'httponly' => true,
-            'samesite' => 'Lax',
+            "lifetime" => 0,
+            "path" => "/",
+            "secure" => $isHttps,
+            "httponly" => true,
+            "samesite" => "Lax",
         ]);
         session_start();
     }
@@ -429,10 +484,10 @@ function start_admin_session(): void
 function csrf_token(): string
 {
     start_admin_session();
-    if (empty($_SESSION['csrf_token']) || !is_string($_SESSION['csrf_token'])) {
-        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    if (empty($_SESSION["csrf_token"]) || !is_string($_SESSION["csrf_token"])) {
+        $_SESSION["csrf_token"] = bin2hex(random_bytes(32));
     }
-    return $_SESSION['csrf_token'];
+    return $_SESSION["csrf_token"];
 }
 
 function csrf_field(): string
@@ -444,41 +499,51 @@ function csrf_field(): string
 function verify_csrf(): void
 {
     start_admin_session();
-    $token = isset($_POST['csrf_token']) ? (string) $_POST['csrf_token'] : '';
+    $token = isset($_POST["csrf_token"]) ? (string) $_POST["csrf_token"] : "";
 
-    $sessionToken = $_SESSION['csrf_token'] ?? '';
-    if ($token === '' || !is_string($sessionToken) || !hash_equals($sessionToken, $token)) {
+    $sessionToken = $_SESSION["csrf_token"] ?? "";
+    if (
+        $token === "" ||
+        !is_string($sessionToken) ||
+        !hash_equals($sessionToken, $token)
+    ) {
         http_response_code(403);
-        exit('Invalid CSRF token.');
+        exit("Invalid CSRF token.");
     }
 }
 
 function is_admin_logged_in(): bool
 {
-    return !empty($_SESSION['is_admin']);
+    return !empty($_SESSION["is_admin"]);
 }
 
 function remember_me_token(array $config): string
 {
-    return hash_hmac('sha256', 'pureblog_remember_me', $config['admin_password_hash'] ?? '');
+    return hash_hmac(
+        "sha256",
+        "pureblog_remember_me",
+        $config["admin_password_hash"] ?? "",
+    );
 }
 
 function set_remember_me_cookie(array $config): void
 {
-    $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
-        || (isset($_SERVER['SERVER_PORT']) && (int) $_SERVER['SERVER_PORT'] === 443);
-    setcookie('pb_remember', remember_me_token($config), [
-        'expires'  => time() + (90 * 24 * 60 * 60),
-        'path'     => '/',
-        'secure'   => $isHttps,
-        'httponly' => true,
-        'samesite' => 'Lax',
+    $isHttps =
+        (!empty($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] !== "off") ||
+        (isset($_SERVER["SERVER_PORT"]) &&
+            (int) $_SERVER["SERVER_PORT"] === 443);
+    setcookie("pb_remember", remember_me_token($config), [
+        "expires" => time() + 90 * 24 * 60 * 60,
+        "path" => "/",
+        "secure" => $isHttps,
+        "httponly" => true,
+        "samesite" => "Lax",
     ]);
 }
 
 function clear_remember_me_cookie(): void
 {
-    setcookie('pb_remember', '', ['expires' => time() - 3600, 'path' => '/']);
+    setcookie("pb_remember", "", ["expires" => time() - 3600, "path" => "/"]);
 }
 
 function maybe_restore_admin_from_cookie(): void
@@ -486,13 +551,13 @@ function maybe_restore_admin_from_cookie(): void
     if (is_admin_logged_in()) {
         return;
     }
-    $cookie = $_COOKIE['pb_remember'] ?? '';
-    if ($cookie === '') {
+    $cookie = $_COOKIE["pb_remember"] ?? "";
+    if ($cookie === "") {
         return;
     }
     $config = load_config();
     if (hash_equals(remember_me_token($config), $cookie)) {
-        $_SESSION['is_admin'] = true;
+        $_SESSION["is_admin"] = true;
     }
 }
 
@@ -500,8 +565,8 @@ function require_admin_login(): void
 {
     maybe_restore_admin_from_cookie();
     if (!is_admin_logged_in()) {
-        header('Location: ' . base_path() . '/admin/index.php');
-        exit;
+        header("Location: " . base_path() . "/admin/index.php");
+        exit();
     }
 }
 
@@ -512,69 +577,77 @@ function base_path(): string
         return $cached;
     }
 
-    if (PHP_SAPI === 'cli-server') {
-        return $cached = '';
+    if (PHP_SAPI === "cli-server") {
+        return $cached = "";
     }
 
     $config = load_config();
-    $configuredBase = trim((string) ($config['base_url'] ?? ''));
-    if ($configuredBase !== '') {
+    $configuredBase = trim((string) ($config["base_url"] ?? ""));
+    if ($configuredBase !== "") {
         $parsed = parse_url($configuredBase);
         if (is_array($parsed)) {
-            return $cached = rtrim((string) ($parsed['path'] ?? ''), '/');
+            return $cached = rtrim((string) ($parsed["path"] ?? ""), "/");
         }
     }
 
     // Derive path prefix from where functions.php lives relative to the document root.
-    $docRoot = realpath($_SERVER['DOCUMENT_ROOT'] ?? '') ?: '';
+    $docRoot = realpath($_SERVER["DOCUMENT_ROOT"] ?? "") ?: "";
     $appRoot = realpath(__DIR__) ?: __DIR__;
-    if ($docRoot !== '' && str_starts_with($appRoot, $docRoot)) {
+    if ($docRoot !== "" && str_starts_with($appRoot, $docRoot)) {
         $rel = substr($appRoot, strlen($docRoot));
-        $rel = str_replace('\\', '/', $rel);
-        return $cached = rtrim($rel, '/');
+        $rel = str_replace("\\", "/", $rel);
+        return $cached = rtrim($rel, "/");
     }
 
-    return $cached = '';
+    return $cached = "";
 }
 
 function get_base_url(): string
 {
-    if (PHP_SAPI === 'cli-server') {
-        return 'http://localhost:8000';
+    if (PHP_SAPI === "cli-server") {
+        return "http://localhost:8000";
     }
 
     $config = load_config();
-    $configuredBase = trim((string) ($config['base_url'] ?? ''));
-    if ($configuredBase !== '') {
+    $configuredBase = trim((string) ($config["base_url"] ?? ""));
+    if ($configuredBase !== "") {
         $parsed = parse_url($configuredBase);
-        if (is_array($parsed) && !empty($parsed['scheme']) && !empty($parsed['host'])) {
-            return rtrim($configuredBase, '/');
+        if (
+            is_array($parsed) &&
+            !empty($parsed["scheme"]) &&
+            !empty($parsed["host"])
+        ) {
+            return rtrim($configuredBase, "/");
         }
     }
 
-    $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
-        || (isset($_SERVER['SERVER_PORT']) && (int) $_SERVER['SERVER_PORT'] === 443);
-    $scheme = $isHttps ? 'https' : 'http';
-    $host = $_SERVER['HTTP_HOST'] ?? ($_SERVER['SERVER_NAME'] ?? 'localhost');
+    $isHttps =
+        (!empty($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] !== "off") ||
+        (isset($_SERVER["SERVER_PORT"]) &&
+            (int) $_SERVER["SERVER_PORT"] === 443);
+    $scheme = $isHttps ? "https" : "http";
+    $host = $_SERVER["HTTP_HOST"] ?? ($_SERVER["SERVER_NAME"] ?? "localhost");
     $host = strtolower($host);
     if (!preg_match('/^[a-z0-9.-]+(:\d+)?$/', $host)) {
-        $host = 'localhost';
+        $host = "localhost";
     }
 
-    return $scheme . '://' . $host . base_path();
+    return $scheme . "://" . $host . base_path();
 }
 
 function e(string $value): string
 {
-    return htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+    return htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE, "UTF-8");
 }
 
 function font_stack_css(string $fontStack): string
 {
     return match ($fontStack) {
-        'serif' => 'Georgia, Times, "Times New Roman", serif',
-        'mono' => 'ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono", monospace',
-        default => '-apple-system, BlinkMacSystemFont, "Avenir Next", Avenir, "Nimbus Sans L", Roboto, "Noto Sans", "Segoe UI", Arial, Helvetica, "Helvetica Neue", sans-serif',
+        "serif" => 'Georgia, Times, "Times New Roman", serif',
+        "mono"
+            => 'ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono", monospace',
+        default
+            => '-apple-system, BlinkMacSystemFont, "Avenir Next", Avenir, "Nimbus Sans L", Roboto, "Noto Sans", "Segoe UI", Arial, Helvetica, "Helvetica Neue", sans-serif',
     };
 }
 
@@ -588,7 +661,10 @@ function validate_image_path(string $baseDir, string $targetPath): bool
     if ($resolvedBase === false || $resolvedTarget === false) {
         return false;
     }
-    return str_starts_with($resolvedTarget, $resolvedBase . DIRECTORY_SEPARATOR);
+    return str_starts_with(
+        $resolvedTarget,
+        $resolvedBase . DIRECTORY_SEPARATOR,
+    );
 }
 
 /**
@@ -596,40 +672,63 @@ function validate_image_path(string $baseDir, string $targetPath): bool
  */
 function is_safe_image_slug(string $slug): bool
 {
-    return $slug !== '' && preg_match('/^[\p{L}\p{N}\-_]+$/u', $slug) === 1;
+    return $slug !== "" && preg_match('/^[\p{L}\p{N}\-_]+$/u', $slug) === 1;
 }
 
 function slugify(string $value): string
 {
     $value = trim($value);
-    if (function_exists('mb_strtolower')) {
-        $value = mb_strtolower($value, 'UTF-8');
+    if (function_exists("mb_strtolower")) {
+        $value = mb_strtolower($value, "UTF-8");
     } else {
         $value = strtolower($value);
     }
 
     // Transliterate common diacritics to ASCII equivalents
     $value = strtr($value, [
-        'ä' => 'ae', 'ö' => 'oe', 'ü' => 'ue', 'ß' => 'ss',
-        'à' => 'a', 'á' => 'a', 'â' => 'a', 'ã' => 'a', 'å' => 'a',
-        'æ' => 'ae', 'ç' => 'c', 'è' => 'e', 'é' => 'e', 'ê' => 'e',
-        'ë' => 'e', 'ì' => 'i', 'í' => 'i', 'î' => 'i', 'ï' => 'i',
-        'ñ' => 'n', 'ò' => 'o', 'ó' => 'o', 'ô' => 'o', 'õ' => 'o',
-        'ø' => 'o', 'ù' => 'u', 'ú' => 'u', 'û' => 'u', 'ý' => 'y',
-        'ÿ' => 'y',
+        "ä" => "ae",
+        "ö" => "oe",
+        "ü" => "ue",
+        "ß" => "ss",
+        "à" => "a",
+        "á" => "a",
+        "â" => "a",
+        "ã" => "a",
+        "å" => "a",
+        "æ" => "ae",
+        "ç" => "c",
+        "è" => "e",
+        "é" => "e",
+        "ê" => "e",
+        "ë" => "e",
+        "ì" => "i",
+        "í" => "i",
+        "î" => "i",
+        "ï" => "i",
+        "ñ" => "n",
+        "ò" => "o",
+        "ó" => "o",
+        "ô" => "o",
+        "õ" => "o",
+        "ø" => "o",
+        "ù" => "u",
+        "ú" => "u",
+        "û" => "u",
+        "ý" => "y",
+        "ÿ" => "y",
     ]);
 
-    $value = preg_replace('/[^\p{L}\p{N}\s-]/u', '', $value) ?? '';
-    $value = preg_replace('/[\s-]+/u', '-', $value) ?? '';
+    $value = preg_replace("/[^\p{L}\p{N}\s-]/u", "", $value) ?? "";
+    $value = preg_replace("/[\s-]+/u", "-", $value) ?? "";
 
-    return trim($value, '-');
+    return trim($value, "-");
 }
 
 function parse_post_file(string $filepath): array
 {
     $raw = file_get_contents($filepath);
     if ($raw === false) {
-        return ['front_matter' => [], 'content' => ''];
+        return ["front_matter" => [], "content" => ""];
     }
 
     $raw = str_replace("\r\n", "\n", $raw);
@@ -645,14 +744,14 @@ function parse_post_file(string $filepath): array
             $listKey = null;
             foreach ($lines as $line) {
                 $line = rtrim($line);
-                if ($line === '') {
+                if ($line === "") {
                     continue;
                 }
 
                 if ($listKey !== null) {
                     if (preg_match('/^\s*-\s*(.+)$/', $line, $matches)) {
                         $item = trim($matches[1], " \t\"'");
-                        if ($item !== '') {
+                        if ($item !== "") {
                             $frontMatter[$listKey][] = $item;
                         }
                         continue;
@@ -660,82 +759,96 @@ function parse_post_file(string $filepath): array
                     $listKey = null;
                 }
 
-                if (strpos($line, ':') === false) {
+                if (strpos($line, ":") === false) {
                     continue;
                 }
 
-                [$key, $value] = array_map('trim', explode(':', $line, 2));
-                if ($key === '') {
+                [$key, $value] = array_map("trim", explode(":", $line, 2));
+                if ($key === "") {
                     continue;
                 }
 
-                if ($value === '') {
-                    if (in_array($key, ['tags', 'categories'], true)) {
+                if ($value === "") {
+                    if (in_array($key, ["tags", "categories"], true)) {
                         $listKey = $key;
                         $frontMatter[$key] = $frontMatter[$key] ?? [];
                         continue;
                     }
-                    $frontMatter[$key] = '';
+                    $frontMatter[$key] = "";
                     continue;
                 }
 
-                if ($key === 'date') {
+                if ($key === "date") {
                     $value = trim($value, "\"'");
                     $normalized = normalize_date_value($value);
                     $frontMatter[$key] = $normalized ?? $value;
-                } elseif ($key === 'tags' || $key === 'categories') {
+                } elseif ($key === "tags" || $key === "categories") {
                     $value = trim($value, "[] ");
-                    $tags = $value === '' ? [] : array_map('trim', explode(',', $value));
-                    $frontMatter[$key] = array_filter($tags, fn($tag) => $tag !== '');
-                } elseif ($key === 'description') {
+                    $tags =
+                        $value === ""
+                            ? []
+                            : array_map("trim", explode(",", $value));
+                    $frontMatter[$key] = array_filter(
+                        $tags,
+                        fn($tag) => $tag !== "",
+                    );
+                } elseif ($key === "description") {
                     $frontMatter[$key] = $value;
-                } elseif ($key === 'include_in_nav') {
-                    $frontMatter[$key] = in_array(strtolower($value), ['1', 'true', 'yes', 'on'], true);
+                } elseif ($key === "include_in_nav") {
+                    $frontMatter[$key] = in_array(
+                        strtolower($value),
+                        ["1", "true", "yes", "on"],
+                        true,
+                    );
                 } else {
                     $frontMatter[$key] = $value;
                 }
             }
 
-            if (!empty($frontMatter['categories'])) {
-                $categoryTags = is_array($frontMatter['categories']) ? $frontMatter['categories'] : [];
-                $existingTags = $frontMatter['tags'] ?? [];
-                $merged = array_values(array_unique(array_merge($existingTags, $categoryTags)));
-                $frontMatter['tags'] = $merged;
+            if (!empty($frontMatter["categories"])) {
+                $categoryTags = is_array($frontMatter["categories"])
+                    ? $frontMatter["categories"]
+                    : [];
+                $existingTags = $frontMatter["tags"] ?? [];
+                $merged = array_values(
+                    array_unique(array_merge($existingTags, $categoryTags)),
+                );
+                $frontMatter["tags"] = $merged;
             }
         }
     }
 
     return [
-        'front_matter' => $frontMatter,
-        'content' => ltrim($content),
+        "front_matter" => $frontMatter,
+        "content" => ltrim($content),
     ];
 }
 
 function normalize_date_value(string $value): ?string
 {
-    if ($value === '') {
+    if ($value === "") {
         return null;
     }
 
     $formats = [
-        'Y-m-d H:i',
-        'Y-m-d H:i:s',
-        'Y-m-d\\TH:i:s.u\\Z',
-        'Y-m-d\\TH:i:s\\Z',
-        'Y-m-d\\TH:i:s.uP',
-        'Y-m-d\\TH:i:sP',
+        "Y-m-d H:i",
+        "Y-m-d H:i:s",
+        "Y-m-d\\TH:i:s.u\\Z",
+        "Y-m-d\\TH:i:s\\Z",
+        "Y-m-d\\TH:i:s.uP",
+        "Y-m-d\\TH:i:sP",
     ];
 
     foreach ($formats as $format) {
         $dt = DateTime::createFromFormat($format, $value);
         if ($dt instanceof DateTime) {
-            return $dt->format('Y-m-d H:i');
+            return $dt->format("Y-m-d H:i");
         }
     }
 
     $timestamp = strtotime($value);
     if ($timestamp !== false) {
-        return date('Y-m-d H:i', $timestamp);
+        return date("Y-m-d H:i", $timestamp);
     }
 
     return null;
@@ -743,8 +856,8 @@ function normalize_date_value(string $value): ?string
 
 function site_timezone_identifier(array $config): string
 {
-    $timezone = trim((string) ($config['timezone'] ?? ''));
-    if ($timezone === '') {
+    $timezone = trim((string) ($config["timezone"] ?? ""));
+    if ($timezone === "") {
         return date_default_timezone_get();
     }
 
@@ -760,30 +873,34 @@ function site_timezone_object(array $config): DateTimeZone
 
 function site_date_format(array $config): string
 {
-    $format = trim((string) ($config['date_format'] ?? ''));
-    return $format !== '' ? $format : 'F j, Y';
+    $format = trim((string) ($config["date_format"] ?? ""));
+    return $format !== "" ? $format : "F j, Y";
 }
 
 function current_site_datetime_for_storage(array $config): string
 {
-    return (new DateTimeImmutable('now', site_timezone_object($config)))->format('Y-m-d H:i');
+    return new DateTimeImmutable("now", site_timezone_object($config))->format(
+        "Y-m-d H:i",
+    );
 }
 
-function parse_post_datetime_with_timezone(?string $value, array $config): ?DateTimeImmutable
-{
+function parse_post_datetime_with_timezone(
+    ?string $value,
+    array $config,
+): ?DateTimeImmutable {
     $raw = trim((string) $value);
-    if ($raw === '') {
+    if ($raw === "") {
         return null;
     }
 
     $tz = site_timezone_object($config);
     $formats = [
-        'Y-m-d H:i',
-        'Y-m-d H:i:s',
-        'Y-m-d\\TH:i:s.u\\Z',
-        'Y-m-d\\TH:i:s\\Z',
-        'Y-m-d\\TH:i:s.uP',
-        'Y-m-d\\TH:i:sP',
+        "Y-m-d H:i",
+        "Y-m-d H:i:s",
+        "Y-m-d\\TH:i:s.u\\Z",
+        "Y-m-d\\TH:i:s\\Z",
+        "Y-m-d\\TH:i:s.uP",
+        "Y-m-d\\TH:i:sP",
     ];
 
     foreach ($formats as $format) {
@@ -798,7 +915,7 @@ function parse_post_datetime_with_timezone(?string $value, array $config): ?Date
         return null;
     }
 
-    return (new DateTimeImmutable('@' . $timestamp))->setTimezone($tz);
+    return new DateTimeImmutable("@" . $timestamp)->setTimezone($tz);
 }
 
 function format_post_date_for_display(?string $value, array $config): string
@@ -806,14 +923,20 @@ function format_post_date_for_display(?string $value, array $config): string
     return format_datetime_for_display($value, $config, null);
 }
 
-function format_datetime_for_display(?string $value, array $config, ?string $format = null): string
-{
+function format_datetime_for_display(
+    ?string $value,
+    array $config,
+    ?string $format = null,
+): string {
     $dt = parse_post_datetime_with_timezone($value, $config);
     if (!$dt) {
-        return '';
+        return "";
     }
 
-    $effectiveFormat = $format !== null && trim($format) !== '' ? $format : site_date_format($config);
+    $effectiveFormat =
+        $format !== null && trim($format) !== ""
+            ? $format
+            : site_date_format($config);
     return _lang_translate_date($dt->format($effectiveFormat));
 }
 
@@ -821,32 +944,52 @@ function relative_time(int $timestamp): string
 {
     $diff = max(0, time() - $timestamp);
     if ($diff < 60) {
-        return t('admin.dashboard.time_just_now');
+        return t("admin.dashboard.time_just_now");
     }
     if ($diff < 3600) {
         $n = (int) floor($diff / 60);
-        return t($n === 1 ? 'admin.dashboard.time_minute_ago' : 'admin.dashboard.time_minutes_ago', ['n' => $n]);
+        return t(
+            $n === 1
+                ? "admin.dashboard.time_minute_ago"
+                : "admin.dashboard.time_minutes_ago",
+            ["n" => $n],
+        );
     }
     if ($diff < 86400) {
         $n = (int) floor($diff / 3600);
-        return t($n === 1 ? 'admin.dashboard.time_hour_ago' : 'admin.dashboard.time_hours_ago', ['n' => $n]);
+        return t(
+            $n === 1
+                ? "admin.dashboard.time_hour_ago"
+                : "admin.dashboard.time_hours_ago",
+            ["n" => $n],
+        );
     }
     $n = (int) floor($diff / 86400);
-    return t($n === 1 ? 'admin.dashboard.time_day_ago' : 'admin.dashboard.time_days_ago', ['n' => $n]);
+    return t(
+        $n === 1
+            ? "admin.dashboard.time_day_ago"
+            : "admin.dashboard.time_days_ago",
+        ["n" => $n],
+    );
 }
 
 function format_post_date_for_rss(?string $value, array $config): string
 {
     $dt = parse_post_datetime_with_timezone($value, $config);
     if (!$dt) {
-        return (new DateTimeImmutable('now', site_timezone_object($config)))->format(DATE_RSS);
+        return new DateTimeImmutable(
+            "now",
+            site_timezone_object($config),
+        )->format(DATE_RSS);
     }
 
     return $dt->format(DATE_RSS);
 }
 
-function get_all_posts(bool $includeDrafts = false, bool $bustCache = false): array
-{
+function get_all_posts(
+    bool $includeDrafts = false,
+    bool $bustCache = false,
+): array {
     static $cache = null;
     if ($bustCache) {
         $cache = null;
@@ -855,36 +998,47 @@ function get_all_posts(bool $includeDrafts = false, bool $bustCache = false): ar
         if (!is_dir(PUREBLOG_POSTS_PATH)) {
             $cache = [];
         } else {
-            $files = glob(PUREBLOG_POSTS_PATH . '/*.md') ?: [];
+            $files = glob(PUREBLOG_POSTS_PATH . "/*.md") ?: [];
             $posts = [];
 
             $config = load_config();
             foreach ($files as $file) {
                 $parsed = parse_post_file($file);
-                $front = $parsed['front_matter'];
-                $status = $front['status'] ?? 'draft';
+                $front = $parsed["front_matter"];
+                $status = $front["status"] ?? "draft";
 
-                $dateString = $front['date'] ?? '';
+                $dateString = $front["date"] ?? "";
                 $dt = parse_post_datetime_with_timezone($dateString, $config);
                 $timestamp = $dt ? $dt->getTimestamp() : 0;
 
-                $knownFrontKeys = ['title', 'slug', 'date', 'status', 'tags', 'description', 'categories'];
-                $extraFront = array_diff_key($front, array_flip($knownFrontKeys));
+                $knownFrontKeys = [
+                    "title",
+                    "slug",
+                    "date",
+                    "status",
+                    "tags",
+                    "description",
+                    "categories",
+                ];
+                $extraFront = array_diff_key(
+                    $front,
+                    array_flip($knownFrontKeys),
+                );
 
                 $posts[] = array_merge($extraFront, [
-                    'title' => $front['title'] ?? 'Untitled',
-                    'slug' => $front['slug'] ?? '',
-                    'date' => $dateString,
-                    'timestamp' => $timestamp,
-                    'status' => $status,
-                    'tags' => $front['tags'] ?? [],
-                    'description' => $front['description'] ?? '',
-                    'content' => $parsed['content'],
-                    'path' => $file,
+                    "title" => $front["title"] ?? "Untitled",
+                    "slug" => $front["slug"] ?? "",
+                    "date" => $dateString,
+                    "timestamp" => $timestamp,
+                    "status" => $status,
+                    "tags" => $front["tags"] ?? [],
+                    "description" => $front["description"] ?? "",
+                    "content" => $parsed["content"],
+                    "path" => $file,
                 ]);
             }
 
-            usort($posts, fn($a, $b) => ($b['timestamp'] <=> $a['timestamp']));
+            usort($posts, fn($a, $b) => $b["timestamp"] <=> $a["timestamp"]);
             $cache = $posts;
         }
     }
@@ -893,14 +1047,19 @@ function get_all_posts(bool $includeDrafts = false, bool $bustCache = false): ar
         return $cache;
     }
 
-    return array_values(array_filter($cache, fn($post) => ($post['status'] ?? 'draft') === 'published'));
+    return array_values(
+        array_filter(
+            $cache,
+            fn($post) => ($post["status"] ?? "draft") === "published",
+        ),
+    );
 }
 
 function get_post_by_slug(string $slug, bool $includeDrafts = false): ?array
 {
     $posts = get_all_posts($includeDrafts);
     foreach ($posts as $post) {
-        if ($post['slug'] === $slug) {
+        if ($post["slug"] === $slug) {
             return $post;
         }
     }
@@ -908,29 +1067,33 @@ function get_post_by_slug(string $slug, bool $includeDrafts = false): ?array
     return null;
 }
 
-function get_adjacent_posts_by_slug(string $slug, bool $includeDrafts = false): array
-{
+function get_adjacent_posts_by_slug(
+    string $slug,
+    bool $includeDrafts = false,
+): array {
     $posts = get_all_posts($includeDrafts);
     $count = count($posts);
     for ($i = 0; $i < $count; $i++) {
-        if (($posts[$i]['slug'] ?? '') !== $slug) {
+        if (($posts[$i]["slug"] ?? "") !== $slug) {
             continue;
         }
 
         return [
-            'previous' => $posts[$i + 1] ?? null,
-            'next' => $posts[$i - 1] ?? null,
+            "previous" => $posts[$i + 1] ?? null,
+            "next" => $posts[$i - 1] ?? null,
         ];
     }
 
     return [
-        'previous' => null,
-        'next' => null,
+        "previous" => null,
+        "next" => null,
     ];
 }
 
-function get_all_pages(bool $includeDrafts = false, bool $bustCache = false): array
-{
+function get_all_pages(
+    bool $includeDrafts = false,
+    bool $bustCache = false,
+): array {
     static $cache = null;
     if ($bustCache) {
         $cache = null;
@@ -939,26 +1102,26 @@ function get_all_pages(bool $includeDrafts = false, bool $bustCache = false): ar
         if (!is_dir(PUREBLOG_PAGES_PATH)) {
             $cache = [];
         } else {
-            $files = glob(PUREBLOG_PAGES_PATH . '/*.md') ?: [];
+            $files = glob(PUREBLOG_PAGES_PATH . "/*.md") ?: [];
             $pages = [];
 
             foreach ($files as $file) {
                 $parsed = parse_post_file($file);
-                $front = $parsed['front_matter'];
-                $status = $front['status'] ?? 'draft';
+                $front = $parsed["front_matter"];
+                $status = $front["status"] ?? "draft";
 
                 $pages[] = [
-                    'title' => $front['title'] ?? 'Untitled',
-                    'slug' => $front['slug'] ?? '',
-                    'status' => $status,
-                    'description' => $front['description'] ?? '',
-                    'include_in_nav' => $front['include_in_nav'] ?? true,
-                    'content' => $parsed['content'],
-                    'path' => $file,
+                    "title" => $front["title"] ?? "Untitled",
+                    "slug" => $front["slug"] ?? "",
+                    "status" => $status,
+                    "description" => $front["description"] ?? "",
+                    "include_in_nav" => $front["include_in_nav"] ?? true,
+                    "content" => $parsed["content"],
+                    "path" => $file,
                 ];
             }
 
-            usort($pages, fn($a, $b) => ($a['title'] <=> $b['title']));
+            usort($pages, fn($a, $b) => $a["title"] <=> $b["title"]);
             $cache = $pages;
         }
     }
@@ -967,14 +1130,19 @@ function get_all_pages(bool $includeDrafts = false, bool $bustCache = false): ar
         return $cache;
     }
 
-    return array_values(array_filter($cache, fn($page) => ($page['status'] ?? 'draft') === 'published'));
+    return array_values(
+        array_filter(
+            $cache,
+            fn($page) => ($page["status"] ?? "draft") === "published",
+        ),
+    );
 }
 
 function get_page_by_slug(string $slug, bool $includeDrafts = false): ?array
 {
     $pages = get_all_pages($includeDrafts);
     foreach ($pages as $page) {
-        if ($page['slug'] === $slug) {
+        if ($page["slug"] === $slug) {
             return $page;
         }
     }
@@ -982,44 +1150,48 @@ function get_page_by_slug(string $slug, bool $includeDrafts = false): ?array
     return null;
 }
 
-function save_page(array &$page, ?string $originalSlug = null, ?string $originalStatus = null, ?string &$error = null): bool
-{
+function save_page(
+    array &$page,
+    ?string $originalSlug = null,
+    ?string $originalStatus = null,
+    ?string &$error = null,
+): bool {
     $error = null;
-    $title = trim($page['title'] ?? '');
-    $slug = trim($page['slug'] ?? '');
-    $status = trim($page['status'] ?? 'draft');
-    $description = trim($page['description'] ?? '');
-    $includeInNav = (bool) ($page['include_in_nav'] ?? true);
-    $content = str_replace("\r", '', $page['content'] ?? '');
+    $title = trim($page["title"] ?? "");
+    $slug = trim($page["slug"] ?? "");
+    $status = trim($page["status"] ?? "draft");
+    $description = trim($page["description"] ?? "");
+    $includeInNav = (bool) ($page["include_in_nav"] ?? true);
+    $content = str_replace("\r", "", $page["content"] ?? "");
 
-    if ($slug === '') {
+    if ($slug === "") {
         $slug = slugify($title);
     }
 
-    if ($slug !== '') {
+    if ($slug !== "") {
         $baseSlug = $slug;
         $suffix = 2;
-        while (slug_in_use($slug, 'page', $originalSlug)) {
-            $slug = $baseSlug . '-' . $suffix;
+        while (slug_in_use($slug, "page", $originalSlug)) {
+            $slug = $baseSlug . "-" . $suffix;
             $suffix++;
         }
     }
-    $page['slug'] = $slug;
+    $page["slug"] = $slug;
 
-    $filename = $slug . '.md';
-    $path = PUREBLOG_PAGES_PATH . '/' . $filename;
+    $filename = $slug . ".md";
+    $path = PUREBLOG_PAGES_PATH . "/" . $filename;
 
     $frontMatter = [
-        'title' => $title,
-        'slug' => $slug,
-        'status' => $status,
-        'description' => $description,
-        'include_in_nav' => $includeInNav ? 'true' : 'false',
+        "title" => $title,
+        "slug" => $slug,
+        "status" => $status,
+        "description" => $description,
+        "include_in_nav" => $includeInNav ? "true" : "false",
     ];
 
     $frontLines = ["---"];
     foreach ($frontMatter as $key => $value) {
-        $frontLines[] = $key . ': ' . $value;
+        $frontLines[] = $key . ": " . $value;
     }
     $frontLines[] = "---";
 
@@ -1031,39 +1203,45 @@ function save_page(array &$page, ?string $originalSlug = null, ?string $original
 
     $existingPath = null;
     if ($originalSlug !== null && $originalSlug !== $slug) {
-        $existingPath = PUREBLOG_PAGES_PATH . '/' . $originalSlug . '.md';
+        $existingPath = PUREBLOG_PAGES_PATH . "/" . $originalSlug . ".md";
         if (!is_file($existingPath)) {
             $existingPath = null;
         }
     }
 
     if (file_put_contents($path, $body) === false) {
-        $error = 'Unable to write page file.';
+        $error = "Unable to write page file.";
         return false;
     }
 
     if ($existingPath && $existingPath !== $path) {
         if (!unlink($existingPath)) {
-            $error = 'Page saved, but could not remove the old file. Check permissions.';
+            $error =
+                "Page saved, but could not remove the old file. Check permissions.";
             return false;
         }
     }
 
-    $wasPublished = ($originalStatus === 'published');
-    $isPublished = ($status === 'published');
+    $wasPublished = $originalStatus === "published";
+    $isPublished = $status === "published";
 
     if ($isPublished) {
-        call_hook('on_page_updated', [$slug]);
+        call_hook("on_page_updated", [$slug]);
         if (!$wasPublished) {
-            call_hook('on_page_published', [$slug]);
+            call_hook("on_page_published", [$slug]);
         }
-        if ($wasPublished && $originalSlug !== null && $originalSlug !== '' && $originalSlug !== $slug) {
+        if (
+            $wasPublished &&
+            $originalSlug !== null &&
+            $originalSlug !== "" &&
+            $originalSlug !== $slug
+        ) {
             // Old URL can remain cached when a published page slug changes.
-            call_hook('on_page_deleted', [$originalSlug]);
+            call_hook("on_page_deleted", [$originalSlug]);
         }
     } elseif ($wasPublished) {
         // Page was removed from public output (unpublished).
-        call_hook('on_page_deleted', [$slug]);
+        call_hook("on_page_deleted", [$slug]);
     }
 
     get_all_pages(true, true);
@@ -1073,7 +1251,7 @@ function save_page(array &$page, ?string $originalSlug = null, ?string $original
 
 function delete_page_by_slug(string $slug): bool
 {
-    $path = PUREBLOG_PAGES_PATH . '/' . $slug . '.md';
+    $path = PUREBLOG_PAGES_PATH . "/" . $slug . ".md";
     if (!is_file($path)) {
         return false;
     }
@@ -1083,9 +1261,9 @@ function delete_page_by_slug(string $slug): bool
         return false;
     }
 
-    $imageDir = PUREBLOG_CONTENT_IMAGES_PATH . '/' . $slug;
+    $imageDir = PUREBLOG_CONTENT_IMAGES_PATH . "/" . $slug;
     if (is_dir($imageDir)) {
-        $files = glob($imageDir . '/*') ?: [];
+        $files = glob($imageDir . "/*") ?: [];
         foreach ($files as $file) {
             if (is_file($file) && !unlink($file)) {
                 return false;
@@ -1106,11 +1284,11 @@ function find_post_filepath_by_slug(string $slug): ?string
         return null;
     }
 
-    $files = glob(PUREBLOG_POSTS_PATH . '/*.md') ?: [];
+    $files = glob(PUREBLOG_POSTS_PATH . "/*.md") ?: [];
     foreach ($files as $file) {
         $parsed = parse_post_file($file);
-        $front = $parsed['front_matter'];
-        if (($front['slug'] ?? '') === $slug) {
+        $front = $parsed["front_matter"];
+        if (($front["slug"] ?? "") === $slug) {
             return $file;
         }
     }
@@ -1127,9 +1305,9 @@ function delete_post_by_slug(string $slug): bool
 
     $deleted = unlink($path);
     if ($deleted) {
-        $imageDir = PUREBLOG_CONTENT_IMAGES_PATH . '/' . $slug;
+        $imageDir = PUREBLOG_CONTENT_IMAGES_PATH . "/" . $slug;
         if (is_dir($imageDir)) {
-            $files = glob($imageDir . '/*') ?: [];
+            $files = glob($imageDir . "/*") ?: [];
             foreach ($files as $file) {
                 if (is_file($file) && !unlink($file)) {
                     return false;
@@ -1142,16 +1320,22 @@ function delete_post_by_slug(string $slug): bool
         build_search_index();
         build_tag_index();
         cache_clear();
-        call_hook('on_post_deleted', [$slug]);
+        call_hook("on_post_deleted", [$slug]);
     }
     return $deleted;
 }
 
-function slug_in_use(string $slug, string $type, ?string $originalSlug = null): bool
-{
-    if ($type === 'post') {
+function slug_in_use(
+    string $slug,
+    string $type,
+    ?string $originalSlug = null,
+): bool {
+    if ($type === "post") {
         $postPath = find_post_filepath_by_slug($slug);
-        if ($postPath !== null && ($originalSlug === null || $originalSlug !== $slug)) {
+        if (
+            $postPath !== null &&
+            ($originalSlug === null || $originalSlug !== $slug)
+        ) {
             return true;
         }
         if (get_page_by_slug($slug, true)) {
@@ -1160,7 +1344,7 @@ function slug_in_use(string $slug, string $type, ?string $originalSlug = null): 
         return false;
     }
 
-    if ($type === 'page') {
+    if ($type === "page") {
         $page = get_page_by_slug($slug, true);
         if ($page && ($originalSlug === null || $originalSlug !== $slug)) {
             return true;
@@ -1174,73 +1358,84 @@ function slug_in_use(string $slug, string $type, ?string $originalSlug = null): 
     return false;
 }
 
-function save_post(array &$post, ?string $originalSlug = null, ?string $originalDate = null, ?string $originalStatus = null, ?string &$error = null): bool
-{
+function save_post(
+    array &$post,
+    ?string $originalSlug = null,
+    ?string $originalDate = null,
+    ?string $originalStatus = null,
+    ?string &$error = null,
+): bool {
     $error = null;
-    $title = trim($post['title'] ?? '');
-    $slug = trim($post['slug'] ?? '');
-    $date = trim($post['date'] ?? '');
-    $status = trim($post['status'] ?? 'draft');
-    $tags = $post['tags'] ?? [];
-    $content = str_replace("\r", '', $post['content'] ?? '');
-    $description = trim($post['description'] ?? '');
+    $title = trim($post["title"] ?? "");
+    $slug = trim($post["slug"] ?? "");
+    $date = trim($post["date"] ?? "");
+    $status = trim($post["status"] ?? "draft");
+    $tags = $post["tags"] ?? [];
+    $content = str_replace("\r", "", $post["content"] ?? "");
+    $description = trim($post["description"] ?? "");
 
-    if ($slug === '') {
+    if ($slug === "") {
         $slug = slugify($title);
     }
 
-    if ($slug !== '') {
+    if ($slug !== "") {
         $baseSlug = $slug;
         $suffix = 2;
-        while (slug_in_use($slug, 'post', $originalSlug)) {
-            $slug = $baseSlug . '-' . $suffix;
+        while (slug_in_use($slug, "post", $originalSlug)) {
+            $slug = $baseSlug . "-" . $suffix;
             $suffix++;
         }
     }
-    $post['slug'] = $slug;
+    $post["slug"] = $slug;
 
     $config = load_config();
 
-    if ($date === '') {
+    if ($date === "") {
         $date = current_site_datetime_for_storage($config);
     }
 
-    $datePrefix = format_datetime_for_display($date, $config, 'Y-m-d');
-    if ($datePrefix === '') {
-        $datePrefix = format_datetime_for_display(current_site_datetime_for_storage($config), $config, 'Y-m-d');
+    $datePrefix = format_datetime_for_display($date, $config, "Y-m-d");
+    if ($datePrefix === "") {
+        $datePrefix = format_datetime_for_display(
+            current_site_datetime_for_storage($config),
+            $config,
+            "Y-m-d",
+        );
     }
-    $filename = $datePrefix . '-' . $slug . '.md';
-    $path = PUREBLOG_POSTS_PATH . '/' . $filename;
+    $filename = $datePrefix . "-" . $slug . ".md";
+    $path = PUREBLOG_POSTS_PATH . "/" . $filename;
 
-    $layout = trim($post['layout'] ?? '');
-    $layoutFields = is_array($post['layout_fields'] ?? null) ? $post['layout_fields'] : [];
+    $layout = trim($post["layout"] ?? "");
+    $layoutFields = is_array($post["layout_fields"] ?? null)
+        ? $post["layout_fields"]
+        : [];
 
     $frontMatter = [
-        'title' => $title,
-        'slug' => $slug,
-        'date' => $date,
-        'status' => $status,
-        'tags' => $tags,
-        'description' => $description,
+        "title" => $title,
+        "slug" => $slug,
+        "date" => $date,
+        "status" => $status,
+        "tags" => $tags,
+        "description" => $description,
     ];
 
-    if ($layout !== '') {
-        $frontMatter['layout'] = $layout;
+    if ($layout !== "") {
+        $frontMatter["layout"] = $layout;
     }
 
     foreach ($layoutFields as $fieldName => $fieldValue) {
         $fieldName = trim((string) $fieldName);
-        if ($fieldName !== '') {
+        if ($fieldName !== "") {
             $frontMatter[$fieldName] = trim((string) $fieldValue);
         }
     }
 
     $frontLines = ["---"];
     foreach ($frontMatter as $key => $value) {
-        if ($key === 'tags') {
-            $value = '[' . implode(', ', $value) . ']';
+        if ($key === "tags") {
+            $value = "[" . implode(", ", $value) . "]";
         }
-        $frontLines[] = $key . ': ' . $value;
+        $frontLines[] = $key . ": " . $value;
     }
     $frontLines[] = "---";
 
@@ -1254,19 +1449,28 @@ function save_post(array &$post, ?string $originalSlug = null, ?string $original
     $renameFrom = null;
     if ($originalSlug !== null && $originalSlug !== $slug) {
         $existingPath = find_post_filepath_by_slug($originalSlug);
-    } elseif ($originalDate !== null && $originalDate !== '') {
-        $originalPrefix = format_datetime_for_display($originalDate, $config, 'Y-m-d');
-        if ($originalPrefix === '') {
+    } elseif ($originalDate !== null && $originalDate !== "") {
+        $originalPrefix = format_datetime_for_display(
+            $originalDate,
+            $config,
+            "Y-m-d",
+        );
+        if ($originalPrefix === "") {
             $normalizedOriginal = normalize_date_value($originalDate);
-            $originalPrefix = $normalizedOriginal !== null
-                ? format_datetime_for_display($normalizedOriginal, $config, 'Y-m-d')
-                : '';
+            $originalPrefix =
+                $normalizedOriginal !== null
+                    ? format_datetime_for_display(
+                        $normalizedOriginal,
+                        $config,
+                        "Y-m-d",
+                    )
+                    : "";
         }
-        if ($originalPrefix === '') {
+        if ($originalPrefix === "") {
             $originalPrefix = $datePrefix;
         }
-        $originalFilename = $originalPrefix . '-' . $slug . '.md';
-        $candidate = PUREBLOG_POSTS_PATH . '/' . $originalFilename;
+        $originalFilename = $originalPrefix . "-" . $slug . ".md";
+        $candidate = PUREBLOG_POSTS_PATH . "/" . $originalFilename;
         if (is_file($candidate) && $candidate !== $path) {
             $renameFrom = $candidate;
         }
@@ -1274,19 +1478,20 @@ function save_post(array &$post, ?string $originalSlug = null, ?string $original
 
     if ($renameFrom !== null) {
         if (!rename($renameFrom, $path)) {
-            $error = 'Unable to rename post file after date change.';
+            $error = "Unable to rename post file after date change.";
             return false;
         }
     }
 
     if (file_put_contents($path, $body) === false) {
-        $error = 'Unable to write post file.';
+        $error = "Unable to write post file.";
         return false;
     }
 
     if ($existingPath && $existingPath !== $path) {
         if (!unlink($existingPath)) {
-            $error = 'Post saved, but could not remove the old file. Check permissions.';
+            $error =
+                "Post saved, but could not remove the old file. Check permissions.";
             return false;
         }
     }
@@ -1295,10 +1500,10 @@ function save_post(array &$post, ?string $originalSlug = null, ?string $original
     build_tag_index();
     cache_clear();
 
-    if ($status === 'published') {
-        call_hook('on_post_updated', [$slug]);
-        if ($originalStatus !== 'published') {
-            call_hook('on_post_published', [$slug]);
+    if ($status === "published") {
+        call_hook("on_post_updated", [$slug]);
+        if ($originalStatus !== "published") {
+            call_hook("on_post_published", [$slug]);
         }
     }
     return true;
@@ -1310,21 +1515,25 @@ function render_markdown(string $markdown, array $context = []): string
     $parsedown = get_markdown_parser();
 
     $html = $parsedown->text($markdown);
-    $html = apply_filter('on_render_markdown', $html);
+    $html = apply_filter("on_render_markdown", $html);
 
     return restore_private_use_emoji($html);
 }
 
 function restore_private_use_emoji(string $html): string
 {
-    if (!preg_match('/[\x{F000}-\x{F8FF}]/u', $html)) {
+    if (!preg_match("/[\x{F000}-\x{F8FF}]/u", $html)) {
         return $html;
     }
 
-    return preg_replace_callback('/[\x{F000}-\x{F8FF}]/u', static function (array $match): string {
-        $codepoint = mb_ord($match[0], 'UTF-8');
-        return mb_chr($codepoint + 0x10000, 'UTF-8');
-    }, $html) ?? $html;
+    return preg_replace_callback(
+        "/[\x{F000}-\x{F8FF}]/u",
+        static function (array $match): string {
+            $codepoint = mb_ord($match[0], "UTF-8");
+            return mb_chr($codepoint + 0x10000, "UTF-8");
+        },
+        $html,
+    ) ?? $html;
 }
 
 function get_markdown_parser(): object
@@ -1334,17 +1543,17 @@ function get_markdown_parser(): object
         return $parsedown;
     }
 
-    require_once __DIR__ . '/lib/Parsedown.php';
-    if (is_file(__DIR__ . '/lib/ParsedownExtra.php')) {
-        require_once __DIR__ . '/lib/ParsedownExtra.php';
-        if (is_file(__DIR__ . '/lib/ParsedownPureblog.php')) {
-            require_once __DIR__ . '/lib/ParsedownPureblog.php';
+    require_once __DIR__ . "/lib/Parsedown.php";
+    if (is_file(__DIR__ . "/lib/ParsedownExtra.php")) {
+        require_once __DIR__ . "/lib/ParsedownExtra.php";
+        if (is_file(__DIR__ . "/lib/ParsedownPureblog.php")) {
+            require_once __DIR__ . "/lib/ParsedownPureblog.php";
         }
     }
 
-    if (class_exists('ParsedownPureblog')) {
+    if (class_exists("ParsedownPureblog")) {
         $parsedown = new ParsedownPureblog();
-    } elseif (class_exists('ParsedownExtra')) {
+    } elseif (class_exists("ParsedownExtra")) {
         $parsedown = new ParsedownExtra();
     } else {
         $parsedown = new Parsedown();
@@ -1365,44 +1574,58 @@ function load_yaml_list(string $path): array
         return [];
     }
 
-    $items   = [];
+    $items = [];
     $current = null;
 
     // Block scalar state
-    $blockKey    = null;
-    $blockLines  = [];
+    $blockKey = null;
+    $blockLines = [];
     $blockIndent = null;
-    $blockFold   = false;
+    $blockFold = false;
 
-    $flushBlock = function () use (&$current, &$blockKey, &$blockLines, &$blockIndent, &$blockFold): void {
+    $flushBlock = function () use (
+        &$current,
+        &$blockKey,
+        &$blockLines,
+        &$blockIndent,
+        &$blockFold,
+    ): void {
         if ($blockKey === null || $current === null) {
             return;
         }
         // Remove trailing empty lines
-        while (count($blockLines) > 0 && end($blockLines) === '') {
+        while (count($blockLines) > 0 && end($blockLines) === "") {
             array_pop($blockLines);
         }
         if ($blockFold) {
-            $result = '';
+            $result = "";
             foreach ($blockLines as $bl) {
-                if ($bl === '') {
+                if ($bl === "") {
                     $result = rtrim($result) . "\n\n";
                 } else {
-                    $result .= $bl . ' ';
+                    $result .= $bl . " ";
                 }
             }
             $current[$blockKey] = rtrim($result);
         } else {
             $current[$blockKey] = implode("\n", $blockLines);
         }
-        $blockKey    = null;
-        $blockLines  = [];
+        $blockKey = null;
+        $blockLines = [];
         $blockIndent = null;
-        $blockFold   = false;
+        $blockFold = false;
     };
 
-    $parseLine = function (string $line) use (&$items, &$current, &$blockKey, &$blockLines, &$blockIndent, &$blockFold, $flushBlock): void {
-        if ($line === '' || str_starts_with(ltrim($line), '#')) {
+    $parseLine = function (string $line) use (
+        &$items,
+        &$current,
+        &$blockKey,
+        &$blockLines,
+        &$blockIndent,
+        &$blockFold,
+        $flushBlock,
+    ): void {
+        if ($line === "" || str_starts_with(ltrim($line), "#")) {
             return;
         }
 
@@ -1411,13 +1634,13 @@ function load_yaml_list(string $path): array
                 $items[] = $current;
             }
             $current = [];
-            $rest    = trim($matches[1]);
-            if ($rest !== '' && strpos($rest, ':') !== false) {
-                [$key, $value] = array_map('trim', explode(':', $rest, 2));
+            $rest = trim($matches[1]);
+            if ($rest !== "" && strpos($rest, ":") !== false) {
+                [$key, $value] = array_map("trim", explode(":", $rest, 2));
                 $value = trim($value, "\"'");
-                if ($value === '|' || $value === '>') {
-                    $blockKey  = $key;
-                    $blockFold = ($value === '>');
+                if ($value === "|" || $value === ">") {
+                    $blockKey = $key;
+                    $blockFold = $value === ">";
                 } else {
                     $current[$key] = $value;
                 }
@@ -1425,15 +1648,15 @@ function load_yaml_list(string $path): array
             return;
         }
 
-        if ($current === null || strpos(ltrim($line), ':') === false) {
+        if ($current === null || strpos(ltrim($line), ":") === false) {
             return;
         }
 
-        [$key, $value] = array_map('trim', explode(':', trim($line), 2));
+        [$key, $value] = array_map("trim", explode(":", trim($line), 2));
         $value = trim($value, "\"'");
-        if ($value === '|' || $value === '>') {
-            $blockKey  = $key;
-            $blockFold = ($value === '>');
+        if ($value === "|" || $value === ">") {
+            $blockKey = $key;
+            $blockFold = $value === ">";
         } else {
             $current[$key] = $value;
         }
@@ -1444,8 +1667,8 @@ function load_yaml_list(string $path): array
 
         if ($blockKey !== null) {
             // Blank lines are preserved within a block scalar
-            if ($line === '') {
-                $blockLines[] = '';
+            if ($line === "") {
+                $blockLines[] = "";
                 continue;
             }
 
@@ -1483,33 +1706,52 @@ function render_markdown_fragment(string $markdown): string
     return $parsedown->text($markdown);
 }
 
-function render_liquid_loop(string $markdown, string $dataFile, string $pattern): string
-{
+function render_liquid_loop(
+    string $markdown,
+    string $dataFile,
+    string $pattern,
+): string {
     if (!preg_match($pattern, $markdown, $matches)) {
         return $markdown;
     }
 
     $items = load_yaml_list($dataFile);
     if (!$items) {
-        return preg_replace($pattern, '', $markdown, 1);
+        return preg_replace($pattern, "", $markdown, 1);
     }
 
     $template = $matches[1];
-    $rendered = '';
+    $rendered = "";
     foreach ($items as $item) {
-        $chunk = preg_replace_callback('/\{\%\s*if\s+site\.feed\s*\%\}(.*?)\{\%\s*endif\s*\%\}/s', function ($m) use ($item) {
-            return !empty($item['feed']) ? $m[1] : '';
-        }, $template);
+        $chunk = preg_replace_callback(
+            "/\{\%\s*if\s+site\.feed\s*\%\}(.*?)\{\%\s*endif\s*\%\}/s",
+            function ($m) use ($item) {
+                return !empty($item["feed"]) ? $m[1] : "";
+            },
+            $template,
+        );
 
-        $chunk = preg_replace_callback('/\{\{\s*site\.([a-zA-Z0-9_]+)\s*\|\s*markdownify\s*\}\}/', function ($m) use ($item) {
-            $value = $item[$m[1]] ?? '';
-            return render_markdown_fragment($value);
-        }, $chunk);
+        $chunk = preg_replace_callback(
+            "/\{\{\s*site\.([a-zA-Z0-9_]+)\s*\|\s*markdownify\s*\}\}/",
+            function ($m) use ($item) {
+                $value = $item[$m[1]] ?? "";
+                return render_markdown_fragment($value);
+            },
+            $chunk,
+        );
 
-        $chunk = preg_replace_callback('/\{\{\s*site\.([a-zA-Z0-9_]+)\s*\}\}/', function ($m) use ($item) {
-            $value = $item[$m[1]] ?? '';
-            return htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-        }, $chunk);
+        $chunk = preg_replace_callback(
+            "/\{\{\s*site\.([a-zA-Z0-9_]+)\s*\}\}/",
+            function ($m) use ($item) {
+                $value = $item[$m[1]] ?? "";
+                return htmlspecialchars(
+                    $value,
+                    ENT_QUOTES | ENT_SUBSTITUTE,
+                    "UTF-8",
+                );
+            },
+            $chunk,
+        );
 
         $rendered .= $chunk;
     }
@@ -1519,21 +1761,37 @@ function render_liquid_loop(string $markdown, string $dataFile, string $pattern)
 
 function render_liquid_template_items(string $template, array $items): string
 {
-    $rendered = '';
+    $rendered = "";
     foreach ($items as $item) {
-        $chunk = preg_replace_callback('/\{\%\s*if\s+site\.feed\s*\%\}(.*?)\{\%\s*endif\s*\%\}/s', function ($m) use ($item) {
-            return !empty($item['feed']) ? $m[1] : '';
-        }, $template);
+        $chunk = preg_replace_callback(
+            "/\{\%\s*if\s+site\.feed\s*\%\}(.*?)\{\%\s*endif\s*\%\}/s",
+            function ($m) use ($item) {
+                return !empty($item["feed"]) ? $m[1] : "";
+            },
+            $template,
+        );
 
-        $chunk = preg_replace_callback('/\{\{\s*site\.([a-zA-Z0-9_]+)\s*\|\s*markdownify\s*\}\}/', function ($m) use ($item) {
-            $value = $item[$m[1]] ?? '';
-            return render_markdown_fragment($value);
-        }, $chunk);
+        $chunk = preg_replace_callback(
+            "/\{\{\s*site\.([a-zA-Z0-9_]+)\s*\|\s*markdownify\s*\}\}/",
+            function ($m) use ($item) {
+                $value = $item[$m[1]] ?? "";
+                return render_markdown_fragment($value);
+            },
+            $chunk,
+        );
 
-        $chunk = preg_replace_callback('/\{\{\s*site\.([a-zA-Z0-9_]+)\s*\}\}/', function ($m) use ($item) {
-            $value = $item[$m[1]] ?? '';
-            return htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-        }, $chunk);
+        $chunk = preg_replace_callback(
+            "/\{\{\s*site\.([a-zA-Z0-9_]+)\s*\}\}/",
+            function ($m) use ($item) {
+                $value = $item[$m[1]] ?? "";
+                return htmlspecialchars(
+                    $value,
+                    ENT_QUOTES | ENT_SUBSTITUTE,
+                    "UTF-8",
+                );
+            },
+            $chunk,
+        );
 
         $rendered .= $chunk;
     }
@@ -1543,41 +1801,48 @@ function render_liquid_template_items(string $template, array $items): string
 
 function render_any_data_loops(string $markdown): string
 {
-    $pattern = '/\{\%\s*for\s+site\s+in\s+site\.data\.([a-zA-Z0-9_-]+)\s*\%\}(.*?)\{\%\s*endfor\s*\%\}/s';
+    $pattern =
+        "/\{\%\s*for\s+site\s+in\s+site\.data\.([a-zA-Z0-9_-]+)\s*\%\}(.*?)\{\%\s*endfor\s*\%\}/s";
 
-    return preg_replace_callback($pattern, function (array $matches): string {
-        $dataName = $matches[1] ?? '';
-        $template = $matches[2] ?? '';
-        if ($dataName === '') {
-            return '';
-        }
+    return preg_replace_callback(
+        $pattern,
+        function (array $matches): string {
+            $dataName = $matches[1] ?? "";
+            $template = $matches[2] ?? "";
+            if ($dataName === "") {
+                return "";
+            }
 
-        $dataFile = PUREBLOG_DATA_PATH . '/' . $dataName . '.yml';
-        $items = load_yaml_list($dataFile);
-        if (!$items) {
-            return '';
-        }
+            $dataFile = PUREBLOG_DATA_PATH . "/" . $dataName . ".yml";
+            $items = load_yaml_list($dataFile);
+            if (!$items) {
+                return "";
+            }
 
-        return render_liquid_template_items($template, $items);
-    }, $markdown) ?? $markdown;
+            return render_liquid_template_items($template, $items);
+        },
+        $markdown,
+    ) ?? $markdown;
 }
 
 function protect_fenced_code_blocks(string $markdown, array &$blocks): string
 {
     $blocks = [];
     $index = 0;
-    $patterns = [
-        '/```[\s\S]*?```/',
-        '/~~~[\s\S]*?~~~/',
-    ];
+    $patterns = ["/```[\s\S]*?```/", "/~~~[\s\S]*?~~~/"];
 
     foreach ($patterns as $pattern) {
-        $markdown = preg_replace_callback($pattern, function (array $matches) use (&$blocks, &$index): string {
-            $token = '__PUREBLOG_CODE_BLOCK_' . $index . '__';
-            $blocks[$token] = $matches[0];
-            $index++;
-            return $token;
-        }, $markdown) ?? $markdown;
+        $markdown =
+            preg_replace_callback(
+                $pattern,
+                function (array $matches) use (&$blocks, &$index): string {
+                    $token = "__PUREBLOG_CODE_BLOCK_" . $index . "__";
+                    $blocks[$token] = $matches[0];
+                    $index++;
+                    return $token;
+                },
+                $markdown,
+            ) ?? $markdown;
     }
 
     return $markdown;
@@ -1597,12 +1862,16 @@ function protect_inline_code_spans(string $markdown, array &$spans): string
     $spans = [];
     $index = 0;
 
-    return preg_replace_callback('/`[^`\n]*`/', function (array $matches) use (&$spans, &$index): string {
-        $token = '__PUREBLOG_INLINE_CODE_' . $index . '__';
-        $spans[$token] = $matches[0];
-        $index++;
-        return $token;
-    }, $markdown) ?? $markdown;
+    return preg_replace_callback(
+        '/`[^`\n]*`/',
+        function (array $matches) use (&$spans, &$index): string {
+            $token = "__PUREBLOG_INLINE_CODE_" . $index . "__";
+            $spans[$token] = $matches[0];
+            $index++;
+            return $token;
+        },
+        $markdown,
+    ) ?? $markdown;
 }
 
 function restore_inline_code_spans(string $markdown, array $spans): string
@@ -1619,29 +1888,36 @@ function render_global_shortcodes(string $markdown, array $context = []): string
     static $siteEmail = null;
     if ($siteEmail === null) {
         $config = load_config();
-        $siteEmail = trim((string) ($config['site_email'] ?? ''));
+        $siteEmail = trim((string) ($config["site_email"] ?? ""));
     }
 
-    $postTitle = trim((string) ($context['post_title'] ?? ''));
-    $pageTitle = trim((string) ($context['page_title'] ?? ''));
-    $contentTitle = trim((string) ($context['content_title'] ?? ($postTitle !== '' ? $postTitle : $pageTitle)));
+    $postTitle = trim((string) ($context["post_title"] ?? ""));
+    $pageTitle = trim((string) ($context["page_title"] ?? ""));
+    $contentTitle = trim(
+        (string) ($context["content_title"] ??
+            ($postTitle !== "" ? $postTitle : $pageTitle)),
+    );
 
     $shortcodes = [
-        'site_email' => $siteEmail,
-        'site.email' => $siteEmail,
-        'post_title' => $postTitle,
-        'page_title' => $pageTitle,
-        'content_title' => $contentTitle,
+        "site_email" => $siteEmail,
+        "site.email" => $siteEmail,
+        "post_title" => $postTitle,
+        "page_title" => $pageTitle,
+        "content_title" => $contentTitle,
     ];
 
-    return preg_replace_callback('/\{\{\s*([a-zA-Z0-9_.]+)\s*\}\}/', function (array $matches) use ($shortcodes): string {
-        $key = $matches[1];
-        if (!array_key_exists($key, $shortcodes)) {
-            return $matches[0];
-        }
+    return preg_replace_callback(
+        "/\{\{\s*([a-zA-Z0-9_.]+)\s*\}\}/",
+        function (array $matches) use ($shortcodes): string {
+            $key = $matches[1];
+            if (!array_key_exists($key, $shortcodes)) {
+                return $matches[0];
+            }
 
-        return (string) $shortcodes[$key];
-    }, $markdown) ?? $markdown;
+            return (string) $shortcodes[$key];
+        },
+        $markdown,
+    ) ?? $markdown;
 }
 
 function filter_content(string $markdown, array $context = []): string
@@ -1654,7 +1930,7 @@ function filter_content(string $markdown, array $context = []): string
 
     $markdown = render_global_shortcodes($markdown, $context);
     $markdown = render_any_data_loops($markdown);
-    $markdown = apply_filter('on_filter_content', $markdown);
+    $markdown = apply_filter("on_filter_content", $markdown);
 
     $markdown = restore_inline_code_spans($markdown, $inlineCodeSpans);
 
@@ -1663,22 +1939,27 @@ function filter_content(string $markdown, array $context = []): string
 
 function get_excerpt(string $markdown, int $length = 200): string
 {
-    $parts = explode('<!--more-->', $markdown, 2);
+    $parts = explode("<!--more-->", $markdown, 2);
     $excerpt = $parts[0];
-    $excerpt = preg_replace('/```.*?```/s', ' ', $excerpt) ?? $excerpt;
-    $excerpt = preg_replace('/`[^`]*`/', ' ', $excerpt) ?? $excerpt;
-    $excerpt = preg_replace('/!\[[^\]]*\]\([^)]+\)/', ' ', $excerpt) ?? $excerpt;
-    $excerpt = preg_replace('/\[([^\]]*)\]\([^)]+\)/', '$1', $excerpt) ?? $excerpt;
-    $excerpt = preg_replace('/^[ \t]*[-*>]+[ \t]*/m', ' ', $excerpt) ?? $excerpt; // list markers / blockquotes
-    $excerpt = preg_replace('/^[ \t]*#{1,6}[ \t]+/m', ' ', $excerpt) ?? $excerpt;  // ATX headings
-    $excerpt = preg_replace('/^[-*_]{2,}[ \t]*$/m', ' ', $excerpt) ?? $excerpt;    // setext headers / HR
-    $excerpt = preg_replace('/[*_~]+/', '', $excerpt) ?? $excerpt;                  // inline emphasis
+    $excerpt = preg_replace("/```.*?```/s", " ", $excerpt) ?? $excerpt;
+    $excerpt = preg_replace("/{{.*?}}/s", " ", $excerpt) ?? $excerpt;
+    $excerpt = preg_replace("/`[^`]*`/", " ", $excerpt) ?? $excerpt;
+    $excerpt =
+        preg_replace("/!\[[^\]]*\]\([^)]+\)/", " ", $excerpt) ?? $excerpt;
+    $excerpt =
+        preg_replace("/\[([^\]]*)\]\([^)]+\)/", '$1', $excerpt) ?? $excerpt;
+    $excerpt =
+        preg_replace('/^[ \t]*[-*>]+[ \t]*/m', " ", $excerpt) ?? $excerpt; // list markers / blockquotes
+    $excerpt =
+        preg_replace('/^[ \t]*#{1,6}[ \t]+/m', " ", $excerpt) ?? $excerpt; // ATX headings
+    $excerpt = preg_replace('/^[-*_]{2,}[ \t]*$/m', " ", $excerpt) ?? $excerpt; // setext headers / HR
+    $excerpt = preg_replace("/[*_~]+/", "", $excerpt) ?? $excerpt; // inline emphasis
     $excerpt = strip_tags($excerpt);
-    $excerpt = preg_replace('/\s+/', ' ', $excerpt) ?? $excerpt;
+    $excerpt = preg_replace("/\s+/", " ", $excerpt) ?? $excerpt;
     $excerpt = trim($excerpt);
 
     if (mb_strlen($excerpt) > $length) {
-        return rtrim(mb_substr($excerpt, 0, $length)) . '...';
+        return rtrim(mb_substr($excerpt, 0, $length)) . "...";
     }
 
     return $excerpt;
@@ -1691,25 +1972,36 @@ function normalize_tag(string $tag): string
 
 function render_tag_links(array $tags): string
 {
-    $tags = array_values(array_filter(array_map('trim', $tags)));
+    $tags = array_values(array_filter(array_map("trim", $tags)));
     if (!$tags) {
-        return '';
+        return "";
     }
 
     $links = [];
     foreach ($tags as $tag) {
         $slug = normalize_tag($tag);
-        $links[] = '<a href="' . base_path() . '/tag/' . e(rawurlencode($slug)) . '">' . e($tag) . '</a>';
+        $links[] =
+            '<a href="' .
+            base_path() .
+            "/tag/" .
+            e(rawurlencode($slug)) .
+            '">' .
+            e($tag) .
+            "</a>";
     }
 
-    return implode(', ', $links);
+    return implode(", ", $links);
 }
 
 function render_layout_partial(string $name, array $context = []): string
 {
-    $partialPath = resolve_template_file($name, PUREBLOG_BASE_PATH . '/content/includes', PUREBLOG_BASE_PATH . '/includes');
+    $partialPath = resolve_template_file(
+        $name,
+        PUREBLOG_BASE_PATH . "/content/includes",
+        PUREBLOG_BASE_PATH . "/includes",
+    );
     if ($partialPath === null) {
-        return '';
+        return "";
     }
 
     extract($context, EXTR_SKIP);
@@ -1723,32 +2015,43 @@ function render_layout_partial(string $name, array $context = []): string
 
 function resolve_layout_file(string $name): ?string
 {
-    return resolve_template_file($name, PUREBLOG_BASE_PATH . '/content/includes', PUREBLOG_BASE_PATH . '/includes');
+    return resolve_template_file(
+        $name,
+        PUREBLOG_BASE_PATH . "/content/includes",
+        PUREBLOG_BASE_PATH . "/includes",
+    );
 }
 
 function find_include(string $name): ?string
 {
-    return resolve_template_file($name, PUREBLOG_BASE_PATH . '/content/includes', PUREBLOG_BASE_PATH . '/includes');
+    return resolve_template_file(
+        $name,
+        PUREBLOG_BASE_PATH . "/content/includes",
+        PUREBLOG_BASE_PATH . "/includes",
+    );
 }
 
-function resolve_template_file(string $name, string $userDir, string $coreDir): ?string
-{
+function resolve_template_file(
+    string $name,
+    string $userDir,
+    string $coreDir,
+): ?string {
     $name = trim($name);
-    if ($name === '') {
+    if ($name === "") {
         return null;
     }
 
-    $safeName = preg_replace('/[^a-zA-Z0-9_-]/', '', $name) ?? '';
+    $safeName = preg_replace("/[^a-zA-Z0-9_-]/", "", $name) ?? "";
     if ($safeName !== $name) {
         return null;
     }
 
-    $userPath = rtrim($userDir, '/') . '/' . $safeName . '.php';
+    $userPath = rtrim($userDir, "/") . "/" . $safeName . ".php";
     if (is_file($userPath)) {
         return $userPath;
     }
 
-    $corePath = rtrim($coreDir, '/') . '/' . $safeName . '.php';
+    $corePath = rtrim($coreDir, "/") . "/" . $safeName . ".php";
     if (is_file($corePath)) {
         return $corePath;
     }
@@ -1756,35 +2059,44 @@ function resolve_template_file(string $name, string $userDir, string $coreDir): 
     return null;
 }
 
-function get_contextual_inject(array $config, string $region, array $context = []): string
-{
-    $postKey = $region . '_inject_post';
-    $pageKey = $region . '_inject_page';
-    $isPostView = isset($context['post']) && is_array($context['post']);
+function get_contextual_inject(
+    array $config,
+    string $region,
+    array $context = [],
+): string {
+    $postKey = $region . "_inject_post";
+    $pageKey = $region . "_inject_page";
+    $isPostView = isset($context["post"]) && is_array($context["post"]);
 
     if ($isPostView) {
-        return (string) ($config[$postKey] ?? '');
+        return (string) ($config[$postKey] ?? "");
     }
 
     // Fallback: page inject applies to page views and all other front-end views.
-    return (string) ($config[$pageKey] ?? '');
+    return (string) ($config[$pageKey] ?? "");
 }
 
 function render_footer_layout(array $config, array $context = []): void
 {
-    $footerPath = resolve_layout_file('footer') ?? (PUREBLOG_BASE_PATH . '/includes/footer.php');
+    $footerPath =
+        resolve_layout_file("footer") ??
+        PUREBLOG_BASE_PATH . "/includes/footer.php";
 
     extract($context, EXTR_SKIP);
     ob_start();
     include $footerPath;
     $output = (string) ob_get_clean();
 
-    $footerInject = trim(get_contextual_inject($config, 'footer', $context));
-    if ($footerInject !== '') {
-        $needle = '</footer>';
+    $footerInject = trim(get_contextual_inject($config, "footer", $context));
+    if ($footerInject !== "") {
+        $needle = "</footer>";
         $pos = strripos($output, $needle);
         if ($pos !== false) {
-            $output = substr($output, 0, $pos) . $footerInject . "\n" . substr($output, $pos);
+            $output =
+                substr($output, 0, $pos) .
+                $footerInject .
+                "\n" .
+                substr($output, $pos);
         } else {
             $output .= "\n" . $footerInject . "\n";
         }
@@ -1795,25 +2107,33 @@ function render_footer_layout(array $config, array $context = []): void
 
 function render_masthead_layout(array $config, array $context = []): void
 {
-    $mastheadPath = resolve_layout_file('masthead') ?? (PUREBLOG_BASE_PATH . '/includes/masthead.php');
+    $mastheadPath =
+        resolve_layout_file("masthead") ??
+        PUREBLOG_BASE_PATH . "/includes/masthead.php";
 
-    $siteTagline = trim((string) ($config['site_tagline'] ?? ''));
-    $uriPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?? '/';
+    $siteTagline = trim((string) ($config["site_tagline"] ?? ""));
+    $uriPath = parse_url($_SERVER["REQUEST_URI"] ?? "/", PHP_URL_PATH) ?? "/";
     $bp = base_path();
-    if ($bp !== '' && str_starts_with($uriPath, $bp)) {
+    if ($bp !== "" && str_starts_with($uriPath, $bp)) {
         $uriPath = substr($uriPath, strlen($bp));
     }
-    $currentPath = trim($uriPath, '/');
+    $currentPath = trim($uriPath, "/");
     $navPages = get_all_pages(false);
-    $navPages = array_values(array_filter($navPages, fn($page) => ($page['include_in_nav'] ?? true)));
-    $customNavItems = array_values(array_filter(parse_custom_nav($config['custom_nav'] ?? ''), function (array $item): bool {
-        $url = $item['url'] ?? '';
-        if ($url === '' || $url[0] === '/') {
-            return true;
-        }
-        $scheme = strtolower((string) parse_url($url, PHP_URL_SCHEME));
-        return in_array($scheme, ['http', 'https'], true);
-    }));
+    $navPages = array_values(
+        array_filter($navPages, fn($page) => $page["include_in_nav"] ?? true),
+    );
+    $customNavItems = array_values(
+        array_filter(parse_custom_nav($config["custom_nav"] ?? ""), function (
+            array $item,
+        ): bool {
+            $url = $item["url"] ?? "";
+            if ($url === "" || $url[0] === "/") {
+                return true;
+            }
+            $scheme = strtolower((string) parse_url($url, PHP_URL_SCHEME));
+            return in_array($scheme, ["http", "https"], true);
+        }),
+    );
 
     extract($context, EXTR_SKIP);
     include $mastheadPath;
@@ -1825,14 +2145,14 @@ function parse_custom_nav(string $raw): array
     $lines = preg_split('/\r\n|\r|\n/', $raw) ?: [];
     foreach ($lines as $line) {
         $line = trim($line);
-        if ($line === '' || !str_contains($line, '|')) {
+        if ($line === "" || !str_contains($line, "|")) {
             continue;
         }
-        [$label, $url] = array_map('trim', explode('|', $line, 2));
-        if ($label === '' || $url === '') {
+        [$label, $url] = array_map("trim", explode("|", $line, 2));
+        if ($label === "" || $url === "") {
             continue;
         }
-        $items[] = ['label' => $label, 'url' => $url];
+        $items[] = ["label" => $label, "url" => $url];
     }
     return $items;
 }
@@ -1848,27 +2168,31 @@ function parse_custom_routes(string $raw): array
 
     foreach ($lines as $line) {
         $line = trim($line);
-        if ($line === '' || str_starts_with($line, '#') || !str_contains($line, '|')) {
+        if (
+            $line === "" ||
+            str_starts_with($line, "#") ||
+            !str_contains($line, "|")
+        ) {
             continue;
         }
 
-        [$path, $target] = array_map('trim', explode('|', $line, 2));
-        if ($path === '' || $target === '') {
+        [$path, $target] = array_map("trim", explode("|", $line, 2));
+        if ($path === "" || $target === "") {
             continue;
         }
 
-        if ($path[0] !== '/') {
-            $path = '/' . $path;
+        if ($path[0] !== "/") {
+            $path = "/" . $path;
         }
 
-        if ($path !== '/') {
-            $path = rtrim($path, '/');
+        if ($path !== "/") {
+            $path = rtrim($path, "/");
         }
 
         if (
-            ($path !== '/' && !preg_match('#^/[a-zA-Z0-9/_-]+$#', $path))
-            || str_contains($path, '//')
-            || str_contains($path, '..')
+            ($path !== "/" && !preg_match('#^/[a-zA-Z0-9/_-]+$#', $path)) ||
+            str_contains($path, "//") ||
+            str_contains($path, "..")
         ) {
             continue;
         }
@@ -1879,8 +2203,8 @@ function parse_custom_routes(string $raw): array
         $seen[$path] = true;
 
         $items[] = [
-            'path' => $path,
-            'target' => $target,
+            "path" => $path,
+            "target" => $target,
         ];
     }
 
@@ -1889,27 +2213,27 @@ function parse_custom_routes(string $raw): array
 
 function resolve_custom_route_template(string $target): ?string
 {
-    $target = str_replace('\\', '/', trim($target));
-    if ($target === '') {
+    $target = str_replace("\\", "/", trim($target));
+    if ($target === "") {
         return null;
     }
 
     $targetPath = $target;
-    if (!str_starts_with($targetPath, '/')) {
-        $targetPath = '/content/includes/' . ltrim($targetPath, '/');
+    if (!str_starts_with($targetPath, "/")) {
+        $targetPath = "/content/includes/" . ltrim($targetPath, "/");
     }
 
-    if (!str_starts_with($targetPath, '/content/includes/')) {
+    if (!str_starts_with($targetPath, "/content/includes/")) {
         return null;
     }
 
-    if (!str_ends_with(strtolower($targetPath), '.php')) {
+    if (!str_ends_with(strtolower($targetPath), ".php")) {
         return null;
     }
 
     $fullPath = PUREBLOG_BASE_PATH . $targetPath;
     $resolvedPath = realpath($fullPath);
-    $allowedRoot = realpath(PUREBLOG_BASE_PATH . '/content/includes');
+    $allowedRoot = realpath(PUREBLOG_BASE_PATH . "/content/includes");
 
     if ($resolvedPath === false || $allowedRoot === false) {
         return null;
@@ -1925,59 +2249,75 @@ function resolve_custom_route_template(string $target): ?string
 function filter_posts_by_query(array $posts, string $query): array
 {
     $query = trim($query);
-    if ($query === '') {
+    if ($query === "") {
         return $posts;
     }
 
     // Split into individual words so multi-word queries match posts containing all terms
-    $words = preg_split('/\s+/u', mb_strtolower($query), -1, PREG_SPLIT_NO_EMPTY);
+    $words = preg_split(
+        "/\s+/u",
+        mb_strtolower($query),
+        -1,
+        PREG_SPLIT_NO_EMPTY,
+    );
     if (empty($words)) {
         return $posts;
     }
 
-    return array_values(array_filter($posts, function (array $post) use ($words): bool {
-        $raw = implode(' ', [
-            (string) ($post['title'] ?? ''),
-            (string) ($post['description'] ?? ''),
-            (string) ($post['excerpt'] ?? ''),
-            implode(' ', $post['tags'] ?? []),
-        ]);
-        // Strip emoji and other non-letter/digit/punctuation characters so they
-        // don't prevent matches (e.g. a title like "📚 Flybot" still matches "flybot")
-        $haystack = mb_strtolower((string) preg_replace('/[^\p{L}\p{N}\p{P}\s]/u', ' ', $raw));
-        foreach ($words as $word) {
-            if (mb_strpos($haystack, $word) === false) {
-                return false;
+    return array_values(
+        array_filter($posts, function (array $post) use ($words): bool {
+            $raw = implode(" ", [
+                (string) ($post["title"] ?? ""),
+                (string) ($post["description"] ?? ""),
+                (string) ($post["excerpt"] ?? ""),
+                implode(" ", $post["tags"] ?? []),
+            ]);
+            // Strip emoji and other non-letter/digit/punctuation characters so they
+            // don't prevent matches (e.g. a title like "📚 Flybot" still matches "flybot")
+            $haystack = mb_strtolower(
+                (string) preg_replace("/[^\p{L}\p{N}\p{P}\s]/u", " ", $raw),
+            );
+            foreach ($words as $word) {
+                if (mb_strpos($haystack, $word) === false) {
+                    return false;
+                }
             }
-        }
-        return true;
-    }));
+            return true;
+        }),
+    );
 }
 
 function build_search_index(): bool
 {
     $config = load_config();
-    $excerptLength = (int) ($config['search_excerpt_length'] ?? 2500);
+    $excerptLength = (int) ($config["search_excerpt_length"] ?? 2500);
     $posts = get_all_posts(false, true);
     $index = array_map(function (array $post) use ($excerptLength): array {
-        $content = (string) ($post['content'] ?? '');
-        $excerpt = $excerptLength === 0 ? $content : get_excerpt($content, $excerptLength);
+        $content = (string) ($post["content"] ?? "");
+        $excerpt =
+            $excerptLength === 0
+                ? $content
+                : get_excerpt($content, $excerptLength);
         return [
-            'title' => (string) ($post['title'] ?? ''),
-            'slug' => (string) ($post['slug'] ?? ''),
-            'date' => (string) ($post['date'] ?? ''),
-            'tags' => $post['tags'] ?? [],
-            'description' => (string) ($post['description'] ?? ''),
-            'excerpt' => $excerpt,
+            "title" => (string) ($post["title"] ?? ""),
+            "slug" => (string) ($post["slug"] ?? ""),
+            "date" => (string) ($post["date"] ?? ""),
+            "tags" => $post["tags"] ?? [],
+            "description" => (string) ($post["description"] ?? ""),
+            "excerpt" => $excerpt,
         ];
     }, $posts);
 
-    $json = json_encode($index, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    $json = json_encode(
+        $index,
+        JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES,
+    );
     if ($json === false) {
         return false;
     }
 
-    return file_put_contents(PUREBLOG_SEARCH_INDEX_PATH, $json, LOCK_EX) !== false;
+    return file_put_contents(PUREBLOG_SEARCH_INDEX_PATH, $json, LOCK_EX) !==
+        false;
 }
 
 function build_tag_index(): bool
@@ -1985,24 +2325,27 @@ function build_tag_index(): bool
     $posts = get_all_posts(false, true);
     $index = [];
     foreach ($posts as $post) {
-        $slug = (string) ($post['slug'] ?? '');
-        if ($slug === '') {
+        $slug = (string) ($post["slug"] ?? "");
+        if ($slug === "") {
             continue;
         }
-        foreach ($post['tags'] ?? [] as $tag) {
+        foreach ($post["tags"] ?? [] as $tag) {
             $tag = trim((string) $tag);
             $tagSlug = normalize_tag($tag);
-            if ($tagSlug === '') {
+            if ($tagSlug === "") {
                 continue;
             }
             if (!isset($index[$tagSlug])) {
-                $index[$tagSlug] = ['name' => $tag, 'posts' => []];
+                $index[$tagSlug] = ["name" => $tag, "posts" => []];
             }
-            $index[$tagSlug]['posts'][] = $slug;
+            $index[$tagSlug]["posts"][] = $slug;
         }
     }
 
-    $json = json_encode($index, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    $json = json_encode(
+        $index,
+        JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES,
+    );
     if ($json === false) {
         return false;
     }
@@ -2050,22 +2393,22 @@ function paginate_posts(array $posts, int $perPage, int $currentPage): array
     $pagedPosts = array_slice($posts, $offset, $perPage);
 
     return [
-        'posts' => $pagedPosts,
-        'totalPosts' => $totalPosts,
-        'totalPages' => $totalPages,
-        'currentPage' => $currentPage,
+        "posts" => $pagedPosts,
+        "totalPosts" => $totalPosts,
+        "totalPages" => $totalPages,
+        "currentPage" => $currentPage,
     ];
 }
 
 function cache_should_bypass(array $config): bool
 {
-    if (empty($config['cache']['enabled'])) {
+    if (empty($config["cache"]["enabled"])) {
         return true;
     }
-    if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'GET') {
+    if (($_SERVER["REQUEST_METHOD"] ?? "GET") !== "GET") {
         return true;
     }
-    if (isset($_GET['q'])) {
+    if (isset($_GET["q"])) {
         return true;
     }
     if (!empty($_COOKIE[session_name()])) {
@@ -2077,18 +2420,18 @@ function cache_should_bypass(array $config): bool
     return false;
 }
 
-function get_cache_file_path(string $key, string $ext = 'html'): string
+function get_cache_file_path(string $key, string $ext = "html"): string
 {
-    return PUREBLOG_CACHE_PATH . '/' . md5($key) . '.' . $ext;
+    return PUREBLOG_CACHE_PATH . "/" . md5($key) . "." . $ext;
 }
 
-function cache_read(string $key, int $ttl = 0, string $ext = 'html'): ?string
+function cache_read(string $key, int $ttl = 0, string $ext = "html"): ?string
 {
     $path = get_cache_file_path($key, $ext);
     if (!is_file($path)) {
         return null;
     }
-    if ($ttl > 0 && (time() - filemtime($path)) > $ttl) {
+    if ($ttl > 0 && time() - filemtime($path) > $ttl) {
         @unlink($path);
         return null;
     }
@@ -2096,31 +2439,35 @@ function cache_read(string $key, int $ttl = 0, string $ext = 'html'): ?string
     return $content !== false ? $content : null;
 }
 
-function cache_write(string $key, string $content, string $ext = 'html'): void
+function cache_write(string $key, string $content, string $ext = "html"): void
 {
     if (!is_dir(PUREBLOG_CACHE_PATH)) {
         mkdir(PUREBLOG_CACHE_PATH, 0755, true);
     }
-    $timestamp = gmdate('Y-m-d H:i:s') . ' UTC';
-    if ($ext === 'xml') {
-        $content = str_replace('</rss>', '<!-- Cached at ' . $timestamp . " -->\n</rss>", $content);
+    $timestamp = gmdate("Y-m-d H:i:s") . " UTC";
+    if ($ext === "xml") {
+        $content = str_replace(
+            "</rss>",
+            "<!-- Cached at " . $timestamp . " -->\n</rss>",
+            $content,
+        );
     } else {
-        $content .= "\n<!-- Cached at " . $timestamp . ' -->';
+        $content .= "\n<!-- Cached at " . $timestamp . " -->";
     }
     file_put_contents(get_cache_file_path($key, $ext), $content, LOCK_EX);
 }
 
 function get_layouts(): array
 {
-    $dir = PUREBLOG_BASE_PATH . '/content/layouts';
+    $dir = PUREBLOG_BASE_PATH . "/content/layouts";
     if (!is_dir($dir)) {
         return [];
     }
-    $files = glob($dir . '/*.php') ?: [];
+    $files = glob($dir . "/*.php") ?: [];
     $layouts = [];
     foreach ($files as $file) {
-        $name = basename($file, '.php');
-        $jsonFile = $dir . '/' . $name . '.json';
+        $name = basename($file, ".php");
+        $jsonFile = $dir . "/" . $name . ".json";
         $fields = [];
         $label = $name;
         if (is_file($jsonFile)) {
@@ -2128,24 +2475,33 @@ function get_layouts(): array
             if ($json !== false) {
                 $decoded = json_decode($json, true);
                 if (is_array($decoded)) {
-                    $label = trim((string) ($decoded['label'] ?? $name));
-                    if ($label === '') {
+                    $label = trim((string) ($decoded["label"] ?? $name));
+                    if ($label === "") {
                         $label = $name;
                     }
-                    $fields = is_array($decoded['fields'] ?? null) ? $decoded['fields'] : [];
+                    $fields = is_array($decoded["fields"] ?? null)
+                        ? $decoded["fields"]
+                        : [];
                 }
             }
         }
-        $layouts[] = ['name' => $name, 'label' => $label, 'fields' => $fields];
+        $layouts[] = ["name" => $name, "label" => $label, "fields" => $fields];
     }
     return $layouts;
 }
 
-function layout_context(?array $post = null, ?array $config = null, ?array $adjacentPosts = null): array
-{
-    static $ctx = ['post' => [], 'config' => [], 'adjacentPosts' => []];
+function layout_context(
+    ?array $post = null,
+    ?array $config = null,
+    ?array $adjacentPosts = null,
+): array {
+    static $ctx = ["post" => [], "config" => [], "adjacentPosts" => []];
     if ($post !== null) {
-        $ctx = ['post' => $post, 'config' => $config ?? [], 'adjacentPosts' => $adjacentPosts ?? []];
+        $ctx = [
+            "post" => $post,
+            "config" => $config ?? [],
+            "adjacentPosts" => $adjacentPosts ?? [],
+        ];
     }
     return $ctx;
 }
@@ -2153,16 +2509,20 @@ function layout_context(?array $post = null, ?array $config = null, ?array $adja
 function render_post_navigation(): string
 {
     $ctx = layout_context();
-    return render_layout_partial('post-meta', [
-        'post' => $ctx['post'],
-        'config' => $ctx['config'],
-        'previous_post' => $ctx['adjacentPosts']['previous'] ?? null,
-        'next_post' => $ctx['adjacentPosts']['next'] ?? null,
+    return render_layout_partial("post-meta", [
+        "post" => $ctx["post"],
+        "config" => $ctx["config"],
+        "previous_post" => $ctx["adjacentPosts"]["previous"] ?? null,
+        "next_post" => $ctx["adjacentPosts"]["next"] ?? null,
     ]);
 }
 
-function render_layout_file(string $file, array $post, array $config, array $adjacentPosts): void
-{
+function render_layout_file(
+    string $file,
+    array $post,
+    array $config,
+    array $adjacentPosts,
+): void {
     layout_context($post, $config, $adjacentPosts);
     include $file;
 }
@@ -2172,7 +2532,7 @@ function cache_clear(): void
     if (!is_dir(PUREBLOG_CACHE_PATH)) {
         return;
     }
-    $files = glob(PUREBLOG_CACHE_PATH . '/*') ?: [];
+    $files = glob(PUREBLOG_CACHE_PATH . "/*") ?: [];
     foreach ($files as $file) {
         if (is_file($file)) {
             @unlink($file);
@@ -2182,29 +2542,34 @@ function cache_clear(): void
 
 function detect_current_pureblog_version(): string
 {
-    $versionFile = PUREBLOG_BASE_PATH . '/VERSION';
+    $versionFile = PUREBLOG_BASE_PATH . "/VERSION";
     if (is_file($versionFile)) {
         $raw = @file_get_contents($versionFile);
         if (is_string($raw)) {
             $fromFile = trim($raw);
-            if ($fromFile !== '') {
+            if ($fromFile !== "") {
                 return $fromFile;
             }
         }
     }
 
-    if (defined('PUREBLOG_VERSION') && is_string(PUREBLOG_VERSION) && PUREBLOG_VERSION !== '' && strtolower(PUREBLOG_VERSION) !== 'unknown') {
+    if (
+        defined("PUREBLOG_VERSION") &&
+        is_string(PUREBLOG_VERSION) &&
+        PUREBLOG_VERSION !== "" &&
+        strtolower(PUREBLOG_VERSION) !== "unknown"
+    ) {
         return PUREBLOG_VERSION;
     }
 
-    return 'unknown';
+    return "unknown";
 }
 
 function normalize_version_label(string $version): string
 {
     $trimmed = trim($version);
-    if ($trimmed === '') {
-        return 'unknown';
+    if ($trimmed === "") {
+        return "unknown";
     }
 
     return ltrim($trimmed, "vV");
@@ -2215,17 +2580,17 @@ function versions_match(string $current, string $latest): bool
     $a = strtolower(trim($current));
     $b = strtolower(trim($latest));
 
-    if ($a === '' || $b === '') {
+    if ($a === "" || $b === "") {
         return false;
     }
 
-    $a = ltrim($a, 'v');
-    $b = ltrim($b, 'v');
+    $a = ltrim($a, "v");
+    $b = ltrim($b, "v");
 
     return $a === $b;
 }
 
-$_userFunctions = PUREBLOG_BASE_PATH . '/content/functions.php';
+$_userFunctions = PUREBLOG_BASE_PATH . "/content/functions.php";
 if (is_file($_userFunctions)) {
     require $_userFunctions;
 }

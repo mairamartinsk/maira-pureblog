@@ -20,4 +20,4 @@ I'm still committed to Piano Career Academy ([PCA](https://www.pianocareeracadem
 <lite-youtube videoid="S9v6N9Vmkwo"></lite-youtube>
 *Bella Ciao (La Casa de Papel), ultra easy Flowkey arrangement.*
 
-<p class="notice">This content was originally published in July 2021. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.</p>
+This content was originally published in July 2021. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.{.notice}

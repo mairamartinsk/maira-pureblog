@@ -1,0 +1,10 @@
+{
+	"label": "Featured",
+	"fields": [
+		{
+			"name": "featuredImage",
+			"label": "Featured image",
+			"type": "text"
+		}
+	]
+}

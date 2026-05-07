@@ -15,4 +15,4 @@ While we wait for me to get there, here's my humble contribution as an adult beg
 
 <lite-youtube videoid="tpu5YUQzL3s"></lite-youtube>
 
-<p class="notice">This content was originally published in September 2022. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.</p>
+This content was originally published in September 2022. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.{.notice}

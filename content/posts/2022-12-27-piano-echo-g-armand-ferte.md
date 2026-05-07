@@ -13,4 +13,4 @@ description:
 
 [Armand Ferté](https://musopus.net/musicians/ferte-emile-georges-armand/) (1881 — 1973) was a French pianist, conductor and music teacher. [Schott Music](https://www.schott-music.com/en/person/index/index/urlkey/armand-ferte) has an extensive collection of his works.
 
-<p class="notice">This content was originally published in December 2022. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.</p>
+This content was originally published in December 2022. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.{.notice}

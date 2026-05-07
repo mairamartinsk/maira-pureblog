@@ -19,4 +19,4 @@ description:
 
 ![Astro's last photo](/content/images/week-25-the-flood/astro-last-photo_1200.jpg)
 
-This is the last photo I took of him, the night before. His entire life he got a carrot for dessert while humans had dinner. That night I thought we should skip it. This is him protesting in the kitchen. I thought he looked so cute when angry, so I took the photo, and then gave him a huge carrot! Tomorrow is 3 months since he died.
+This is the last photo I took of him, the night before. His entire life he got a carrot for dessert while we had dinner. That night I thought we should skip it. This is him protesting in the kitchen. I thought he looked so cute when angry, so I took the photo and then gave him a huge carrot! Tomorrow is 3 months since he died.

@@ -15,4 +15,4 @@ Here's *Un bel dì, vedremo* (One fine day we'll see), an aria from the opera Ma
 
 The sheet music is FREE, courtesy of [MakingMusicFun](https://www.makingmusicfun.net/htm/f_printit_free_printable_sheet_music/madame-butterfly-piano).
 
-<p class="notice">This content was originally published in May 2021. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.</p>
+This content was originally published in May 2021. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.{.notice}

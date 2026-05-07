@@ -13,4 +13,4 @@ Yet another of Reinagle's charming 18th century [miniatures](https://www.schott-
 
 A curious note: the original edition by Reinagle contains **zero** indications — not even *legato* / *stacatto* dynamics —, because it was common in his time for the teacher to adapt the material to the student. I think it's interesting that today we consider all written music as basically holy and immutable, but for most of our musical history, because we didn't really have recordings, music was actually fluid and improvised. Each performer added their little touch to the piece!
 
-<p class="notice">This content was originally published in February 2023. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.</p>
+This content was originally published in February 2023. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.{.notice}

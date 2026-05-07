@@ -15,5 +15,7 @@ Better one week later than never. This "week" covers March 9 to 22 and the entir
 - We took Luna for a walk around Salto de la Novia, a 30m tall waterfall near Valencia. I miss [Astro](/goodbye-astro) a lot, but it is so good to be able to take the car and go for long walks in nature! 🏞️
 
 ![20260317_fallas_01](/content/images/week-21-fallas-edition/20260317_fallas_01.jpg)
+{{
 ![20260322_brunch-villa-indiano](/content/images/week-21-fallas-edition/20260322_brunch-villa-indiano.jpg)
 ![20260323_salto-de-la-novia](/content/images/week-21-fallas-edition/20260323_salto-de-la-novia.jpg)
+}}

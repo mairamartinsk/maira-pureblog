@@ -19,4 +19,4 @@ I keep practicing 1 to 2 hours a day and can feel my speed reading music is impr
 
 <lite-youtube videoid="CoxcEvLPzdE"></lite-youtube>
 
-<p class="notice">This content was originally published in Feb. 2021. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.</p>
+This content was originally published in Feb. 2021. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.{.notice}

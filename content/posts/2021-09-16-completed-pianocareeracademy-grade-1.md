@@ -25,4 +25,4 @@ I haven't recorded everything in the book (I skipped all exercises), but I did r
 <lite-youtube videoid="vRHzXWhqBX0"></lite-youtube>
 *Amateur Angler, by Starokadomsky (piano duet, RSPP piece no. 89)*
 
-<p class="notice">This content was originally published in August 2021. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.</p>
+This content was originally published in August 2021. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.{.notice}

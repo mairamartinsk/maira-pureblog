@@ -59,6 +59,31 @@ $paginationQueryParams =
                                 "post_title" => (string) ($post["title"] ?? ""),
                             ]) ?>
                         <?php endif; ?>
+
+                        <!-- Featured image layout -->
+                         <?php if ($post["layout"] === "featured"): ?>
+                            <h2><a href="<?= base_path() ?>/<?= e(
+    $post["slug"],
+) ?>"><?= e($post["title"]) ?></a></h2>
+                    <?php
+                    $excerptSource = trim(
+                        (string) ($post["description"] ?? ""),
+                    );
+                    if ($excerptSource === "") {
+                        $excerptSource = get_excerpt($post["content"]);
+                    }
+                    ?>
+                    <img alt="<?= $post["title"] ?>" src="<?= $post[
+    "featuredImage"
+] ?>" loading="lazy">
+                        <p class="post-excerpt"><?= e($excerptSource) ?></p>
+                        <?php if (!empty($post["tags"])): ?>
+                            <p class="tag-list"><?= render_tag_links(
+                                $post["tags"],
+                            ) ?></p>
+                        <?php endif; ?>
+
+                    <?php endif; ?>
                     <?php else: ?>
                     <!-- Default layout (excerpts) -->
                     <h2><a href="<?= base_path() ?>/<?= e(

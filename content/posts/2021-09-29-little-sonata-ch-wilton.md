@@ -13,4 +13,4 @@ Sonatina in C (or "Little Sonata") is a prep grade piece by Charles Henry Wilton
 
 I got the sheet for this piece from the book Keith Snell Essential Piano Repertoire ([prep grade](https://kjos.com/essential-piano-repertoire-preparatory-level.html)), which btw comes with [audio](https://kjos.com/categorization2/multimedia-library/piano/essential-piano-repertoire.html) recordings!
 
-<p class="notice">This content was originally published in September 2021. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.</p>
+This content was originally published in September 2021. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.{.notice}

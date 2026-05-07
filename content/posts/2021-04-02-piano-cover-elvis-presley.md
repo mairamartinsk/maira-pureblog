@@ -15,4 +15,4 @@ Recording is hard. I filmed **19 takes** to get this one. 😅
 
 Sheet music is from "Really Easy Piano: 50 Popular Songs": [https://www.amazon.com/Really-Easy-Piano-Popular-Classical/dp/1847726259](https://web.archive.org/web/20240523145545/https://www.amazon.com/Really-Easy-Piano-Popular-Classical/dp/1847726259)
 
-<p class="notice">This content was originally published in April 2021. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.</p>
+This content was originally published in April 2021. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.{.notice}

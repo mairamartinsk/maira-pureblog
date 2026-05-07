@@ -11,7 +11,7 @@ In price action (as taught by Al Brooks, Mack and Thomas Wade), a good signal ba
 
 Here's a neat little indicator using Sierra Chart's [Color Bar Based on Alert Condition](https://www.sierrachart.com/index.php?page=doc/StudiesReference.php&ID=245&Name=Color_Bar_Based_on_Alert_Condition#DrawingArrowsAtHighOrLowOfBars) study to print an arrow below such strong signal bars.
 
-<p class="notice">This study is <b>NOT</b> indicating buy/sell signals. It is merely indicating signal bars that trapped traders in the opposite direction before reversing strongly. Context is extremely important, and a good signal bar in a terrible context is actually a terrible signal bar (don't get trapped!).</p>
+This study is **NOT** indicating buy/sell signals. It is merely indicating signal bars that trapped traders in the opposite direction before reversing strongly. Context is extremely important, and a good signal bar in a terrible context is actually a terrible signal bar (don't get trapped!).{.notice}
 
 It builds upon the same techniques I used on the indicator for [bars closing near their high/low indicator](/sierra-chart-bar-close-indicator), but this time I will use a 21-bar exponential moving average to filter for bullish bars above and bearish bars below the EMA.
 
@@ -43,5 +43,7 @@ Reverse the logic for bearish signal bars:
 
 Here, the alert looks for bars closing below the 21-ema, making a high greater than the previous' bar high (trapping buyers), and with a closing price lower than the low of the bar plus 3 ticks (closing near the low).
 
+{{1
 ![sierra-chart-signal-bar-arrows](/content/images/sierra-chart-signal-bar-indicator/sierra-chart-signal-bar-arrows.png)
 *A 2000-tick chart with the signal bar indicator.*
+}}

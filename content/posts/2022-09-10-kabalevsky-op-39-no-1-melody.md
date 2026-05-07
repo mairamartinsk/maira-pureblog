@@ -15,4 +15,4 @@ Dmitry Kabalevsky (1904 — 1987) was a Russian/Soviet pianist and one of the mo
 
 In terms of **sheet music**, there are quite a few editions of Opus 39 in [Amazon](https://www.amazon.com/s?k=kabalevsky+op+39&crid=FC039WPAN8E1&sprefix=kabalevsky+op+39%2Caps%2C178&ref=nb_sb_noss_1) to choose from.
 
-<p class="notice">This content was originally published in September 2022. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.</p>
+This content was originally published in September 2022. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.{.notice}

@@ -13,4 +13,4 @@ Yakety Yak, by The Coasters (1958). Loved learning this one! It finally feels li
 
 Sheet music arrangement from Faber Studio Collection: Selections from Showtime Piano  (Level 2A).
 
-<p class="notice">This content was originally published in Feb. 2021. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.</p>
+This content was originally published in Feb. 2021. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.{.notice}

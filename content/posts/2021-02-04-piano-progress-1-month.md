@@ -31,4 +31,4 @@ What a milestone! At this point, I was practicing 1 to 2 hours a day. My favorit
 <lite-youtube videoid="BkxI5OziiFI"></lite-youtube>
 <lite-youtube videoid="5qrFdmwPLAo"></lite-youtube>
 
-<p class="notice">These videos were originally published on youtube and an older blog between late Jan. and early Feb. 2021. I'm republishing this in April 2026 and backdating the post, to keep my piano progress posts chronological.</p>
+These videos were originally published on youtube and an older blog between late Jan. and early Feb. 2021. I'm republishing this in April 2026 and backdating the post, to keep my piano progress posts chronological.{.notice}

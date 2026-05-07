@@ -15,4 +15,4 @@ The pieces are easy enough, yet quite challenging — I'm done with the first bo
 
 <lite-youtube videoid="J8o2e4wC2QM"></lite-youtube>
 
-<p class="notice">This content was originally published in November 2023. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.</p>
+This content was originally published in November 2023. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.{.notice}

@@ -9,7 +9,13 @@ description:
 
 I was a loyal customer of Adobe until they raised prices by **100%** and slapped me with a 80 euros fine for ending my 13 years old Lightroom subscription. I've been a lightroom *refugee* for a year now and it's been quite hard coming up with a good worflow. Until now!
 
-**Warning! This is going to be long!**
+⚠️ Warning! This is going to be long!{.mark}
+
+Jump around:
+- [Digikam](#digikam)
+- [Acdsee, Tonfotos, Photosupreme](#acdsee)
+- [Excire](#excire)
+
 
 For the image editing part, I switched to [DxO Photolab](https://www.dxo.com/dxo-photolab/) and am very happy. The raw engine is much better than Lightroom, to a point where my photos need barely any editing. I don't know why, it's just easier to get a good result with DxO. However, the Library view is too limited. There are some unsupported file formats, the filtering is limited, I don't love the search functionality. I have a lot of videos too.
 
@@ -28,7 +34,7 @@ I've been using PhotoMechanic 6 for a decade now, I just love the speed for inge
 ![photo-mechanic-geotagging](/content/images/dam-excire-foto-2025/photo-mechanic-geotagging.jpeg)
 *Photo Mechanic 6 Geotagging*
 
-## Trying Digikam
+## Trying Digikam {#digikam}
 
 To fix this mess, I'm starting with recent photos and working my way backwards. I picked something easy: a 4-day trip to Rome with our mothers last year, about 650 images. Photo Mechanic makes it easy to geolocate images, as well as batch add titles and captions. Keywording is its weak spot. It's just not very well though-out. You can easily add, but cannot easily remove tags.
 
@@ -39,7 +45,7 @@ I settled on a first pass on PM, then Digikam only for face tagging and keywordi
 <lite-youtube videoid="zZhgWgqR5DY"></lite-youtube>
 *Andy Hutchinson's Digikam review*
 
-## Trying ACDSee, Tonfotos, PhotoSupreme
+## Trying ACDSee, Tonfotos, PhotoSupreme {#acdsee}
 
 I was still not happy with the speed of the workflow, how many different steps and programs were involved in it. It feels like something will break as soon as I get to work on a larger project. It's a shame because Digikam does most of what I need, but I would be lying if I said I fully trust it with 100k photos.
 
@@ -58,7 +64,7 @@ There is no way to actually jump between programs the way I've been doing (eg: I
 
 Digikam manages to look prettier than PhotoSupreme! The menus are a mess, the naming of the menus, the bottom palette when working with groups or individual images. Awful. Of course, if the software is truly good, we just learn to live with it. But it is not truly good. It's not even good enough. It made a MESS of the already tagged faces (stored in the metadata, and correctly read by Tonfotos, Acdsee, and Digikam), showing every face area twice but in different parts of the image, eg: my face in the proper area and another area called Maira placed in the sky. I found the face tagging menu convoluted, I couldn't even get the GPS menu to work without getting an API key from google... The software is ugly *and* hard to use. I'm willing to work around one of those issues, but both?! **NOPE**.
 
-## Testing Excire Foto
+## Testing Excire Foto {#excire}
 
 I confess I didn't want to try [Excire](https://excire.com/en/excire-foto/) because of the AI thing. I knew about it for a couple years now, but I just refused to even look at their website. I resisted downloading a trial, but I am so glad I finally did, because I LOVE IT.
 

@@ -15,4 +15,4 @@ Recently I realised the score was in my Keith Snell Grade 1 repertoire [book](ht
 
 Tatiana Salutrinskaya was a Russian/Soviet pianist and composer. Sadly, as is often the case with female composers, not much is known about her life. [This](https://musopus.net/musicians/salutrinskaya-tatiana/) is what I could find on her.
 
-<p class="notice">This content was originally published in August 2022. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.</p>
+This content was originally published in August 2022. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.{.notice}

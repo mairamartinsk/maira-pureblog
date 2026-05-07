@@ -19,4 +19,4 @@ The PCA course follows the method book Nikolaev's Russian School of Piano Playin
 
 I spent my second month working on exercises and études, improving my key attack, my reading skills, getting acquainted with sharps and flats (the black keys) and different key signatures.
 
-<p class="notice">This content was originally published in March 2021. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.</p>
+This content was originally published in March 2021. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.{.notice}

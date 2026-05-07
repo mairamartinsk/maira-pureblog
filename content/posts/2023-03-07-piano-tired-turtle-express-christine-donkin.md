@@ -13,4 +13,4 @@ The Tired Turtle Express is an early elementary piece from the book "Comics & Ca
 
 Sheet music for this piece: book [Piano Pieces Vol. 1: Elementary](https://www.amazon.com/Piano-Pieces-Elementary-Christine-Donkin/dp/B09FCB479Y) (a collection of three books in one volume)
 
-<p class="notice">This content was originally published in March 2023. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.</p>
+This content was originally published in March 2023. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.{.notice}

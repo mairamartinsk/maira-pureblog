@@ -5,13 +5,17 @@ date: 2026-05-02 14:44
 status: published
 tags: [sketchbook, journaling]
 description: 
+layout: featured
+featuredImage: /content/images/illustrated-journal-journey/gratitude.jpg
 ---
 
 I have been trying to work on my illustrated [journal](/week-15-illustrated-journal) since November last year. That's when I bought my little sketchbook and signed up for Danny Gregory's [course](/inspiring-video).
 
 I thought Danny's course would be perfect, but no. For the price of $99 you get to see some of his artwork as an inspiration and get 31 five-minutes videos explaining the prompts, and that's it (super expensive for what it is)! The prompts are like: draw a moment of your day, draw a conversation you had, draw a "collage" of five highlights of your day etc etc. I started out trying to do exactly that, to draw each day one of the prompts to the best of my (lack of) abilities. I gave up on day 16.
 
+{{1
 ![a day in my life drawing](/content/images/illustrated-journal-journey/a-day-in-life.jpg)
+}}
 
 I was doing my best to incorporate sketches, to document my day in images, but I just didn't know HOW, so I ended up writing a lot. The problem with writing is, I tend to get very negative, very fast. If I am frustrated and try to write about it, it turns into a 3-page long attack on myself. I have been journaling for years and I know that writing is NOT helping me. 
 
@@ -33,11 +37,15 @@ I decided to see which of my favorite illustrators on instagram have books or a 
 
 Her work is wonderful, her style really resonates with me and it reminds me a lot of the [woodcuts](https://www.google.com/search?q=Cordel+literature+pernambuco) from my homeland.
 
+{{1
 ![hoopoe abubilla drawing](/content/images/illustrated-journal-journey/hoopoe-1.jpg)
+}}
 
 Kate's course is really nice. Much longer than Danny's, and for a third of the price. On each video she presents a facet of illustrated journaling (a prompt of sorts) and then works on a sketchbook page, so we can see HOW she does it, her technique, her tools. Super inspiring, super helpful, super everything I wanted. I have already filled 75% of my sketchbook and even ordered the next one so I don't risk being out of pages, never again!
 
+{{1
 ![illustrated journal gratitude page](/content/images/illustrated-journal-journey/gratitude.jpg)
+}}
 
 [^monster]: I figured out how to draw my emotions. Not knowing how to create those artistic self-portraits or intensely moody landscapes, I have decided to draw them as stick figure *monsters*!
 [^photos]: I first got interested in photography when I was 16 or so years old. Eventually, I started my own wedding photography and videography business. I worked as a professional photographer for 6 years. Happy to be just an amateur nowadays!

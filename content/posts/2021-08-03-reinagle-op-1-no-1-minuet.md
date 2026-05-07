@@ -16,4 +16,4 @@ Sheet music for this piece:
 - The entire Opus ("24 Short and Easy Pieces for Keyboard") can be found on [IMSLP](https://imslp.org/wiki/24_Short_and_Easy_Pieces_for_Keyboard%2C_Op.1_(Reinagle%2C_Alexander)) for free, but without dynamics.
 - [Schott](https://www.schott-music.com/en/24-short-and-easy-pieces-noc331916.html) Edition
 
-<p class="notice">This content was originally published in August 2021. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.</p>
+This content was originally published in August 2021. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.{.notice}

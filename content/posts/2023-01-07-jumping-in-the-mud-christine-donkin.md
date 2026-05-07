@@ -15,4 +15,4 @@ This is an early elementary (preparatory grade) selection of pieces, but unlike 
 
 Since these pieces are a bit too easy for me at this point (*ahem!!*) I first used Jumping in the Mud as sight-reading material. But I really did like the pieces, so I went back, polished them a bit, and made a [playlist](https://www.youtube.com/playlist?list=PLcKRCO4eIUeJtkm_UTnKs83B8i2vb9U_b) with all my recordings.
 
-<p class="notice">This content was originally published in January 2023. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.</p>
+This content was originally published in January 2023. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.{.notice}

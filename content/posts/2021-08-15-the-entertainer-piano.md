@@ -15,4 +15,4 @@ Yes, I know I play it *extremely slow*. I don't feel confident trying to play an
 
 The intro is not in the arrangement. My husband taught me — he plays the piano really well and can play the original score of this piece (at the right tempo too).
 
-<p class="notice">This content was originally published in August 2021. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.</p>
+This content was originally published in August 2021. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.{.notice}

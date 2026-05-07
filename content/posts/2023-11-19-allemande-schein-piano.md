@@ -13,4 +13,4 @@ An *allemande* is a type of dance very common in baroque suites. As I keep worki
 
 [Johann Hermann Schein](https://en.wikipedia.org/wiki/Johann_Hermann_Schein) (1586 — 1630) was a German composer of the early baroque era. He was one of the first to import the early Italian style into German music (nearly a century before Bach!).
 
-<p class="notice">This content was originally published in November 2023. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.</p>
+This content was originally published in November 2023. I'm republishing this in April 2026 and backdating to keep my piano progress posts in chronological order.{.notice}

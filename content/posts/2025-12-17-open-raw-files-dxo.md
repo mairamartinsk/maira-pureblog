@@ -7,9 +7,7 @@ tags: [photography, dxo photolab]
 description: It it possible to use DxO Photolab to edit raw files produced by ANY camera that is not on their supported list, even from mobile phones such as Samsung and Xiaomi.
 ---
 
-TLDR; It it possible to use DxO Photolab to edit raw files produced by ANY camera that is not on their supported list, even from mobile phones such as Samsung and Xiaomi. It involves using two free tools, and the terminal/command line. Skip to the [workaround](#workaround) for instructions.
-
----
+**TLDR;** It it possible to use DxO Photolab to edit raw files produced by ANY camera that is not on their supported list, even from mobile phones such as Samsung and Xiaomi. It involves using two free tools, and the terminal/command line. Skip to the **[workaround](#workaround)** for instructions.{.notice}
 
 Even though I shoot raw exclusively on my Canon cameras, I'm completely fine shooting jpegs when the camera's internal processor is **good enough** for that. My Fuji XE4 does an amazing job at film simulations, and I have trusted it quite a few times to do the editing for me while freeing my time for more shooting. 📷 I am used to shooting film and getting my settings right on camera, and I've never felt the need to radically edit a jpeg I got back from the lab. Most of my film edits are very basic, if any (exposure, contrast, crop). I do the same with jpegs from the Fuji or from my phone.
 
@@ -25,7 +23,7 @@ So now I am forced to shoot jpeg. And I'm kind of fine with it. I know how to ma
 
 The raw does contain way more data than a jpeg, and I want to process that data. So I got to work.
 
-## Workaround
+## Workaround {#workaround}
 
 I am happy to report that, YES, you can edit raw files from ANY phone or camera that is not on their supported list and the process is very simple, but involves the command line – if you are not a tech-savvy person, forget about it. Go shoot jpeg, make sure you get it as you want in camera, and be happy.
 
