@@ -11,6 +11,17 @@ Tracking the changes I make to this website. Loosely following the [Keep a Chang
 ---
 ## 2026
 
+### 2026-05-04
+
+- I am currently extremely enthusiastic about my sketchbook and fountain pens and my two little photo printers (instax link wide and canon selphy cp1500), so I created two custom layouts, Notes and Photos.
+- Spent two days working on CSS to make my vision of analog notes and polaroid photos come true. I love CSS.
+- Both notes and photos use a [custom font](https://fonts.google.com/specimen/Special+Elite), for that good old typewriter *flair*.
+- Updated older content to apply the custom layouts.
+- Got tired of the yellow accent color, changed to purple.
+- May the Force be With You! 🚀
+
+![2026-05-04_blog-custom-layout](/content/images/changelog/2026-05-04_blog-custom-layout.jpg)
+
 ### 2026-04-05
 
 - Updated PureBlog version. Refactored some of my custom logic/code.

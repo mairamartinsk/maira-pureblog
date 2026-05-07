@@ -289,7 +289,6 @@ p+.collage {
   display: inline-block;
   margin-bottom: 1rem;
   font-weight: normal;
-  opacity: 0.9;
   text-shadow: 0.5px 0.55px 1px rgba(0, 0, 0, 0.1);
 }
 
@@ -298,7 +297,6 @@ p+.collage {
 }
 
 .notes p {
-  opacity: 0.9;
   text-shadow: 0.5px 0.55px 1px rgba(0, 0, 0, 0.1);
   font-weight: normal;
   font-style: normal !important;
@@ -332,6 +330,10 @@ p+.collage {
 
 .notes blockquote p {
   margin: 0;
+}
+
+.notes blockquote + .post-date {
+	display: none;
 }
 
 .excerpt-view.notes {
@@ -377,7 +379,7 @@ p+.collage {
 .excerpt-view.photos img,
 .layout .photo img {
   display: block;
-  padding: 16px 12px 40px 12px;
+  padding: 16px 12px 48px 12px;
   background: #f0f0f0;
   border: 1px solid #eee;
   border-radius: 3px;
@@ -398,7 +400,6 @@ p+.collage {
   font-weight: normal;
   font-family: "Special Elite", Courier, ui-monospace, Menlo, Consolas, "DejaVu Sans Mono", monospace;
   text-shadow: 0.5px 0.55px 1px rgba(0, 0, 0, 0.1);
-  opacity: 0.9;
   z-index: 3;
 }
 

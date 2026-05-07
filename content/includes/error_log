@@ -1,0 +1,12 @@
+[14-Mar-2026 02:13:22 UTC] PHP Warning:  file_get_contents(content/tag-index.json): Failed to open stream: No such file or directory in /home/mairtumt/public_html/maira-pureblog/content/includes/tags.php on line 18
+[14-Mar-2026 02:13:22 UTC] PHP Fatal error:  Uncaught TypeError: json_decode(): Argument #1 ($json) must be of type string, false given in /home/mairtumt/public_html/maira-pureblog/content/includes/tags.php:19
+Stack trace:
+#0 /home/mairtumt/public_html/maira-pureblog/content/includes/tags.php(19): json_decode()
+#1 {main}
+  thrown in /home/mairtumt/public_html/maira-pureblog/content/includes/tags.php on line 19
+[16-Mar-2026 13:06:11 UTC] PHP Warning:  file_get_contents(content/tag-index.json): Failed to open stream: No such file or directory in /home/mairtumt/public_html/maira-pureblog/content/includes/tags.php on line 18
+[16-Mar-2026 13:06:11 UTC] PHP Fatal error:  Uncaught TypeError: json_decode(): Argument #1 ($json) must be of type string, false given in /home/mairtumt/public_html/maira-pureblog/content/includes/tags.php:19
+Stack trace:
+#0 /home/mairtumt/public_html/maira-pureblog/content/includes/tags.php(19): json_decode()
+#1 {main}
+  thrown in /home/mairtumt/public_html/maira-pureblog/content/includes/tags.php on line 19
