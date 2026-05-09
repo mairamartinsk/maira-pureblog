@@ -14,5 +14,12 @@
                 <?php endif; ?>
 			<?= render_markdown($post["content"]) ?>
     </div>
-    <?= render_post_navigation() ?>
+    <?= render_layout_partial('post-meta', [
+                    'post' => $post,
+                    'config' => $config,
+                    'post_title' => (string) ($post['title'] ?? ''),
+                    'content_title' => (string) ($post['title'] ?? ''),
+                    'previous_post' => $adjacentPosts['previous'] ?? null,
+                    'next_post' => $adjacentPosts['next'] ?? null,
+                ]) ?>
 </article>

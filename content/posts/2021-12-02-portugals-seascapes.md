@@ -4,7 +4,7 @@ slug: portugals-seascapes
 date: 2021-12-02 00:00
 status: published
 tags: [photos, travels, Canon EOS 300, Fuji Pro 400h, shot on film]
-description: 
+description: A few photos of our trip to Portugal in 2015. Shot on film.
 layout: featured
 featuredImage: /content/images/2021-12-02/151f7c53e7.jpg
 ---

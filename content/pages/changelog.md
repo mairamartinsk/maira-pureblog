@@ -2,7 +2,7 @@
 title: Changelog
 slug: changelog
 status: published
-description: 
+description: Tracking the changes I make to this website
 include_in_nav: false
 ---
 

@@ -4,7 +4,7 @@ slug: watched-person-of-interest
 date: 2026-05-09 14:32
 status: published
 tags: [tv]
-description: 
+description: What a show! Visionary, prophetic, ahead of its time and a must-watch!
 ---
 
 ![Poster TV series Person of Interest](/content/images/watched-person-of-interest/person-of-interest.jpeg)

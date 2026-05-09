@@ -341,6 +341,7 @@ function get_excerpt(string $markdown, int $length = 200): string
         $excerpt = mb_substr($excerpt, 0, $length * 6);
     }
     $excerpt = preg_replace('/```.*?```/s', ' ', $excerpt) ?? $excerpt;
+    $excerpt = preg_replace('/\{\{.*?\}\}/s', ' ', $excerpt) ?? $excerpt;
     $excerpt = preg_replace('/`[^`]*`/', ' ', $excerpt) ?? $excerpt;
     $excerpt = preg_replace('/!\[[^\]]*\]\([^)]+\)/', ' ', $excerpt) ?? $excerpt;
     $excerpt = preg_replace('/\[([^\]]*)\]\([^)]+\)/', '$1', $excerpt) ?? $excerpt;
