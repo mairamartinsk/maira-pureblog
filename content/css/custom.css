@@ -196,6 +196,21 @@ p.post-date {
   display: none;
 }
 
+#comments .comment-badge {
+	background: var(--accent-bg-color);
+	color: var(--accent-color);
+	text-transform: uppercase;
+	font-size: small;
+	margin-left: 0.5rem;
+	padding: 2px 4px;
+}
+
+#comments .comment-children {
+	margin-top: 2rem;
+	padding-left: 3rem;
+	border-left: 1px solid var(--accent-color);
+}
+
 .post-upvote {
   margin-top: 4rem;
 }
@@ -216,7 +231,7 @@ p.post-date {
 
 main article img {
   margin: 0.25rem 0;
-  order: 1px dotted var(--border-color);
+  border: 1px dotted var(--accent-bg-color);
 }
 
 main article p:has(img) {
@@ -414,6 +429,7 @@ article:not(:has(.notes)) .layout-grid {
   font-family: "Special Elite", Courier, ui-monospace, Menlo, Consolas, "DejaVu Sans Mono", monospace;
   text-shadow: 0.5px 0.55px 1px rgba(0, 0, 0, 0.1);
   z-index: 3;
+  color: var(--text-light);
 }
 
 .excerpt-view.photos h2,
@@ -458,6 +474,14 @@ article:not(:has(.notes)) .layout-grid {
 
 .excerpt-view.photos p:not(:has(img)) {
   display: none;
+}
+
+@media (max-width: 600px) {
+  .layout .photo p:has(img),
+  .layout .photo h1,
+  .excerpt-view.photos p:has(img) {
+  	margin-left: 1rem;
+  }
 }
 
 /* Stretched link handling */

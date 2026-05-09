@@ -21,7 +21,7 @@ $paginationQueryParams = (isset($paginationQueryParams) && is_array($paginationQ
                 <div class="excerpt-view">
                     <h2><a href="<?= base_path() ?>/<?= e($post['slug']) ?>"><?= e($post['title']) ?></a></h2>
                     <?php if ($post['date']): ?>
-                        <p><time datetime="<?= e(format_datetime_for_display((string) $post['date'], $config ?? [], 'c')) ?>"><?= e(format_post_date_for_display((string) $post['date'], $config ?? [])) ?></time></p>
+                        <p><svg class="icon" aria-hidden="true"><use href="#icon-calendar"></use></svg> <time datetime="<?= e(format_datetime_for_display((string) $post['date'], $config ?? [], 'c')) ?>"><?= e(format_post_date_for_display((string) $post['date'], $config ?? [])) ?></time></p>
                     <?php endif; ?>
                     <?php
                     $excerptSource = trim((string) ($post['description'] ?? ''));
@@ -31,7 +31,7 @@ $paginationQueryParams = (isset($paginationQueryParams) && is_array($paginationQ
                     ?>
                     <p class="post-excerpt"><?= e($excerptSource) ?></p>
                     <?php if (!empty($post['tags'])): ?>
-                        <p class="tag-list"><?= render_tag_links($post['tags']) ?></p>
+                        <p class="tag-list"><svg class="icon" aria-hidden="true"><use href="#icon-tag"></use></svg> <?= render_tag_links($post['tags']) ?></p>
                     <?php endif; ?>
                 </div>
             
@@ -40,11 +40,11 @@ $paginationQueryParams = (isset($paginationQueryParams) && is_array($paginationQ
                 <div class="full-post-view">
                     <h1><a href="<?= base_path() ?>/<?= e($post['slug']) ?>"><?= e($post['title']) ?></a></h1>
                     <?php if ($post['date']): ?>
-                        <p class="post-date"><time datetime="<?= e(format_datetime_for_display((string) $post['date'], $config ?? [], 'c')) ?>"><?= e(format_post_date_for_display((string) $post['date'], $config ?? [])) ?></time></p>
+                        <p class="post-date"><svg class="icon" aria-hidden="true"><use href="#icon-calendar"></use></svg> <time datetime="<?= e(format_datetime_for_display((string) $post['date'], $config ?? [], 'c')) ?>"><?= e(format_post_date_for_display((string) $post['date'], $config ?? [])) ?></time></p>
                     <?php endif; ?>
                     <?= render_markdown($post['content'], ['post_title' => (string) ($post['title'] ?? '')]) ?>
                     <?php if (!empty($post['tags'])): ?>
-                        <p class="tag-list"><?= render_tag_links($post['tags']) ?></p>
+                        <p class="tag-list"><svg class="icon" aria-hidden="true"><use href="#icon-tag"></use></svg> <?= render_tag_links($post['tags']) ?></p>
                     <?php endif; ?>
                     <hr>
                 </div>

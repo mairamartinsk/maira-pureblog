@@ -14,7 +14,9 @@ $fontStack = font_stack_css($config['theme']['admin_font_stack'] ?? 'sans');
 $error = '';
 $username = '';
 $now = time();
-$lockoutUntil = (int) ($_SESSION['lockout_until'] ?? 0);
+$clientIp = (string) ($_SERVER['REMOTE_ADDR'] ?? '');
+$failureState = get_login_failure_state($clientIp);
+$lockoutUntil = $failureState['lockout_until'];
 $isLockedOut = $lockoutUntil > $now;
 
 if (is_admin_logged_in()) {
@@ -38,21 +40,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ) {
             session_regenerate_id(true);
             $_SESSION['is_admin'] = true;
-            $_SESSION['login_failures'] = 0;
-            $_SESSION['lockout_until'] = 0;
+            clear_login_failures($clientIp);
             if (!empty($_POST['remember_me'])) {
-                set_remember_me_cookie($config);
+                set_remember_me_cookie();
             }
             $adminLanding = ($config['admin_homepage'] ?? 'dashboard') === 'content' ? 'content.php' : 'dashboard.php';
             header('Location: ' . base_path() . '/admin/' . $adminLanding);
             exit;
         }
 
-        $failures = (int) ($_SESSION['login_failures'] ?? 0);
-        $failures++;
-        $_SESSION['login_failures'] = $failures;
-        if ($failures >= 5) {
-            $_SESSION['lockout_until'] = $now + (5 * 60);
+        $state = record_login_failure($clientIp);
+        if ($state['lockout_until'] > $now) {
+            $lockoutUntil = $state['lockout_until'];
+            $isLockedOut = true;
             $error = t('admin.login.error_lockout_5');
         } else {
             $error = t('admin.login.error_invalid');

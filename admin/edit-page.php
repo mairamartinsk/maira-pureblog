@@ -2,11 +2,7 @@
 
 declare(strict_types=1);
 
-require __DIR__ . '/../functions.php';
-require_setup_redirect();
-
-start_admin_session();
-require_admin_login();
+require __DIR__ . '/bootstrap.php';
 
 $config = load_config();
 $fontStack = font_stack_css($config['theme']['admin_font_stack'] ?? 'sans');
@@ -184,7 +180,8 @@ require __DIR__ . '/../includes/admin-head.php';
                     <textarea id="content" name="content" rows="18" autocomplete="off"><?= e($page['content']) ?></textarea>
                 </form>
                 <?php if ($isEditing && $page['slug'] !== ''): ?>
-                    <form method="post" action="<?= base_path() ?>/admin/delete-page.php" id="delete-page-form">
+                    <form method="post" action="<?= base_path() ?>/admin/delete-content.php" id="delete-page-form">
+                        <input type="hidden" name="type" value="page">
                         <input type="hidden" name="slug" value="<?= e($page['slug']) ?>">
                         <?= csrf_field() ?>
                     </form>

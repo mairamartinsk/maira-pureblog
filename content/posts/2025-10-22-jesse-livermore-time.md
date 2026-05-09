@@ -6,6 +6,9 @@ status: published
 tags: [trading, quotes]
 description: 
 layout: notes
+displayTitle: 
 ---
 
-> "There is a time to go long, a time to go short, and a time to go fishing." — Jesse Livermore
+> "There is a time to go long, a time to go short, and a time to go fishing."
+> 
+> <cite>— Jesse Livermore</cite>

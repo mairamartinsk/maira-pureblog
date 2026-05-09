@@ -6,7 +6,7 @@ description: A list of all books I've ever read.
 include_in_nav: true
 ---
 
-A list of all the books I've read (and had logged to Goodreads). Use the buttons below to jump around.
+A list of all the books I've read, maybe. Use the buttons below to jump around.
 
 <ul class="tag-cloud">
 <li><a class="button" href="#2026">2026</a></li>

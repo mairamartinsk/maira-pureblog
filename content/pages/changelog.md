@@ -11,6 +11,18 @@ Tracking the changes I make to this website. Loosely following the [Keep a Chang
 ---
 ## 2026
 
+### 2026-05-09
+
+- Updated to PureBlog [v3](https://codeberg.org/kevquirk/pureblog)!
+
+### 2026-05-07
+
+- Created another custom layout, Featured Image! 😍
+- Updated older content to use the featured image layout.
+- Created a CSS grid shortcode implementation for easily creating photo collages. It's pretty neat!
+- Tweaked the generate_excerpt function to hide my custom grid shortcode.
+- Tweaked the admin Content panel to show the custom layout near the post title.
+
 ### 2026-05-04
 
 - I am currently extremely enthusiastic about my sketchbook and fountain pens and my two little photo printers (instax link wide and canon selphy cp1500), so I created two custom layouts, Notes and Photos.
@@ -18,7 +30,7 @@ Tracking the changes I make to this website. Loosely following the [Keep a Chang
 - Both notes and photos use a [custom font](https://fonts.google.com/specimen/Special+Elite), for that good old typewriter *flair*.
 - Updated older content to apply the custom layouts.
 - Got tired of the yellow accent color, changed to purple.
-- May the Force be With You! 🚀
+- May the Fourth be With You! 🚀
 
 ![2026-05-04_blog-custom-layout](/content/images/changelog/2026-05-04_blog-custom-layout.jpg)
 

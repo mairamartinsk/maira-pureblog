@@ -6,19 +6,25 @@ description: About Pure Blog, a simple flat-file blogging platform with a Markdo
 include_in_nav: true
 ---
 
-Hi, I'm Maíra. Welcome to my blog  :) This is my little corner of the internet, where I write about whatever I feel like. My dogs, recipes, travels, trading struggles, piano progress, learning to draw, baking bread, life...
+Hi, I'm Maíra. Welcome to my old-fashioned personal blog.
 
-programmer 🤓 daytrader 💸 photographer 📷 pasta lover 🍝 mother of dogs 🐶 plant lover/killer 🌵☠️ wine enthusiast 🍷
+Here's all there is to know: insomniac 🦉 programmer 🤓 photographer 📷 day trader 💸 mother of dogs 🐶 plant lover/killer 🌵☠️ wine enthusiast 🍷 pasta lover 🍝 baker 🥖 terrible sewist 🪡 piano student 🎹 wannabe artist 🎨
 
 ![maira-cloud](/content/images/about/maira-cloud.jpg)
 
 ## A few random facts
 
-1. 🎡 I'm a futures trader. Before that, I was a frontend developer. Before that, a professional wedding photographer and videographer. And before that, a video editor in the TV and film industry. I think I finally found my thing, I like trading enough that I can see myself doing it until I get super old.
-2. 🍿 I watch a lot of movies but I'm not a Godard-or-nothing kind of girl. I like everything from silly comedies and super hero movies to French Nouvelle Vague. I can also rewatch the same thing many times.
-3. 🌎 I've lived in five countries: Brazil, Chile, France, Sweden and Spain. 💬 I speak fluently five languages: Brazilian Portuguese, English, Spanish, Swedish, French. I'm entirely self-taught in English. I'm also learning Esperanto.
+1. 🎡 I'm a futures trader. Before that, I was a frontend developer. Before that, a professional wedding photographer and videographer. Before that, a video editor in the TV and film industry.
+2. 🍿 I watch a lot of movies and TV. I like everything from silly comedies and super hero movies to French Nouvelle Vague. I can also rewatch the same thing many times.
+3. 🌎 I've lived in five countries and I speak five languages fluently: Brazilian Portuguese, English, Spanish, Swedish, French.
 4. 😍 I am a proud atheist and freethinker!
-5. 🎹 I'm self-learning the piano since Jan. 2021 with the help of an [online piano course](https://www.pianocareeracademy.com/). Progress has slowed down immensely, after four years I'm still only around Grade 2. I really should commit to playing a bit each day. I have a [youtube channel](https://www.youtube.com/@mairapianoprogress) where I record some of my finished pieces, for posterity.
+5. 🎹 I'm learning the piano since Jan. 2021.
+
+## NOW
+
+Last update: 9 May 2026{.mark}
+
+I'm currently completely **obsessed** with my [sketchbook](/tag/sketchbook) and drawing with water-based markers. In love with this little blog! Finished watching Person of Interest.
 
 ## Slash Pages
 

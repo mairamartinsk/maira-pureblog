@@ -2,11 +2,7 @@
 
 declare(strict_types=1);
 
-require __DIR__ . '/../functions.php';
-require_setup_redirect();
-
-start_admin_session();
-require_admin_login();
+require __DIR__ . '/bootstrap.php';
 
 $config = load_config();
 $fontStack = font_stack_css($config['theme']['admin_font_stack'] ?? 'sans');
@@ -108,31 +104,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST['admin_action_id'])) 
             mkdir($assetDir, 0755, true);
         }
 
+        $allowedImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/avif'];
+        $finfo = new finfo(FILEINFO_MIME_TYPE);
+
         if (!empty($_FILES['favicon']['name']) && $_FILES['favicon']['error'] === UPLOAD_ERR_OK) {
-            $name = basename($_FILES['favicon']['name']);
-            $name = strtolower($name);
-            $name = preg_replace('/[^a-z0-9._-]/', '-', $name) ?? $name;
-            $name = preg_replace('/-+/', '-', $name) ?? $name;
-            $name = trim($name, '-');
-            if ($name !== '') {
-                $dest = $assetDir . '/' . $name;
-                if (move_uploaded_file($_FILES['favicon']['tmp_name'], $dest)) {
-                    $config['assets']['favicon'] = '/content/images/' . $name;
+            $mimeType = $finfo->file($_FILES['favicon']['tmp_name']) ?: '';
+            if (in_array($mimeType, $allowedImageTypes, true)) {
+                $name = basename($_FILES['favicon']['name']);
+                $name = strtolower($name);
+                $name = preg_replace('/[^a-z0-9._-]/', '-', $name) ?? $name;
+                $name = preg_replace('/-+/', '-', $name) ?? $name;
+                $name = trim($name, '-');
+                if ($name !== '') {
+                    $dest = $assetDir . '/' . $name;
+                    if (move_uploaded_file($_FILES['favicon']['tmp_name'], $dest)) {
+                        $config['assets']['favicon'] = '/content/images/' . $name;
+                    }
                 }
+            } else {
+                $errors[] = t('admin.editor.error_upload_type');
             }
         }
 
         if (!empty($_FILES['og_image']['name']) && $_FILES['og_image']['error'] === UPLOAD_ERR_OK) {
-            $name = basename($_FILES['og_image']['name']);
-            $name = strtolower($name);
-            $name = preg_replace('/[^a-z0-9._-]/', '-', $name) ?? $name;
-            $name = preg_replace('/-+/', '-', $name) ?? $name;
-            $name = trim($name, '-');
-            if ($name !== '') {
-                $dest = $assetDir . '/' . $name;
-                if (move_uploaded_file($_FILES['og_image']['tmp_name'], $dest)) {
-                    $config['assets']['og_image'] = '/content/images/' . $name;
+            $mimeType = $finfo->file($_FILES['og_image']['tmp_name']) ?: '';
+            if (in_array($mimeType, $allowedImageTypes, true)) {
+                $name = basename($_FILES['og_image']['name']);
+                $name = strtolower($name);
+                $name = preg_replace('/[^a-z0-9._-]/', '-', $name) ?? $name;
+                $name = preg_replace('/-+/', '-', $name) ?? $name;
+                $name = trim($name, '-');
+                if ($name !== '') {
+                    $dest = $assetDir . '/' . $name;
+                    if (move_uploaded_file($_FILES['og_image']['tmp_name'], $dest)) {
+                        $config['assets']['og_image'] = '/content/images/' . $name;
+                    }
                 }
+            } else {
+                $errors[] = t('admin.editor.error_upload_type');
             }
         }
 

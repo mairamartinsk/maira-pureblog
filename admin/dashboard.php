@@ -2,11 +2,7 @@
 
 declare(strict_types=1);
 
-require __DIR__ . '/../functions.php';
-require_setup_redirect();
-
-start_admin_session();
-require_admin_login();
+require __DIR__ . '/bootstrap.php';
 
 $config = load_config();
 
@@ -147,18 +143,10 @@ $versionCacheFile = PUREBLOG_BASE_PATH . '/content/.version-cache';
 $latestVersion    = '';
 $cacheAge         = is_file($versionCacheFile) ? (time() - (int) @filemtime($versionCacheFile)) : PHP_INT_MAX;
 if ($cacheAge > 21600) {
-    $ctx  = stream_context_create(['http' => [
-        'timeout' => 3,
-        'header'  => "User-Agent: Pureblog-Dashboard\r\nAccept: application/vnd.github+json\r\n",
-        'ignore_errors' => true,
-    ]]);
-    $json = @file_get_contents('https://api.github.com/repos/kevquirk/pureblog/releases/latest', false, $ctx);
-    if (is_string($json)) {
-        $data = @json_decode($json, true);
-        if (is_array($data) && isset($data['tag_name']) && is_string($data['tag_name'])) {
-            $latestVersion = trim($data['tag_name']);
-            @file_put_contents($versionCacheFile, $latestVersion);
-        }
+    $release = fetch_latest_pureblog_release();
+    if ($release['ok'] && $release['tag'] !== '') {
+        $latestVersion = $release['tag'];
+        @file_put_contents($versionCacheFile, $latestVersion);
     }
 } else {
     $cached = @file_get_contents($versionCacheFile);

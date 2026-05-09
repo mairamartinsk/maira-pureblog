@@ -1,9 +1,9 @@
 <?php
 return array (
   'site_title' => 'Maira Martins',
-  'site_tagline' => '',
-  'site_description' => '',
-  'site_email' => 'blog@mairamartins.com',
+  'site_tagline' => 'self-taught in everything',
+  'site_description' => 'A good old-fashioned personal blog from an insomniac, programmer, photographer, day trader, dog-mother, bread baker, piano student, wannabe artist.',
+  'site_email' => 'mairamartins@posteo.com',
   'custom_nav' => 'Archive | /archive
 Search | /explore
 RSS | /feed',

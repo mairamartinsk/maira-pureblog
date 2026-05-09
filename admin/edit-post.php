@@ -2,11 +2,7 @@
 
 declare(strict_types=1);
 
-require __DIR__ . '/../functions.php';
-require_setup_redirect();
-
-start_admin_session();
-require_admin_login();
+require __DIR__ . '/bootstrap.php';
 
 $config = load_config();
 $fontStack = font_stack_css($config['theme']['admin_font_stack'] ?? 'sans');
@@ -260,7 +256,8 @@ require __DIR__ . '/../includes/admin-head.php';
                     <?php endif; ?>
                 </form>
                 <?php if ($isEditing && $post['slug'] !== ''): ?>
-                    <form method="post" action="<?= base_path() ?>/admin/delete-post.php" id="delete-post-form">
+                    <form method="post" action="<?= base_path() ?>/admin/delete-content.php" id="delete-post-form">
+                        <input type="hidden" name="type" value="post">
                         <input type="hidden" name="slug" value="<?= e($post['slug']) ?>">
                         <?= csrf_field() ?>
                     </form>

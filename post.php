@@ -25,7 +25,7 @@ $isAdminLoggedIn = is_admin_logged_in();
         <?php else: ?>
             <?php
             $adjacentPosts = get_adjacent_posts_by_slug((string) ($post['slug'] ?? ''), false);
-            $layoutName = trim((string) ($post['layout'] ?? ''));
+            $layoutName = preg_replace('/[^a-zA-Z0-9_-]/', '', trim((string) ($post['layout'] ?? ''))) ?? '';
             $layoutFile = PUREBLOG_BASE_PATH . '/content/layouts/' . $layoutName . '.php';
             ?>
             <?php if ($layoutName !== '' && is_file($layoutFile)): ?>
@@ -34,7 +34,7 @@ $isAdminLoggedIn = is_admin_logged_in();
             <article>
                 <h1><?= e($post['title']) ?></h1>
                 <?php if ($post['date']): ?>
-                    <p class="post-date"><time datetime="<?= e(format_datetime_for_display((string) $post['date'], $config, 'c')) ?>"><?= e(format_post_date_for_display((string) $post['date'], $config)) ?></time></p>
+                    <p class="post-date"><svg class="icon" aria-hidden="true"><use href="#icon-calendar"></use></svg> <time datetime="<?= e(format_datetime_for_display((string) $post['date'], $config, 'c')) ?>"><?= e(format_post_date_for_display((string) $post['date'], $config)) ?></time></p>
                 <?php endif; ?>
 
                 <?= render_markdown($post['content'], ['post_title' => (string) ($post['title'] ?? '')]) ?>
@@ -52,7 +52,7 @@ $isAdminLoggedIn = is_admin_logged_in();
         <?php if ($isAdminLoggedIn): ?>
             <a class="admin-edit-link" href="<?= e(base_path() . '/admin/edit-post.php?slug=' . urlencode((string) ($post['slug'] ?? ''))) ?>">
                 <svg class="icon" aria-hidden="true"><use href="#icon-edit"></use></svg>
-                <span><?= e(t('frontend.edit_page')) ?></span>
+                <span><?= e(t('frontend.edit_post')) ?></span>
             </a>
         <?php endif; ?>
     </main>

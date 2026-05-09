@@ -2,11 +2,7 @@
 
 declare(strict_types=1);
 
-require __DIR__ . '/../functions.php';
-require_setup_redirect();
-
-start_admin_session();
-require_admin_login();
+require __DIR__ . '/bootstrap.php';
 
 verify_csrf();
 
@@ -48,6 +44,10 @@ if ($error === '') {
 if ($error === '') {
     $baseDir = realpath(__DIR__ . '/../content/images');
     $uploadDir = __DIR__ . '/../content/images/' . $folder;
+
+    if ($baseDir !== false && !is_file($baseDir . '/.htaccess')) {
+        file_put_contents($baseDir . '/.htaccess', "<FilesMatch \"\.ph(p[0-9]?|tml)$\">\n    Require all denied\n</FilesMatch>\n");
+    }
 
     if ($baseDir === false) {
         $error = t('admin.editor.error_image_folder_missing');

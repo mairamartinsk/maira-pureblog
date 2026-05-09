@@ -32,7 +32,7 @@ foreach (get_all_pages(false) as $page) {
 }
 
 // Published posts
-foreach (get_all_posts(false) as $post) {
+foreach (get_all_posts_meta(false) as $post) {
     $slug = trim((string) ($post['slug'] ?? ''));
     if ($slug === '') {
         continue;
