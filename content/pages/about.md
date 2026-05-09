@@ -2,7 +2,7 @@
 title: About
 slug: about
 status: published
-description: About Pure Blog, a simple flat-file blogging platform with a Markdown-first editor.
+description: About the author, about this blog, slash pages and what I'm up to Now.
 include_in_nav: true
 ---
 
@@ -30,10 +30,10 @@ I'm currently completely **obsessed** with my [sketchbook](/tag/sketchbook) and 
 
 - [/about](/about) - You're here now! Hi!
 - [/changelog](/changelog) - A list of changes to my site.
-- [/things](/things) - A list of my favourite things, from computers to cameras to kitchenware.
+- [/things](/things) - A list of my favourite things, from cameras to kitchenware.
 - [/archive](/archive) - All my posts in one place, ordered chronologically.
 - [/books](/books) - Currently reading, finished reading.
-- [/explore](/explore) - A search form and a tag cloud. Nice!
+- [/explore](/explore) - A search form and a tag cloud. Nice! :D
 
 ## Disclaimer
 
