@@ -140,7 +140,6 @@ function pureblog_http_get(string $url, int $timeout = 5, array $headers = []): 
         $raw    = curl_exec($ch);
         $status = (int) curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
         $err    = curl_error($ch);
-        curl_close($ch);
 
         if (!is_string($raw) || $status < 200 || $status >= 300) {
             return ['ok' => false, 'error' => $err !== '' ? $err : "HTTP {$status}"];
@@ -170,7 +169,6 @@ function pureblog_http_download(string $url, string $destination, int $timeout =
         }
         $fp = @fopen($destination, 'wb');
         if ($fp === false) {
-            curl_close($ch);
             return 'Could not open destination file for writing';
         }
         curl_setopt($ch, CURLOPT_FILE, $fp);
@@ -183,7 +181,6 @@ function pureblog_http_download(string $url, string $destination, int $timeout =
         $status = (int) curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
         $err    = curl_error($ch);
         fclose($fp);
-        curl_close($ch);
 
         if ($ok !== true || $status < 200 || $status >= 300) {
             return $err !== '' ? $err : "HTTP {$status}";
