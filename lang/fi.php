@@ -153,8 +153,8 @@ return [
             'notice_post_deleted'   => 'Julkaisu poistettiin.',
             'notice_page_saved'     => 'Sivu tallennettiin.',
             'notice_page_deleted'   => 'Sivu poistettiin.',
-            'pagination_newer'      => '← Uudemmat julkaisut',
-            'pagination_older'      => 'Vanhemmat julkaisut →',
+            'pagination_newer'      => '⬅ Uudemmat julkaisut',
+            'pagination_older'      => 'Vanhemmat julkaisut ➡',
             'new_page'              => 'Uusi sivu',
             'no_pages'              => 'Ei toistaiseksi sivuja.',
         ],
@@ -242,8 +242,8 @@ return [
             'cancel'             => 'Cancel', // ENGLISH PLACEHOLDER
             'slug_label'         => 'Folder:', // ENGLISH PLACEHOLDER
             'error_delete'       => 'Unable to delete image.', // ENGLISH PLACEHOLDER
-            'pagination_prev'    => '← Previous', // ENGLISH PLACEHOLDER
-            'pagination_next'    => 'Next →', // ENGLISH PLACEHOLDER
+            'pagination_prev'    => '⬅ Previous', // ENGLISH PLACEHOLDER
+            'pagination_next'    => 'Next ➡', // ENGLISH PLACEHOLDER
         ],
 
         'notices' => [

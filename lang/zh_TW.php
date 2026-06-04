@@ -142,8 +142,8 @@ return [
             'notice_post_deleted'   => '文章已刪除。',
             'notice_page_saved'     => '頁面已儲存。',
             'notice_page_deleted'   => '頁面已刪除。',
-            'pagination_newer'      => '← 較新的文章',
-            'pagination_older'      => '較舊的文章 →',
+            'pagination_newer'      => '⬅ 較新的文章',
+            'pagination_older'      => '較舊的文章 ➡',
             'new_page'              => '新增頁面',
             'no_pages'              => '尚無頁面。',
         ],
@@ -230,8 +230,8 @@ return [
             'cancel'             => 'Cancel', // ENGLISH PLACEHOLDER
             'slug_label'         => 'Folder:', // ENGLISH PLACEHOLDER
             'error_delete'       => 'Unable to delete image.', // ENGLISH PLACEHOLDER
-            'pagination_prev'    => '← Previous', // ENGLISH PLACEHOLDER
-            'pagination_next'    => 'Next →', // ENGLISH PLACEHOLDER
+            'pagination_prev'    => '⬅ Previous', // ENGLISH PLACEHOLDER
+            'pagination_next'    => 'Next ➡', // ENGLISH PLACEHOLDER
         ],
 
         'notices' => [

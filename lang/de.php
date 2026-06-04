@@ -161,8 +161,8 @@ return [
             'notice_post_deleted'   => 'Beitrag gelöscht.',
             'notice_page_saved'     => 'Seite gespeichert.',
             'notice_page_deleted'   => 'Seite gelöscht.',
-            'pagination_newer'      => '← Neuere Beiträge',
-            'pagination_older'      => 'Ältere Beiträge →',
+            'pagination_newer'      => '⬅ Neuere Beiträge',
+            'pagination_older'      => 'Ältere Beiträge ➡',
             'new_page'              => 'Neue Seite',
             'no_pages'              => 'Noch keine Seiten.',
         ],
@@ -251,8 +251,8 @@ return [
             'cancel'             => 'Cancel', // ENGLISH PLACEHOLDER
             'slug_label'         => 'Folder:', // ENGLISH PLACEHOLDER
             'error_delete'       => 'Unable to delete image.', // ENGLISH PLACEHOLDER
-            'pagination_prev'    => '← Previous', // ENGLISH PLACEHOLDER
-            'pagination_next'    => 'Next →', // ENGLISH PLACEHOLDER
+            'pagination_prev'    => '⬅ Previous', // ENGLISH PLACEHOLDER
+            'pagination_next'    => 'Next ➡', // ENGLISH PLACEHOLDER
         ],
 
         'notices' => [

@@ -150,8 +150,8 @@ return [
             'notice_post_deleted'   => 'Post deleted.',
             'notice_page_saved'     => 'Page saved.',
             'notice_page_deleted'   => 'Page deleted.',
-            'pagination_newer'      => '← Newer posts',
-            'pagination_older'      => 'Older posts →',
+            'pagination_newer'      => '⬅ Newer posts',
+            'pagination_older'      => 'Older posts ➡',
             'new_page'              => 'New page',
             'no_pages'              => 'No pages yet.',
         ],
@@ -238,8 +238,8 @@ return [
             'cancel'             => 'Cancel',
             'slug_label'         => 'Folder:',
             'error_delete'       => 'Unable to delete image.',
-            'pagination_prev'    => '← Previous',
-            'pagination_next'    => 'Next →',
+            'pagination_prev'    => '⬅ Previous',
+            'pagination_next'    => 'Next ➡',
         ],
 
         'notices' => [
