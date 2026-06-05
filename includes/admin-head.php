@@ -116,7 +116,7 @@ unset($_SESSION['admin_action_flash']);
         ?>
         <nav class="admin-nav" aria-label="Admin">
             <div class="sidebar-header">
-                <a href="<?= base_path() ?>/admin/dashboard.php" class="sidebar-logo">
+                <a href="<?= base_path() ?>/admin/<?= $adminHomepageSetting === 'content' ? 'content.php' : 'dashboard.php' ?>" class="sidebar-logo">
                     <span class="logo"><span class="pure">PURE</span><span class="service">BLOG</span></span>
                 </a>
                 <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
