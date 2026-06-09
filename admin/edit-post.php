@@ -167,6 +167,20 @@ foreach ($allLayouts as $l) {
 }
 $layoutFields = $layoutDef ? ($layoutDef['fields'] ?? []) : [];
 
+$hasCustomTitle = false;
+$hasCustomContent = false;
+if ($layoutFields) {
+    foreach ($layoutFields as $field) {
+        $name = (string) ($field['name'] ?? '');
+        if ($name === 'title') {
+            $hasCustomTitle = true;
+        } elseif ($name === 'content') {
+            $hasCustomContent = true;
+        }
+    }
+}
+
+
 $adminTitle = t($isEditing ? 'admin.post_editor.edit_title' : 'admin.post_editor.new_title');
 $codeMirror = 'markdown';
 require __DIR__ . '/../includes/admin-head.php';
@@ -220,27 +234,54 @@ require __DIR__ . '/../includes/admin-head.php';
                         <span id="autosave-status" class="autosave-status" aria-live="polite"></span>
                     </nav>
 
-                    <label for="title"><?= e(t('admin.editor.title_label')) ?></label>
-                    <input type="text" id="title" name="title" value="<?= e($post['title']) ?>" autocomplete="off">
+                    <?php if (!$hasCustomTitle): ?>
+                        <label for="title"><?= e(t('admin.editor.title_label')) ?></label>
+                        <input type="text" id="title" name="title" value="<?= e($post['title']) ?>" autocomplete="off">
+                    <?php endif; ?>
 
-                    <label for="content"><?= e(t('admin.editor.content_label')) ?> <span class="tip">(<a target="_blank" rel="noopener noreferrer" href="https://pureblog.org/markdown-helper"><?= e(t('admin.editor.tip_markdown')) ?></a>)</span></label>
-                    <textarea id="content" name="content" rows="18" autocomplete="off"><?= e($post['content']) ?></textarea>
+                    <?php if (!$hasCustomContent): ?>
+                        <label for="content"><?= e(t('admin.editor.content_label')) ?> <span class="tip">(<a target="_blank" rel="noopener noreferrer" href="https://pureblog.org/markdown-helper"><?= e(t('admin.editor.tip_markdown')) ?></a>)</span></label>
+                        <textarea id="content" name="content" rows="18" autocomplete="off"><?= e($post['content']) ?></textarea>
+                    <?php endif; ?>
 
                     <?php if ($layoutFields): ?>
                         <?php foreach ($layoutFields as $field):
                             $fieldName = (string) ($field['name'] ?? '');
-                            $fieldLabel = (string) ($field['label'] ?? $fieldName);
-                            $fieldType = (string) ($field['type'] ?? 'text');
-                            $fieldId = 'layout_field_' . $fieldName;
-                            $inputName = 'layout_field__' . $fieldName;
-                            $fieldValue = (string) ($originalExisting[$fieldName] ?? $post['layout_fields'][$fieldName] ?? '');
                             if ($fieldName === ''): continue; endif;
+
+                            $fieldLabel = (string) ($field['label'] ?? $fieldName);
+
+                            if ($fieldName === 'title') {
+                                $fieldType = (string) ($field['type'] ?? 'text');
+                                $fieldId = 'title';
+                                $inputName = 'title';
+                                $fieldValue = $post['title'];
+                            } elseif ($fieldName === 'content') {
+                                $fieldType = (string) ($field['type'] ?? 'markdown');
+                                $fieldId = 'content';
+                                $inputName = 'content';
+                                $fieldValue = $post['content'];
+                            } else {
+                                $fieldType = (string) ($field['type'] ?? 'text');
+                                $fieldId = 'layout_field_' . $fieldName;
+                                $inputName = 'layout_field__' . $fieldName;
+                                $fieldValue = (string) ($originalExisting[$fieldName] ?? $post['layout_fields'][$fieldName] ?? '');
+                            }
                         ?>
                             <?php if ($fieldType !== 'checkbox'): ?>
-                            <label for="<?= e($fieldId) ?>"><?= e($fieldLabel) ?></label>
+                            <label for="<?= e($fieldId) ?>">
+                                <?= e($fieldLabel) ?>
+                                <?php if ($fieldName === 'content'): ?>
+                                    <span class="tip">(<a target="_blank" rel="noopener noreferrer" href="https://pureblog.org/markdown-helper"><?= e(t('admin.editor.tip_markdown')) ?></a>)</span>
+                                <?php endif; ?>
+                            </label>
                             <?php endif; ?>
                             <?php if ($fieldType === 'markdown'): ?>
-                                <textarea id="<?= e($fieldId) ?>" name="<?= e($inputName) ?>" rows="8" data-layout-markdown autocomplete="off"><?= e($fieldValue) ?></textarea>
+                                <?php if ($fieldName === 'content'): ?>
+                                    <textarea id="content" name="content" rows="18" autocomplete="off"><?= e($fieldValue) ?></textarea>
+                                <?php else: ?>
+                                    <textarea id="<?= e($fieldId) ?>" name="<?= e($inputName) ?>" rows="8" data-layout-markdown autocomplete="off"><?= e($fieldValue) ?></textarea>
+                                <?php endif; ?>
                             <?php elseif ($fieldType === 'select'): ?>
                                 <?php $fieldOptions = is_array($field['options'] ?? null) ? $field['options'] : []; ?>
                                 <select id="<?= e($fieldId) ?>" name="<?= e($inputName) ?>">
