@@ -107,10 +107,15 @@ function e(string $value): string
 function font_stack_css(string $fontStack): string
 {
     return match ($fontStack) {
-        'serif' => 'Georgia, Times, "Times New Roman", serif',
-        'mono' => 'ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono", monospace',
-        default => '-apple-system, BlinkMacSystemFont, "Avenir Next", Avenir, "Nimbus Sans L", Roboto, "Noto Sans", "Segoe UI", Arial, Helvetica, "Helvetica Neue", sans-serif',
+        'serif' => '"Merriweather", Georgia, Times, "Times New Roman", serif',
+        'mono'  => '"Iosevka", ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono", monospace',
+        default => '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
     };
+}
+
+function font_stack_url(string $fontStack): ?string
+{
+    return null;
 }
 
 /**
@@ -132,6 +137,41 @@ function validate_image_path(string $baseDir, string $targetPath): bool
 function is_safe_image_slug(string $slug): bool
 {
     return $slug !== '' && preg_match('/^[\p{L}\p{N}\-_]+$/u', $slug) === 1;
+}
+
+function strip_image_metadata(string $path, string $mimeType): void
+{
+    if (class_exists('Imagick')) {
+        try {
+            $img = new Imagick($path);
+            $img->stripImage();
+            $img->writeImage($path);
+            $img->destroy();
+        } catch (Exception $e) {
+            // silently fail — upload still succeeds
+        }
+        return;
+    }
+
+    // GD fallback: re-encoding drops all metadata
+    [$loader, $saver] = match($mimeType) {
+        'image/jpeg' => ['imagecreatefromjpeg', fn($i) => imagejpeg($i, $path, 90)],
+        'image/png'  => ['imagecreatefrompng',  fn($i) => imagepng($i, $path)],
+        'image/webp' => ['imagecreatefromwebp', fn($i) => imagewebp($i, $path)],
+        default      => [null, null],
+    };
+
+    if ($loader === null || !function_exists($loader)) {
+        return;
+    }
+
+    $img = $loader($path);
+    if ($img === false) {
+        return;
+    }
+
+    $saver($img);
+    imagedestroy($img);
 }
 
 function slugify(string $value): string
@@ -270,6 +310,13 @@ function format_datetime_for_display(?string $value, array $config, ?string $for
     return _lang_translate_date($dt->format($effectiveFormat));
 }
 
+function calculate_reading_time(string $content): string
+{
+    $wordCount = str_word_count(strip_tags($content));
+    $minutes = max(1, (int) ceil($wordCount / 200));
+    return t('frontend.reading_time', ['n' => $minutes]);
+}
+
 function relative_time(int $timestamp): string
 {
     $diff = max(0, time() - $timestamp);
@@ -296,6 +343,75 @@ function format_post_date_for_rss(?string $value, array $config): string
     }
 
     return $dt->format(DATE_RSS);
+}
+
+// ---------------------------------------------------------------------------
+// Post scheduler
+// ---------------------------------------------------------------------------
+
+function publish_scheduled_posts(): int
+{
+    if (!is_dir(PUREBLOG_POSTS_PATH)) {
+        return 0;
+    }
+
+    $files = glob(PUREBLOG_POSTS_PATH . '/*.md') ?: [];
+    $config = load_config();
+    $now = new DateTimeImmutable('now', site_timezone_object($config));
+    $count = 0;
+
+    foreach ($files as $file) {
+        $front = parse_post_meta_only($file);
+        if (($front['status'] ?? '') !== 'scheduled') {
+            continue;
+        }
+
+        $dt = parse_post_datetime_with_timezone($front['date'] ?? '', $config);
+        if ($dt === null || $dt > $now) {
+            continue;
+        }
+
+        $parsed = parse_post_file($file);
+        $fm = $parsed['front_matter'];
+        $knownKeys = ['title', 'slug', 'date', 'status', 'tags', 'description', 'categories', 'layout'];
+        $post = array_merge(
+            array_diff_key($fm, array_flip($knownKeys)),
+            [
+                'title'       => $fm['title'] ?? 'Untitled',
+                'slug'        => $fm['slug'] ?? '',
+                'date'        => $fm['date'] ?? '',
+                'status'      => 'published',
+                'tags'        => $fm['tags'] ?? [],
+                'description' => $fm['description'] ?? '',
+                'content'     => $parsed['content'],
+                'layout'      => $fm['layout'] ?? '',
+            ]
+        );
+
+        $saveError = '';
+        if (save_post($post, $post['slug'], $post['date'], 'scheduled', $saveError)) {
+            $count++;
+        }
+    }
+
+    return $count;
+}
+
+function maybe_publish_scheduled_posts(): void
+{
+    if (!is_dir(PUREBLOG_POSTS_PATH)) {
+        return;
+    }
+
+    $lockFile = PUREBLOG_POSTS_PATH . '/.scheduler.lock';
+    $interval = 300; // 5 minutes
+
+    if (is_file($lockFile) && (time() - (int) filemtime($lockFile)) < $interval) {
+        return;
+    }
+
+    @file_put_contents($lockFile, (string) time());
+    publish_scheduled_posts();
 }
 
 // ---------------------------------------------------------------------------
@@ -430,6 +546,7 @@ function get_all_posts_meta(bool $includeDrafts = false, bool $bustCache = false
     if ($all === null) {
         if (!is_dir(PUREBLOG_POSTS_PATH)) {
             $all = [];
+            $published = [];
         } else {
             $files = glob(PUREBLOG_POSTS_PATH . '/*.md') ?: [];
             $posts = [];
@@ -473,6 +590,7 @@ function get_all_posts(bool $includeDrafts = false, bool $bustCache = false): ar
     if ($all === null) {
         if (!is_dir(PUREBLOG_POSTS_PATH)) {
             $all = [];
+            $published = [];
         } else {
             $files = glob(PUREBLOG_POSTS_PATH . '/*.md') ?: [];
             $posts = [];
@@ -556,6 +674,7 @@ function get_all_pages(bool $includeDrafts = false, bool $bustCache = false): ar
     if ($all === null) {
         if (!is_dir(PUREBLOG_PAGES_PATH)) {
             $all = [];
+            $published = [];
         } else {
             $files = glob(PUREBLOG_PAGES_PATH . '/*.md') ?: [];
             $pages = [];
@@ -565,15 +684,17 @@ function get_all_pages(bool $includeDrafts = false, bool $bustCache = false): ar
                 $front = $parsed['front_matter'];
                 $status = $front['status'] ?? 'draft';
 
-                $pages[] = [
-                    'title' => $front['title'] ?? 'Untitled',
-                    'slug' => $front['slug'] ?? '',
-                    'status' => $status,
-                    'description' => $front['description'] ?? '',
+                $knownPageKeys = ['title', 'slug', 'status', 'description', 'include_in_nav', 'categories'];
+                $extraFront = array_diff_key($front, array_flip($knownPageKeys));
+                $pages[] = array_merge($extraFront, [
+                    'title'          => $front['title'] ?? 'Untitled',
+                    'slug'           => $front['slug'] ?? '',
+                    'status'         => $status,
+                    'description'    => $front['description'] ?? '',
                     'include_in_nav' => $front['include_in_nav'] ?? true,
-                    'content' => $parsed['content'],
-                    'path' => $file,
-                ];
+                    'content'        => $parsed['content'],
+                    'path'           => $file,
+                ]);
             }
 
             usort($pages, fn($a, $b) => ($a['title'] <=> $b['title']));
@@ -624,6 +745,8 @@ function save_page(array &$page, ?string $originalSlug = null, ?string $original
     $filename = $slug . '.md';
     $path = PUREBLOG_PAGES_PATH . '/' . $filename;
 
+    $featureImage = trim($page['feature_image'] ?? '');
+
     $frontMatter = [
         'title' => $title,
         'slug' => $slug,
@@ -631,6 +754,10 @@ function save_page(array &$page, ?string $originalSlug = null, ?string $original
         'description' => $description,
         'include_in_nav' => $includeInNav ? 'true' : 'false',
     ];
+
+    if ($featureImage !== '') {
+        $frontMatter['feature_image'] = $featureImage;
+    }
 
     $frontLines = ["---"];
     foreach ($frontMatter as $key => $value) {
@@ -713,6 +840,35 @@ function delete_page_by_slug(string $slug): bool
 
     cache_clear();
     return true;
+}
+
+function update_front_matter_field(string $filepath, string $field, string $value): bool
+{
+    $raw = file_get_contents($filepath);
+    if ($raw === false) {
+        return false;
+    }
+    $raw = str_replace("\r\n", "\n", $raw);
+
+    if (!preg_match('/\A(---\n.*?\n---\n)/s', $raw, $matches)) {
+        return false;
+    }
+    $frontBlock = $matches[1];
+    $body       = substr($raw, strlen($frontBlock));
+    $pattern    = '/^' . preg_quote($field, '/') . ':.*\n?/m';
+
+    if ($value !== '') {
+        $line = $field . ': ' . $value . "\n";
+        if (preg_match($pattern, $frontBlock)) {
+            $frontBlock = preg_replace($pattern, $line, $frontBlock);
+        } else {
+            $frontBlock = substr($frontBlock, 0, -4) . $line . "---\n";
+        }
+    } else {
+        $frontBlock = preg_replace($pattern, '', $frontBlock);
+    }
+
+    return file_put_contents($filepath, $frontBlock . $body) !== false;
 }
 
 function find_post_filepath_by_slug(string $slug): ?string
@@ -833,6 +989,11 @@ function save_post(array &$post, ?string $originalSlug = null, ?string $original
 
     if ($layout !== '') {
         $frontMatter['layout'] = $layout;
+    }
+
+    $featureImage = trim($post['feature_image'] ?? '');
+    if ($featureImage !== '') {
+        $frontMatter['feature_image'] = $featureImage;
     }
 
     foreach ($layoutFields as $fieldName => $fieldValue) {

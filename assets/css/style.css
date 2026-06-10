@@ -1,3 +1,98 @@
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../fonts/inter/regular.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("../fonts/inter/bold.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Inter";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../fonts/inter/italic.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Inter";
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url("../fonts/inter/bold-italic.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Iosevka";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../fonts/iosevka/subset-regular.woff2") format("woff2"),
+         url("../fonts/iosevka/subset-regular.woff") format("woff");
+}
+@font-face {
+    font-family: "Iosevka";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("../fonts/iosevka/subset-bold.woff2") format("woff2"),
+         url("../fonts/iosevka/subset-bold.woff") format("woff");
+}
+@font-face {
+    font-family: "Iosevka";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../fonts/iosevka/subset-italic.woff2") format("woff2"),
+         url("../fonts/iosevka/subset-italic.woff") format("woff");
+}
+@font-face {
+    font-family: "Iosevka";
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url("../fonts/iosevka/subset-bolditalic.woff2") format("woff2"),
+         url("../fonts/iosevka/subset-bolditalic.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Merriweather";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../fonts/merriweather/regular.woff2") format("woff2"),
+         url("../fonts/merriweather/regular.woff") format("woff");
+}
+@font-face {
+    font-family: "Merriweather";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("../fonts/merriweather/bold.woff2") format("woff2"),
+         url("../fonts/merriweather/bold.woff") format("woff");
+}
+@font-face {
+    font-family: "Merriweather";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../fonts/merriweather/italic.woff2") format("woff2"),
+         url("../fonts/merriweather/italic.woff") format("woff");
+}
+@font-face {
+    font-family: "Merriweather";
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url("../fonts/merriweather/bold-italic.woff2") format("woff2"),
+         url("../fonts/merriweather/bold-italic.woff") format("woff");
+}
+
 :root {
     color-scheme: light;
 }
@@ -363,6 +458,7 @@ pre {
     margin: 2rem 0;
     padding: 1rem;
     overflow-x: auto;
+    font-family: var(--mono-font-stack, ui-monospace, monospace);
 }
 
 pre code {
@@ -378,6 +474,7 @@ code {
     background: var(--accent-bg-color);
     padding: 0.1rem 0.25rem;
     font-size: 1rem;
+    font-family: var(--mono-font-stack, ui-monospace, monospace);
 }
 
 h2 code, h3 code {
@@ -500,52 +597,13 @@ textarea:not([cols]) {
 /* checkbox and radio button style */
 input[type="checkbox"],
 input[type="radio"] {
-    vertical-align: middle;
-    position: relative;
+    accent-color: var(--accent-color);
     width: min-content;
 }
 
 input[type="checkbox"] + label,
 input[type="radio"] + label {
     display: inline-block;
-}
-
-input[type="radio"] {
-    border-radius: 100%;
-}
-
-input[type="checkbox"]:checked,
-input[type="radio"]:checked {
-    background-color: var(--accent-color);
-}
-
-input[type="checkbox"]:checked::after {
-    /* Creates a rectangle with colored right and bottom borders which is rotated to look like a check mark */
-    content: " ";
-    width: 0.2em;
-    height: 0.4em;
-    border-radius: 0;
-    position: absolute;
-    top: 0.04em;
-    left: 0.18em;
-    background-color: transparent;
-    border-right: solid var(--bg) 0.08em;
-    border-bottom: solid var(--bg) 0.08em;
-    font-size: 1.8em;
-    transform: rotate(45deg);
-}
-
-input[type="radio"]:checked::after {
-    /* creates a colored circle for the checked radio button  */
-    content: " ";
-    width: 0.3em;
-    height: 0.3em;
-    border-radius: 100%;
-    position: absolute;
-    top: 0.125em;
-    background-color: var(--bg-color);
-    left: 0.125em;
-    font-size: 1.8em;
 }
 
 /* Makes input fields wider on smaller screens */

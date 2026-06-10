@@ -55,6 +55,7 @@ return [
         'no_posts_for_tag'      => 'Nessun articolo trovato per questo tag.',
         'edit_post'             => 'Edit post', // ENGLISH PLACEHOLDER
         'edit_page'             => 'Edit page', // ENGLISH PLACEHOLDER
+        'reading_time'          => '{n} min read', // ENGLISH PLACEHOLDER
     ],
 
     // -------------------------------------------------------------------------
@@ -71,6 +72,7 @@ return [
             'log_out'        => 'Esci',
             'cache_cleared'  => 'Cache svuotata.',
             'invalid_action' => 'Azione amministrativa non valida.',
+            'images'         => 'Images', // ENGLISH PLACEHOLDER
         ],
 
         'login' => [
@@ -151,8 +153,8 @@ return [
             'notice_post_deleted'   => 'Articolo eliminato.',
             'notice_page_saved'     => 'Pagina salvata.',
             'notice_page_deleted'   => 'Pagina eliminata.',
-            'pagination_newer'      => '← Articoli recenti',
-            'pagination_older'      => 'Articoli precedenti →',
+            'pagination_newer'      => '⬅ Articoli recenti',
+            'pagination_older'      => 'Articoli precedenti ➡',
             'new_page'              => 'Nuova pagina',
             'no_pages'              => 'Ancora nessuna pagina.',
         ],
@@ -165,6 +167,7 @@ return [
             'date_label'            => 'Data',
             'status_label'          => 'Stato',
             'status_draft'          => 'Bozza',
+            'status_scheduled'      => 'Scheduled', // ENGLISH PLACEHOLDER
             'status_published'      => 'Pubblicato',
             'images_title'          => 'Immagini',
             'no_images'             => 'Ancora nessuna immagine.',
@@ -219,13 +222,31 @@ return [
             'js_copy_failed'  => 'Impossibile copiare negli appunti. Copia manualmente.',
             'js_save_post_first'  => 'Salva prima il post affinché abbia uno slug e una data.',
             'js_save_page_first'  => 'Salva prima la pagina affinché abbia uno slug.',
-            'js_upload_failed'  => 'Caricamento immagine fallito.',
+            'js_upload_failed'           => 'Caricamento immagine fallito.',
+            'feature_image'              => 'Feature image', // ENGLISH PLACEHOLDER
+            'js_feature_image_confirm'   => 'Replace the current feature image with "{filename}"?', // ENGLISH PLACEHOLDER
+            'js_feature_image_failed'    => 'Failed to update feature image.', // ENGLISH PLACEHOLDER
         ],
 
+        'images' => [
+            'page_title'         => 'Images - Pure Blog Admin', // ENGLISH PLACEHOLDER
+            'heading'            => 'Images', // ENGLISH PLACEHOLDER
+            'no_images'          => 'No images uploaded yet.', // ENGLISH PLACEHOLDER
+            'search_label'       => 'Search images', // ENGLISH PLACEHOLDER
+            'search_placeholder' => 'Search by filename…', // ENGLISH PLACEHOLDER
+            'clear_search'       => 'Clear search', // ENGLISH PLACEHOLDER
+            'deleted'            => 'Image deleted.', // ENGLISH PLACEHOLDER
+            'delete_confirm'     => 'Delete this image?', // ENGLISH PLACEHOLDER
+            'delete_used_warning'=> 'This image is being used in the content below. You should remove it to avoid broken links.', // ENGLISH PLACEHOLDER
+            'delete_anyway'      => 'Delete anyway', // ENGLISH PLACEHOLDER
+            'cancel'             => 'Cancel', // ENGLISH PLACEHOLDER
+            'slug_label'         => 'Folder:', // ENGLISH PLACEHOLDER
+            'error_delete'       => 'Unable to delete image.', // ENGLISH PLACEHOLDER
+            'pagination_prev'    => '⬅ Previous', // ENGLISH PLACEHOLDER
+            'pagination_next'    => 'Next ➡', // ENGLISH PLACEHOLDER
+        ],
 
         'notices' => [
-            'lang_missing'        => 'I file di lingua mancano — ciò può accadere dopo un aggiornamento dalla versione 1.9.7.',
-            'lang_missing_repair' => 'Clicca qui per riparare automaticamente',
         ],
 
         'post_editor' => [
@@ -319,6 +340,7 @@ return [
                 'language'            => 'Lingua',
                 'timezone'            => 'Fuso orario',
                 'date_format'         => 'Formato data',
+                'show_reading_time'  => 'Show reading time on posts', // ENGLISH PLACEHOLDER
                 'homepage'            => 'Homepage',
                 'blog_page'           => 'Pagina del blog',
                 'base_url'            => 'URL base',
@@ -337,6 +359,7 @@ return [
                 'admin_homepage_dashboard'  => 'Dashboard',
                 'admin_homepage_content'    => 'Contenuto',
                 'admin_hide_dashboard'      => 'Nascondi Dashboard dalla navigazione',
+                'enable_blog_posts'         => 'Abilita funzionalità blog (post, tag, statistiche)',
                 'cache_section'       => 'Cache',
                 'cache_enable'        => 'Abilita cache pagine',
                 'rss_ttl'             => 'Durata cache RSS',
@@ -487,7 +510,6 @@ return [
                 'notice_update_applied'      => 'Aggiornamento applicato con successo.',
                 'notice_backup_restored'     => 'Backup ripristinato con successo.',
                 'notice_backup_deleted'      => 'Backup eliminato con successo.',
-                'notice_lang_restored'       => 'File di lingua ripristinati con successo.',
                 'already_latest_version'     => 'Stai già usando l\'ultima versione ({tag}).',
                 'error_curl_init'            => 'Impossibile inizializzare curl.',
                 'error_github_request'       => 'Richiesta Codeberg fallita (HTTP {status}).',
@@ -516,10 +538,6 @@ return [
                 'error_choose_delete'        => 'Seleziona un backup da eliminare.',
                 'error_release_metadata'     => 'Impossibile recuperare le informazioni sulla versione da Codeberg.',
                 'error_lang_download'        => 'Download del file zip della versione fallito.',
-                'error_lang_zip_open'        => 'Apertura del file zip della versione fallita.',
-                'error_lang_zip_extract'     => 'Estrazione del file zip della versione fallita.',
-                'error_lang_dir_missing'     => 'Directory lang/ non trovata nel pacchetto della versione.',
-                'error_lang_repair'          => 'Riparazione della lingua fallita: {error}',
                 'error_build_plan'           => 'Impossibile creare il piano del pacchetto.',
                 'error_dir_create'           => 'Impossibile creare la directory: {path}',
                 'error_file_copy'            => 'Impossibile copiare il file: {path}',

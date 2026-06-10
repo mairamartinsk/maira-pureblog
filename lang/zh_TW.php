@@ -47,6 +47,7 @@ return [
         'no_posts_for_tag'      => '此標籤下沒有文章。',
         'edit_post'             => 'Edit post', // ENGLISH PLACEHOLDER
         'edit_page'             => 'Edit page', // ENGLISH PLACEHOLDER
+        'reading_time'          => '{n} min read', // ENGLISH PLACEHOLDER
     ],
 
     'admin' => [
@@ -60,6 +61,7 @@ return [
             'log_out'       => '登出',
             'cache_cleared' => '快取已清除。',
             'invalid_action'=> '無效的管理操作。',
+            'images'        => 'Images', // ENGLISH PLACEHOLDER
         ],
 
         'login' => [
@@ -140,8 +142,8 @@ return [
             'notice_post_deleted'   => '文章已刪除。',
             'notice_page_saved'     => '頁面已儲存。',
             'notice_page_deleted'   => '頁面已刪除。',
-            'pagination_newer'      => '← 較新的文章',
-            'pagination_older'      => '較舊的文章 →',
+            'pagination_newer'      => '⬅ 較新的文章',
+            'pagination_older'      => '較舊的文章 ➡',
             'new_page'              => '新增頁面',
             'no_pages'              => '尚無頁面。',
         ],
@@ -154,6 +156,7 @@ return [
             'date_label'            => '日期',
             'status_label'          => '狀態',
             'status_draft'          => '草稿',
+            'status_scheduled'      => 'Scheduled', // ENGLISH PLACEHOLDER
             'status_published'      => '已發布',
             'images_title'          => '圖片',
             'no_images'             => '尚無圖片。',
@@ -208,11 +211,30 @@ return [
             'js_save_post_first'         => '請先儲存文章以產生網址別名與日期。',
             'js_save_page_first'         => '請先儲存頁面以產生網址別名。',
             'js_upload_failed'           => '圖片上傳失敗。',
+            'feature_image'              => 'Feature image', // ENGLISH PLACEHOLDER
+            'js_feature_image_confirm'   => 'Replace the current feature image with "{filename}"?', // ENGLISH PLACEHOLDER
+            'js_feature_image_failed'    => 'Failed to update feature image.', // ENGLISH PLACEHOLDER
+        ],
+
+        'images' => [
+            'page_title'         => 'Images - Pure Blog Admin', // ENGLISH PLACEHOLDER
+            'heading'            => 'Images', // ENGLISH PLACEHOLDER
+            'no_images'          => 'No images uploaded yet.', // ENGLISH PLACEHOLDER
+            'search_label'       => 'Search images', // ENGLISH PLACEHOLDER
+            'search_placeholder' => 'Search by filename…', // ENGLISH PLACEHOLDER
+            'clear_search'       => 'Clear search', // ENGLISH PLACEHOLDER
+            'deleted'            => 'Image deleted.', // ENGLISH PLACEHOLDER
+            'delete_confirm'     => 'Delete this image?', // ENGLISH PLACEHOLDER
+            'delete_used_warning'=> 'This image is being used in the content below. You should remove it to avoid broken links.', // ENGLISH PLACEHOLDER
+            'delete_anyway'      => 'Delete anyway', // ENGLISH PLACEHOLDER
+            'cancel'             => 'Cancel', // ENGLISH PLACEHOLDER
+            'slug_label'         => 'Folder:', // ENGLISH PLACEHOLDER
+            'error_delete'       => 'Unable to delete image.', // ENGLISH PLACEHOLDER
+            'pagination_prev'    => '⬅ Previous', // ENGLISH PLACEHOLDER
+            'pagination_next'    => 'Next ➡', // ENGLISH PLACEHOLDER
         ],
 
         'notices' => [
-            'lang_missing'        => '語言檔案遺失，這可能發生在從 1.9.7 版更新之後。',
-            'lang_missing_repair' => '點此自動修復',
         ],
 
         'post_editor' => [
@@ -306,6 +328,7 @@ return [
                 'language'           => '語言',
                 'timezone'           => '時區',
                 'date_format'        => '日期格式',
+                'show_reading_time'  => 'Show reading time on posts', // ENGLISH PLACEHOLDER
                 'homepage'           => '首頁',
                 'blog_page'          => '部落格頁面',
                 'base_url'           => '網站網址',
@@ -324,6 +347,7 @@ return [
                 'admin_homepage_dashboard'  => '儀表板',
                 'admin_homepage_content'    => '內容',
                 'admin_hide_dashboard'      => '在導覽中隱藏儀表板',
+                'enable_blog_posts'         => '啟用部落格功能 (文章、標籤、統計)',
                 'cache_section'      => '快取',
                 'cache_enable'       => '啟用頁面快取',
                 'rss_ttl'            => 'RSS 快取時間',
@@ -474,7 +498,6 @@ return [
                 'notice_update_applied'      => '更新已成功套用。',
                 'notice_backup_restored'     => '備份已成功還原。',
                 'notice_backup_deleted'      => '備份已成功刪除。',
-                'notice_lang_restored'       => '語言檔案已成功修復。',
                 'already_latest_version'     => '您已是最新版本（{tag}）。',
                 'error_curl_init'            => '無法初始化 curl。',
                 'error_github_request'       => 'Codeberg 請求失敗（HTTP {status}）。',
@@ -503,10 +526,6 @@ return [
                 'error_choose_delete'        => '請選擇要刪除的備份。',
                 'error_release_metadata'     => '無法從 Codeberg 取得版本資訊。',
                 'error_lang_download'        => '下載版本 zip 失敗。',
-                'error_lang_zip_open'        => '開啟版本 zip 失敗。',
-                'error_lang_zip_extract'     => '解壓縮版本 zip 失敗。',
-                'error_lang_dir_missing'     => '版本套件中找不到 lang/ 資料夾。',
-                'error_lang_repair'          => '語言修復失敗：{error}',
                 'error_build_plan'           => '無法建立套件計畫。',
                 'error_dir_create'           => '無法建立資料夾：{path}',
                 'error_file_copy'            => '無法複製檔案：{path}',

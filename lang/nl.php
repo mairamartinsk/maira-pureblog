@@ -55,6 +55,7 @@ return [
         'no_posts_for_tag'      => 'Geen berichten gevonden voor dit label.',
         'edit_post'             => 'Edit post', // ENGLISH PLACEHOLDER
         'edit_page'             => 'Edit page', // ENGLISH PLACEHOLDER
+        'reading_time'          => '{n} min read', // ENGLISH PLACEHOLDER
     ],
 
     // -------------------------------------------------------------------------
@@ -71,6 +72,7 @@ return [
             'log_out'       => 'Uitloggen',
             'cache_cleared' => 'Cache is geleegd.',
             'invalid_action'=> 'Ongeldige admin actie.',
+            'images'        => 'Images', // ENGLISH PLACEHOLDER
         ],
 
         'login' => [
@@ -151,8 +153,8 @@ return [
             'notice_post_deleted'   => 'Post deleted.',
             'notice_page_saved'     => 'Page saved.',
             'notice_page_deleted'   => 'Page deleted.',
-            'pagination_newer'      => '← Newer posts',
-            'pagination_older'      => 'Older posts →',
+            'pagination_newer'      => '⬅ Newer posts',
+            'pagination_older'      => 'Older posts ➡',
             'new_page'              => 'New page',
             'no_pages'              => 'No pages yet.',
         ],
@@ -165,6 +167,7 @@ return [
             'date_label'            => 'Datum',
             'status_label'          => 'Status',
             'status_draft'          => 'Klad',
+            'status_scheduled'      => 'Scheduled', // ENGLISH PLACEHOLDER
             'status_published'      => 'Gepubliceerd',
             'images_title'          => 'Afbeeldingen',
             'no_images'             => 'Nog geen afbeeldingen.',
@@ -219,13 +222,31 @@ return [
             'js_copy_failed'  => 'Kopiëren naar klembord mislukt. Kopieer handmatig.',
             'js_save_post_first'  => 'Sla de post eerst op zodat deze een slug en datum heeft.',
             'js_save_page_first'  => 'Sla de pagina eerst op zodat deze een slug heeft.',
-            'js_upload_failed'  => 'Afbeelding uploaden mislukt.',
+            'js_upload_failed'           => 'Afbeelding uploaden mislukt.',
+            'feature_image'              => 'Feature image', // ENGLISH PLACEHOLDER
+            'js_feature_image_confirm'   => 'Replace the current feature image with "{filename}"?', // ENGLISH PLACEHOLDER
+            'js_feature_image_failed'    => 'Failed to update feature image.', // ENGLISH PLACEHOLDER
         ],
 
+        'images' => [
+            'page_title'         => 'Images - Pure Blog Admin', // ENGLISH PLACEHOLDER
+            'heading'            => 'Images', // ENGLISH PLACEHOLDER
+            'no_images'          => 'No images uploaded yet.', // ENGLISH PLACEHOLDER
+            'search_label'       => 'Search images', // ENGLISH PLACEHOLDER
+            'search_placeholder' => 'Search by filename…', // ENGLISH PLACEHOLDER
+            'clear_search'       => 'Clear search', // ENGLISH PLACEHOLDER
+            'deleted'            => 'Image deleted.', // ENGLISH PLACEHOLDER
+            'delete_confirm'     => 'Delete this image?', // ENGLISH PLACEHOLDER
+            'delete_used_warning'=> 'This image is being used in the content below. You should remove it to avoid broken links.', // ENGLISH PLACEHOLDER
+            'delete_anyway'      => 'Delete anyway', // ENGLISH PLACEHOLDER
+            'cancel'             => 'Cancel', // ENGLISH PLACEHOLDER
+            'slug_label'         => 'Folder:', // ENGLISH PLACEHOLDER
+            'error_delete'       => 'Unable to delete image.', // ENGLISH PLACEHOLDER
+            'pagination_prev'    => '⬅ Previous', // ENGLISH PLACEHOLDER
+            'pagination_next'    => 'Next ➡', // ENGLISH PLACEHOLDER
+        ],
 
         'notices' => [
-            'lang_missing'        => 'Taalbestanden ontbreken — dit kan gebeuren na een update van 1.9.7.',
-            'lang_missing_repair' => 'Klik hier om automatisch te herstellen',
         ],
 
         'post_editor' => [
@@ -319,6 +340,7 @@ return [
                 'language'           => 'Taal',
                 'timezone'           => 'Tijdzone',
                 'date_format'        => 'Datum formatering',
+                'show_reading_time'  => 'Show reading time on posts', // ENGLISH PLACEHOLDER
                 'homepage'           => 'Homepagina',
                 'blog_page'          => 'Blogpagina',
                 'base_url'           => 'Basis URL',
@@ -337,6 +359,7 @@ return [
                 'admin_homepage_dashboard'  => 'Dashboard',
                 'admin_homepage_content'    => "Pagina's",
                 'admin_hide_dashboard'      => 'Dashboard verbergen in navigatie',
+                'enable_blog_posts'         => 'Blogfuncties inschakelen (berichten, tags, statistieken)',
                 'cache_section'      => 'Cache',
                 'cache_enable'       => 'Pagina-cache aanzetten',
                 'rss_ttl'            => 'RSS-cache tijdsduur',
@@ -487,7 +510,6 @@ return [
                 'notice_update_applied'      => 'Update succesvol toegepast.',
                 'notice_backup_restored'     => 'Back-up succesvol hersteld.',
                 'notice_backup_deleted'      => 'Back-up succesvol verwijderd.',
-                'notice_lang_restored'       => 'Taalbestanden succesvol hersteld.',
                 'already_latest_version'     => 'U gebruikt al de nieuwste versie ({tag}).',
                 'error_curl_init'            => 'Kan curl niet initialiseren.',
                 'error_github_request'       => 'Codeberg-verzoek mislukt (HTTP {status}).',
@@ -516,10 +538,6 @@ return [
                 'error_choose_delete'        => 'Kies een back-up om te verwijderen.',
                 'error_release_metadata'     => 'Kan release-informatie niet ophalen van Codeberg.',
                 'error_lang_download'        => 'Downloaden van release-zip mislukt.',
-                'error_lang_zip_open'        => 'Openen van release-zip mislukt.',
-                'error_lang_zip_extract'     => 'Uitpakken van release-zip mislukt.',
-                'error_lang_dir_missing'     => 'Lang/-map niet gevonden in het release-pakket.',
-                'error_lang_repair'          => 'Taalreparatie mislukt: {error}',
                 'error_build_plan'           => 'Kan pakketplan niet aanmaken.',
                 'error_dir_create'           => 'Kan map niet aanmaken: {path}',
                 'error_file_copy'            => 'Kan bestand niet kopiëren: {path}',

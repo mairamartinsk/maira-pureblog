@@ -13,6 +13,7 @@ $fontStack = $fontStack ?? font_stack_css($config['theme']['font_stack'] ?? 'san
 $pageTitle = $pageTitle ?? ($post['title'] ?? t('frontend.post_not_found'));
 $metaDescription = $metaDescription ?? (!empty($post['description']) ? $post['description'] : '');
 start_admin_session();
+maybe_restore_admin_from_cookie();
 $isAdminLoggedIn = is_admin_logged_in();
 
 ?>
@@ -33,8 +34,15 @@ $isAdminLoggedIn = is_admin_logged_in();
             <?php else: ?>
             <article>
                 <h1><?= e($post['title']) ?></h1>
-                <?php if ($post['date']): ?>
-                    <p class="post-date"><svg class="icon" aria-hidden="true"><use href="#icon-calendar"></use></svg> <time datetime="<?= e(format_datetime_for_display((string) $post['date'], $config, 'c')) ?>"><?= e(format_post_date_for_display((string) $post['date'], $config)) ?></time></p>
+                <?php if ($post['date'] || !empty($config['show_reading_time'])): ?>
+                    <p class="post-date">
+                        <?php if ($post['date']): ?>
+                            <svg class="icon" aria-hidden="true"><use href="#icon-calendar"></use></svg> <time datetime="<?= e(format_datetime_for_display((string) $post['date'], $config, 'c')) ?>"><?= e(format_post_date_for_display((string) $post['date'], $config)) ?></time>
+                        <?php endif; ?>
+                        <?php if (!empty($config['show_reading_time'])): ?>
+                            <?php if ($post['date']): ?> &nbsp;|&nbsp; <?php endif; ?><svg class="icon" aria-hidden="true"><use href="#icon-clock"></use></svg> <?= e(calculate_reading_time((string) ($post['content'] ?? ''))) ?>
+                        <?php endif; ?>
+                    </p>
                 <?php endif; ?>
 
                 <?= render_markdown($post['content'], ['post_title' => (string) ($post['title'] ?? '')]) ?>

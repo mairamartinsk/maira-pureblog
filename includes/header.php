@@ -12,11 +12,20 @@ $headInject = get_contextual_inject($config, 'head', [
 ]);
 $frontCssVersion = (string) @filemtime(__DIR__ . '/../assets/css/style.css');
 $ogImagePreferred = $config['assets']['og_image_preferred'] ?? 'banner';
-$ogImage = $config['assets']['og_image'] ?? '';
-if ($ogImage !== '' && $ogImage[0] === '/') {
-    $ogImage = rtrim(get_base_url(), '/') . $ogImage;
+$featureImageRaw  = (is_array($post ?? null) ? ($post['feature_image'] ?? '') : '')
+                 ?: (is_array($page ?? null) ? ($page['feature_image'] ?? '') : '');
+if ($featureImageRaw !== '') {
+    $ogImage = $featureImageRaw[0] === '/'
+        ? rtrim(get_base_url(), '/') . $featureImageRaw
+        : $featureImageRaw;
+    $isSquareOgImage = false;
+} else {
+    $ogImage = $config['assets']['og_image'] ?? '';
+    if ($ogImage !== '' && $ogImage[0] === '/') {
+        $ogImage = rtrim(get_base_url(), '/') . $ogImage;
+    }
+    $isSquareOgImage = $ogImagePreferred === 'square';
 }
-$isSquareOgImage = $ogImagePreferred === 'square';
 ?>
 <!DOCTYPE html>
 <html lang="<?= e($config['language'] ?? 'en') ?>" data-theme="<?= e($mode) ?>">
@@ -72,6 +81,11 @@ $isSquareOgImage = $ogImagePreferred === 'square';
     <style>
         body { background: <?= e($config['theme']['background_color']) ?>; }
     </style>
+    <?php $fontUrl = font_stack_url($config['theme']['font_stack'] ?? 'sans'); ?>
+    <?php if ($fontUrl !== null): ?>
+        <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+        <link rel="stylesheet" href="<?= e($fontUrl) ?>">
+    <?php endif; ?>
     <link rel="stylesheet" href="<?= rtrim(get_base_url(), '/') ?>/assets/css/style.css?v=<?= e($frontCssVersion) ?>">
     <style>
         :root {
@@ -86,6 +100,7 @@ $isSquareOgImage = $ogImagePreferred === 'square';
             --border-dark: <?= e($config['theme']['border_color_dark']) ?>;
             --accent-bg-dark: <?= e($config['theme']['accent_bg_color_dark']) ?>;
             --font-stack: <?= $fontStack ?>;
+            --mono-font-stack: <?= font_stack_css('mono') ?>;
         }
     <?php if (is_file(__DIR__ . '/../content/css/custom.css')): ?>
 <?php readfile(__DIR__ . '/../content/css/custom.css'); ?>

@@ -6,9 +6,13 @@ require __DIR__ . '/bootstrap.php';
 
 $config = load_config();
 $availableLayouts = get_layouts();
+$blogPostsEnabled = $config['enable_blog_posts'] ?? true;
 
-$tab = (string) ($_GET['tab'] ?? 'posts');
-if (!in_array($tab, ['posts', 'pages'], true)) {
+$defaultTab = $blogPostsEnabled ? 'posts' : 'pages';
+$tab = (string) ($_GET['tab'] ?? $defaultTab);
+if (!$blogPostsEnabled) {
+    $tab = 'pages';
+} elseif (!in_array($tab, ['posts', 'pages'], true)) {
     $tab = 'posts';
 }
 
@@ -22,7 +26,7 @@ $filterTag    = trim((string) ($_GET['tag'] ?? ''));
 $filterStatus = trim((string) ($_GET['status'] ?? ''));
 $filterLayout = trim((string) ($_GET['layout'] ?? ''));
 $filterSince  = isset($_GET['since']) ? (int) $_GET['since'] : 0;
-if (!in_array($filterStatus, ['draft', 'published'], true)) {
+if (!in_array($filterStatus, ['draft', 'scheduled', 'published'], true)) {
     $filterStatus = '';
 }
 if ($filterYear < 2000 || $filterYear > 2100) {
@@ -37,8 +41,15 @@ if ($filterSince < 0 || $filterSince > time()) {
 
 $allPosts = get_all_posts_meta(true);
 usort($allPosts, function (array $a, array $b): int {
-    if ($a['status'] !== $b['status']) {
-        return $a['status'] === 'draft' ? -1 : 1;
+    $order = ['draft' => 0, 'scheduled' => 1, 'published' => 2];
+    $aOrder = $order[$a['status'] ?? 'draft'] ?? 0;
+    $bOrder = $order[$b['status'] ?? 'draft'] ?? 0;
+    if ($aOrder !== $bOrder) {
+        return $aOrder <=> $bOrder;
+    }
+    // Scheduled: soonest first so you see what's coming up next
+    if (($a['status'] ?? '') === 'scheduled') {
+        return ($a['timestamp'] <=> $b['timestamp']);
     }
     return ($b['timestamp'] <=> $a['timestamp']);
 });
@@ -174,54 +185,16 @@ $adminTitle = t('admin.content.page_title');
 require __DIR__ . '/../includes/admin-head.php';
 ?>
     <main class="mid">
-        <div class="content-toolbar">
-            <nav class="content-tabs" aria-label="<?= e(t('admin.content.tabs_label')) ?>">
-                <a href="<?= base_path() ?>/admin/content.php?tab=posts"<?= $tab === 'posts' ? ' class="current" aria-current="page"' : '' ?>><svg class="icon" aria-hidden="true"><use href="#icon-notebook-pen"></use></svg> <?= e(t('admin.content.tab_posts')) ?></a>
-                <a href="<?= base_path() ?>/admin/content.php?tab=pages"<?= $tab === 'pages' ? ' class="current" aria-current="page"' : '' ?>><svg class="icon" aria-hidden="true"><use href="#icon-file-text"></use></svg> <?= e(t('admin.content.tab_pages')) ?></a>
-            </nav>
-            <?php if ($tab === 'posts'): ?>
-                <?php if ($availableLayouts): ?>
-                    <button type="button" id="new-post-button" class="save">
-                        <svg class="icon" aria-hidden="true"><use href="#icon-file-plus-corner"></use></svg>
-                        <?= e(t('admin.content.new_post')) ?>
-                    </button>
-                    <dialog id="layout-picker" aria-labelledby="layout-picker-title">
-                        <h2 id="layout-picker-title"><?= e(t('admin.content.choose_layout')) ?></h2>
-                        <ul class="layout-picker-list">
-                            <li><a href="<?= base_path() ?>/admin/edit-post.php?action=new"><?= e(t('admin.content.default_post')) ?></a></li>
-                            <?php foreach ($availableLayouts as $layout): ?>
-                                <li><a href="<?= base_path() ?>/admin/edit-post.php?action=new&amp;layout=<?= urlencode($layout['name']) ?>"><?= e($layout['label']) ?></a></li>
-                            <?php endforeach; ?>
-                        </ul>
-                        <button type="button" id="layout-picker-close" class="delete">
-                            <svg class="icon" aria-hidden="true"><use href="#icon-circle-x"></use></svg>
-                            <?= e(t('admin.content.cancel')) ?>
-                        </button>
-                    </dialog>
-                    <script>
-                    (function () {
-                        const button = document.getElementById('new-post-button');
-                        const dialog = document.getElementById('layout-picker');
-                        const close = document.getElementById('layout-picker-close');
-                        button.addEventListener('click', () => dialog.showModal());
-                        close.addEventListener('click', () => dialog.close());
-                        dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
-                    })();
-                    </script>
-                <?php else: ?>
-                    <a class="save" href="<?= base_path() ?>/admin/edit-post.php?action=new">
-                        <svg class="icon" aria-hidden="true"><use href="#icon-file-plus-corner"></use></svg>
-                        <?= e(t('admin.content.new_post')) ?>
-                    </a>
-                <?php endif; ?>
+        <h1><?= e($tab === 'pages' ? t('admin.content.tab_pages') : t('admin.content.tab_posts')) ?></h1>
+        <nav class="admin-actions">
+            <?php if ($tab === 'pages'): ?>
+                <a class="button save" href="<?= base_path() ?>/admin/edit-page.php?action=new"><svg class="icon" aria-hidden="true"><use href="#icon-file-plus-corner"></use></svg> <?= e(t('admin.content.new_page')) ?></a>
+            <?php elseif ($availableLayouts): ?>
+                <button type="button" class="button save js-open-layout-picker"><svg class="icon" aria-hidden="true"><use href="#icon-file-plus-corner"></use></svg> <?= e(t('admin.content.new_post')) ?></button>
             <?php else: ?>
-                <a class="save" href="<?= base_path() ?>/admin/edit-page.php?action=new">
-                    <svg class="icon" aria-hidden="true"><use href="#icon-file-text"></use></svg>
-                    <?= e(t('admin.content.new_page')) ?>
-                </a>
+                <a class="button save" href="<?= base_path() ?>/admin/edit-post.php?action=new"><svg class="icon" aria-hidden="true"><use href="#icon-file-plus-corner"></use></svg> <?= e(t('admin.content.new_post')) ?></a>
             <?php endif; ?>
-        </div>
-
+        </nav>
         <?php if ($tab === 'posts'): ?>
 
             <?php if (!empty($_GET['saved'])): ?>
@@ -287,6 +260,7 @@ require __DIR__ . '/../includes/admin-head.php';
                                 <select id="filter-status" name="status">
                                     <option value=""><?= e(t('admin.content.filter_all_statuses')) ?></option>
                                     <option value="published"<?= $filterStatus === 'published' ? ' selected' : '' ?>><?= e(t('admin.editor.status_published')) ?></option>
+                                    <option value="scheduled"<?= $filterStatus === 'scheduled' ? ' selected' : '' ?>><?= e(t('admin.editor.status_scheduled')) ?></option>
                                     <option value="draft"<?= $filterStatus === 'draft' ? ' selected' : '' ?>><?= e(t('admin.editor.status_draft')) ?></option>
                                 </select>
                             </div>

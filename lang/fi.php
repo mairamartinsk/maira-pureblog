@@ -53,8 +53,9 @@ return [
         'page_not_found_detail' => 'Hakemaasi sivua ei löytynyt.',
         'no_tag_selected'       => 'Ei valittua tagia.',
         'no_posts_for_tag'      => 'Tällä tagilla ei löytynyt julkaisuja.',
-        'edit_post'             => 'Edit post', // ENGLISH PLACEHOLDER
-        'edit_page'             => 'Edit page', // ENGLISH PLACEHOLDER
+        'edit_post'             => 'Muokkaa julkaisua',
+        'edit_page'             => 'Muokkaa sivua',
+        'reading_time'          => 'lukuaika: {n} min',
     ],
 
     // -------------------------------------------------------------------------
@@ -71,6 +72,7 @@ return [
             'log_out'       => 'Kirjaudu ulos',
             'cache_cleared' => 'Välimuisti tyhjennetty.',
             'invalid_action'=> 'Virheellinen admin-toiminto.',
+            'images'        => 'Images', // ENGLISH PLACEHOLDER
         ],
 
         'login' => [
@@ -141,8 +143,8 @@ return [
             'filter_all_tags'       => 'Kaikki tagit',
             'filter_status'         => 'Tila',
             'filter_all_statuses'   => 'Kaikki',
-            'filter_layout'         => 'Layout', // ENGLISH PLACEHOLDER
-            'filter_all_layouts'    => 'All layouts', // ENGLISH PLACEHOLDER
+            'filter_layout'         => 'Ulkoasu',
+            'filter_all_layouts'    => 'Kaikki ulkoasut',
             'filter_apply'          => 'Aseta',
             'filter_active'         => 'Suodatettu {label} mukaan.',
             'filter_clear'          => 'Tyhjennä',
@@ -151,8 +153,8 @@ return [
             'notice_post_deleted'   => 'Julkaisu poistettiin.',
             'notice_page_saved'     => 'Sivu tallennettiin.',
             'notice_page_deleted'   => 'Sivu poistettiin.',
-            'pagination_newer'      => '← Uudemmat julkaisut',
-            'pagination_older'      => 'Vanhemmat julkaisut →',
+            'pagination_newer'      => '⬅ Uudemmat julkaisut',
+            'pagination_older'      => 'Vanhemmat julkaisut ➡',
             'new_page'              => 'Uusi sivu',
             'no_pages'              => 'Ei toistaiseksi sivuja.',
         ],
@@ -165,6 +167,7 @@ return [
             'date_label'            => 'Päivänmäärä',
             'status_label'          => 'Tila',
             'status_draft'          => 'Luonnos',
+            'status_scheduled'      => 'Ajastettu',
             'status_published'      => 'Julkaistu',
             'images_title'          => 'Kuvat',
             'no_images'             => 'Ei kuvia toistaiseksi.',
@@ -220,11 +223,30 @@ return [
             'js_save_post_first'         => 'Tallenna julkaisu ensin, jotta se saa slugin ja päiväyksen.',
             'js_save_page_first'         => 'Tallenna sivu ensin, jotta se saa slugin.',
             'js_upload_failed'           => 'Kuvan lataaminen epäonnistui.',
+            'feature_image'              => 'Feature image', // ENGLISH PLACEHOLDER
+            'js_feature_image_confirm'   => 'Replace the current feature image with "{filename}"?', // ENGLISH PLACEHOLDER
+            'js_feature_image_failed'    => 'Failed to update feature image.', // ENGLISH PLACEHOLDER
+        ],
+
+        'images' => [
+            'page_title'         => 'Images - Pure Blog Admin', // ENGLISH PLACEHOLDER
+            'heading'            => 'Images', // ENGLISH PLACEHOLDER
+            'no_images'          => 'No images uploaded yet.', // ENGLISH PLACEHOLDER
+            'search_label'       => 'Search images', // ENGLISH PLACEHOLDER
+            'search_placeholder' => 'Search by filename…', // ENGLISH PLACEHOLDER
+            'clear_search'       => 'Clear search', // ENGLISH PLACEHOLDER
+            'deleted'            => 'Image deleted.', // ENGLISH PLACEHOLDER
+            'delete_confirm'     => 'Delete this image?', // ENGLISH PLACEHOLDER
+            'delete_used_warning'=> 'This image is being used in the content below. You should remove it to avoid broken links.', // ENGLISH PLACEHOLDER
+            'delete_anyway'      => 'Delete anyway', // ENGLISH PLACEHOLDER
+            'cancel'             => 'Cancel', // ENGLISH PLACEHOLDER
+            'slug_label'         => 'Folder:', // ENGLISH PLACEHOLDER
+            'error_delete'       => 'Unable to delete image.', // ENGLISH PLACEHOLDER
+            'pagination_prev'    => '⬅ Previous', // ENGLISH PLACEHOLDER
+            'pagination_next'    => 'Next ➡', // ENGLISH PLACEHOLDER
         ],
 
         'notices' => [
-            'lang_missing'        => 'Kielitiedostoja puuttuu \u2014 näin voi käydä päivitettäessä versiosta 1.9.7.',
-            'lang_missing_repair' => 'Klikkaa tästä korjataksesi automaattisesti',
         ],
 
         'post_editor' => [
@@ -318,6 +340,7 @@ return [
                 'language'           => 'Kieli',
                 'timezone'           => 'Aikavyöhyke',
                 'date_format'        => 'Päivänmäärän formaatti',
+                'show_reading_time'  => 'Näytä lukuaika julkaisujen yhteydessä',
                 'homepage'           => 'Kotisivu',
                 'blog_page'          => 'Blogisivu',
                 'base_url'           => 'Kanta-URL',
@@ -336,6 +359,7 @@ return [
                 'admin_homepage_dashboard'  => 'Hallintapaneeli',
                 'admin_homepage_content'    => 'Sisältö',
                 'admin_hide_dashboard'      => 'Piilota hallintapaneeli navigaatiopalkista',
+                'enable_blog_posts'         => 'Ota blogiominaisuudet käyttöön (julkaisut, avainsanat, tilastot)',
                 'cache_section'      => 'Välimuisti',
                 'cache_enable'       => 'Salli sivuston välimuisti',
                 'rss_ttl'            => 'RSS-välimuistin kesto',
@@ -486,7 +510,6 @@ return [
                 'notice_update_applied'      => 'Päivitys suoritettiin onnistuneesti.',
                 'notice_backup_restored'     => 'Varmuuskopio palautettiin onnistuneesti.',
                 'notice_backup_deleted'      => 'Varmuuskopio poistettiin onnistuneesti.',
-                'notice_lang_restored'       => 'Kielitiedostot palautettiin onnistuneesti.',
                 'already_latest_version'     => 'Käytät jo uusinta versiota ({tag}).',
                 'error_curl_init'            => 'curl:in alustaminen epäonnistui.',
                 'error_github_request'       => 'Codeberg-pyyntö epäonnistui (HTTP {status}).',
@@ -515,10 +538,6 @@ return [
                 'error_choose_delete'        => 'Ole hyvä ja valitse poistettava varmuuskopio.',
                 'error_release_metadata'     => 'Julkaisuversion tietojen hakeminen Codebergista ei onnistunut.',
                 'error_lang_download'        => 'Julkaisuversion zip-tiedoston lataaminen epäonnistui.',
-                'error_lang_zip_open'        => 'Julkaisuversion zip-tiedoston avaaminen epäonnistui.',
-                'error_lang_zip_extract'     => 'Julkaisuversion zip-tiedoston purkaminen epäonnistui.',
-                'error_lang_dir_missing'     => 'lang/-kohdekansiota ei löytynyt julkaisuversion paketista.',
-                'error_lang_repair'          => 'Kielen korvaaminen epäonnistui: {error}',
                 'error_build_plan'           => 'Pakettisuunnitelmaa ei voitu luoda.',
                 'error_dir_create'           => 'Kohdekansiota {path} ei voitu luoda.',
                 'error_file_copy'            => 'Tiedoston {path} kopiointi epäonnistui.',

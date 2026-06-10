@@ -55,6 +55,7 @@ return [
         'no_posts_for_tag'      => 'Nie znaleziono postów dla wybranego tagu.',
         'edit_post'             => 'Edit post', // ENGLISH PLACEHOLDER
         'edit_page'             => 'Edit page', // ENGLISH PLACEHOLDER
+        'reading_time'          => '{n} min read', // ENGLISH PLACEHOLDER
     ],
 
     // -------------------------------------------------------------------------
@@ -71,6 +72,7 @@ return [
             'log_out'       => 'Wyloguj',
             'cache_cleared' => 'Cache wyczyszczony.',
             'invalid_action'=> 'Nieprawidłowe działanie admina.',
+            'images'        => 'Images', // ENGLISH PLACEHOLDER
         ],
 
         'login' => [
@@ -151,8 +153,8 @@ return [
             'notice_post_deleted'   => 'Post usunięty.',
             'notice_page_saved'     => 'Strona zapisana.',
             'notice_page_deleted'   => 'Strona usunięta.',
-            'pagination_newer'      => '← Nowsze posty',
-            'pagination_older'      => 'Starsze posty →',
+            'pagination_newer'      => '⬅ Nowsze posty',
+            'pagination_older'      => 'Starsze posty ➡',
             'new_page'              => 'Nowa strona',
             'no_pages'              => 'Brak stron.',
         ],
@@ -165,6 +167,7 @@ return [
             'date_label'            => 'Data',
             'status_label'          => 'Status',
             'status_draft'          => 'Szkic',
+            'status_scheduled'      => 'Scheduled', // ENGLISH PLACEHOLDER
             'status_published'      => 'Opublikowany',
             'images_title'          => 'Obrazy',
             'no_images'             => 'Brak obrazów.',
@@ -219,11 +222,30 @@ return [
             'js_save_post_first'         => 'Zapisz post, aby wygenerować slug i datę.',
             'js_save_page_first'         => 'Zapisz stronę, aby wygenerować slug.',
             'js_upload_failed'           => 'Przesyłanie obrazu nieudane.',
+            'feature_image'              => 'Feature image', // ENGLISH PLACEHOLDER
+            'js_feature_image_confirm'   => 'Replace the current feature image with "{filename}"?', // ENGLISH PLACEHOLDER
+            'js_feature_image_failed'    => 'Failed to update feature image.', // ENGLISH PLACEHOLDER
+        ],
+
+        'images' => [
+            'page_title'         => 'Images - Pure Blog Admin', // ENGLISH PLACEHOLDER
+            'heading'            => 'Images', // ENGLISH PLACEHOLDER
+            'no_images'          => 'No images uploaded yet.', // ENGLISH PLACEHOLDER
+            'search_label'       => 'Search images', // ENGLISH PLACEHOLDER
+            'search_placeholder' => 'Search by filename…', // ENGLISH PLACEHOLDER
+            'clear_search'       => 'Clear search', // ENGLISH PLACEHOLDER
+            'deleted'            => 'Image deleted.', // ENGLISH PLACEHOLDER
+            'delete_confirm'     => 'Delete this image?', // ENGLISH PLACEHOLDER
+            'delete_used_warning'=> 'This image is being used in the content below. You should remove it to avoid broken links.', // ENGLISH PLACEHOLDER
+            'delete_anyway'      => 'Delete anyway', // ENGLISH PLACEHOLDER
+            'cancel'             => 'Cancel', // ENGLISH PLACEHOLDER
+            'slug_label'         => 'Folder:', // ENGLISH PLACEHOLDER
+            'error_delete'       => 'Unable to delete image.', // ENGLISH PLACEHOLDER
+            'pagination_prev'    => '⬅ Previous', // ENGLISH PLACEHOLDER
+            'pagination_next'    => 'Next ➡', // ENGLISH PLACEHOLDER
         ],
 
         'notices' => [
-            'lang_missing'        => 'Nie znaleziono plików językowych \u2014 może to być efekt aktualizacji z 1.9.7.',
-            'lang_missing_repair' => 'Kliknij tutaj, aby naprawić automatycznie',
         ],
 
         'post_editor' => [
@@ -317,6 +339,7 @@ return [
                 'language'           => 'Język',
                 'timezone'           => 'Strefa czasowa',
                 'date_format'        => 'Format daty',
+                'show_reading_time'  => 'Show reading time on posts', // ENGLISH PLACEHOLDER
                 'homepage'           => 'Strona główna',
                 'blog_page'          => 'Blog',
                 'base_url'           => 'Adres URL',
@@ -335,6 +358,7 @@ return [
                 'admin_homepage_dashboard'  => 'Panel sterowania',
                 'admin_homepage_content'    => 'Zawartość',
                 'admin_hide_dashboard'      => 'Ukryj panel sterowania',
+                'enable_blog_posts'         => 'Włącz funkcje bloga (posty, tagi, statystyki)',
                 'cache_section'      => 'Cache',
                 'cache_enable'       => 'Włącz cache strony',
                 'rss_ttl'            => 'Czas przechowywania cache RSS',
@@ -485,7 +509,6 @@ return [
                 'notice_update_applied'      => 'Aktualizacja wykonana pomyślnie.',
                 'notice_backup_restored'     => 'Odtworzenie z kopii zapasowej pomyślne.',
                 'notice_backup_deleted'      => 'Kopia zapasowa usunięta pomyślnie.',
-                'notice_lang_restored'       => 'Plik językowy odtworzony pomyślnie.',
                 'already_latest_version'     => 'Używasz aktualnej wersji ({tag}).',
                 'error_curl_init'            => 'Nie udało się zainicjować programu curl.',
                 'error_github_request'       => 'Połączenie do Codeberg nieudane (HTTP {status}).',
@@ -514,10 +537,6 @@ return [
                 'error_choose_delete'        => 'Wybierz kopię zapasową do usunięcia.',
                 'error_release_metadata'     => 'Nie udało się pobrać danych o wydaniu z Codeberg.',
                 'error_lang_download'        => 'Nie udało się pobrać paczki zip wydania.',
-                'error_lang_zip_open'        => 'Nie udało się otworzyć paczki zip wydania.',
-                'error_lang_zip_extract'     => 'Nie udało się rozpakować paczki zip wydania.',
-                'error_lang_dir_missing'     => 'Nie znaleziono katalogu lang/ w paczce wydania.',
-                'error_lang_repair'          => 'Nie udało się naprawić języka: {error}',
                 'error_build_plan'           => 'Nie udało się zbudować planu paczki.',
                 'error_dir_create'           => 'Tworzenie katalogu nieudane: {path}',
                 'error_file_copy'            => 'Kopiowanie pliku nieudane: {path}',

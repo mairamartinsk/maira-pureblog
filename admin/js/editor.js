@@ -29,6 +29,19 @@
     spellcheck: true,
   });
 
+  const editorKeyMap = {
+    'Ctrl-B': (editor) => wrapSelection(editor, '**'),
+    'Cmd-B': (editor) => wrapSelection(editor, '**'),
+    'Ctrl-I': (editor) => wrapSelection(editor, '*'),
+    'Cmd-I': (editor) => wrapSelection(editor, '*'),
+    'Ctrl-K': (editor) => insertLink(editor),
+    'Cmd-K': (editor) => insertLink(editor),
+    'Ctrl-S': () => { editorForm?.requestSubmit(); },
+    'Cmd-S': () => { editorForm?.requestSubmit(); },
+  };
+
+  cm.addKeyMap(editorKeyMap);
+
   document.querySelectorAll('textarea[data-layout-markdown]').forEach((textarea) => {
     const layoutCm = CodeMirror.fromTextArea(textarea, {
       mode: { name: 'markdown', highlightFormatting: true, html: true },
@@ -38,19 +51,13 @@
       inputStyle: 'contenteditable',
       spellcheck: true,
     });
+    layoutCm.addKeyMap(editorKeyMap);
     layoutCm.on('change', () => {
       try { layoutCm.setSize(null, 'auto'); } catch (e) {}
+      layoutCm.save();
+      scheduleAutosave();
     });
     try { layoutCm.setSize(null, 'auto'); } catch (e) {}
-  });
-
-  cm.addKeyMap({
-    'Ctrl-B': (editor) => wrapSelection(editor, '**'),
-    'Cmd-B': (editor) => wrapSelection(editor, '**'),
-    'Ctrl-I': (editor) => wrapSelection(editor, '*'),
-    'Cmd-I': (editor) => wrapSelection(editor, '*'),
-    'Ctrl-K': (editor) => insertLink(editor),
-    'Cmd-K': (editor) => insertLink(editor),
   });
 
   function wrapSelection(editor, wrapper) {
@@ -383,6 +390,79 @@
     });
   });
 
+  const featureImageInput = document.getElementById('feature-image-value');
+
+  document.querySelectorAll('.feature-image-check').forEach((checkbox) => {
+    checkbox.addEventListener('change', async () => {
+      const url      = checkbox.getAttribute('data-url') || '';
+      const filename = checkbox.getAttribute('data-filename') || '';
+      const slugValue = (slugField?.value ?? '').trim();
+
+      if (slugValue === '') {
+        checkbox.checked = !checkbox.checked;
+        alert(config.editorType === 'post'
+          ? config.strings.save_post_first
+          : config.strings.save_page_first);
+        return;
+      }
+
+      if (checkbox.checked) {
+        const currentUrl = featureImageInput?.value ?? '';
+        if (currentUrl !== '' && currentUrl !== url) {
+          const currentFilename = currentUrl.split('/').pop();
+          const confirmed = confirm(
+            (config.strings.feature_image_confirm || '')
+              .replace('{filename}', filename)
+              .replace('{current}', currentFilename)
+          );
+          if (!confirmed) {
+            checkbox.checked = false;
+            return;
+          }
+        }
+      }
+
+      const newFilename = checkbox.checked ? filename : '';
+
+      try {
+        const formData = new FormData();
+        formData.append('slug', slugValue);
+        formData.append('editor_type', config.editorType);
+        formData.append('filename', newFilename);
+        formData.append('csrf_token', config.csrfToken || '');
+
+        const response = await fetch((config.basePath || '') + '/admin/set-feature-image.php', {
+          method: 'POST',
+          body: formData,
+        });
+        const data = await response.json();
+
+        if (!data.success) {
+          checkbox.checked = !checkbox.checked;
+          alert(config.strings.feature_image_failed || 'Failed to update feature image.');
+          return;
+        }
+
+        if (checkbox.checked) {
+          document.querySelectorAll('.feature-image-check').forEach((cb) => {
+            if (cb !== checkbox) {
+              cb.checked = false;
+              cb.closest('li')?.classList.remove('is-feature');
+            }
+          });
+          checkbox.closest('li')?.classList.add('is-feature');
+          if (featureImageInput) featureImageInput.value = url;
+        } else {
+          checkbox.closest('li')?.classList.remove('is-feature');
+          if (featureImageInput) featureImageInput.value = '';
+        }
+      } catch (e) {
+        checkbox.checked = !checkbox.checked;
+        alert(config.strings.feature_image_failed || 'Failed to update feature image.');
+      }
+    });
+  });
+
   cm.getWrapperElement().addEventListener('dragover', (event) => {
     event.preventDefault();
   });
@@ -440,4 +520,57 @@
       }
     }
   });
+
+  // Sidebar Pop-out Toggle Logic
+  const sidebarToggleTab = document.getElementById('sidebar-toggle-tab');
+  const sidebarElement = document.querySelector('.editor-sidebar');
+
+  if (sidebarToggleTab && sidebarElement) {
+    // Dynamically inject the mobile backdrop overlay if not present
+    let sidebarOverlay = document.getElementById('editor-sidebar-overlay');
+    if (!sidebarOverlay) {
+      sidebarOverlay = document.createElement('div');
+      sidebarOverlay.id = 'editor-sidebar-overlay';
+      sidebarOverlay.className = 'editor-sidebar-overlay';
+      document.body.appendChild(sidebarOverlay);
+    }
+
+    const isSidebarOpenKey = `${config.editorType || 'editor'}:sidebar-open`;
+
+    const setSidebarOpenState = (isOpen) => {
+      document.body.classList.toggle('editor-sidebar-open', isOpen);
+      localStorage.setItem(isSidebarOpenKey, isOpen ? 'true' : 'false');
+      
+      // Refresh CodeMirror layout so it resizes correctly as the grid space scales
+      setTimeout(() => {
+        try {
+          cm.refresh();
+          document.querySelectorAll('textarea[data-layout-markdown]').forEach(t => {
+            t.CodeMirror?.refresh();
+          });
+        } catch (e) {}
+      }, 260); // slightly longer than CSS transition (0.25s)
+    };
+
+    // Initialize sidebar state from localStorage (defaulting to true/open on desktop, closed on mobile/tablet)
+    const savedState = localStorage.getItem(isSidebarOpenKey);
+    const isSmallScreen = window.innerWidth < 1025;
+
+    if (isSmallScreen || savedState === 'false') {
+      setSidebarOpenState(false);
+    } else {
+      setSidebarOpenState(true);
+    }
+
+    sidebarToggleTab.addEventListener('click', () => {
+      document.body.classList.add('sidebar-ready');
+      const isOpen = document.body.classList.contains('editor-sidebar-open');
+      setSidebarOpenState(!isOpen);
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      document.body.classList.add('sidebar-ready');
+      setSidebarOpenState(false);
+    });
+  }
 })();
