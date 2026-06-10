@@ -20,12 +20,6 @@ Here's all there is to know: insomniac 🦉 programmer 🤓 photographer 📷 da
 4. 😍 I am a proud atheist and freethinker!
 5. 🎹 I'm learning the piano since Jan. 2021.
 
-## NOW
-
-Last update: 9 May 2026{.mark}
-
-I'm currently completely **obsessed** with my [sketchbook](/tag/sketchbook) and drawing with water-based markers. In love with this little blog! Finished watching Person of Interest.
-
 ## Slash Pages
 
 - [/about](/about) - You're here now! Hi!

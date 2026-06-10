@@ -206,9 +206,29 @@ p.post-date {
 }
 
 #comments .comment-children {
-	margin-top: 2rem;
+	margin-top: 3rem;
 	padding-left: 3rem;
-	border-left: 1px solid var(--accent-color);
+	border-left: 1px solid var(--accent-bg-color);
+}
+
+#comments .comments-thread {
+	margin: 4rem 0;
+}
+
+#comments .comment-item + .comment-item {
+	margin-top: 3rem;
+	border-top: 1px solid var(--accent-bg-color);
+	padding-top: 2rem;
+}
+
+#comments .comment-actions button {
+	background-color: var(--accent-bg-color);
+  	color: var(--accent-color);
+}
+
+#comments .comment-actions button:hover {
+	background-color: var(--accent-color);
+  	color: var(--accent-bg-color);
 }
 
 .post-upvote {

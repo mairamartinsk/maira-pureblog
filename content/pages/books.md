@@ -31,11 +31,13 @@ A list of all the books I've read, maybe. Use the buttons below to jump around.
 
 ## Read in 2026 {#2026}
 
-Currently reading: **Crooked House** by Agatha Christie
+Currently reading: **Slightly Jet Lagged** by Mike Lowery
 
 - **YTC Price Action Trader** by Lance Beggs
 - **Brave New World** by Aldous Huxley
 - **Taken at the Flood** by Agatha Christie
+- **Crooked House** by Agatha Christie
+- **How to Keep a Travel Sketchbook** by Mike Lowery
 
 <small><a href="#">back to top ↑</a></small>
 
@@ -380,6 +382,7 @@ One day I decided I'd read all Agatha Christie's books in chronological order. T
 1. The Hollow
 1. The Labours of Hercules (Poirot)
 1. Taken at the Flood
+1. Crooked House
 
 <small><a href="#">back to top ↑</a></small>
 
