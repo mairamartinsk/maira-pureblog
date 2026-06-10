@@ -8,7 +8,8 @@ return array (
 Search | /explore
 RSS | /feed',
   'custom_routes' => '/archive | /content/includes/archive.php
-/explore | /content/includes/search.php',
+/explore | /content/includes/search.php
+/tags | /content/includes/search.php',
   'head_inject_page' => '',
   'head_inject_post' => '<link rel="stylesheet" href="/content/css/lite-yt-embed.css" />',
   'footer_inject_page' => '',
@@ -59,4 +60,6 @@ RSS | /feed',
   'hide_blog_page_title' => true,
   'admin_homepage' => 'dashboard',
   'admin_hide_dashboard' => false,
+  'show_reading_time' => false,
+  'enable_blog_posts' => true,
 );
