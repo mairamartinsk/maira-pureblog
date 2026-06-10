@@ -6,7 +6,7 @@ status: published
 tags: [dogs, Luna]
 description:
 layout: featured
-featuredImage: /content/images/2020-06-18/84508c541e.jpg
+feature_image: /content/images/2020-06-18/84508c541e.jpg
 ---
 
 Yesterday we celebrated exactly 15 days since Luna joined our family. Welcoming a second dog has been at the same time joy and challenge. 🐶

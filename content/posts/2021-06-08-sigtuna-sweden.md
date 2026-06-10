@@ -6,7 +6,7 @@ status: published
 tags: [photos, travels, shot on film, Canon EOS 3, Fuji Superia 400]
 description: 
 layout: featured
-featuredImage: /content/images/2021-06-08/d5b5b3c6d5.jpg
+feature_image: /content/images/2021-06-08/d5b5b3c6d5.jpg
 ---
 
 So many friends have asked me on social media about how my trip is going and, _c'mon you guys_, I haven't left my home in 1.5 years!! I'm using these Covid times to go through, edit and share some old photos. Starting now, I'll add the year taken to each image, in case anyone bothers to read. 🗺️ Sigtuna, 2016. 📷 Canon EOS3 + Fuji Superia 400.

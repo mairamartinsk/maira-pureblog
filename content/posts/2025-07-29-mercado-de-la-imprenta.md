@@ -6,7 +6,7 @@ status: published
 tags: [photos, Fuji XE4]
 description: 
 layout: featured
-featuredImage: /content/images/2025-07-29/efa46bd6b1.jpg
+feature_image: /content/images/2025-07-29/efa46bd6b1.jpg
 ---
 
 Mercado de La Imprenta, a hidden gem in Valencia. Tucked away in an alleyway, out of the tourist path, frequented only by the locals, this place is really pretty and ideal for a cold beer or artisanal vermouth. We had both, while waiting for the restaurants to start serving... After starving for a couple hours, we were finally rewarded with a very tasty sushi and a bottle of Ribera del Duero wine. Perfect Friday! 🍷

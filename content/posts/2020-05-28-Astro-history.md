@@ -6,7 +6,7 @@ status: published
 tags: [dogs, Astro]
 description: 
 layout: featured
-featuredImage: /content/images/2020-05-28/image.jpg
+feature_image: /content/images/2020-05-28/image.jpg
 ---
 
 ## Astro

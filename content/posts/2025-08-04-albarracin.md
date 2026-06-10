@@ -6,7 +6,7 @@ status: published
 tags: [photos, travels, Fuji XE4]
 description: This week we went on a quick day trip to one of Spain's most beautiful pueblos, Albarracín.
 layout: featured
-featuredImage: /content/images/2025-08-04/be626ec474.jpg
+feature_image: /content/images/2025-08-04/be626ec474.jpg
 ---
 
 {{1

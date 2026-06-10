@@ -6,7 +6,7 @@ status: published
 tags: [photos, travels]
 description: 
 layout: featured
-featuredImage: /content/images/2017-02-26/894a8aaf89.jpg
+feature_image: /content/images/2017-02-26/894a8aaf89.jpg
 ---
 
 

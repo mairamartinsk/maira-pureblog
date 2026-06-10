@@ -6,7 +6,7 @@ status: published
 tags: [dogs, photos]
 description: 
 layout: featured
-featuredImage: /content/images/2022-12-28/4fed0f365c.jpg
+feature_image: /content/images/2022-12-28/4fed0f365c.jpg
 ---
 
 Yesterday we went to the beach. There was no one around, we could run off leash, smell the fresh air and dip our paws in the Mediterranean!!

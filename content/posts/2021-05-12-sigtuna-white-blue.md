@@ -6,7 +6,7 @@ status: published
 tags: [photos, travels, shot on film, Canon EOS 3, Fuji Superia 400]
 description: 
 layout: featured
-featuredImage: /content/images/2021-05-12/e5190859ea.jpg
+feature_image: /content/images/2021-05-12/e5190859ea.jpg
 ---
 
 Sigtuna is magical. White and blue. Fishing boats. Ice cream. 🗺️ Sigtuna, 2016. 📷 Canon EOS 3 + Fujicolor Superia 400.

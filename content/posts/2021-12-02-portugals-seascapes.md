@@ -6,7 +6,7 @@ status: published
 tags: [photos, travels, Canon EOS 300, Fuji Pro 400h, shot on film]
 description: A few photos of our trip to Portugal in 2015. Shot on film.
 layout: featured
-featuredImage: /content/images/2021-12-02/151f7c53e7.jpg
+feature_image: /content/images/2021-12-02/151f7c53e7.jpg
 ---
 
 Portugal, 2015. Shot on an expired roll film. Even expired this Fuji film is a delight! 🗺️ South coast of Portugal, 2015. 📷 Canon EOS 300 + Fuji Pro 400h.

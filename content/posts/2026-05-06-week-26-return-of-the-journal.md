@@ -6,7 +6,7 @@ status: published
 tags: [weeknotes, sketchbook]
 description: 
 layout: featured
-featuredImage: /content/images/week-26-return-of-the-journal/what-i-ate.jpg
+feature_image: /content/images/week-26-return-of-the-journal/what-i-ate.jpg
 ---
 
 - 🏋️‍♀️ Went to the **gym** 3x this week! The hard part is getting myself to the gym (which is *inside* my own house! I don't even have that excuse of being too tired to go *outside*!), but once I am done I feel kind of GREAT!

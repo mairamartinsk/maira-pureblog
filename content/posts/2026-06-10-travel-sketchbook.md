@@ -6,7 +6,7 @@ status: published
 tags: [travels, journaling, sketchbook]
 description: Our trip to Costa Brava and Carcassonne, Illustrated Edition! Here are the pages I created in my sketchbook.
 layout: featured
-featuredImage: /content/images/travel-sketchbook/travel-sketchbook_3.jpg
+feature_image: /content/images/travel-sketchbook/travel-sketchbook_3.jpg
 ---
 
 A while ago I got interested in [illustrated journaling](/illustrated-journal-journey). At first I was very unsure, mostly doodling, quite stuck with long-form writing, but little by little I am finding my way. Kate Sutton's course was a total game-changer, it gave me the confidence that regardless of skills, **anyone** can keep an illustrated journal / sketchbook journal and make beautiful and meaningful drawings.

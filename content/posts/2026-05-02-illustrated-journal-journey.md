@@ -6,7 +6,7 @@ status: published
 tags: [sketchbook, journaling]
 description: 
 layout: featured
-featuredImage: /content/images/illustrated-journal-journey/gratitude.jpg
+feature_image: /content/images/illustrated-journal-journey/gratitude.jpg
 ---
 
 I have been trying to work on my illustrated [journal](/week-15-illustrated-journal) since November last year. That's when I bought my little sketchbook and signed up for Danny Gregory's [course](/inspiring-video).

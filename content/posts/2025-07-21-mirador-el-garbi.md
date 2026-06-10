@@ -6,7 +6,7 @@ status: published
 tags: [photos, Canon 5D3]
 description: 
 layout: featured
-featuredImage: /content/images/2025-07-21/2e074d819e.jpg
+feature_image: /content/images/2025-07-21/2e074d819e.jpg
 ---
 
 Sunrise at Mirador El Garbí 📷☀️

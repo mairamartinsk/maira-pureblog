@@ -29,8 +29,8 @@ RSS | /feed',
   'admin_password_hash' => '$2y$10$ra9DLKuGFqfnBvL36Rr1dOmVOD9fvweMCK4hbBC6NjXjdRNwxnMBW',
   'cache' => 
   array (
-    'enabled' => false,
-    'rss_ttl' => 3600,
+    'enabled' => true,
+    'rss_ttl' => 86400,
   ),
   'theme' => 
   array (

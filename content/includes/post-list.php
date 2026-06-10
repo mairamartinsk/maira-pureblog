@@ -73,9 +73,7 @@ $paginationQueryParams =
                         $excerptSource = get_excerpt($post["content"]);
                     }
                     ?>
-                    <img alt="<?= $post["title"] ?>" src="<?= $post[
-    "featuredImage"
-] ?>" loading="lazy">
+                    <img alt="<?= $post["title"] ?>" src="<?= e(base_path() . $post['feature_image']) ?>" loading="lazy">
                         <p class="post-excerpt"><?= e($excerptSource) ?></p>
                         <?php if (!empty($post["tags"])): ?>
                             <p class="tag-list"><?= render_tag_links(

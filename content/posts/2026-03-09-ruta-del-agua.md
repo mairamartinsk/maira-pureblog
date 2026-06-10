@@ -6,7 +6,7 @@ status: published
 tags: [photos, travels]
 description: A few photos from a day trip to Ruta del Agua, Chelva.
 layout: featured
-featuredImage: /content/images/ruta-del-agua/260308-chelva-1.jpg
+feature_image: /content/images/ruta-del-agua/260308-chelva-1.jpg
 ---
 
 Yesterday we took our dog Luna and my mother-in-law to Ruta del Agua, in Chelva. The weather was a bit on the colder side (14°C) and it did rain on our heads a little bit, but it did not stop us from enjoying La Playeta and the views from the Mirador. Such a beautiful place!

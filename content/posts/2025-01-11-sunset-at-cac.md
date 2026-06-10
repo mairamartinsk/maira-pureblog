@@ -6,7 +6,7 @@ status: published
 tags: [photos, Canon 5D3]
 description: 
 layout: featured
-featuredImage: /content/images/2025-01-11/b38c7b5367.jpg
+feature_image: /content/images/2025-01-11/b38c7b5367.jpg
 ---
 
 This weekend we went to the xmas market at Ciutat de les Arts i Cièncias. I've been there many times before, but I hadn't seen it during sunset and blue hour. The colors, the reflections, the shapes, it was so inspiring! 📷

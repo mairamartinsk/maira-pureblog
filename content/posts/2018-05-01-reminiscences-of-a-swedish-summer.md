@@ -6,7 +6,7 @@ status: published
 tags: [photos, shot on film, Mamiya 645, Portra 400]
 description: 
 layout: featured
-featuredImage: /content/images/2018-05-01/e399e9dc5d.jpg
+feature_image: /content/images/2018-05-01/e399e9dc5d.jpg
 ---
 
 One of the very best years, spent swimming at the dog beach and picnicking near secluded lakes and rivers.

@@ -6,7 +6,7 @@ status: published
 tags: [photos, Astrophotography, Canon 5D3]
 description:
 layout: featured
-featuredImage: /content/images/2025-08-04/681f0184cb.jpg
+feature_image: /content/images/2025-08-04/681f0184cb.jpg
 ---
 
 The visit to [Galactica](/week-2-our-galaxy) last week made such an impression on us, we decided to travel back to [Sierra de Javalambre](https://en.wikipedia.org/wiki/Sierra_de_Javalambre) earlier this week to photograph the stars.
