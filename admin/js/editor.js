@@ -365,7 +365,11 @@
   const notices = document.querySelectorAll('[data-auto-dismiss]');
   if (notices.length) {
     setTimeout(() => {
-      notices.forEach((notice) => notice.remove());
+      notices.forEach((notice) => {
+        notice.style.opacity = '0';
+        notice.style.transform = 'translateX(30px)';
+        setTimeout(() => notice.remove(), 250);
+      });
       const url = new URL(window.location.href);
       ['saved', 'uploaded', 'upload_error'].forEach((param) => url.searchParams.delete(param));
       window.history.replaceState({}, document.title, url.toString());
