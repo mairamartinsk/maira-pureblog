@@ -72,7 +72,7 @@ return [
             'log_out'       => 'Kirjaudu ulos',
             'cache_cleared' => 'Välimuisti tyhjennetty.',
             'invalid_action'=> 'Virheellinen admin-toiminto.',
-            'images'        => 'Images', // ENGLISH PLACEHOLDER
+            'images'        => 'Kuvat',
         ],
 
         'login' => [
@@ -185,7 +185,7 @@ return [
             'error_invalid_status'  => 'Tilan täytyy olla luonnos tai julkaistu.',
             'error_save_post'       => 'Julkaisua ei voitu tallentaa.',
             'error_save_page'       => 'Sivua ei voitu tallentaa.',
-            'error_empty_slug'      => 'Title must contain at least one letter or number so a slug can be generated.',
+            'error_empty_slug'      => 'Otsikon täytyy sisältää vähintään yksi kirjain tai numero, jotta slugi voidaan luoda.',
             'tip_markdown'               => 'Markdown',
             'preview_title'              => 'Esikatsele',
             'error_upload_no_slug'       => 'Julkaisu on ensin tallennettava, jotta se saa slugin.',
@@ -223,27 +223,27 @@ return [
             'js_save_post_first'         => 'Tallenna julkaisu ensin, jotta se saa slugin ja päiväyksen.',
             'js_save_page_first'         => 'Tallenna sivu ensin, jotta se saa slugin.',
             'js_upload_failed'           => 'Kuvan lataaminen epäonnistui.',
-            'feature_image'              => 'Feature image', // ENGLISH PLACEHOLDER
-            'js_feature_image_confirm'   => 'Replace the current feature image with "{filename}"?', // ENGLISH PLACEHOLDER
-            'js_feature_image_failed'    => 'Failed to update feature image.', // ENGLISH PLACEHOLDER
+            'feature_image'              => 'Pääkuva',
+            'js_feature_image_confirm'   => 'Haluatko korvata nykyisen pääkuvan tällä kuvalla: “{filename}”?',
+            'js_feature_image_failed'    => 'Pääkuvan päivittäminen ei onnistunut.',
         ],
 
         'images' => [
-            'page_title'         => 'Images - Pure Blog Admin', // ENGLISH PLACEHOLDER
-            'heading'            => 'Images', // ENGLISH PLACEHOLDER
-            'no_images'          => 'No images uploaded yet.', // ENGLISH PLACEHOLDER
-            'search_label'       => 'Search images', // ENGLISH PLACEHOLDER
-            'search_placeholder' => 'Search by filename…', // ENGLISH PLACEHOLDER
-            'clear_search'       => 'Clear search', // ENGLISH PLACEHOLDER
-            'deleted'            => 'Image deleted.', // ENGLISH PLACEHOLDER
-            'delete_confirm'     => 'Delete this image?', // ENGLISH PLACEHOLDER
-            'delete_used_warning'=> 'This image is being used in the content below. You should remove it to avoid broken links.', // ENGLISH PLACEHOLDER
-            'delete_anyway'      => 'Delete anyway', // ENGLISH PLACEHOLDER
-            'cancel'             => 'Cancel', // ENGLISH PLACEHOLDER
-            'slug_label'         => 'Folder:', // ENGLISH PLACEHOLDER
-            'error_delete'       => 'Unable to delete image.', // ENGLISH PLACEHOLDER
-            'pagination_prev'    => '⬅ Previous', // ENGLISH PLACEHOLDER
-            'pagination_next'    => 'Next ➡', // ENGLISH PLACEHOLDER
+            'page_title'         => 'Kuvat - Pure Blog -ylläpito',
+            'heading'            => 'Kuvat',
+            'no_images'          => 'Ei ladattuja kuvia.',
+            'search_label'       => 'Etsi kuvista',
+            'search_placeholder' => 'Etsi tiedostonimellä…',
+            'clear_search'       => 'Tyhjennä haku',
+            'deleted'            => 'Kuva poistettu.',
+            'delete_confirm'     => 'Haluatko poistaa kuvan?',
+            'delete_used_warning'=> 'Tämä kuva on käytössä alla näkyvillä sivuilla. Se kannattaa poistaa rikkinäisten linkkien välttämiseksi.',
+            'delete_anyway'      => 'Poista siitä huolimatta',
+            'cancel'             => 'Peru',
+            'slug_label'         => 'Kansio:',
+            'error_delete'       => 'Kuvaa ei voitu poistaa.',
+            'pagination_prev'    => '⬅ Edellinen',
+            'pagination_next'    => 'Seuraava ➡',
         ],
 
         'notices' => [
@@ -345,8 +345,8 @@ return [
                 'blog_page'          => 'Blogisivu',
                 'base_url'           => 'Kanta-URL',
                 'favicon'            => 'Favicon',
-                'og_image'           => 'Open Graph image',
-                'og_image_format'    => 'Open Graph image -formaatti',
+                'og_image'           => 'Open Graph -kuva',
+                'og_image_format'    => 'Open Graph -kuvan formaatti',
                 'og_banner'          => 'Banneri (oletus)',
                 'og_square'          => 'Nelikulmio',
                 'custom_nav'         => 'Kustomoidut navigaatiosisällöt',
@@ -394,11 +394,11 @@ return [
                 'tip_one_per_line'       => 'yksi per rivi',
                 'tip_optional'           => 'vapaaehtoinen',
                 'tip_rss_ttl'            => 'sekuntia, 0 poistaaksesi käytöstä',
-                'community_section'      => 'Community',
-                'purecomments_enable'    => 'Enable Pure Comments',
-                'purecomments_url'       => 'Pure Comments URL',
-                'error_purecomments_url' => 'Pure Comments URL is required when Pure Comments is enabled.',
-                'error_purecomments_url_invalid' => 'Pure Comments URL must be a valid URL.',
+                'community_section'      => 'Yhteisö',
+                'purecomments_enable'    => 'Ota Pure Comments käyttöön',
+                'purecomments_url'       => 'Pure Comments -osoite',
+                'error_purecomments_url' => 'Pure Comments -osoite vaaditaan, kun Pure Comments on käytössä.',
+                'error_purecomments_url_invalid' => 'Pure Comments -osoitteen on oltava kelvollinen verkko-osoite.',
             ],
 
             'user' => [

@@ -429,7 +429,7 @@ require __DIR__ . '/../includes/admin-head.php';
             ], JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE) ?>,
         };
     </script>
-    <script src="<?= base_path() ?>/admin/js/editor.js?v=<?= e((string) @filemtime(__DIR__ . '/js/editor.js')) ?>"></script>
+    <script type="module" src="<?= base_path() ?>/admin/js/editor.js?v=<?= e((string) @filemtime(__DIR__ . '/js/editor.js')) ?>"></script>
     <script>
     (function () {
         const input = document.getElementById('tags');
