@@ -24,7 +24,7 @@ $allBooks = function_exists('load_books_yaml') ? load_books_yaml() : [];
 
 	<div class="bookshelf-views">
 		<button class="btn-view active" onclick="changeView('list', this)">List View</button>
-		<button class="btn-view" onclick="changeView('shelf', this)">Cover View</button>
+		<button class="btn-view" onclick="changeView('covers', this)">Cover View</button>
 		<button class="btn-reset" onclick="resetAllFilters()">Reset</button>
 	</div>
 
@@ -142,9 +142,7 @@ $allBooks = function_exists('load_books_yaml') ? load_books_yaml() : [];
 				} else {
 					htmlOutput += `
 						<div class="book-card missing-cover ${book.reread ? 'is-reread' : ''}">
-							<div class="placeholder-cover">
 								<span class="placeholder-title">${book.title}</span>
-							</div>
 						</div>
 					`;
 				}
