@@ -100,7 +100,7 @@ require __DIR__ . '/../includes/admin-head.php';
                     <label for="author">Author Name</label>
                     <input type="text" id="author" name="author" value="<?= e($book['author']) ?>" autocomplete="off">
 
-                    <label for="olid">olid (For Bookshelf Cover Images)</label>
+                    <label for="olid">Open Library ID (for bookshelf cover images)</label>
                     <input type="text" id="olid" name="olid" value="<?= e($book['olid']) ?>" placeholder="e.g., 9780261102217" autocomplete="off">
 
                     <label for="year_read">Years Read (Comma separated if re-read)</label>
