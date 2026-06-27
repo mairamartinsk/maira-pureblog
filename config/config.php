@@ -5,11 +5,13 @@ return array (
   'site_description' => 'A good old-fashioned personal blog from an insomniac, programmer, photographer, day trader, dog-mother, bread baker, piano student, wannabe artist.',
   'site_email' => 'mairamartins@posteo.com',
   'custom_nav' => 'Archive | /archive
+Books | /books
 Search | /explore
 RSS | /feed',
   'custom_routes' => '/archive | /content/includes/archive.php
 /explore | /content/includes/search.php
-/tags | /content/includes/search.php',
+/tags | /content/includes/search.php
+/books | /content/includes/books.php',
   'head_inject_page' => '',
   'head_inject_post' => '<link rel="stylesheet" href="/content/css/lite-yt-embed.css" />',
   'footer_inject_page' => '',
