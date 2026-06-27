@@ -17,14 +17,16 @@ $allBooks = function_exists('load_books_yaml') ? load_books_yaml() : [];
 ?>
 
 <main>
+	<h1>Books</h1>
+	<p>A list of all the books I've ever read, maybe.</p>
+
+	<hr>
+
 	<div class="bookshelf-views">
 		<button class="btn-view active" onclick="changeView('list', this)">List View</button>
 		<button class="btn-view" onclick="changeView('shelf', this)">Cover View</button>
 		<button class="btn-reset" onclick="resetAllFilters()">Reset</button>
 	</div>
-
-	<h1>Books</h1>
-	<p>A list of all the books I've ever read, maybe. Anything before 2015 is bundled together.</p>
 
 	<div class="bookshelf-wrapper">
 		<div class="bookshelf-controls">
@@ -34,7 +36,7 @@ $allBooks = function_exists('load_books_yaml') ? load_books_yaml() : [];
 
 			<div class="drop-sort">
 				<select class="bookshelf-filter-select" onchange="changeFilter(this.value)">
-					<option value="">More:</option>
+					<option value="">Filter:</option>
 					<?php
 						$allTags = [];
 						foreach ($allBooks as $b) {

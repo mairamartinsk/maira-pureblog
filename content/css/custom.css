@@ -197,38 +197,38 @@ p.post-date {
 }
 
 #comments .comment-badge {
-	background: var(--accent-bg-color);
-	color: var(--accent-color);
-	text-transform: uppercase;
-	font-size: small;
-	margin-left: 0.5rem;
-	padding: 2px 4px;
+  background: var(--accent-bg-color);
+  color: var(--accent-color);
+  text-transform: uppercase;
+  font-size: small;
+  margin-left: 0.5rem;
+  padding: 2px 4px;
 }
 
 #comments .comment-children {
-	margin-top: 3rem;
-	padding-left: 3rem;
-	border-left: 1px solid var(--accent-bg-color);
+  margin-top: 3rem;
+  padding-left: 3rem;
+  border-left: 1px solid var(--accent-bg-color);
 }
 
 #comments .comments-thread {
-	margin: 4rem 0;
+  margin: 4rem 0;
 }
 
-#comments .comment-item + .comment-item {
-	margin-top: 3rem;
-	border-top: 1px solid var(--accent-bg-color);
-	padding-top: 2rem;
+#comments .comment-item+.comment-item {
+  margin-top: 3rem;
+  border-top: 1px solid var(--accent-bg-color);
+  padding-top: 2rem;
 }
 
 #comments .comment-actions button {
-	background-color: var(--accent-bg-color);
-  	color: var(--accent-color);
+  background-color: var(--accent-bg-color);
+  color: var(--accent-color);
 }
 
 #comments .comment-actions button:hover {
-	background-color: var(--accent-color);
-  	color: var(--accent-bg-color);
+  background-color: var(--accent-color);
+  color: var(--accent-bg-color);
 }
 
 .post-upvote {
@@ -490,10 +490,11 @@ lite-youtube+lite-youtube {
 }
 
 @media (max-width: 600px) {
+
   .layout .photo p:has(img),
   .layout .photo h1,
   .excerpt-view.photos p:has(img) {
-  	margin-left: 1rem;
+    margin-left: 1rem;
   }
 }
 
@@ -533,4 +534,57 @@ lite-youtube+lite-youtube {
 .excerpt-view.notes>p:not(:has(*)),
 .excerpt-view.photos>img {
   pointer-events: none;
+}
+
+/* Bookshelf */
+
+.bookshelf-views {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+.bookshelf-views button,
+.bookshelf-wrapper button {
+  background: var(--bg-color);
+  color: var(--accent-color);
+  font-size: small;
+  text-transform: uppercase;
+}
+
+.bookshelf-views button.active,
+.bookshelf-views button:hover {
+  text-decoration: underline;
+}
+
+.bookshelf-wrapper {
+  margin-top: 1rem;
+}
+
+.bookshelf-controls {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 0.5rem;
+}
+
+.bookshelf-controls button {
+  padding: 0;
+}
+
+.drop-sort {
+  justify-self: end;
+}
+
+#live-bookshelf+div {
+  margin-top: 3rem;
+}
+
+@media (max-width: 600px) {
+  .bookshelf-controls {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .drop-sort {
+    grid-column: 1/4;
+  }
 }
