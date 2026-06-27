@@ -72,35 +72,35 @@ require __DIR__ . '/../includes/admin-head.php';
             </section>
         </form>
     </main>
-    <script>
+    <script type="module">
         const frontCssField = document.getElementById('front_css');
         const adminCssField = document.getElementById('admin_css');
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const adminTheme = document.documentElement?.dataset?.adminTheme || 'auto';
-        const useDarkTheme = adminTheme === 'dark' || (adminTheme === 'auto' && prefersDark);
-        const cmConfig = {
-            mode: 'css',
-            lineNumbers: false,
-            lineWrapping: true,
-            viewportMargin: Infinity,
-            inputStyle: 'contenteditable',
-            spellcheck: false,
-            theme: useDarkTheme ? 'material-darker' : 'default',
-        };
 
-        if (frontCssField) {
-            CodeMirror.fromTextArea(frontCssField, {
-                ...cmConfig,
-                placeholder: frontCssField.getAttribute('placeholder') || '',
+        function initCssEditor(textarea) {
+            if (!textarea || typeof window.CodeJar === 'undefined') return;
+
+            const container = document.createElement('div');
+            container.className = 'editor language-css';
+            container.contentEditable = 'true';
+            container.spellcheck = false;
+            container.textContent = textarea.value;
+
+            textarea.style.display = 'none';
+            textarea.parentNode.insertBefore(container, textarea.nextSibling);
+
+            const jar = window.CodeJar(container, (editor) => {
+                Prism.highlightElement(editor);
+                if (editor.textContent.endsWith('\n')) {
+                    editor.appendChild(document.createElement('br'));
+                }
+            }, { spellcheck: false, addClosing: false, preserveIdent: false });
+
+            jar.onUpdate((code) => {
+                textarea.value = code;
             });
         }
 
-        if (adminCssField) {
-            CodeMirror.fromTextArea(adminCssField, {
-                ...cmConfig,
-                placeholder: adminCssField.getAttribute('placeholder') || '',
-            });
-        }
-
+        initCssEditor(frontCssField);
+        initCssEditor(adminCssField);
     </script>
 <?php require __DIR__ . '/../includes/admin-footer.php'; ?>

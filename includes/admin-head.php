@@ -73,6 +73,9 @@ unset($_SESSION['admin_action_flash']);
         <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
         <link rel="stylesheet" href="<?= e($adminFontUrl) ?>">
     <?php endif; ?>
+    <?php if ($codeMirror !== null): ?>
+        <link rel="stylesheet" href="https://unpkg.com/prismjs@1.29.0/themes/prism.min.css">
+    <?php endif; ?>
     <link rel="stylesheet" href="<?= base_path() ?>/admin/css/admin.css?v=<?= e($adminCssVersion) ?>">
     <script>try{if(localStorage.getItem('pb-sidebar')==='collapsed')document.documentElement.setAttribute('data-sidebar','collapsed');}catch(e){}</script>
     <style>
@@ -83,19 +86,15 @@ unset($_SESSION['admin_action_flash']);
 <?php readfile(__DIR__ . '/../content/css/admin-custom.css'); ?>
 <?php endif; ?>
     </style>
-    <?php if ($codeMirror === 'markdown'): ?>
-        <link rel="stylesheet" href="https://unpkg.com/codemirror@5.65.16/lib/codemirror.css">
-        <script src="https://unpkg.com/codemirror@5.65.16/lib/codemirror.js"></script>
-        <script src="https://unpkg.com/codemirror@5.65.16/mode/markdown/markdown.js"></script>
-        <script src="https://unpkg.com/codemirror@5.65.16/mode/xml/xml.js"></script>
-        <script src="https://unpkg.com/codemirror@5.65.16/mode/htmlmixed/htmlmixed.js"></script>
-        <script src="https://unpkg.com/codemirror@5.65.16/addon/edit/continuelist.js"></script>
-    <?php elseif ($codeMirror === 'css'): ?>
-        <link rel="stylesheet" href="https://unpkg.com/codemirror@5.65.16/lib/codemirror.css">
-        <link rel="stylesheet" href="https://unpkg.com/codemirror@5.65.16/theme/material-darker.css">
-        <script src="https://unpkg.com/codemirror@5.65.16/lib/codemirror.js"></script>
-        <script src="https://unpkg.com/codemirror@5.65.16/addon/display/placeholder.js"></script>
-        <script src="https://unpkg.com/codemirror@5.65.16/mode/css/css.js"></script>
+    <?php if ($codeMirror !== null): ?>
+        <script src="https://unpkg.com/prismjs@1.29.0/prism.js"></script>
+        <?php if ($codeMirror === 'markdown'): ?>
+            <script src="https://unpkg.com/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+        <?php endif; ?>
+        <script type="module">
+            import { CodeJar } from 'https://unpkg.com/codejar@3.7.0/codejar.js';
+            window.CodeJar = CodeJar;
+        </script>
     <?php endif; ?>
     <?= $extraHead ?>
 </head>
@@ -132,7 +131,7 @@ unset($_SESSION['admin_action_flash']);
             <ul class="admin-nav-list">
                 <li>
                     <?php if (!$blogPostsEnabled): ?>
-                        <a class="save link-button" href="<?= base_path() ?>/admin/edit-page.php?action=new" title="<?= e(t('admin.pages.new_page')) ?>">
+                        <a id="sidebar-new-post-button" class="save link-button" href="<?= base_path() ?>/admin/edit-page.php?action=new" title="<?= e(t('admin.pages.new_page')) ?>">
                             <svg class="icon" aria-hidden="true"><use href="#icon-file-plus-corner"></use></svg>
                             <span><?= e(t('admin.pages.new_page')) ?></span>
                         </a>
@@ -142,7 +141,7 @@ unset($_SESSION['admin_action_flash']);
                             <span><?= e(t('admin.dashboard.write_post')) ?></span>
                         </button>
                     <?php else: ?>
-                        <a class="save link-button" href="<?= base_path() ?>/admin/edit-post.php?action=new" title="<?= e(t('admin.dashboard.write_post')) ?>">
+                        <a id="sidebar-new-post-button" class="save link-button" href="<?= base_path() ?>/admin/edit-post.php?action=new" title="<?= e(t('admin.dashboard.write_post')) ?>">
                             <svg class="icon" aria-hidden="true"><use href="#icon-file-plus-corner"></use></svg>
                             <span><?= e(t('admin.dashboard.write_post')) ?></span>
                         </a>
