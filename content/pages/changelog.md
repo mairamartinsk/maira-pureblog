@@ -11,6 +11,10 @@ Tracking the changes I make to this website. Loosely following the [Keep a Chang
 ---
 ## 2026
 
+### 2026-06-10
+
+- Update to Pureblog [v3.4.2](https://codeberg.org/kevquirk/pureblog). I had already written my own Featured Image function which works identically to PureBlog's built-in one (except I had written `featuredImage` and Kev went with `featured_image`, hehe). Happy to have the new Schedule Post function in place, that might come in handy!
+
 ### 2026-05-09
 
 - Updated to PureBlog [v3](https://codeberg.org/kevquirk/pureblog)!

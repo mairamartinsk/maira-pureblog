@@ -31,13 +31,15 @@ A list of all the books I've read, maybe. Use the buttons below to jump around.
 
 ## Read in 2026 {#2026}
 
-Currently reading: **Slightly Jet Lagged** by Mike Lowery
+Currently reading: **A Murder is Announced** by Agatha Christie
 
 - **YTC Price Action Trader** by Lance Beggs
 - **Brave New World** by Aldous Huxley
 - **Taken at the Flood** by Agatha Christie
 - **Crooked House** by Agatha Christie
 - **How to Keep a Travel Sketchbook** by Mike Lowery
+- **Slightly Jet Lagged** by Mike Lowery
+- **Three Blind Mice** by Agatha Christie
 
 <small><a href="#">back to top ↑</a></small>
 
@@ -383,6 +385,7 @@ One day I decided I'd read all Agatha Christie's books in chronological order. T
 1. The Labours of Hercules (Poirot)
 1. Taken at the Flood
 1. Crooked House
+1. Three Blind Mice
 
 <small><a href="#">back to top ↑</a></small>
 
@@ -443,7 +446,10 @@ Trading Books I own but haven't read yet (sigh! so much to learn, so little time
 - **Understanding Price Action** by Bob Volman
 - **YTC Scalper** by Lance Beggs
 - **Bitcoin for Traders** by Harvey Walsh
+- **Market Wizards** by Jack D. Schwager
 - **The New Market Wizards** by Jack D. Schwager
+- **Unknown Market Wizards** by Jack D. Schwager
+- **Market Wizards: the Next Generation** by Jack D. Schwager
 - **Reading Price Action Bar-by-Bar** by Al Brooks
 - **Trading Price Action Trilogy** (trends, ranges, reversals) by Al Brooks => Also worth noting I have paid for the video course because the books were too dense... and the video lessons make me sleepy!
 - **Super Trader** by Van. K. Tharp

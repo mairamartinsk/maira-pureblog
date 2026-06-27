@@ -9,7 +9,7 @@ description: What a show! Visionary, prophetic, ahead of its time and a must-wat
 
 ![Poster TV series Person of Interest](/content/images/watched-person-of-interest/person-of-interest.jpeg)
 
-What a show! We started watching this in January, right after Astro died, to cope with the sadness. We are usually not into "monster of the week" types of series, but there is a very definite plot tying it all together.
+What a [show](https://www.themoviedb.org/tv/1411-person-of-interest)! We started watching this in January, right after Astro died, to cope with the sadness. We are usually not into "monster of the week" types of series, but there is a very definite plot tying it all together.
 
 Basically, it is about AI as a tool for mass surveillance and how it could be both good and nefarious, depending on who controls it. Now, the series aired over **ten years ago**! I can't believe how visionary it is, prophetic even. This series was really ahead of its time.
 

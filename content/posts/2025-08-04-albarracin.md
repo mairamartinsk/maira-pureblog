@@ -21,7 +21,9 @@ This week we went on a quick day trip to one of Spain's most beautiful pueblos, 
 ![A narrow, cobblestone alleyway is flanked by tall, rustic buildings with wooden balconies and soft, warm lighting.](/content/images/2025-08-04/fcbffc101b.jpg)
 ![A charming narrow street is lined with rustic, pink-hued buildings in a picturesque, old-world setting.](/content/images/2025-08-04/d2217ac470.jpg)
 }}
+{{1
 ![A historic building with wooden balconies and pink-hued walls stands against a clear blue sky.](/content/images/2025-08-04/726bf51eb2.jpg)
+}}
 {{1
 ![A rustic hillside reveals an ancient stone structure with rugged walls under a clear blue sky.](/content/images/2025-08-04/be626ec474.jpg)
 }}

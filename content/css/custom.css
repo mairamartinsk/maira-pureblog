@@ -275,13 +275,6 @@ lite-youtube+lite-youtube {
 
 /* Grid images */
 
-article:not(:has(.notes)) .layout-grid {
-  width: calc(100vw - 2rem);
-  max-width: 60em;
-  margin-left: 50%;
-  transform: translateX(-50%);
-}
-
 .layout-grid p {
   display: grid;
   grid-template-columns: repeat(var(--grid-cols), 1fr);
