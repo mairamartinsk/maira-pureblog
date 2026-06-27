@@ -11,8 +11,8 @@ $blogPostsEnabled = $config['enable_blog_posts'] ?? true;
 $defaultTab = $blogPostsEnabled ? 'posts' : 'pages';
 $tab = (string) ($_GET['tab'] ?? $defaultTab);
 if (!$blogPostsEnabled) {
-    $tab = 'pages';
-} elseif (!in_array($tab, ['posts', 'pages'], true)) {
+    $tab = $tab === 'books' ? 'books' : 'pages';
+} elseif (!in_array($tab, ['posts', 'pages', 'books'], true)) {
     $tab = 'posts';
 }
 
@@ -185,10 +185,21 @@ $adminTitle = t('admin.content.page_title');
 require __DIR__ . '/../includes/admin-head.php';
 ?>
     <main class="mid">
-        <h1><?= e($tab === 'pages' ? t('admin.content.tab_pages') : t('admin.content.tab_posts')) ?></h1>
-        <nav class="admin-actions">
+        <div class="admin-tabs">
+            <?php if ($blogPostsEnabled): ?>
+                <a href="?tab=posts" class="button <?= $tab === 'posts' ? 'save' : 'link-button' ?>">Posts</a>
+            <?php endif; ?>
+            <a href="?tab=pages" class="button <?= $tab === 'pages' ? 'save' : 'link-button' ?>">Pages</a>
+            <a href="?tab=books" class="button <?= $tab === 'books' ? 'save' : 'link-button' ?>">Books</a>
+        </div>
+        <h1><?php if ($tab === 'pages') echo e(t('admin.content.tab_pages'));
+                elseif ($tab === 'books') echo 'Books';
+                else echo e(t('admin.content.tab_posts')); ?></h1>
+       <nav class="admin-actions">
             <?php if ($tab === 'pages'): ?>
                 <a class="button save" href="<?= base_path() ?>/admin/edit-page.php?action=new"><svg class="icon" aria-hidden="true"><use href="#icon-file-plus-corner"></use></svg> <?= e(t('admin.content.new_page')) ?></a>
+            <?php elseif ($tab === 'books'): ?>
+                <a class="button save" href="<?= base_path() ?>/admin/edit-book.php?action=new"><svg class="icon" aria-hidden="true"><use href="#icon-file-plus-corner"></use></svg> Add New Book</a>
             <?php elseif ($availableLayouts): ?>
                 <button type="button" class="button save js-open-layout-picker"><svg class="icon" aria-hidden="true"><use href="#icon-file-plus-corner"></use></svg> <?= e(t('admin.content.new_post')) ?></button>
             <?php else: ?>
@@ -328,6 +339,24 @@ require __DIR__ . '/../includes/admin-head.php';
                         <?php endif; ?>
                     </nav>
                 <?php endif; ?>
+            <?php endif; ?>
+
+            <?php elseif ($tab === 'books'): ?>
+            <?php 
+                $booksList = function_exists('load_books_yaml') ? load_books_yaml() : [];
+            ?>
+            <?php if (!$booksList): ?>
+                <p>No books tracked yet. 📚</p>
+            <?php else: ?>
+                <ul class="admin-list">
+                    <?php foreach ($booksList as $index => $b): ?>
+                        <li class="admin-list-item">
+                            <a class="admin-list-title" href="<?= base_path() ?>/admin/edit-book.php?id=<?= $index ?>">
+                                <?= e($b['title']) ?> <br><span style="font-size: 0.8em; color: #777; font-weight: normal;"> <?= e($b['author']) ?></span>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
             <?php endif; ?>
 
         <?php else: ?>

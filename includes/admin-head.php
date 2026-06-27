@@ -154,6 +154,7 @@ unset($_SESSION['admin_action_flash']);
                         <ul class="admin-nav-list sidebar-subnav">
                             <li><a href="<?= base_path() ?>/admin/content.php?tab=posts"<?= ($tab ?? $defaultTab) === 'posts' ? ' class="current"' : '' ?> title="<?= e(t('admin.content.tab_posts')) ?>"><svg class="icon" aria-hidden="true"><use href="#icon-notebook-pen"></use></svg><span><?= e(t('admin.content.tab_posts')) ?></span></a></li>
                             <li><a href="<?= base_path() ?>/admin/content.php?tab=pages"<?= ($tab ?? $defaultTab) === 'pages' ? ' class="current"' : '' ?> title="<?= e(t('admin.content.tab_pages')) ?>"><svg class="icon" aria-hidden="true"><use href="#icon-file-text"></use></svg><span><?= e(t('admin.content.tab_pages')) ?></span></a></li>
+                            <li><a href="<?= base_path() ?>/admin/content.php?tab=books"<?= ($tab ?? $defaultTab) === 'books' ? ' class="current"' : '' ?> title="Books"><svg class="icon" aria-hidden="true"><use href="#icon-file-text"></use></svg><span>Books</span></a></li>
                         </ul>
                         <?php endif; ?>
                     </li>
@@ -168,6 +169,7 @@ unset($_SESSION['admin_action_flash']);
                         <ul class="admin-nav-list sidebar-subnav">
                             <li><a href="<?= base_path() ?>/admin/content.php?tab=posts"<?= ($tab ?? $defaultTab) === 'posts' ? ' class="current"' : '' ?> title="<?= e(t('admin.content.tab_posts')) ?>"><svg class="icon" aria-hidden="true"><use href="#icon-notebook-pen"></use></svg><span><?= e(t('admin.content.tab_posts')) ?></span></a></li>
                             <li><a href="<?= base_path() ?>/admin/content.php?tab=pages"<?= ($tab ?? $defaultTab) === 'pages' ? ' class="current"' : '' ?> title="<?= e(t('admin.content.tab_pages')) ?>"><svg class="icon" aria-hidden="true"><use href="#icon-file-text"></use></svg><span><?= e(t('admin.content.tab_pages')) ?></span></a></li>
+                            <li><a href="<?= base_path() ?>/admin/content.php?tab=books"<?= ($tab ?? $defaultTab) === 'books' ? ' class="current"' : '' ?> title="Books"><svg class="icon" aria-hidden="true"><use href="#icon-file-text"></use></svg><span>Books</span></a></li>
                         </ul>
                         <?php endif; ?>
                     </li>

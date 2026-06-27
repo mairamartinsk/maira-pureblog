@@ -938,7 +938,7 @@
 
 - title: "Cesar's Way: The Natural, Everyday Guide to Understanding and Correcting Common Dog Problems"
   author: "Cesar Millan"
-  year_read: [0] # 0 denotes "Before 2015"
+  year_read: [0]
   reread: false
   isbn: ""
   tags: []
@@ -1463,133 +1463,134 @@
 
 - title: "Laura in the Kitchen"
   author: "Laura Vitale"
-  year_read: []
+  year_read: [0]
   reread: false
   isbn: ""
   tags: ["Cookbooks"]
 
 - title: "Vegan Chinese Food"
   author: "Yang Liu"
-  year_read: []
+  year_read: [0]
   reread: false
   isbn: ""
   tags: ["Cookbooks"]
 
 - title: "Vegan Asian: A Cookbook"
   author: "Jeeca Uy"
-  year_read: []
+  year_read: [0]
   reread: false
   isbn: ""
   tags: ["Cookbooks"]
 
 - title: "East"
   author: "Meera Sodha"
-  year_read: []
+  year_read: [0]
   reread: false
   isbn: ""
   tags: ["Cookbooks"]
 
 - title: "The Easy Italian Cookbook"
   author: "Paulette Licitra"
-  year_read: []
+  year_read: [0]
   reread: false
   isbn: ""
   tags: ["Cookbooks"]
 
 - title: "Pasta Grannies: The Official Cookbook"
   author: "Vicky Bennison"
-  year_read: []
+  year_read: [0]
   reread: false
   isbn: ""
   tags: ["Cookbooks"]
 
 - title: "Pasta Grannies: Comfort Cooking"
   author: "Vicky Bennison"
-  year_read: []
+  year_read: [0]
   reread: false
   isbn: ""
   tags: ["Cookbooks"]
 
 - title: "The Mediterranean Diet Cookbook for Beginners"
   author: "Elena Paravantes"
-  year_read: []
+  year_read: [0]
   reread: false
   isbn: ""
   tags: ["Cookbooks"]
 
 - title: "Thug Kitchen"
   author: "Unknown"
-  year_read: []
+  year_read: [0]
   reread: false
   isbn: ""
   tags: ["Cookbooks"]
 
 - title: "Thug Kitchen 101"
   author: "Unknown"
-  year_read: []
+  year_read: [0]
   reread: false
   isbn: ""
   tags: ["Cookbooks"]
 
 - title: "The Homemade Vegan Pantry"
   author: "Miyoko Schinner"
-  year_read: []
+  year_read: [0]
   reread: false
   isbn: ""
   tags: ["Cookbooks"]
 
 - title: "Artisan Vegan Cheese"
   author: "Miyoko Schinner"
-  year_read: []
+  year_read: [0]
   reread: false
   isbn: ""
   tags: ["Cookbooks"]
 
 - title: "Get The Glow"
   author: "Madeleine Shaw"
-  year_read: []
+  year_read: [0]
   reread: false
   isbn: ""
   tags: ["Cookbooks"]
 
 - title: "Everyday Super Food"
   author: "Jamie Oliver"
-  year_read: []
+  year_read: [0]
   reread: false
   isbn: ""
   tags: ["Cookbooks"]
 
 - title: "But I Could Never Go Vegan!"
   author: "Kristy Turner"
-  year_read: []
+  year_read: [0]
   reread: false
   isbn: ""
   tags: ["Cookbooks"]
 
 - title: "The Super Easy Vegan Slow Cooker Cookbook"
   author: "Toni Okamoto"
-  year_read: []
+  year_read: [0]
   reread: false
   isbn: ""
   tags: ["Cookbooks"]
 
 - title: "The Vegan Meat Cookbook"
   author: "Miyoko Schinner"
-  year_read: []
+  year_read: [0]
   reread: false
   isbn: ""
   tags: ["Cookbooks"]
 
 - title: "The Healthy Hound Cookbook"
   author: "Paris Permenter"
-  year_read: []
+  year_read: [0]
   reread: false
   isbn: ""
   tags: ["Cookbooks"]
 
 - title: "Feed Your Best Friend Better"
   author: "Rick Woodford"
-  year_read: []
+  year_read: [0]
   reread: false
   isbn: ""
   tags: ["Cookbooks"]
+

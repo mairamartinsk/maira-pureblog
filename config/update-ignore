@@ -1,3 +1,5 @@
 admin/edit-book.php
+admin/content.php
 content/includes/books.php
-content/books.yml
+includes/admin-head.php
+data/books.yml
