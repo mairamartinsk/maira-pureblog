@@ -542,6 +542,7 @@ lite-youtube+lite-youtube {
   display: flex;
   flex-direction: row;
   justify-content: end;
+  margin-bottom: 2rem;
 }
 
 .bookshelf-views button,
@@ -550,11 +551,13 @@ lite-youtube+lite-youtube {
   color: var(--accent-color);
   font-size: small;
   text-transform: uppercase;
+  width: fit-content;
 }
 
 .bookshelf-views button.active,
 .bookshelf-views button:hover {
   text-decoration: underline;
+  text-decoration-thickness: 1px;
 }
 
 .bookshelf-wrapper {
@@ -575,7 +578,7 @@ lite-youtube+lite-youtube {
   justify-self: end;
 }
 
-#live-bookshelf+div {
+#live-bookshelf>div:first-child {
   margin-top: 3rem;
 }
 
