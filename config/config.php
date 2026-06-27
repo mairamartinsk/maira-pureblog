@@ -56,6 +56,11 @@ RSS | /feed',
     'og_image' => '/assets/images/og-image.png',
     'og_image_preferred' => 'banner',
   ),
+  'community' => 
+  array (
+    'purecomments_enabled' => true,
+    'purecomments_url' => 'https://comments.mairamartins.com',
+  ),
   'hide_homepage_title' => true,
   'hide_blog_page_title' => true,
   'admin_homepage' => 'dashboard',

@@ -44,6 +44,8 @@ $post = $post ?? [];
       <p></p>
     </div>
     
-    <div id="comments" data-post-slug="<?= $post['slug'] ?>">
+    <?php if (!empty($config['community']['purecomments_enabled']) && !empty($config['community']['purecomments_url'])): ?>
+    <div id="comments" data-post-slug="<?= e((string) ($post['slug'] ?? '')) ?>"></div>
+    <script src="<?= e($config['community']['purecomments_url']) ?>/public/embed.js" defer></script>
+<?php endif; ?>
 </div>
-<script src="https://comments.mairamartins.com/public/embed.js" defer></script>

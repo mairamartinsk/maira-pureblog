@@ -30,4 +30,3 @@ The phrase we say to each other the most is "vad menar du?" or "what do you mean
 And then we can all agree the food was awesome, I am in fact a *great* cook, the plants could do with a little more water, the joke was funny after all, and we should definitely try to *maybe* get to do that thing sometime in a totally non-forced, non-committal, no-pressure way.
 
 Source: [Ask for clarification](https://imperfect.bearblog.dev/ask-for-clarification/)
-
