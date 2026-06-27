@@ -3,7 +3,7 @@ title: Re: Ask for clarification
 slug: re-ask-for-clarification
 date: 2026-06-27 07:37
 status: published
-tags: [family]
+tags: [family, life]
 description: 
 ---
 

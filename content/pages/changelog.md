@@ -6,14 +6,21 @@ description: Tracking the changes I make to this website
 include_in_nav: false
 ---
 
-Tracking the changes I make to this website. Loosely following the [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format. Dates are `yyyy-mm-dd`.
+Tracking the changes I make to this website. Loosely following the [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format. Dates are `yyyy-mm-dd`, [obviously](https://xkcd.com/1179/).
+
+The full list of commits can be seen on my [blog's github repository](https://github.com/mairamartinsk/maira-pureblog).
 
 ---
 ## 2026
 
+### 2026-06-27
+
+- Updated Pureblog to v3.5.1. Small refactoring to use the built-in integration with Pure Comments. Updated mom's blog too.
+- Still in love with the looks, so no CSS tweaks anywhere (except a small improvement to my photo collages).
+
 ### 2026-06-10
 
-- Update to Pureblog [v3.4.2](https://codeberg.org/kevquirk/pureblog). I had already written my own Featured Image function which works identically to PureBlog's built-in one (except I had written `featuredImage` and Kev went with `featured_image`, hehe). Happy to have the new Schedule Post function in place, that might come in handy!
+- Updated Pureblog to v3.4.2. I had already written my own Featured Image function which works identically to PureBlog's built-in one (except I had written `featuredImage` and Kev went with `featured_image`, hehe). Happy to have the new Schedule Post function in place, that might come in handy!
 
 ### 2026-05-09
 
@@ -23,7 +30,7 @@ Tracking the changes I make to this website. Loosely following the [Keep a Chang
 
 - Created another custom layout, Featured Image! 😍
 - Updated older content to use the featured image layout.
-- Created a CSS grid shortcode implementation for easily creating photo collages. It's pretty neat!
+- Created a CSS grid shortcode implementation for easily making photo collages. It's pretty neat!
 - Tweaked the generate_excerpt function to hide my custom grid shortcode.
 - Tweaked the admin Content panel to show the custom layout near the post title.
 
