@@ -18,7 +18,7 @@ function load_books_yaml(): array {
     
     foreach ($blocks as $block) {
         $lines = explode("\n", $block);
-        $item = ['title'=>'', 'author'=>'', 'year_read'=>[], 'reread'=>false, 'isbn'=>'', 'tags'=>[]];
+        $item = ['title'=>'', 'author'=>'', 'year_read'=>[], 'reread'=>false, 'olid'=>'', 'tags'=>[]];
         foreach ($lines as $line) {
             if (preg_match('/^\s*author:\s*(.*)$/', $line, $m)) {
                 $item['author'] = trim($m[1], " \t\n\r\0\x0B\"'");
@@ -26,8 +26,8 @@ function load_books_yaml(): array {
                 $item['year_read'] = array_filter(array_map('intval', explode(',', $m[1])), function($v){ return $v !== ''; });
             } elseif (preg_match('/^\s*reread:\s*(true|false)/', $line, $m)) {
                 $item['reread'] = $m[1] === 'true';
-            } elseif (preg_match('/^\s*isbn:\s*(.*)$/', $line, $m)) {
-                $item['isbn'] = trim($m[1], " \t\n\r\0\x0B\"'");
+            } elseif (preg_match('/^\s*olid:\s*(.*)$/', $line, $m)) {
+                $item['olid'] = trim($m[1], " \t\n\r\0\x0B\"'");
             } elseif (preg_match('/^\s*tags:\s*\[(.*)\]/', $line, $m)) {
                 $item['tags'] = array_filter(array_map(function($t){ return trim($t, " \t\n\r\0\x0B\"'"); }, explode(',', $m[1])));
             }
@@ -49,7 +49,7 @@ function save_books_yaml(array $books_array): bool {
             $years = isset($item['year_read']) ? implode(', ', $item['year_read']) : '';
             $output .= "  year_read: [" . $years . "]\n";
             $output .= "  reread: " . (($item['reread'] ?? false) ? 'true' : 'false') . "\n";
-            $output .= "  isbn: " . json_encode($item['isbn'] ?? '', JSON_UNESCAPED_UNICODE) . "\n";
+            $output .= "  olid: " . json_encode($item['olid'] ?? '', JSON_UNESCAPED_UNICODE) . "\n";
             $escapedTags = array_map(function($t) { return json_encode($t, JSON_UNESCAPED_UNICODE); }, $item['tags'] ?? []);
             $output .= "  tags: [" . implode(', ', $escapedTags) . "]\n\n";
         }

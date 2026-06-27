@@ -18,7 +18,7 @@ $book = [
     'author'    => '',
     'year_read' => [],
     'reread'    => false,
-    'isbn'      => '',
+    'olid'      => '',
     'tags'      => []
 ];
 
@@ -34,7 +34,7 @@ if ($isEditing) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $titleInput  = trim($_POST['title'] ?? '');
     $authorInput = trim($_POST['author'] ?? '');
-    $isbnInput   = trim($_POST['isbn'] ?? '');
+    $olidInput   = trim($_POST['olid'] ?? '');
     $rereadInput = isset($_POST['reread']);
     
     $yearsArray = array_filter(array_map('intval', explode(',', $_POST['year_read'] ?? '')), function($val) {
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'author'    => $authorInput,
             'year_read' => array_values($yearsArray),
             'reread'    => $rereadInput,
-            'isbn'      => $isbnInput,
+            'olid'      => $olidInput,
             'tags'      => array_values($tagsArray)
         ];
 
@@ -100,8 +100,8 @@ require __DIR__ . '/../includes/admin-head.php';
                     <label for="author">Author Name</label>
                     <input type="text" id="author" name="author" value="<?= e($book['author']) ?>" autocomplete="off">
 
-                    <label for="isbn">ISBN (For Bookshelf Cover Images)</label>
-                    <input type="text" id="isbn" name="isbn" value="<?= e($book['isbn']) ?>" placeholder="e.g., 9780261102217" autocomplete="off">
+                    <label for="olid">olid (For Bookshelf Cover Images)</label>
+                    <input type="text" id="olid" name="olid" value="<?= e($book['olid']) ?>" placeholder="e.g., 9780261102217" autocomplete="off">
 
                     <label for="year_read">Years Read (Comma separated if re-read)</label>
                     <input type="text" id="year_read" name="year_read" value="<?= e(implode(', ', $book['year_read'])) ?>" placeholder="e.g., 2016, 2021 (Use 0 for Before 2015)" autocomplete="off">

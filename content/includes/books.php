@@ -18,7 +18,7 @@ $allBooks = function_exists('load_books_yaml') ? load_books_yaml() : [];
 
 <main>
 	<h1>Books</h1>
-	<p>A list of all the books I've ever read, maybe.</p>
+	<p>A list of all the books I've ever read, maybe. Book covers are a courtesy of <a href="https://openlibrary.org/dev/docs/api/covers">Open Library</a>.</p>
 
 	<hr>
 
@@ -132,8 +132,8 @@ $allBooks = function_exists('load_books_yaml') ? load_books_yaml() : [];
 				`;
 			} else {
 				// Render Cover View
-				if (book.isbn) {
-					const imgUrl = `https://covers.openlibrary.org/b/isbn/${book.isbn}-M.jpg`;
+				if (book.olid) {
+					const imgUrl = `https://covers.openlibrary.org/b/olid/${book.olid}-M.jpg`;
 					htmlOutput += `
 						<div class="book-card ${book.reread ? 'is-reread' : ''}">
 							<img src="${imgUrl}" alt="${book.title} Cover" class="book-cover" loading="lazy">
