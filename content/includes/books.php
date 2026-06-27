@@ -76,6 +76,8 @@ $allBooks = function_exists('load_books_yaml') ? load_books_yaml() : [];
 
 	function renderLibrary() {
 		const outputTarget = document.getElementById('live-bookshelf');
+		if (!outputTarget) return;
+
 		outputTarget.className = `view-${activeView}`;
 
 		let processedList = [...libraryData];
@@ -112,39 +114,39 @@ $allBooks = function_exists('load_books_yaml') ? load_books_yaml() : [];
 				? `<span class="book-tags">${book.tags.join(', ')}</span>`
 				: '';
 
-			// Render List View
 			if (activeView === 'list') {
+				//Render List View
 				if (activeSort === 'date' && currentYearHeading !== displayYearStr) {
 					currentYearHeading = displayYearStr;
 					htmlOutput += `<h2 class="bookshelf-year-heading">${currentYearHeading}</h2>`;
 				}
 
 				htmlOutput += `
-                <div class="book-card ${book.reread ? 'is-reread' : ''}">
-                    <div class="book-meta">
-                        <strong class="book-title">${book.title}</strong> 
-                        <span class="book-author">by ${book.author}</span>
-                        ${book.reread ? '<span class="badge-reread">re-read</span>' : ''}
-                    </div>
-                </div>
-            `;
+					<div class="book-card ${book.reread ? 'is-reread' : ''}">
+						<div class="book-meta">
+							<strong class="book-title">${book.title}</strong> 
+							<span class="book-author">by ${book.author}</span>
+							${book.reread ? '<span class="badge-reread">Re-read</span>' : ''}
+						</div>
+					</div>
+				`;
 			} else {
 				// Render Cover View
 				if (book.isbn) {
 					const imgUrl = `https://covers.openlibrary.org/b/isbn/${book.isbn}-M.jpg`;
 					htmlOutput += `
-                    <div class="book-card ${book.reread ? 'is-reread' : ''}">
-                        <img src="${imgUrl}" alt="${book.title} Cover" class="book-cover" loading="lazy">
-                    </div>
-                `;
+						<div class="book-card ${book.reread ? 'is-reread' : ''}">
+							<img src="${imgUrl}" alt="${book.title} Cover" class="book-cover" loading="lazy">
+						</div>
+					`;
 				} else {
 					htmlOutput += `
-                    <div class="book-card missing-cover ${book.reread ? 'is-reread' : ''}">
-                        <div class="placeholder-cover">
-                            <span class="placeholder-title">${book.title}</span>
-                        </div>
-                    </div>
-                `;
+						<div class="book-card missing-cover ${book.reread ? 'is-reread' : ''}">
+							<div class="placeholder-cover">
+								<span class="placeholder-title">${book.title}</span>
+							</div>
+						</div>
+					`;
 				}
 			}
 		});
@@ -193,4 +195,6 @@ $allBooks = function_exists('load_books_yaml') ? load_books_yaml() : [];
 
 		renderLibrary();
 	}
+
+	renderLibrary();
 </script>
