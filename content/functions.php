@@ -8,7 +8,13 @@ function load_books_yaml(): array {
     }
     
     if (function_exists('yaml_parse_file')) {
-        return yaml_parse_file(BOOKS_YAML_PATH) ?: [];
+        $nativeItems = yaml_parse_file(BOOKS_YAML_PATH) ?: [];
+        foreach ($nativeItems as &$item) {
+            if (!isset($item['custom_cover'])) {
+                $item['custom_cover'] = '';
+            }
+        }
+        return $nativeItems;
     }
     
     $yaml = file_get_contents(BOOKS_YAML_PATH);
@@ -18,7 +24,17 @@ function load_books_yaml(): array {
     
     foreach ($blocks as $block) {
         $lines = explode("\n", $block);
-        $item = ['title'=>'', 'author'=>'', 'year_read'=>[], 'reread'=>false, 'olid'=>'', 'tags'=>[]];
+        
+        $item = [
+            'title'        => '', 
+            'author'       => '', 
+            'year_read'    => [], 
+            'reread'       => false, 
+            'olid'         => '', 
+            'custom_cover' => '', 
+            'tags'         => []
+        ];
+        
         foreach ($lines as $line) {
             if (preg_match('/^\s*author:\s*(.*)$/', $line, $m)) {
                 $item['author'] = trim($m[1], " \t\n\r\0\x0B\"'");
@@ -28,12 +44,16 @@ function load_books_yaml(): array {
                 $item['reread'] = $m[1] === 'true';
             } elseif (preg_match('/^\s*olid:\s*(.*)$/', $line, $m)) {
                 $item['olid'] = trim($m[1], " \t\n\r\0\x0B\"'");
+            } elseif (preg_match('/^\s*custom_cover:\s*(.*)$/', $line, $m)) {
+                $item['custom_cover'] = trim($m[1], " \t\n\r\0\x0B\"'");
             } elseif (preg_match('/^\s*tags:\s*\[(.*)\]/', $line, $m)) {
                 $item['tags'] = array_filter(array_map(function($t){ return trim($t, " \t\n\r\0\x0B\"'"); }, explode(',', $m[1])));
             }
         }
         $item['title'] = trim($lines[0], " \t\n\r\0\x0B\"'");
-        if (!empty($item['title'])) { $items[] = $item; }
+        if (!empty($item['title'])) { 
+            $items[] = $item; 
+        }
     }
     return $items;
 }
@@ -50,6 +70,7 @@ function save_books_yaml(array $books_array): bool {
             $output .= "  year_read: [" . $years . "]\n";
             $output .= "  reread: " . (($item['reread'] ?? false) ? 'true' : 'false') . "\n";
             $output .= "  olid: " . json_encode($item['olid'] ?? '', JSON_UNESCAPED_UNICODE) . "\n";
+            $output .= "  custom_cover: " . json_encode($item['custom_cover'] ?? '', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . "\n";
             $escapedTags = array_map(function($t) { return json_encode($t, JSON_UNESCAPED_UNICODE); }, $item['tags'] ?? []);
             $output .= "  tags: [" . implode(', ', $escapedTags) . "]\n\n";
         }
