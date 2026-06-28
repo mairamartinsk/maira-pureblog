@@ -3,6 +3,7 @@
   year_read: [2026]
   reread: false
   olid: "OL28932925M"
+  custom_cover: ""
   tags: ["Agatha Christie", "Currently Reading"]
 
 - title: "YTC Price Action Trader"
@@ -10,6 +11,7 @@
   year_read: [2026]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Trading"]
 
 - title: "Brave New World"
@@ -17,6 +19,7 @@
   year_read: [2026]
   reread: false
   olid: "OL61332769M"
+  custom_cover: ""
   tags: []
 
 - title: "Taken at the Flood"
@@ -24,6 +27,7 @@
   year_read: [2026]
   reread: false
   olid: "OL28756494M"
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "Crooked House"
@@ -31,6 +35,7 @@
   year_read: [2026]
   reread: false
   olid: "OL2401891M"
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "How to Keep a Travel Sketchbook"
@@ -38,6 +43,7 @@
   year_read: [2026]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Slightly Jet Lagged"
@@ -45,6 +51,7 @@
   year_read: [2026]
   reread: false
   olid: ""
+  custom_cover: "/content/images/book_covers/ml-slightly-jet-lagged-1782639029.jpg"
   tags: ["Currently Reading"]
 
 - title: "Three Blind Mice"
@@ -52,6 +59,7 @@
   year_read: [2026]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "Draw Your Adventures"
@@ -59,6 +67,7 @@
   year_read: [2025]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "We"
@@ -66,6 +75,7 @@
   year_read: [2025]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Draw Your World"
@@ -73,6 +83,7 @@
   year_read: [2025]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "The Moonlight Chronicles"
@@ -80,6 +91,7 @@
   year_read: [2025]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "How to Make a Journal of Your Life"
@@ -87,6 +99,7 @@
   year_read: [2025]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Draw Your Day"
@@ -94,6 +107,7 @@
   year_read: [2025]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "The Labours of Hercules (Poirot)"
@@ -101,6 +115,7 @@
   year_read: [2025]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "The Hollow"
@@ -108,6 +123,7 @@
   year_read: [2025]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "Sparkling Cyanide"
@@ -115,6 +131,7 @@
   year_read: [2025]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "Death Comes as the End"
@@ -122,6 +139,7 @@
   year_read: [2025]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "Towards Zero"
@@ -129,6 +147,7 @@
   year_read: [2025]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "Five Little Pigs"
@@ -136,6 +155,7 @@
   year_read: [2025]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "The Moving Finger"
@@ -143,6 +163,7 @@
   year_read: [2025]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "The Body in the Library"
@@ -150,6 +171,7 @@
   year_read: [2025]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "N or M?"
@@ -157,6 +179,7 @@
   year_read: [2025]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "Evil Under the Sun"
@@ -164,6 +187,7 @@
   year_read: [2025]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "One, Two, Buckle My Shoe"
@@ -171,6 +195,7 @@
   year_read: [2025]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "The God Delusion"
@@ -178,6 +203,7 @@
   year_read: [2025]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "John Shaw's Guide to Digital Nature Photography"
@@ -185,6 +211,7 @@
   year_read: [2025]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "John Shaw's Nature Photography Field Guide"
@@ -192,6 +219,7 @@
   year_read: [2024]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Understanding Exposure: How to Shoot Great Photographs with a Film or Digital Camera"
@@ -199,6 +227,7 @@
   year_read: [2024]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Enigma na Televisão"
@@ -206,6 +235,7 @@
   year_read: [2024]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "O Caso da Borboleta Atíria"
@@ -213,6 +243,7 @@
   year_read: [2024]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Sad Cypress"
@@ -220,6 +251,7 @@
   year_read: [2024]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "Trading Mindfully: The Psychological Guide for Finding Consistency in an Irrational Environment"
@@ -227,6 +259,7 @@
   year_read: [2024]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Trading"]
 
 - title: "Trade Mindfully"
@@ -234,6 +267,7 @@
   year_read: [2024]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Trading"]
 
 - title: "The Regatta Mystery"
@@ -241,6 +275,7 @@
   year_read: [2024]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "O Escaravelho do Diabo"
@@ -248,6 +283,7 @@
   year_read: [2024]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "And Then There Were None"
@@ -255,6 +291,7 @@
   year_read: [2024]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "P.S. from Paris"
@@ -262,6 +299,7 @@
   year_read: [2024]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "29 Seconds"
@@ -269,6 +307,7 @@
   year_read: [2024]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Trading the Line: How to Use Trendlines to Spot Reversals and Ride Trends"
@@ -276,6 +315,7 @@
   year_read: [2024]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Trading"]
 
 - title: "Brain Hacks For Traders"
@@ -283,6 +323,7 @@
   year_read: [2024]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Trading"]
 
 - title: "Trading in the Zone: Master the Market with Confidence, Discipline and a Winning Attitude"
@@ -290,6 +331,7 @@
   year_read: [2024]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Trading"]
 
 - title: "Bom dia, Socorro"
@@ -297,6 +339,7 @@
   year_read: [2024]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Graphic Novel"]
 
 - title: "Best Loser Wins"
@@ -304,6 +347,7 @@
   year_read: [2024]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Trading"]
 
 - title: "Mastering Price Action and Trade Setups In Today's Markets"
@@ -311,6 +355,7 @@
   year_read: [2023, 2024]
   reread: true
   olid: ""
+  custom_cover: ""
   tags: ["Trading"]
 
 - title: "A Complete Guide To Volume Price Analysis"
@@ -318,6 +363,7 @@
   year_read: [2023]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Trading"]
 
 - title: "Day Trading Secrets"
@@ -325,6 +371,7 @@
   year_read: [2023]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Trading"]
 
 - title: "How To Day Trade Stocks For Profit"
@@ -332,6 +379,7 @@
   year_read: [2023]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Trading"]
 
 - title: "Hercule Poirot's Christmas"
@@ -339,6 +387,7 @@
   year_read: [2023]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "Murder Is Easy"
@@ -346,6 +395,7 @@
   year_read: [2023]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "Appointment with Death"
@@ -353,6 +403,7 @@
   year_read: [2023]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "Murder in the Mews"
@@ -360,6 +411,7 @@
   year_read: [2023]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "Stock Market Wizards"
@@ -367,6 +419,7 @@
   year_read: [2023]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Trading"]
 
 - title: "How to Day Trade for a Living"
@@ -374,6 +427,7 @@
   year_read: [2023]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Trading"]
 
 - title: "Advanced Techniques in Day Trading"
@@ -381,6 +435,7 @@
   year_read: [2023]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Trading"]
 
 - title: "Think & Trade Like a Champion"
@@ -388,6 +443,7 @@
   year_read: [2022]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Trading"]
 
 - title: "Trade Like a Stock Market Wizard"
@@ -395,6 +451,7 @@
   year_read: [2022]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Trading"]
 
 - title: "Secrets For Profiting in Bull and Bear Markets"
@@ -402,6 +459,7 @@
   year_read: [2021, 2016]
   reread: true
   olid: ""
+  custom_cover: ""
   tags: ["Trading"]
 
 - title: "The Fast 800: How to Combine Rapid Weight Loss and Intermittent Fasting for Long-Term Health"
@@ -409,6 +467,7 @@
   year_read: [2021]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Cookbooks"]
 
 - title: "Remembrance of Earth's Past #3 Death's End"
@@ -416,6 +475,7 @@
   year_read: [2021]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Remembrance of Earth's Past"]
 
 - title: "Remembrance of Earth's Past #2 The Dark Forest"
@@ -423,6 +483,7 @@
   year_read: [2021]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Remembrance of Earth's Past"]
 
 - title: "How to Make Money in Stocks"
@@ -430,6 +491,7 @@
   year_read: [2021, 2016]
   reread: true
   olid: ""
+  custom_cover: ""
   tags: ["Trading"]
 
 - title: "Remembrance of Earth's Past #1 The Three-Body Problem"
@@ -437,6 +499,7 @@
   year_read: [2020]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Remembrance of Earth's Past"]
 
 - title: "The Witcher #5 Baptism of Fire"
@@ -444,6 +507,7 @@
   year_read: [2020]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["The Witcher"]
 
 - title: "A Tale of Two Cities"
@@ -451,6 +515,7 @@
   year_read: [2020]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "The Witcher #4 Time of Contempt"
@@ -458,6 +523,7 @@
   year_read: [2020]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["The Witcher"]
 
 - title: "The Witcher #3 Blood of Elves"
@@ -465,6 +531,7 @@
   year_read: [2020]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["The Witcher"]
 
 - title: "The Witcher #2 Sword of Destiny"
@@ -472,6 +539,7 @@
   year_read: [2020]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["The Witcher"]
 
 - title: "The Witcher #1 The Last Wish"
@@ -479,6 +547,7 @@
   year_read: [2020]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["The Witcher"]
 
 - title: "Death on the Nile"
@@ -486,6 +555,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "Dumb Witness"
@@ -493,6 +563,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "Cards on the Table"
@@ -500,6 +571,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "Murder in Mesopotamia"
@@ -507,6 +579,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "The A.B.C. Murders"
@@ -514,6 +587,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "Death in the Clouds"
@@ -521,6 +595,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "Three Act Tragedy"
@@ -528,6 +603,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "Chilling Adventures of Sabrina #7"
@@ -535,6 +611,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Chilling Adventures of Sabrina"]
 
 - title: "Chilling Adventures of Sabrina #8"
@@ -542,6 +619,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Chilling Adventures of Sabrina"]
 
 - title: "Chilling Adventures of Sabrina #5"
@@ -549,6 +627,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Chilling Adventures of Sabrina"]
 
 - title: "Chilling Adventures of Sabrina #6"
@@ -556,6 +635,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Chilling Adventures of Sabrina"]
 
 - title: "Chilling Adventures of Sabrina #3"
@@ -563,6 +643,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Chilling Adventures of Sabrina"]
 
 - title: "Chilling Adventures of Sabrina #4"
@@ -570,6 +651,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Chilling Adventures of Sabrina"]
 
 - title: "Chilling Adventures of Sabrina #2"
@@ -577,6 +659,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Chilling Adventures of Sabrina"]
 
 - title: "Algo más que vecinos"
@@ -584,6 +667,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Chilling Adventures of Sabrina #1"
@@ -591,6 +675,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Chilling Adventures of Sabrina"]
 
 - title: "Me vuelves loco"
@@ -598,6 +683,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Once Upon a Winter"
@@ -605,6 +691,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Kill Me Again"
@@ -612,6 +699,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Tapas, Carrot Cake and a Corpse"
@@ -619,6 +707,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "The Guilty Ones"
@@ -626,6 +715,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Beware the Past"
@@ -633,6 +723,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "All Those Things We Never Said"
@@ -640,6 +731,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "The Strange Case of Dr Jekyll and Mr Hyde"
@@ -647,6 +739,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "The Lighthouse Keeper"
@@ -654,6 +747,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Beneath a Scarlet Sky"
@@ -661,6 +755,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "The Secret of Chimneys"
@@ -668,6 +763,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "The Murder of Roger Ackroyd"
@@ -675,6 +771,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "The Big Four"
@@ -682,6 +779,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "The Mystery of the Blue Train"
@@ -689,6 +787,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "Partners in Crime"
@@ -696,6 +795,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "The Seven Dials Mystery"
@@ -703,6 +803,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "Murder at the Vicarage"
@@ -710,6 +811,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "The Mysterious Mr. Quin"
@@ -717,6 +819,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "The Sittaford Mystery"
@@ -724,6 +827,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "Peril at End House"
@@ -731,6 +835,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "The Thirteen Problems"
@@ -738,6 +843,7 @@
   year_read: [2018]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "The New Drawing on the Right Side of the Brain"
@@ -745,6 +851,7 @@
   year_read: [2017]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Parker Pyne Investigates"
@@ -752,6 +859,7 @@
   year_read: [2017]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "Why Didn't They Ask Evans?"
@@ -759,6 +867,7 @@
   year_read: [2017]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "Murder on the Orient Express"
@@ -766,6 +875,7 @@
   year_read: [2017]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "The Hound of Death"
@@ -773,6 +883,7 @@
   year_read: [2017]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "The Secret Adversary"
@@ -780,6 +891,7 @@
   year_read: [2017]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "The Mysterious Affair at Styles"
@@ -787,6 +899,7 @@
   year_read: [2017]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "Lord Edgware Dies"
@@ -794,6 +907,7 @@
   year_read: [2017]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "The Murder on the Links"
@@ -801,6 +915,7 @@
   year_read: [2017]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "Poirot Investigates"
@@ -808,6 +923,7 @@
   year_read: [2017]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "The Man in the Brown Suit"
@@ -815,6 +931,7 @@
   year_read: [2017]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "The Listerdale Mystery"
@@ -822,6 +939,7 @@
   year_read: [2017]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Agatha Christie"]
 
 - title: "Eating Animals"
@@ -829,6 +947,7 @@
   year_read: [2016]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Saga #29"
@@ -836,6 +955,7 @@
   year_read: [2016]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #30"
@@ -843,6 +963,7 @@
   year_read: [2016]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "How I Made $2,000,000 In The Stock Market"
@@ -850,6 +971,7 @@
   year_read: [2015]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Trading"]
 
 - title: "O Pequeno Livro de Hai-kais do Menino Maluquinho"
@@ -857,6 +979,7 @@
   year_read: [2015]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Saga #20"
@@ -864,6 +987,7 @@
   year_read: [2015]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #21"
@@ -871,6 +995,7 @@
   year_read: [2015]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #22"
@@ -878,6 +1003,7 @@
   year_read: [2015]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #23"
@@ -885,6 +1011,7 @@
   year_read: [2015]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #24"
@@ -892,6 +1019,7 @@
   year_read: [2015]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #25"
@@ -899,6 +1027,7 @@
   year_read: [2015]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #26"
@@ -906,6 +1035,7 @@
   year_read: [2015]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #27"
@@ -913,6 +1043,7 @@
   year_read: [2015]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #28"
@@ -920,6 +1051,7 @@
   year_read: [2015]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "The Artist's Way"
@@ -927,6 +1059,7 @@
   year_read: [2015]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "The Life-Changing Magic of Tidying"
@@ -934,6 +1067,7 @@
   year_read: [2015]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Cesar's Way: The Natural, Everyday Guide to Understanding and Correcting Common Dog Problems"
@@ -941,6 +1075,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Hundcoachen: Aktivera din hund och bli en bra ledare"
@@ -948,6 +1083,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "The Art of Children's Portrait Photography"
@@ -955,6 +1091,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Kim Novak badade aldrig i Genesarets sjö"
@@ -962,6 +1099,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Tätt intill dagarna: berättelsen om min mor"
@@ -969,6 +1107,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "A Faraway Island"
@@ -976,6 +1115,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Dracula"
@@ -983,6 +1123,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "På väg"
@@ -990,6 +1131,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Billions & Billions"
@@ -997,6 +1139,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Jab, Jab, Jab, Right Hook"
@@ -1004,6 +1147,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Manage Your Day-To-Day: Build Your Routine, Find Your Focus, and Sharpen Your Creative Mind"
@@ -1011,6 +1155,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Saga #1"
@@ -1018,6 +1163,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #2"
@@ -1025,6 +1171,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #3"
@@ -1032,6 +1179,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #4"
@@ -1039,6 +1187,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #5"
@@ -1046,6 +1195,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #6"
@@ -1053,6 +1203,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #7"
@@ -1060,6 +1211,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #8"
@@ -1067,6 +1219,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #9"
@@ -1074,6 +1227,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #10"
@@ -1081,6 +1235,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #11"
@@ -1088,6 +1243,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #12"
@@ -1095,6 +1251,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #13"
@@ -1102,6 +1259,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #14"
@@ -1109,6 +1267,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #15"
@@ -1116,6 +1275,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #16"
@@ -1123,6 +1283,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #17"
@@ -1130,6 +1291,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #18"
@@ -1137,6 +1299,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "Saga #19"
@@ -1144,6 +1307,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Saga", "Graphic Novel"]
 
 - title: "The Miracle Morning"
@@ -1151,6 +1315,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Valpens träningsdagbok: första året i en ovanligt vanlig hunds liv"
@@ -1158,6 +1323,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Awaken the Giant Within"
@@ -1165,6 +1331,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Othello"
@@ -1172,6 +1339,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "The Unbearable Lightness of Being"
@@ -1179,6 +1347,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Millennium #1 The Girl With the Dragon Tattoo"
@@ -1186,6 +1355,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Millennium"]
 
 - title: "Millennium #2 The Girl Who Played With Fire"
@@ -1193,6 +1363,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Millennium"]
 
 - title: "Millennium #3 The Girl Who Kicked the Hornet's Nest"
@@ -1200,6 +1371,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Millennium"]
 
 - title: "The Hobbit, or There and Back Again"
@@ -1207,6 +1379,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "1984"
@@ -1214,6 +1387,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Animal Farm"
@@ -1221,6 +1395,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Sin City, Vol. 1: The Hard Goodbye"
@@ -1228,6 +1403,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Sin City", "Graphic Novel"]
 
 - title: "Sin City, Vol. 2: A Dame to Kill For"
@@ -1235,6 +1411,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Sin City", "Graphic Novel"]
 
 - title: "Sin City, Vol. 3: The Big Fat Kill"
@@ -1242,6 +1419,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Sin City", "Graphic Novel"]
 
 - title: "Sin City, Vol. 4: That Yellow Bastard"
@@ -1249,6 +1427,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Sin City", "Graphic Novel"]
 
 - title: "Sin City, Vol. 5: Family Values"
@@ -1256,6 +1435,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Sin City", "Graphic Novel"]
 
 - title: "Angels & Demons"
@@ -1263,6 +1443,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Catch-22"
@@ -1270,6 +1451,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "In the Blink of an Eye: A Perspective on Film Editing"
@@ -1277,6 +1459,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "The Complete Stories and Poems"
@@ -1284,6 +1467,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "The da Vinci Code"
@@ -1291,6 +1475,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "The Metamorphosis"
@@ -1298,6 +1483,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "The Mists of Avalon"
@@ -1305,6 +1491,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "The complete photography course"
@@ -1312,6 +1499,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Batman: Arkham Asylum"
@@ -1319,6 +1507,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Hamlet"
@@ -1326,6 +1515,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Quincas Borba"
@@ -1333,6 +1523,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Batman: The Killing Joke"
@@ -1340,6 +1531,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Love in the Time of Cholera"
@@ -1347,6 +1539,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "O Mundo de Sofia"
@@ -1354,6 +1547,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "V for Vendetta"
@@ -1361,6 +1555,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Graphic Novel"]
 
 - title: "Little Women"
@@ -1368,6 +1563,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "O Alienista"
@@ -1375,6 +1571,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Papéis Avulsos"
@@ -1382,6 +1579,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Contos Fluminenses"
@@ -1389,6 +1587,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Esaú e Jacó"
@@ -1396,6 +1595,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Helena"
@@ -1403,6 +1603,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Iaiá Garcia"
@@ -1410,6 +1611,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Memorial de Aires"
@@ -1417,6 +1619,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Memórias póstumas de Brás Cubas"
@@ -1424,6 +1627,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "A Cartomante e Outros Contos"
@@ -1431,6 +1635,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "A Mão e a Luva"
@@ -1438,6 +1643,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Dom Casmurro"
@@ -1445,6 +1651,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Histórias da Meia-Noite"
@@ -1452,6 +1659,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "The Little Prince"
@@ -1459,6 +1667,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: []
 
 - title: "Laura in the Kitchen"
@@ -1466,6 +1675,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Cookbooks"]
 
 - title: "Vegan Chinese Food"
@@ -1473,6 +1683,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Cookbooks"]
 
 - title: "Vegan Asian: A Cookbook"
@@ -1480,6 +1691,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Cookbooks"]
 
 - title: "East"
@@ -1487,6 +1699,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Cookbooks"]
 
 - title: "The Easy Italian Cookbook"
@@ -1494,6 +1707,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Cookbooks"]
 
 - title: "Pasta Grannies: The Official Cookbook"
@@ -1501,6 +1715,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Cookbooks"]
 
 - title: "Pasta Grannies: Comfort Cooking"
@@ -1508,6 +1723,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Cookbooks"]
 
 - title: "The Mediterranean Diet Cookbook for Beginners"
@@ -1515,6 +1731,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Cookbooks"]
 
 - title: "Thug Kitchen"
@@ -1522,6 +1739,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Cookbooks"]
 
 - title: "Thug Kitchen 101"
@@ -1529,6 +1747,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Cookbooks"]
 
 - title: "The Homemade Vegan Pantry"
@@ -1536,6 +1755,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Cookbooks"]
 
 - title: "Artisan Vegan Cheese"
@@ -1543,6 +1763,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Cookbooks"]
 
 - title: "Get The Glow"
@@ -1550,6 +1771,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Cookbooks"]
 
 - title: "Everyday Super Food"
@@ -1557,6 +1779,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Cookbooks"]
 
 - title: "But I Could Never Go Vegan!"
@@ -1564,6 +1787,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Cookbooks"]
 
 - title: "The Super Easy Vegan Slow Cooker Cookbook"
@@ -1571,6 +1795,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Cookbooks"]
 
 - title: "The Vegan Meat Cookbook"
@@ -1578,6 +1803,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Cookbooks"]
 
 - title: "The Healthy Hound Cookbook"
@@ -1585,6 +1811,7 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Cookbooks"]
 
 - title: "Feed Your Best Friend Better"
@@ -1592,5 +1819,6 @@
   year_read: [0]
   reread: false
   olid: ""
+  custom_cover: ""
   tags: ["Cookbooks"]
 

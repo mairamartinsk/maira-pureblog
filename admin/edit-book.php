@@ -19,49 +19,70 @@ $book = [
     'year_read' => [],
     'reread'    => false,
     'olid'      => '',
+    'custom_cover'      => '',
     'tags'      => [],
-    'custom_cover' => ''
 ];
 
-if ($isEditing) {
-    if (isset($books[$bookIndex])) {
-        $book = array_merge($book, $books[$bookIndex]);
-    } else {
-        $errors[] = "Book entry not found.";
-        $isEditing = false;
-    }
-}
+$images = [];
+$imageFolder = PUREBLOG_BASE_PATH . '/content/images/book_covers';
 
-$autosaveData = null;
+if ($isEditing) {
+        if (isset($books[$bookIndex])) {
+        $book = array_merge($book, $books[$bookIndex]);
+        }
+    } else {
+        $books[] = [
+            'title'        => $book['title'],
+            'author'       => $book['author'],
+            'year_read'    => $book['year_read'],
+            'reread'       => $book['reread'],
+            'olid'         => $book['olid'],
+            'custom_cover' => $book['custom_cover'],
+            'tags'         => $book['tags']
+        ];
+    }
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['book_action']) && $_POST['book_action'] === 'upload_image') {
+    if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+        $targetDir = PUREBLOG_BASE_PATH . '/content/images/book_covers';
+        
+        if (!is_dir($targetDir)) {
+            @mkdir($targetDir, 0755, true);
+        }
+        
+        $filename = $_FILES['image']['name'];
+        $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+        
+        if (in_array($extension, ['jpg', 'jpeg', 'png', 'webp', 'gif'], true)) {
+            $cleanName = slugify(pathinfo($filename, PATHINFO_FILENAME)) . '-' . time() . '.' . $extension;
+            $destination = $targetDir . '/' . $cleanName;
+            
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $destination)) {
+                header('Location: ' . base_path() . '/admin/edit-book.php?id=' . $bookIdParam . '&uploaded=1');
+                exit;
+            } else {
+                header('Location: ' . base_path() . '/admin/edit-book.php?id=' . $bookIdParam . '&upload_error=Failed to move uploaded file.');
+                exit;
+            }
+        } else {
+            header('Location: ' . base_path() . '/admin/edit-book.php?id=' . $bookIdParam . '&upload_error=Invalid file type.');
+            exit;
+        }
+    }
+    header('Location: ' . base_path() . '/admin/edit-book.php?id=' . $bookIdParam . '&upload_error=No file selected or upload error occurred.');
+    exit;
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $book['title']  = trim($_POST['title'] ?? '');
     $book['author'] = trim($_POST['author'] ?? '');
     $book['olid']   = trim($_POST['olid'] ?? '');
+    $book['custom_cover'] = trim($_POST['custom_cover'] ?? '');
     $book['reread'] = isset($_POST['reread']);
     $book['year_read'] = array_filter(array_map('intval', explode(',', $_POST['year_read'] ?? '')), function($val) {
         return $val >= 0;
     });
     $book['tags'] = array_filter(array_map('trim', explode(',', $_POST['tags'] ?? '')));
-    $book['custom_cover']   = trim($_POST['custom_cover'] ?? '');
-
-    $imageFolder = '';
-    if ($book['title'] !== '') {
-        $imageFolder = __DIR__ . '/../content/images/book_covers';
-        if (is_dir($imageFolder)) {
-            $files = glob($imageFolder . '/*') ?: [];
-            foreach ($files as $file) {
-                if (is_file($file)) {
-                    $basename = basename($file);
-                    $altText = pathinfo($basename, PATHINFO_FILENAME) ?: 'image';
-                    $url = base_path() . '/content/images/book_covers/' . $basename;
-                    $images[] = [
-                        'filename' => $basename,
-                    ];
-                }
-            }
-        }
-    }
 
     if ($book['title'] === '') {
         $errors[] = "Book title is required.";
@@ -71,12 +92,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $updatedBook = [
             'title'     => $book['title'],
             'author'    => $book['author'],
-            'year_read' => array_values($book['year_read
-    ']),
-            'reread'    => $book['rereas'],
+            'year_read' => array_values($book['year_read']),
+            'reread'    => $book['reread'],
             'olid'      => $book['olid'],
+            'custom_cover'  => $book['custom_cover'],
             'tags'      => array_values($book['tags']),
-            'custom_cover'     => $book['custom_cover']
         ];
 
         if ($isEditing && $bookIndex >= 0) {
@@ -93,7 +113,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+if (is_dir($imageFolder)) {
+    $files = glob($imageFolder . '/*.{jpg,jpeg,png,webp,gif}', GLOB_BRACE) ?: [];
+    foreach ($files as $file) {
+        if (is_file($file)) {
+            $basename = basename($file);
+            $url = base_path() . '/content/images/book_covers/' . $basename;
+            $images[] = [
+                'filename' => $basename,
+                'url'      => $url,
+            ];
+        }
+    }
+}
+
 $adminTitle = $isEditing ? "Edit Book" : "Add New Book";
+
 require __DIR__ . '/../includes/admin-head.php';
 ?>
     <main>
@@ -113,7 +148,6 @@ require __DIR__ . '/../includes/admin-head.php';
                     <p class="notice delete" data-auto-dismiss><?= e($_GET['upload_error']) ?></p>
                 <?php endif; ?>
                 <form method="post" class="editor-form" id="book-form">
-                    <input type="hidden" id="book-cover-value" name="book_cover" value="<?= e($book['custom_cover'] ?? '') ?>">
                     <?= csrf_field() ?>
 
                     <nav class="editor-actions">
@@ -133,6 +167,9 @@ require __DIR__ . '/../includes/admin-head.php';
                     <label for="olid">Open Library ID (for book cover images)</label>
                     <input type="text" id="olid" name="olid" value="<?= e($book['olid']) ?>" placeholder="eg: 9780261102217" autocomplete="off">
 
+                    <label for="custom_cover">Custom Cover (leave OLID field empty)</label>
+                    <input type="text" id="custom_cover" name="custom_cover" value="<?= e($book['custom_cover']) ?>" placeholder="eg: abc.jpg" autocomplete="off">
+
                     <label for="year_read">Years read (comma separated if re-read)</label>
                     <input type="text" id="year_read" name="year_read" value="<?= e(implode(', ', $book['year_read'])) ?>" placeholder="eg: 2016, 2021 (Use 0 for before 2015)" autocomplete="off">
 
@@ -150,6 +187,7 @@ require __DIR__ . '/../includes/admin-head.php';
                 
                 <section class="sidebar-section">
                     <div class="section-divider">
+                        <span class="images-title">Re-read</span>
                         <div>
                             <label for="reread">
                                 <input type="checkbox" id="reread" name="reread" <?= $book['reread'] ? 'checked' : '' ?> form="book-form">
@@ -162,48 +200,41 @@ require __DIR__ . '/../includes/admin-head.php';
                 <section class="sidebar-section">
                     <div class="section-divider">
                     <span class="images-title"><?= e(t('admin.editor.images_title')) ?></span>
-                    <form method="post" action="<?= base_path() ?>/admin/upload-image.php" enctype="multipart/form-data" class="upload-form">
-                        <input type="hidden" name="slug" value="book_covers">
-                        <input type="hidden" name="editor_type" value="page">
+                    <form method="post" enctype="multipart/form-data" class="upload-form">
+                        <input type="hidden" name="book_action" value="upload_image">
                         <?= csrf_field() ?>
-                        <label class="hidden" for="image"><?= e(t('admin.editor.upload_label')) ?></label>
-                        <input type="file" id="image" name="image" accept="image/*,.avif">
-                        <button type="submit" disabled>
+                        <label class="hidden" id="image-upload-label" for="image"><?= e(t('admin.editor.upload_label')) ?></label>
+                        <input type="file" id="image" name="image" accept="image/*" onchange="document.getElementById('upload-submit-btn').disabled = !this.value;">
+                        <button type="submit" id="upload-submit-btn" disabled>
                             <svg class="icon" aria-hidden="true"><use href="#icon-upload"></use></svg>
                             <?= e(t('admin.editor.upload')) ?>
                         </button>
-                </form>
+                    </form>
                         <?php if (!$images): ?>
                             <p><?= e(t('admin.editor.no_images')) ?></p>
                         <?php else: ?>
                             <p><?= e(t('admin.editor.attached_images')) ?></p>
                             <ul class="image-list">
-                            <?php foreach ($images as $image):
-                                $imageRawPath = '/content/images/book_covers/' . $image['filename'];
-                            ?>
-                                <li>
-                                    <div class="image-list-top">
-                                        <img src="<?= e($image['url']) ?>" width="30" height="30" class="image-list-preview" alt="<?= e($image['filename']) ?>" loading="lazy"/>
-                                        <code><?= e($image['filename']) ?></code>
-                                    </div>
-                                    <div class="image-list-actions">
-                                        <button type="button" class="link-button copy-markdown" data-markdown="<?= e($image['markdown']) ?>"><svg class="icon" aria-hidden="true"><use href="#icon-copy"></use></svg> <?= e(t('admin.editor.copy')) ?></button>
-                                        <form method="post" action="<?= base_path() ?>/admin/delete-image.php" class="inline-form" onsubmit="return confirm('<?= e(t('admin.page_editor.delete_image_confirm')) ?>');">
-                                            <input type="hidden" name="slug" value="<?= e($page['slug']) ?>">
-                                            <input type="hidden" name="editor_type" value="page">
-                                            <input type="hidden" name="filename" value="<?= e($image['filename']) ?>">
-                                            <?= csrf_field() ?>
-                                            <button type="submit" class="link-button delete"><svg class="icon" aria-hidden="true"><use href="#icon-circle-x"></use></svg> <?= e(t('admin.editor.delete')) ?></button>
-                                        </form>
-                                    </div>
-                                </li>
-                            <?php endforeach; ?>
-                            </ul>
+                        <?php foreach ($images as $image): ?>
+                            <li>
+                                <div class="image-list-top">
+                                    <img src="<?= e($image['url']) ?>" width="30" height="30" class="image-list-preview" alt="<?= e($image['filename']) ?>" loading="lazy" style="object-fit: cover; border-radius: 2px;"/>
+                                    <code style="font-size: 0.8em; word-break: break-all;"><?= e($image['filename']) ?></code>
+                                </div>
+                                <div class="image-list-actions">
+                                    <button type="button" class="link-button copy-image-url" data-url="<?= e($image['url']) ?>">
+                                        <svg class="icon" aria-hidden="true"><use href="#icon-copy"></use></svg> Copy URL
+                                    </button>
+                                </div>
+                            </li>
+                        <?php endforeach; ?>
+                        </ul>
                         <?php endif; ?>
                         </div>
                 </section>
                 <section class="sidebar-section">
                     <div class="section-divider">
+                        <span class="images-title">Book Library</span>
                         <ul>
                             <?php foreach ($books as $idx => $b): ?>
                                 <li>
@@ -225,29 +256,40 @@ require __DIR__ . '/../includes/admin-head.php';
             formId: 'book-form',
             csrfToken: '<?= e(csrf_token()) ?>',
             basePath: '<?= e(base_path()) ?>',
-            autosave: <?= $autosaveData !== null ? json_encode($autosaveData, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT) : 'null' ?>,
-            strings: <?= json_encode([
-                'autosaving'        => t('admin.editor.js_autosaving'),
-                'autosaved'         => t('admin.editor.js_autosaved'),
-                'autosave_failed'   => t('admin.editor.js_autosave_failed'),
-                'autosave_banner'   => t('admin.editor.js_autosave_banner'),
-                'view'              => t('admin.editor.js_view'),
-                'hide'              => t('admin.editor.js_hide'),
-                'restore'           => t('admin.editor.js_restore'),
-                'discard'           => t('admin.editor.js_discard'),
-                'title_label'       => t('admin.editor.js_title_label'),
-                'save_failed'       => t('admin.editor.js_save_failed'),
-                'save_before_upload'=> t('admin.editor.js_save_before_upload'),
-                'copied'            => t('admin.editor.js_copied'),
-                'copy'              => t('admin.editor.copy'),
-                'copy_failed'       => t('admin.editor.js_copy_failed'),
-                'save_post_first'       => t('admin.editor.js_save_post_first'),
-                'save_page_first'       => t('admin.editor.js_save_page_first'),
-                'upload_failed'         => t('admin.editor.js_upload_failed'),
-                'feature_image_confirm' => t('admin.editor.js_feature_image_confirm'),
-                'feature_image_failed'  => t('admin.editor.js_feature_image_failed'),
-            ], JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE) ?>,
         };
     </script>
-    <script type="module" src="<?= base_path() ?>/admin/js/editor.js?v=<?= e((string) @filemtime(__DIR__ . '/js/editor.js')) ?>"></script>
+    <script>
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('.copy-markdown');
+            if (btn) {
+                const text = btn.getAttribute('data-markdown');
+                navigator.clipboard.writeText(text).then(() => {
+                    const originalText = btn.innerHTML;
+                    btn.innerHTML = 'Copied!';
+                    setTimeout(() => { btn.innerHTML = originalText; }, 2000);
+                });
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('.copy-image-url');
+            if (btn) {
+                const textToCopy = btn.getAttribute('data-url');
+                
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    const originalHTML = btn.innerHTML;
+                    btn.innerHTML = 'Copied!';
+                    btn.style.color = '#28a745';
+                    
+                    setTimeout(() => {
+                        btn.innerHTML = originalHTML;
+                        btn.style.color = '';
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Could not copy image path: ', err);
+                });
+            }
+        });
+    </script>
 <?php require __DIR__ . '/../includes/admin-footer.php'; ?>
