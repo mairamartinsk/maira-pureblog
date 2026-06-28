@@ -600,6 +600,11 @@ lite-youtube+lite-youtube {
   margin-top: 3rem;
 }
 
+#live-bookshelf.view-covers .book-card:has(img) {
+  display: flex;
+  align-items: end;
+}
+
 #live-bookshelf.view-covers .book-card {
   box-shadow: 3px 3px 5px 1px #EDEBEB;
 }

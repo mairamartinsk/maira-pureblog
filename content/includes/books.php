@@ -139,6 +139,12 @@ $allBooks = function_exists('load_books_yaml') ? load_books_yaml() : [];
 							<img src="${imgUrl}" alt="${book.title} Cover" class="book-cover" loading="lazy">
 						</div>
 					`;
+				} else if (book.custom_cover) {
+					htmlOutput += `
+						<div class="book-card ${book.reread ? 'is-reread' : ''}">
+							<img src="${book.custom_cover}" alt="${book.title} Cover" class="book-cover" loading="lazy">
+						</div>
+					`;
 				} else {
 					htmlOutput += `
 						<div class="book-card missing-cover ${book.reread ? 'is-reread' : ''}">

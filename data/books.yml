@@ -11,7 +11,7 @@
   year_read: [2026]
   reread: false
   olid: ""
-  custom_cover: ""
+  custom_cover: "/content/images/finished-reading-price-action-trader/ytc-price-action-trader-lance-beggs.jpeg"
   tags: ["Trading"]
 
 - title: "Brave New World"
@@ -107,7 +107,7 @@
   year_read: [2025]
   reread: false
   olid: ""
-  custom_cover: ""
+  custom_cover: "/content/images/book-draw-your-day/draw-your-day-samantha-dion-baker.jpg"
   tags: []
 
 - title: "The Labours of Hercules (Poirot)"
