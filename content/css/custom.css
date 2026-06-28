@@ -601,11 +601,12 @@ lite-youtube+lite-youtube {
 }
 
 #live-bookshelf.view-covers .book-card {
-  box-shadow: 3px 3px 5px 1px #d0d0d0;
+  box-shadow: 3px 3px 5px 1px #EDEBEB;
 }
 
 .book-card.missing-cover {
-  background: var(--accent-bg-color);
+  background: #edebeb;
+  background: linear-gradient(135deg, rgba(237, 235, 235, 1) 0%, rgba(229, 225, 235, 1) 68%, rgba(229, 218, 242, 1) 100%);
   display: flex;
   align-items: center;
   justify-content: center;

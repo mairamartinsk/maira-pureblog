@@ -91,28 +91,28 @@ require __DIR__ . '/../includes/admin-head.php';
                         <button class="save" type="submit" form="book-form">
                             <svg class="icon" aria-hidden="true"><use href="#icon-save"></use></svg> Save Book
                         </button>
-                        <a href="?action=new" class="link-button" style="margin-left:10px; display:inline-flex; align-items:center;">+ Add Another</a>
+                        <a href="?action=new" class="link-button">+ Add Another</a>
                     </nav>
 
                     <label for="title">Book Title</label>
                     <input type="text" id="title" name="title" value="<?= e($book['title']) ?>" required autocomplete="off">
 
-                    <label for="author">Author Name</label>
+                    <label for="author">Book Author</label>
                     <input type="text" id="author" name="author" value="<?= e($book['author']) ?>" autocomplete="off">
 
                     <label for="olid">Open Library ID (for bookshelf cover images)</label>
                     <input type="text" id="olid" name="olid" value="<?= e($book['olid']) ?>" placeholder="e.g., 9780261102217" autocomplete="off">
 
-                    <label for="year_read">Years Read (Comma separated if re-read)</label>
+                    <label for="year_read">Years read (comma separated if re-read)</label>
                     <input type="text" id="year_read" name="year_read" value="<?= e(implode(', ', $book['year_read'])) ?>" placeholder="e.g., 2016, 2021 (Use 0 for Before 2015)" autocomplete="off">
 
-                    <label for="tags">Collection Tags / Projects (Comma separated)</label>
+                    <label for="tags">Tags / Book series (comma separated)</label>
                     <input type="text" id="tags" name="tags" value="<?= e(implode(', ', $book['tags'])) ?>" placeholder="e.g., Trading, Agatha Christie Project, Cookbooks" autocomplete="off">
 
-                    <div style="margin-top:20px;">
-                        <label for="reread" style="display:inline-flex; align-items:center; cursor:pointer; font-weight:normal;">
-                            <input type="checkbox" id="reread" name="reread" <?= $book['reread'] ? 'checked' : '' ?> style="margin-right:8px;">
-                            Mark as Re-read
+                    <div>
+                        <label for="reread">
+                            <input type="checkbox" id="reread" name="reread" <?= $book['reread'] ? 'checked' : '' ?> >
+                            Re-read?
                         </label>
                     </div>
                 </form>
@@ -121,14 +121,14 @@ require __DIR__ . '/../includes/admin-head.php';
             <aside class="editor-sidebar">
                 <div class="sidebar-header"><span class="sidebar-title">Tracked Library</span></div>
                 <section class="sidebar-section">
-                    <div class="section-divider" style="max-height: 600px; overflow-y: auto;">
-                        <ul style="list-style:none; padding:0; margin:0;">
+                    <div class="section-divider">
+                        <ul>
                             <?php foreach ($books as $idx => $b): ?>
-                                <li style="padding:8px 0; border-bottom:1px solid #eee; display:flex; justify-content:space-between; align-items:center;">
-                                    <span style="font-size:0.85em; max-width:80%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+                                <li>
+                                    <span>
                                         <?= e($b['title']) ?>
                                     </span>
-                                    <a href="?id=<?= $idx ?>" style="font-size:0.85em;">Edit</a>
+                                    <a href="?id=<?= $idx ?>">Edit</a>
                                 </li>
                             <?php endforeach; ?>
                         </ul>
