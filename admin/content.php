@@ -352,8 +352,17 @@ require __DIR__ . '/../includes/admin-head.php';
                     <?php foreach ($booksList as $index => $b): ?>
                         <li class="admin-list-item">
                             <a class="admin-list-title" href="<?= base_path() ?>/admin/edit-book.php?id=<?= $index ?>">
-                                <?= e($b['title']) ?> <br><span style="font-size: 0.8em; color: #777; font-weight: normal;"> <?= e($b['author']) ?></span>
+                                <?= e($b['title']) ?>
                             </a>
+                            <div class="admin-list-meta"> <?= e($b['author']) ?>
+                            <span class="status <?php echo ($b['olid'] || $b['custom_cover']) ? 'published' : 'draft'; ?>">
+                                <?php if ($b['olid'] || $b['custom_cover']): ?>
+                                    Has cover 📚
+                                <?php else: ?>
+                                    🛑 Missing cover!
+                                <?php endif; ?>
+                            </span>
+                    </div>
                         </li>
                     <?php endforeach; ?>
                 </ul>
